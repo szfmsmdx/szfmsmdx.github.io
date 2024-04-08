@@ -23,8 +23,10 @@
 <h3 id="配置-next-主页"><a href="#配置-next-主页" class="headerlink" title="配置 next 主页"></a>配置 next 主页</h3><p>进 <code>next</code> 的 <code>_config.yml</code> 文件进行修改注释是不行的，因为他找不到相应的路径<br>所以要先在根目录下建立相应的文件夹然后再去修改 <code>next</code> 的配置文件  </p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new page [tags名称] # 比如和注释里相同的 about、tags之类</span><br></pre></td></tr></table></figure>
 
-<p>同理创建其他菜单，然后在 <code>next</code> 的配置文件中进行修改即可…  </p>
-<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3>]]></content>
+<p>同理创建其他菜单，然后在 <code>next</code> 的配置文件中进行修改即可…<br>可以在source里面找到菜单，其实里面就是一些 md 文件，也可以自己进行修改添加内容等  </p>
+<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><p>添加搜索功能与预计阅读时间<br>需要安装 <code>symbols-count-time</code> 插件  </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-time</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>hexo 本地博客 + 云服务器个人博客搭建</title>
