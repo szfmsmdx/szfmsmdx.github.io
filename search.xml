@@ -35,7 +35,7 @@
 <h3 id="修改文章间的分割线"><a href="#修改文章间的分割线" class="headerlink" title="修改文章间的分割线"></a>修改文章间的分割线</h3><p>找到文件 <code>themes/next/source/css/_common/components/post/post-footer.styl</code><br>进入修改如下内容</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-eof</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: $grey-light;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">3px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: $post-eof-margin-top auto $post-eof-margin-bottom;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.post-block</span><span class="selector-pseudo">:last-of-type</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以自行根据喜好决定参数大小  </p>
-]]></content>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
       <tags>
         <tag>hexo</tag>
       </tags>
