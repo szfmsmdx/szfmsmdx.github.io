@@ -54,58 +54,6 @@
       </tags>
   </entry>
   <entry>
-    <title>markdown生成目录</title>
-    <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<!-- TOC -->
-<!-- vscode-markdown-toc -->
-<ul>
-<li><a href="#test">test</a></li>
-<li><a href="#VSCMarkdownTOC">利用VSC的插件<code>Markdown TOC</code>生成目录</a></li>
-<li><a href="#test-1">test</a><ul>
-<li><a href="#test1">test1</a><!-- vscode-markdown-toc-config
-  numbering=false
-  autoSave=true
-  /vscode-markdown-toc-config -->
-<!-- /TOC --></li>
-</ul>
-</li>
-</ul>
-<h1 id="在hexo中开启侧边栏文章目录"><a href="#在hexo中开启侧边栏文章目录" class="headerlink" title="在hexo中开启侧边栏文章目录"></a>在hexo中开启侧边栏文章目录</h1><p>看了网上的一些帖子，好像因为 <code>next</code> 版本不匹配导致<br>其实好像不用大费周章寻找 <code>_custom.styl</code>（至少我是这样。。。）<br>只需要在<code>_config.md</code> 下修改 toc 词条即可<br>这是我的配置  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 3</span><br></pre></td></tr></table></figure>
-<p>按照英文指示自行按照喜好修改参数即可hh  </p>
-<h2 id="test"><a href="#test" class="headerlink" title="test"></a><a name='test'></a>test</h2><blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-<h1 id="markdown中插入目录"><a href="#markdown中插入目录" class="headerlink" title="markdown中插入目录"></a>markdown中插入目录</h1><h2 id="利用VSC的插件Markdown-TOC生成目录"><a href="#利用VSC的插件Markdown-TOC生成目录" class="headerlink" title="利用VSC的插件Markdown TOC生成目录"></a><a name='VSCMarkdownTOC'></a>利用VSC的插件<code>Markdown TOC</code>生成目录</h2><p>直接在VSC的插件里搜索 <code>Markdown TOC</code>，第一个下载最高的插件下载<br>根据插件给出的使用方法  </p>
-<blockquote>
-<ol>
-<li><code>ctrl + shift + p</code> 呼出面板</li>
-<li>将光标移动到你要生成目录的地方</li>
-<li>输入 <code>Generate</code> 找到命令 <code>Generate TOC for markdown</code> </li>
-<li>选择该命令就可以了。。。</li>
-<li>可以在他注释的地方修改参数<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numbering=false # 为true则开启标签目录带序号</span><br><span class="line">autoSave=true   # 为true生成目录时自动保存文件</span><br></pre></td></tr></table></figure></li>
-</ol>
-</blockquote>
-<p>不过好像这个插件会自动将你md文件中的标签改成 html 的格式<br>但是初次生成的时候，好像默认两个参数都是true，我也没找到在哪里修改他的配置文件，所以就怪怪的要生成两次，先生成一次然后修改参数，删掉原来的目录（保存注释），再生成一次他就会按照参数生成一份  </p>
-<br>
-
-<p>而且感觉这东西好像不太实用呢，我需要将他生成的目录先放到hexo生成的两个<code>---</code>后面，然后这个插件为啥不支持生成一级文件。。。<br>此文仅做个记录以后不用了。。。    </p>
-<h2 id="test-1"><a href="#test-1" class="headerlink" title="test"></a><a name='test-1'></a>test</h2><blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-<h3 id="test1"><a href="#test1" class="headerlink" title="test1"></a><a name='test1'></a>test1</h3><blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo本地博客+云服务器个人博客搭建</title>
     <url>/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p>记录一下本地搭建 <code>hexo</code> 个人博客并部署到云服务器的过程。。。<br>本地环境是 <code>win11</code> ，云服务器是 <code>Ubuntu 22.04LTS</code>  </p>
@@ -190,6 +138,58 @@
         <tag>hexo</tag>
         <tag>git</tag>
         <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown生成目录</title>
+    <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<!-- TOC -->
+<!-- vscode-markdown-toc -->
+<ul>
+<li><a href="#test">test</a></li>
+<li><a href="#VSCMarkdownTOC">利用VSC的插件<code>Markdown TOC</code>生成目录</a></li>
+<li><a href="#test-1">test</a><ul>
+<li><a href="#test1">test1</a><!-- vscode-markdown-toc-config
+  numbering=false
+  autoSave=true
+  /vscode-markdown-toc-config -->
+<!-- /TOC --></li>
+</ul>
+</li>
+</ul>
+<h1 id="在hexo中开启侧边栏文章目录"><a href="#在hexo中开启侧边栏文章目录" class="headerlink" title="在hexo中开启侧边栏文章目录"></a>在hexo中开启侧边栏文章目录</h1><p>看了网上的一些帖子，好像因为 <code>next</code> 版本不匹配导致<br>其实好像不用大费周章寻找 <code>_custom.styl</code>（至少我是这样。。。）<br>只需要在<code>_config.md</code> 下修改 toc 词条即可<br>这是我的配置  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 3</span><br></pre></td></tr></table></figure>
+<p>按照英文指示自行按照喜好修改参数即可hh  </p>
+<h2 id="test"><a href="#test" class="headerlink" title="test"></a><a name='test'></a>test</h2><blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+<h1 id="markdown中插入目录"><a href="#markdown中插入目录" class="headerlink" title="markdown中插入目录"></a>markdown中插入目录</h1><h2 id="利用VSC的插件Markdown-TOC生成目录"><a href="#利用VSC的插件Markdown-TOC生成目录" class="headerlink" title="利用VSC的插件Markdown TOC生成目录"></a><a name='VSCMarkdownTOC'></a>利用VSC的插件<code>Markdown TOC</code>生成目录</h2><p>直接在VSC的插件里搜索 <code>Markdown TOC</code>，第一个下载最高的插件下载<br>根据插件给出的使用方法  </p>
+<blockquote>
+<ol>
+<li><code>ctrl + shift + p</code> 呼出面板</li>
+<li>将光标移动到你要生成目录的地方</li>
+<li>输入 <code>Generate</code> 找到命令 <code>Generate TOC for markdown</code> </li>
+<li>选择该命令就可以了。。。</li>
+<li>可以在他注释的地方修改参数<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numbering=false # 为true则开启标签目录带序号</span><br><span class="line">autoSave=true   # 为true生成目录时自动保存文件</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<p>不过好像这个插件会自动将你md文件中的标签改成 html 的格式<br>但是初次生成的时候，好像默认两个参数都是true，我也没找到在哪里修改他的配置文件，所以就怪怪的要生成两次，先生成一次然后修改参数，删掉原来的目录（保存注释），再生成一次他就会按照参数生成一份  </p>
+<br>
+
+<p>而且感觉这东西好像不太实用呢，我需要将他生成的目录先放到hexo生成的两个<code>---</code>后面，然后这个插件为啥不支持生成一级文件。。。<br>此文仅做个记录以后不用了。。。    </p>
+<h2 id="test-1"><a href="#test-1" class="headerlink" title="test"></a><a name='test-1'></a>test</h2><blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+<h3 id="test1"><a href="#test1" class="headerlink" title="test1"></a><a name='test1'></a>test1</h3><blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
 </search>
