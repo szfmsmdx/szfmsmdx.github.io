@@ -199,10 +199,10 @@
 <h1 id="可切换模式按钮"><a href="#可切换模式按钮" class="headerlink" title="可切换模式按钮"></a>可切换模式按钮</h1><p><del>参考了这个佬的<a href="https://haomingzhang.com/hexo_3/">博客</a></del><br><del>在路径<code>themes/next/_vendors.yml</code> 下添加 <code>darkmode.js</code> 的cdn</del><br><del>然后我在next目录下没有找到 <code>_config.next.yml</code> 但是我添加在 <code>_config.yml</code> 里</del>  </p>
 <br> 
 
-<p>失败了。。。</p>
+<p>失败了。。。<br>可能是版本不对，更新给文件删了吧。。。 </p>
 <hr>
-<p>我又找到了另一个佬的<a href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a>  </p>
-]]></content>
+<p>我又找到了另一个佬的<a href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a><br>废话我不多说了，有用！<br>然后如果要自定义可以在这个路径下进行修改<br><code>\[root]\node_modules\hexo-next-darkmode\lib</code><br>root 就是你的博客根目录，其他 npm install 的包也在这里，可以找一找 hh  </p>
+<h1 id="文章底部添加"><a href="#文章底部添加" class="headerlink" title="文章底部添加"></a>文章底部添加</h1>]]></content>
       <categories>
         <category>hexo</category>
       </categories>
