@@ -19,6 +19,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 
 <p>下载完成后进入 <code>_config.yml</code> 文件修改 <code>theme</code>，输入 next 即可<br>然后 hexo 三连就能看到主页主题已经发生变化了  </p>
+<p>版本查看在 <code>/themes/next/package.json</code>文件的version词条里  </p>
 <h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><h3 id="博客信息"><a href="#博客信息" class="headerlink" title="博客信息"></a>博客信息</h3><p>此为在根目录下的总的博客信息，包括 <code>title</code>、<code>subtitle</code> 等等内容  </p>
 <h3 id="配置-next-主页"><a href="#配置-next-主页" class="headerlink" title="配置 next 主页"></a>配置 next 主页</h3><p>进 <code>next</code> 的 <code>_config.yml</code> 文件进行修改注释是不行的，因为他找不到相应的路径<br>所以要先在根目录下建立相应的文件夹然后再去修改 <code>next</code> 的配置文件  </p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new page [tags名称] # 比如和注释里相同的 about、tags之类</span><br></pre></td></tr></table></figure>
@@ -110,7 +111,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
 
 <p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为 <code>post-update</code> 才能生效，具体问题具体分析吧，用 rm 命令重命名好了，然后<code>wq</code>保存退出  </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全) ./post-update</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全) # ./post-update</span><br></pre></td></tr></table></figure>
 
 <p>然后修改文件权限</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure>
@@ -137,6 +138,17 @@
         <tag>hexo</tag>
         <tag>git</tag>
         <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown生成目录</title>
+    <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
       </tags>
   </entry>
 </search>
