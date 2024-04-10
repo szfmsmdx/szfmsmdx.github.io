@@ -4,6 +4,8 @@
     <title>hexo 主题更换</title>
     <url>/2024/04/07/hexo-%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2/</url>
     <content><![CDATA[<p>今天折腾一下 hexo 的主题变换 hh  </p>
+<span id="more"></span>
+
 <p>翻了一下<a href="https://hexo.io/themes/">hexo主题</a>，看到几个我自己觉得比较简洁还不错的  </p>
 <ul>
 <li><a href="https://github.com/hooozen/hexo-theme-tranquility">Tranquility</a></li>
@@ -54,43 +56,10 @@
       </tags>
   </entry>
   <entry>
-    <title>nextT美化</title>
-    <url>/2024/04/09/nextT%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p>额额。。。此贴的所有操作都是基于 <code>next8</code> 版本进行的。。。<br>版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎  </p>
-<h1 id="可切换模式按钮"><a href="#可切换模式按钮" class="headerlink" title="可切换模式按钮"></a>可切换模式按钮</h1><p><del>参考了这个佬的<a href="https://haomingzhang.com/hexo_3/">博客</a></del><br><del>在路径<code>themes/next/_vendors.yml</code> 下添加 <code>darkmode.js</code> 的cdn</del><br><del>然后我在next目录下没有找到 <code>_config.next.yml</code> 但是我添加在 <code>_config.yml</code> 里</del>  </p>
-<br> 
-
-<p>失败了。。。<br>可能是版本不对，更新给文件删了吧。。。 </p>
-<hr>
-<p>我又找到了另一个佬的<a href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a><br>废话我不多说了，有用！<br>然后如果要自定义可以在这个路径下进行修改<br><code>\[root]\node_modules\hexo-next-darkmode\lib</code><br>root 就是你的博客根目录，其他 npm install 的包也在这里，可以找一找 hh  </p>
-<h1 id="文章底部添加"><a href="#文章底部添加" class="headerlink" title="文章底部添加"></a>文章底部添加</h1><p>额原理就是加一个html的div标签<br>在路径 <code>\themes\next\layout\_macro</code> 中新建 <code>passage-end-tag.swig</code> 文件,并添加以下内容：  </p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span>-------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-paw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>接着打开<code>\themes\next\layout\_macro\post.swig</code>文件，在post-body 之后， post-footer 之前添加如下画红色部分代码（post-footer之前两个DIV，在END POST BODY之后的部分）：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>但是我是没有 <code>post.swig</code> 文件的，我操作了 <code>post.njk</code> 文件，同样可以</p>
-<p>然后打开主题配置文件(_config.yml),在末尾添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure>
-
-<h1 id="把底部-标签换成图标"><a href="#把底部-标签换成图标" class="headerlink" title="把底部 # 标签换成图标"></a>把底部 # 标签换成图标</h1><p>修改模板<code>/themes/next/layout/_macro/post.njk</code> 在尾部找到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; if theme.tag_icon else &#x27;#&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"># 删去 if theme.tag_icon else &#x27;#&#x27; 即可</span><br><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;%&#125;</span><br><span class="line">重新渲染后可正确使用</span><br></pre></td></tr></table></figure>
-
-<h1 id="首页折叠"><a href="#首页折叠" class="headerlink" title="首页折叠"></a>首页折叠</h1><p>起因是我觉得每次进主页都直接看全文很麻烦。。。<br>然后去搜了下压缩结果是静态资源的压缩，在这篇<a href="https://akilar.top/posts/49b73b87/">博客</a>里<br>但我其实搜错关键字了hh<br>参考这篇<a href="https://blog.csdn.net/yueyue200830/article/details/104470646">博客</a><br>没想到主页文章折叠在 <code>next</code> 的 <code>_config.yml</code> 文件里就有  </p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>NextT</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo中的markdown语法技巧</title>
     <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<p>参考这篇<a href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
-]]></content>
+<span id="more"></span>]]></content>
       <categories>
         <category>hexo</category>
       </categories>
@@ -102,7 +71,9 @@
   <entry>
     <title>markdown生成目录</title>
     <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<!-- TOC -->
+    <content><![CDATA[<span id="more"></span>
+
+<!-- TOC -->
 <!-- vscode-markdown-toc -->
 <ul>
 <li><a href="#test">test</a></li>
@@ -152,10 +123,47 @@
       </tags>
   </entry>
   <entry>
+    <title>nextT美化</title>
+    <url>/2024/04/09/nextT%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>额额。。。此贴的所有操作都是基于 <code>next8</code> 版本进行的。。。<br>版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎  </p>
+<span id="more"></span>
+
+<h1 id="可切换模式按钮"><a href="#可切换模式按钮" class="headerlink" title="可切换模式按钮"></a>可切换模式按钮</h1><p><del>参考了这个佬的<a href="https://haomingzhang.com/hexo_3/">博客</a></del><br><del>在路径<code>themes/next/_vendors.yml</code> 下添加 <code>darkmode.js</code> 的cdn</del><br><del>然后我在next目录下没有找到 <code>_config.next.yml</code> 但是我添加在 <code>_config.yml</code> 里</del>  </p>
+<br> 
+
+<p>失败了。。。<br>可能是版本不对，更新给文件删了吧。。。 </p>
+<hr>
+<p>我又找到了另一个佬的<a href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a><br>废话我不多说了，有用！<br>然后如果要自定义可以在这个路径下进行修改<br><code>\[root]\node_modules\hexo-next-darkmode\lib</code><br>root 就是你的博客根目录，其他 npm install 的包也在这里，可以找一找 hh  </p>
+<h1 id="文章底部添加"><a href="#文章底部添加" class="headerlink" title="文章底部添加"></a>文章底部添加</h1><p>额原理就是加一个html的div标签<br>在路径 <code>\themes\next\layout\_macro</code> 中新建 <code>passage-end-tag.swig</code> 文件,并添加以下内容：  </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span>-------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-paw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接着打开<code>\themes\next\layout\_macro\post.swig</code>文件，在post-body 之后， post-footer 之前添加如下画红色部分代码（post-footer之前两个DIV，在END POST BODY之后的部分）：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是我是没有 <code>post.swig</code> 文件的，我操作了 <code>post.njk</code> 文件，同样可以</p>
+<p>然后打开主题配置文件(_config.yml),在末尾添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure>
+
+<h1 id="把底部-标签换成图标"><a href="#把底部-标签换成图标" class="headerlink" title="把底部 # 标签换成图标"></a>把底部 # 标签换成图标</h1><p>修改模板<code>/themes/next/layout/_macro/post.njk</code> 在尾部找到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; if theme.tag_icon else &#x27;#&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"># 删去 if theme.tag_icon else &#x27;#&#x27; 即可</span><br><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;%&#125;</span><br><span class="line">重新渲染后可正确使用</span><br></pre></td></tr></table></figure>
+
+<h1 id="首页折叠"><a href="#首页折叠" class="headerlink" title="首页折叠"></a>首页折叠</h1><p>起因是我觉得每次进主页都直接看全文很麻烦。。。<br>然后去搜了下压缩结果是静态资源的压缩，在这篇<a href="https://akilar.top/posts/49b73b87/">博客</a>里<br>但我其实搜错关键字了hh<br>参考这篇<a href="https://blog.csdn.net/yueyue200830/article/details/104470646">博客</a><br>没想到主页文章折叠在 <code>next</code> 的 <code>_config.yml</code> 文件里就有  </p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>NextT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo本地博客+云服务器个人博客搭建</title>
     <url>/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p>记录一下本地搭建 <code>hexo</code> 个人博客并部署到云服务器的过程。。。<br>本地环境是 <code>win11</code> ，云服务器是 <code>Ubuntu 22.04LTS</code>  </p>
 <p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br>所以当然也可以用 <code>GitHub.io</code> 去进行部署，这是取决于各位的。。。</p>
+<span id="more"></span>
+
 <h2 id="Node-js-git"><a href="#Node-js-git" class="headerlink" title="Node.js &amp;&amp; git"></a>Node.js &amp;&amp; git</h2><p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
 <h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a href="https://git-scm.com/download/win">git下载地址</a><br>可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>按需下载即可</p>
 <h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><a href="https://nodejs.cn/download/">Nodejs下载地址</a><br>同样按需下载，没有特殊要求无脑继续就可以了。。<br>可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求  </p>
