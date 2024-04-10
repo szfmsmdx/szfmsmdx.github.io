@@ -1,58 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>markdown生成目录</title>
-    <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<!-- TOC -->
-<!-- vscode-markdown-toc -->
-<ul>
-<li><a href="#test">test</a></li>
-<li><a href="#VSCMarkdownTOC">利用VSC的插件<code>Markdown TOC</code>生成目录</a></li>
-<li><a href="#test-1">test</a><ul>
-<li><a href="#test1">test1</a><!-- vscode-markdown-toc-config
-  numbering=false
-  autoSave=true
-  /vscode-markdown-toc-config -->
-<!-- /TOC --></li>
-</ul>
-</li>
-</ul>
-<h1 id="在hexo中开启侧边栏文章目录"><a href="#在hexo中开启侧边栏文章目录" class="headerlink" title="在hexo中开启侧边栏文章目录"></a>在hexo中开启侧边栏文章目录</h1><p>看了网上的一些帖子，好像因为 <code>next</code> 版本不匹配导致<br>其实好像不用大费周章寻找 <code>_custom.styl</code>（至少我是这样。。。）<br>只需要在<code>_config.md</code> 下修改 toc 词条即可<br>这是我的配置  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 3</span><br></pre></td></tr></table></figure>
-<p>按照英文指示自行按照喜好修改参数即可hh  </p>
-<h2 id="test"><a href="#test" class="headerlink" title="test"></a><a name='test'></a>test</h2><blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-<h1 id="markdown中插入目录"><a href="#markdown中插入目录" class="headerlink" title="markdown中插入目录"></a>markdown中插入目录</h1><h2 id="利用VSC的插件Markdown-TOC生成目录"><a href="#利用VSC的插件Markdown-TOC生成目录" class="headerlink" title="利用VSC的插件Markdown TOC生成目录"></a><a name='VSCMarkdownTOC'></a>利用VSC的插件<code>Markdown TOC</code>生成目录</h2><p>直接在VSC的插件里搜索 <code>Markdown TOC</code>，第一个下载最高的插件下载<br>根据插件给出的使用方法  </p>
-<blockquote>
-<ol>
-<li><code>ctrl + shift + p</code> 呼出面板</li>
-<li>将光标移动到你要生成目录的地方</li>
-<li>输入 <code>Generate</code> 找到命令 <code>Generate TOC for markdown</code> </li>
-<li>选择该命令就可以了。。。</li>
-<li>可以在他注释的地方修改参数<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numbering=false # 为true则开启标签目录带序号</span><br><span class="line">autoSave=true   # 为true生成目录时自动保存文件</span><br></pre></td></tr></table></figure></li>
-</ol>
-</blockquote>
-<p>不过好像这个插件会自动将你md文件中的标签改成 html 的格式<br>但是初次生成的时候，好像默认两个参数都是true，我也没找到在哪里修改他的配置文件，所以就怪怪的要生成两次，先生成一次然后修改参数，删掉原来的目录（保存注释），再生成一次他就会按照参数生成一份  </p>
-<br>
-
-<p>而且感觉这东西好像不太实用呢，我需要将他生成的目录先放到hexo生成的两个<code>---</code>后面，然后这个插件为啥不支持生成一级文件。。。<br>此文仅做个记录以后不用了。。。    </p>
-<h2 id="test-1"><a href="#test-1" class="headerlink" title="test"></a><a name='test-1'></a>test</h2><blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-<h3 id="test1"><a href="#test1" class="headerlink" title="test1"></a><a name='test1'></a>test1</h3><blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo 主题更换</title>
     <url>/2024/04/07/hexo-%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2/</url>
     <content><![CDATA[<p>今天折腾一下 hexo 的主题变换 hh  </p>
@@ -103,6 +51,19 @@
       <tags>
         <tag>hexo</tag>
         <tag>NextT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo中的markdown语法技巧</title>
+    <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>参考这篇<a href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -202,13 +163,75 @@
 <p>失败了。。。<br>可能是版本不对，更新给文件删了吧。。。 </p>
 <hr>
 <p>我又找到了另一个佬的<a href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a><br>废话我不多说了，有用！<br>然后如果要自定义可以在这个路径下进行修改<br><code>\[root]\node_modules\hexo-next-darkmode\lib</code><br>root 就是你的博客根目录，其他 npm install 的包也在这里，可以找一找 hh  </p>
-<h1 id="文章底部添加"><a href="#文章底部添加" class="headerlink" title="文章底部添加"></a>文章底部添加</h1>]]></content>
+<h1 id="文章底部添加"><a href="#文章底部添加" class="headerlink" title="文章底部添加"></a>文章底部添加</h1><p>额原理就是加一个html的div标签<br>在路径 <code>\themes\next\layout\_macro</code> 中新建 <code>passage-end-tag.swig</code> 文件,并添加以下内容：  </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span>-------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-paw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接着打开<code>\themes\next\layout\_macro\post.swig</code>文件，在post-body 之后， post-footer 之前添加如下画红色部分代码（post-footer之前两个DIV，在END POST BODY之后的部分）：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后打开主题配置文件(_config.yml),在末尾添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure>
+
+<h1 id="把底部-标签换成图标"><a href="#把底部-标签换成图标" class="headerlink" title="把底部 # 标签换成图标"></a>把底部 # 标签换成图标</h1><p>修改模板<code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel=&quot;tag&quot;&gt;#</code>，将 # 换成 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p>
+]]></content>
       <categories>
         <category>hexo</category>
       </categories>
       <tags>
         <tag>hexo</tag>
         <tag>NextT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown生成目录</title>
+    <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<!-- TOC -->
+<!-- vscode-markdown-toc -->
+<ul>
+<li><a href="#test">test</a></li>
+<li><a href="#VSCMarkdownTOC">利用VSC的插件<code>Markdown TOC</code>生成目录</a></li>
+<li><a href="#test-1">test</a><ul>
+<li><a href="#test1">test1</a><!-- vscode-markdown-toc-config
+  numbering=false
+  autoSave=true
+  /vscode-markdown-toc-config -->
+<!-- /TOC --></li>
+</ul>
+</li>
+</ul>
+<h1 id="在hexo中开启侧边栏文章目录"><a href="#在hexo中开启侧边栏文章目录" class="headerlink" title="在hexo中开启侧边栏文章目录"></a>在hexo中开启侧边栏文章目录</h1><p>看了网上的一些帖子，好像因为 <code>next</code> 版本不匹配导致<br>其实好像不用大费周章寻找 <code>_custom.styl</code>（至少我是这样。。。）<br>只需要在<code>_config.md</code> 下修改 toc 词条即可<br>这是我的配置  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 3</span><br></pre></td></tr></table></figure>
+<p>按照英文指示自行按照喜好修改参数即可hh  </p>
+<h2 id="test"><a href="#test" class="headerlink" title="test"></a><a name='test'></a>test</h2><blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+<h1 id="markdown中插入目录"><a href="#markdown中插入目录" class="headerlink" title="markdown中插入目录"></a>markdown中插入目录</h1><h2 id="利用VSC的插件Markdown-TOC生成目录"><a href="#利用VSC的插件Markdown-TOC生成目录" class="headerlink" title="利用VSC的插件Markdown TOC生成目录"></a><a name='VSCMarkdownTOC'></a>利用VSC的插件<code>Markdown TOC</code>生成目录</h2><p>直接在VSC的插件里搜索 <code>Markdown TOC</code>，第一个下载最高的插件下载<br>根据插件给出的使用方法  </p>
+<blockquote>
+<ol>
+<li><code>ctrl + shift + p</code> 呼出面板</li>
+<li>将光标移动到你要生成目录的地方</li>
+<li>输入 <code>Generate</code> 找到命令 <code>Generate TOC for markdown</code> </li>
+<li>选择该命令就可以了。。。</li>
+<li>可以在他注释的地方修改参数<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numbering=false # 为true则开启标签目录带序号</span><br><span class="line">autoSave=true   # 为true生成目录时自动保存文件</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<p>不过好像这个插件会自动将你md文件中的标签改成 html 的格式<br>但是初次生成的时候，好像默认两个参数都是true，我也没找到在哪里修改他的配置文件，所以就怪怪的要生成两次，先生成一次然后修改参数，删掉原来的目录（保存注释），再生成一次他就会按照参数生成一份  </p>
+<br>
+
+<p>而且感觉这东西好像不太实用呢，我需要将他生成的目录先放到hexo生成的两个<code>---</code>后面，然后这个插件为啥不支持生成一级文件。。。<br>此文仅做个记录以后不用了。。。    </p>
+<h2 id="test-1"><a href="#test-1" class="headerlink" title="test"></a><a name='test-1'></a>test</h2><blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+<h3 id="test1"><a href="#test1" class="headerlink" title="test1"></a><a name='test1'></a>test1</h3><blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
 </search>
