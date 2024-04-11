@@ -56,6 +56,108 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo本地博客+云服务器个人博客搭建</title>
+    <url>/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>记录一下本地搭建 <code>hexo</code> 个人博客并部署到云服务器的过程。。。<br>本地环境是 <code>win11</code> ，云服务器是 <code>Ubuntu 22.04LTS</code>  </p>
+<p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br>所以当然也可以用 <code>GitHub.io</code> 去进行部署，这是取决于各位的。。。</p>
+<span id="more"></span>
+
+<h2 id="Node-js-git"><a href="#Node-js-git" class="headerlink" title="Node.js &amp;&amp; git"></a>Node.js &amp;&amp; git</h2><p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a href="https://git-scm.com/download/win">git下载地址</a><br>可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>按需下载即可</p>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><a href="https://nodejs.cn/download/">Nodejs下载地址</a><br>同样按需下载，没有特殊要求无脑继续就可以了。。<br>可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求  </p>
+<h4 id="npm更换淘宝镜像源"><a href="#npm更换淘宝镜像源" class="headerlink" title="npm更换淘宝镜像源"></a>npm更换淘宝镜像源</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#最新地址 淘宝 NPM 镜像站喊你切换新域名啦!</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry </span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复官方源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+
+<h4 id="npm更新"><a href="#npm更新" class="headerlink" title="npm更新"></a>npm更新</h4><p><a href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br>这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure>
+
+<p>其他命令就不展示了，善用搜索引擎 hh  </p>
+<h2 id="配置-hexo"><a href="#配置-hexo" class="headerlink" title="配置 hexo"></a>配置 hexo</h2><p>在命令行中输入  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>找到你要写博客的父目录，比如你想将文件夹放在桌面就取到桌面的路径下  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt; // folder为你的博客目录名字</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt; // 进入该目录</span><br><span class="line">npm install // 安装依赖</span><br></pre></td></tr></table></figure>
+
+<p>到此，本地博客就已经搭建完成了  </p>
+<h2 id="将本地博客部署到云服务器中"><a href="#将本地博客部署到云服务器中" class="headerlink" title="将本地博客部署到云服务器中"></a>将本地博客部署到云服务器中</h2><p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd 下的ssh连接<br>貌似 win 下已经自带了 openssh 吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^  </p>
+<h3 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h3><p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code> 所以就没有安装了。。<br>既然需要同步，那么自然不能每次都要登录 <code>git</code> ，所以要配置一下免密登录  </p>
+<h4 id="1-创建用户并设置密码"><a href="#1-创建用户并设置密码" class="headerlink" title="1. 创建用户并设置密码"></a>1. 创建用户并设置密码</h4><p>下面的 <code>username</code> 设置为你喜欢的用户名，并设置一个属于这个账户的密码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
+<p>可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可 hh</p>
+<h4 id="2-分配用户权限"><a href="#2-分配用户权限" class="headerlink" title="2. 分配用户权限"></a>2. 分配用户权限</h4><p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-本地创建密钥"><a href="#3-本地创建密钥" class="headerlink" title="3. 本地创建密钥"></a>3. 本地创建密钥</h4><p>！！！ 注意是在本地 <code>win11</code> 创建密钥，相当于身份证了，就可以实现免密登录了<br>在本机终端中输入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>然后无脑回车，得到一个新的密钥<br>一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:\Users\Administrator.ssh（不确定可以百度一下 hh）</p>
+<p>复制id_rsa.pub文件中的内容备用。</p>
+<h4 id="4-配置公钥"><a href="#4-配置公钥" class="headerlink" title="4. 配置公钥"></a>4. 配置公钥</h4><p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure>
+
+<p>创建 <code>.ssh</code> 文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure>
+
+<p>利用 <code>vi</code> 或 <code>vim</code> 新建 <code>authorized_keys</code> 文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>将刚刚 <code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
+<h3 id="git-仓库配置"><a href="#git-仓库配置" class="headerlink" title="git 仓库配置"></a>git 仓库配置</h3><p>退出用户登录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure>
+
+<p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code> 目录，并修改目录的所有权和用户权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /home/git/</span><br><span class="line"><span class="built_in">chown</span> -R [username]:[username] /home/git/   <span class="comment"># 是你刚刚创建的用户名</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/git/</span><br></pre></td></tr></table></figure>
+
+<p>进入目录，建立git仓库，修改权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/git/</span><br><span class="line">git init --bare blog.git</span><br><span class="line">chown [username]:[username] -R blog.git</span><br></pre></td></tr></table></figure>
+
+<p>新建钩子文件，但是要看你具体的 git 版本<br>我的是 <code>post-update.xxx</code>（文件类型忘了，配置时忘了记录）<br>需要进入修改添加两行内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /home/git/blog.git/hooks/post (然后这里直接按 tab 补全补出来)</span><br></pre></td></tr></table></figure>
+
+<p>进入文件后添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
+
+<p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为 <code>post-update</code> 才能生效，具体问题具体分析吧，用 rm 命令重命名好了，然后<code>wq</code>保存退出  </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全) # ./post-update</span><br></pre></td></tr></table></figure>
+
+<p>然后修改文件权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h3><p>安装 <code>nginx</code> </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-install nginx </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样可以查看版本判断是否安装成功</span></span><br><span class="line">nginx -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置开机启动</span></span><br><span class="line">systemctl enable nginx.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 nginx 状态</span></span><br><span class="line">systemctl status nginx.service</span><br></pre></td></tr></table></figure>
+
+<p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样 <code>/usr/local/nginx/conf/nginx.conf</code><br>这里可能有点麻烦的是我自己还修改了 <code>default</code> 文件<br>众说纷纭，我将我自己尝试过程中遇到的两种方案都贴给大家<br><a href="https://zhuanlan.zhihu.com/p/158678677">配置 conf 文件</a><br><a href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置 default 文件</a></p>
+<p>配置完重启下 <code>nginx</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+
+<h3 id="更改本地-hexo-配置文件"><a href="#更改本地-hexo-配置文件" class="headerlink" title="更改本地 hexo 配置文件"></a>更改本地 hexo 配置文件</h3><p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br>应该在最后的位置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@100.0.0.100:/home/git/blog.git   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>在本地hexo博客根目录下，打开终端，部署  </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>然后访问服务器的 IP 地址应该就可以看到 hexo 已经部署完成了。。。<br>后续就是善用搜索引擎的过程了。。。  </p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>git</tag>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo中的markdown语法技巧</title>
+    <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>参考这篇<a href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>markdown生成目录</title>
     <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<!-- TOC -->
@@ -144,108 +246,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>NextT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo中的markdown语法技巧</title>
-    <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>参考这篇<a href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo本地博客+云服务器个人博客搭建</title>
-    <url>/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<p>记录一下本地搭建 <code>hexo</code> 个人博客并部署到云服务器的过程。。。<br>本地环境是 <code>win11</code> ，云服务器是 <code>Ubuntu 22.04LTS</code>  </p>
-<p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br>所以当然也可以用 <code>GitHub.io</code> 去进行部署，这是取决于各位的。。。</p>
-<span id="more"></span>
-
-<h2 id="Node-js-git"><a href="#Node-js-git" class="headerlink" title="Node.js &amp;&amp; git"></a>Node.js &amp;&amp; git</h2><p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
-<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a href="https://git-scm.com/download/win">git下载地址</a><br>可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>按需下载即可</p>
-<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><a href="https://nodejs.cn/download/">Nodejs下载地址</a><br>同样按需下载，没有特殊要求无脑继续就可以了。。<br>可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求  </p>
-<h4 id="npm更换淘宝镜像源"><a href="#npm更换淘宝镜像源" class="headerlink" title="npm更换淘宝镜像源"></a>npm更换淘宝镜像源</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#最新地址 淘宝 NPM 镜像站喊你切换新域名啦!</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry </span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复官方源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
-
-<h4 id="npm更新"><a href="#npm更新" class="headerlink" title="npm更新"></a>npm更新</h4><p><a href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br>这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure>
-
-<p>其他命令就不展示了，善用搜索引擎 hh  </p>
-<h2 id="配置-hexo"><a href="#配置-hexo" class="headerlink" title="配置 hexo"></a>配置 hexo</h2><p>在命令行中输入  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>找到你要写博客的父目录，比如你想将文件夹放在桌面就取到桌面的路径下  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt; // folder为你的博客目录名字</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt; // 进入该目录</span><br><span class="line">npm install // 安装依赖</span><br></pre></td></tr></table></figure>
-
-<p>到此，本地博客就已经搭建完成了  </p>
-<h2 id="将本地博客部署到云服务器中"><a href="#将本地博客部署到云服务器中" class="headerlink" title="将本地博客部署到云服务器中"></a>将本地博客部署到云服务器中</h2><p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd 下的ssh连接<br>貌似 win 下已经自带了 openssh 吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^  </p>
-<h3 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h3><p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code> 所以就没有安装了。。<br>既然需要同步，那么自然不能每次都要登录 <code>git</code> ，所以要配置一下免密登录  </p>
-<h4 id="1-创建用户并设置密码"><a href="#1-创建用户并设置密码" class="headerlink" title="1. 创建用户并设置密码"></a>1. 创建用户并设置密码</h4><p>下面的 <code>username</code> 设置为你喜欢的用户名，并设置一个属于这个账户的密码</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
-<p>可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可 hh</p>
-<h4 id="2-分配用户权限"><a href="#2-分配用户权限" class="headerlink" title="2. 分配用户权限"></a>2. 分配用户权限</h4><p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-本地创建密钥"><a href="#3-本地创建密钥" class="headerlink" title="3. 本地创建密钥"></a>3. 本地创建密钥</h4><p>！！！ 注意是在本地 <code>win11</code> 创建密钥，相当于身份证了，就可以实现免密登录了<br>在本机终端中输入</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>然后无脑回车，得到一个新的密钥<br>一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:\Users\Administrator.ssh（不确定可以百度一下 hh）</p>
-<p>复制id_rsa.pub文件中的内容备用。</p>
-<h4 id="4-配置公钥"><a href="#4-配置公钥" class="headerlink" title="4. 配置公钥"></a>4. 配置公钥</h4><p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure>
-
-<p>创建 <code>.ssh</code> 文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure>
-
-<p>利用 <code>vi</code> 或 <code>vim</code> 新建 <code>authorized_keys</code> 文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>将刚刚 <code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
-<h3 id="git-仓库配置"><a href="#git-仓库配置" class="headerlink" title="git 仓库配置"></a>git 仓库配置</h3><p>退出用户登录</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure>
-
-<p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code> 目录，并修改目录的所有权和用户权限</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /home/git/</span><br><span class="line"><span class="built_in">chown</span> -R [username]:[username] /home/git/   <span class="comment"># 是你刚刚创建的用户名</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/git/</span><br></pre></td></tr></table></figure>
-
-<p>进入目录，建立git仓库，修改权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/git/</span><br><span class="line">git init --bare blog.git</span><br><span class="line">chown [username]:[username] -R blog.git</span><br></pre></td></tr></table></figure>
-
-<p>新建钩子文件，但是要看你具体的 git 版本<br>我的是 <code>post-update.xxx</code>（文件类型忘了，配置时忘了记录）<br>需要进入修改添加两行内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /home/git/blog.git/hooks/post (然后这里直接按 tab 补全补出来)</span><br></pre></td></tr></table></figure>
-
-<p>进入文件后添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
-
-<p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为 <code>post-update</code> 才能生效，具体问题具体分析吧，用 rm 命令重命名好了，然后<code>wq</code>保存退出  </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全) # ./post-update</span><br></pre></td></tr></table></figure>
-
-<p>然后修改文件权限</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h3><p>安装 <code>nginx</code> </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-install nginx </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样可以查看版本判断是否安装成功</span></span><br><span class="line">nginx -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置开机启动</span></span><br><span class="line">systemctl enable nginx.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 nginx 状态</span></span><br><span class="line">systemctl status nginx.service</span><br></pre></td></tr></table></figure>
-
-<p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样 <code>/usr/local/nginx/conf/nginx.conf</code><br>这里可能有点麻烦的是我自己还修改了 <code>default</code> 文件<br>众说纷纭，我将我自己尝试过程中遇到的两种方案都贴给大家<br><a href="https://zhuanlan.zhihu.com/p/158678677">配置 conf 文件</a><br><a href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置 default 文件</a></p>
-<p>配置完重启下 <code>nginx</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
-
-<h3 id="更改本地-hexo-配置文件"><a href="#更改本地-hexo-配置文件" class="headerlink" title="更改本地 hexo 配置文件"></a>更改本地 hexo 配置文件</h3><p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br>应该在最后的位置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@100.0.0.100:/home/git/blog.git   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>在本地hexo博客根目录下，打开终端，部署  </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>然后访问服务器的 IP 地址应该就可以看到 hexo 已经部署完成了。。。<br>后续就是善用搜索引擎的过程了。。。  </p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>git</tag>
-        <tag>nodejs</tag>
       </tags>
   </entry>
 </search>
