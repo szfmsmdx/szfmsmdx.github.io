@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="额额。。。此贴的所有操作都是基于 next8 版本进行的。。。版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎">
 <meta property="og:type" content="article">
@@ -27,7 +27,7 @@
 <meta property="og:description" content="额额。。。此贴的所有操作都是基于 next8 版本进行的。。。版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-09T08:43:15.000Z">
-<meta property="article:modified_time" content="2024-04-11T05:12:57.349Z">
+<meta property="article:modified_time" content="2024-04-11T05:42:26.095Z">
 <meta property="article:author" content="Szfmsmdx">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="NextT">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E5%88%87%E6%8D%A2%E6%A8%A1%E5%BC%8F%E6%8C%89%E9%92%AE"><span class="nav-number">1.</span> <span class="nav-text">可切换模式按钮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E6%B7%BB%E5%8A%A0"><span class="nav-number">2.</span> <span class="nav-text">文章底部添加</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%8A%E5%BA%95%E9%83%A8-%E6%A0%87%E7%AD%BE%E6%8D%A2%E6%88%90%E5%9B%BE%E6%A0%87"><span class="nav-number">3.</span> <span class="nav-text">把底部 # 标签换成图标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A6%96%E9%A1%B5%E6%8A%98%E5%8F%A0"><span class="nav-number">4.</span> <span class="nav-text">首页折叠</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F"><span class="nav-number">5.</span> <span class="nav-text">网站添加访问量</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E5%88%87%E6%8D%A2%E6%A8%A1%E5%BC%8F%E6%8C%89%E9%92%AE"><span class="nav-number">1.</span> <span class="nav-text">可切换模式按钮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E6%B7%BB%E5%8A%A0"><span class="nav-number">2.</span> <span class="nav-text">文章底部添加</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%8A%E5%BA%95%E9%83%A8-%E6%A0%87%E7%AD%BE%E6%8D%A2%E6%88%90%E5%9B%BE%E6%A0%87"><span class="nav-number">3.</span> <span class="nav-text">把底部 # 标签换成图标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A6%96%E9%A1%B5%E6%8A%98%E5%8F%A0"><span class="nav-number">4.</span> <span class="nav-text">首页折叠</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next%E6%96%87%E7%AB%A0%E8%AF%84%E8%AE%BA%E5%8C%BA"><span class="nav-number">5.</span> <span class="nav-text">next文章评论区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text">文章置顶功能</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -241,7 +241,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-11 13:12:57" itemprop="dateModified" datetime="2024-04-11T13:12:57+08:00">2024-04-11</time>
+      <time title="修改时间：2024-04-11 13:42:26" itemprop="dateModified" datetime="2024-04-11T13:42:26+08:00">2024-04-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -302,8 +302,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; if theme.tag_icon else &#x27;#&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"># 删去 if theme.tag_icon else &#x27;#&#x27; 即可</span><br><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;%&#125;</span><br><span class="line">重新渲染后可正确使用</span><br></pre></td></tr></table></figure>
 
 <h1 id="首页折叠"><a href="#首页折叠" class="headerlink" title="首页折叠"></a>首页折叠</h1><p>起因是我觉得每次进主页都直接看全文很麻烦。。。<br>然后去搜了下压缩结果是静态资源的压缩，在这篇<a target="_blank" rel="noopener" href="https://akilar.top/posts/49b73b87/">博客</a>里<br>但我其实搜错关键字了hh<br>参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/yueyue200830/article/details/104470646">博客</a><br>没想到主页文章折叠在 <code>next</code> 的 <code>_config.yml</code> 文件里就有<br>不过貌似优先级比较低？在我的<code>markdown</code>生成目录的文章里，如果填在 <code>&lt;!--TOC--&gt;</code> 标签之前就无法折叠了。。。  </p>
-<h1 id="网站添加访问量"><a href="#网站添加访问量" class="headerlink" title="网站添加访问量"></a>网站添加访问量</h1><p>修改<code>themes/next/layout/_partials/footer.swig</code>文件，在<code>copyright</code>处加上<a target="_blank" rel="noopener" href="https://busuanzi.ibruce.info/">不蒜子</a>网页计数器  </p>
-
+<h1 id="next文章评论区"><a href="#next文章评论区" class="headerlink" title="next文章评论区"></a>next文章评论区</h1><p>这里就折腾了个简单点的 Valine 评论系统<br>因为这款不需要登录也无后端  </p>
+<p>首先要注册 Valine，进入<a target="_blank" rel="noopener" href="https://console.leancloud.cn/">官网</a> 注册<br>然后点他的logo去验证一下邮箱，随后创建应用<br>然后设置里找到应用凭证  </p>
+<h1 id="文章置顶功能"><a href="#文章置顶功能" class="headerlink" title="文章置顶功能"></a>文章置顶功能</h1>
     </div>
 
     
@@ -380,10 +381,6 @@
       <i class="fa fa-heart"></i>
     </span>
     <span class="author" itemprop="copyrightHolder">Szfmsmdx</span>
-    <script
-      async
-      src="//cdn.jsdelivr.net/gh/sukkaw/busuanzi@2.3/bsz.pure.mini.js"
-    ></script>
   </div>
 <div class="wordcount">
   <span class="post-meta-item">
@@ -401,27 +398,6 @@
 </div>
 
 <!--
-
-  <div class="powered-by">
-    <i class="fa fa-user-md"></i>
-    <span id="busuanzi_container_site_uv">
-        本站访客数:<span id="busuanzi_value_site_uv"></span>
-    </span>
-  </div>
-
-  <span class="post-meta-divider">|</span>
-
-  <!--pv的方式，单个用户连续点击n篇文章，记录n次访问量-->
-  <span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  </span>
-
-  <!--uv的方式，单个用户连续点击n篇文章，只记录1次访客数-->
-  <span id="busuanzi_container_site_uv">
-    本站总访问量<span id="busuanzi_value_site_uv"></span>次
-  </span>
-
-
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 -->
