@@ -1,7 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>nextT美化</title>
+    <title>花书（一）</title>
+    <url>/2024/04/15/%E8%8A%B1%E4%B9%A6%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教 </p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>一些人工智能项目旨在将世界所包含的知识用形式化的语言进行硬编码 (hard-code) ，而计算机可以使用逻辑推理规则自动理解这些形式化语言中的声明。这就是人工智能的<strong>知识库</strong> (knowledge base)   </p>
+<br>
+
+<p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习 (machine learning) 的能力  </p>
+<br>
+
+<p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong> (representation learning)  </p>
+<blockquote>
+<p>一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器 (encoder) 和一个解码器 (decoder) 函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br>而我们的目标是：数据经过编码器和解码器能够尽可能多地保留信息，同时，新的表示有一些好的特性。。。  </p>
+</blockquote>
+<br>
+
+<p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的 <strong>变差因素</strong> (factors of variation) 。</p>
+<blockquote>
+<p>这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br>比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。  </p>
+</blockquote>
+<br>
+
+<p>深度学习 (deep learning) 通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题  </p>
+<blockquote>
+<p>如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br>直接处理，让机器学习或评估几乎是不可能的<br>深度学习将复杂的映射分解为一系列嵌套的简单的映射<br>输入展示在可见层 (visible layer)，命名的原因是它包含我们能够观察到的变量<br>然后经过一系列的隐藏层 (hiden layer)</p>
+</blockquote>
+<br>
+
+<p>评估模型深度的方式主要有两种：</p>
+<ul>
+<li>评估计算流深度</li>
+<li>评估概念关联深度<ul>
+<li>比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的 n 次计算，也就是说计算的图包含 2n 层</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h1>]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+        <tag>花书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo中的markdown语法技巧</title>
+    <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>参考这篇<a href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
+<span id="more"></span>
+
+<h1 id="居中引用"><a href="#居中引用" class="headerlink" title="居中引用"></a>居中引用</h1><blockquote class="blockquote-center">
+<p>hello world </p>
+
+</blockquote>
+
+<h1 id="彩色-tag"><a href="#彩色-tag" class="headerlink" title="彩色 tag"></a>彩色 tag</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% label [class] @ 标签内容 %&#125;</span><br><span class="line">class：</span><br><span class="line"> - default: 浅灰色,可留空</span><br><span class="line"> - primary: 浅紫色</span><br><span class="line"> - success: 浅绿色</span><br><span class="line"> - info: 浅蓝色</span><br><span class="line"> - warning: 浅黄色</span><br><span class="line"> - danger: 浅红色</span><br></pre></td></tr></table></figure>
+
+<mark class="label [warning]"> test</mark>  
+<p>注意，由于之前安装的darkmode插件导致了前端css被覆盖，所以实际显示的颜色可能有不同  </p>
+<h1 id="彩色-note"><a href="#彩色-note" class="headerlink" title="彩色 note"></a>彩色 note</h1><p>我个人很喜欢这个东西 ^ ^  </p>
+<p>(为了避免编译错误，所以放在不同的行了。。。)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note [class]%&#125; </span><br><span class="line">内容</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">class: </span><br><span class="line"> - default: 灰色</span><br><span class="line"> - primary: 紫色</span><br><span class="line"> - success: 绿色</span><br><span class="line"> - info: 蓝色</span><br><span class="line"> - warning: 黄色</span><br><span class="line"> - danger: 红色</span><br></pre></td></tr></table></figure>
+
+<details class="note "><summary><p>[info]</p>
+</summary>
+<p>hello world </p>
+
+</details>
+
+<h1 id="切换-tabs"><a href="#切换-tabs" class="headerlink" title="切换 tabs"></a>切换 tabs</h1><p>这个也不错，感觉之后不论是放代码还是放对比的东西，比上下文叠放好用多了。。。  </p>
+<div class="tabs" id="[class]"><ul class="nav-tabs"><li class="tab active"><a href="#[class]-1">Tab1</a></li><li class="tab"><a href="#[class]-2">Tab2</a></li><li class="tab"><a href="#[class]-3">3号Tab</a></li></ul><div class="tab-content"><div class="tab-pane active" id="[class]-1"><p>这里是1号Tab内容</p></div><div class="tab-pane" id="[class]-2"><p>这里是2号Tab内容</p></div><div class="tab-pane" id="[class]-3"><p>这里是3号Tab内容，上面的tab也可以改 ^ ^</p></div></div></div>
+
+<h1 id="按钮-Btn"><a href="#按钮-Btn" class="headerlink" title="按钮 Btn"></a>按钮 Btn</h1><p>使用自带 FontAwesome 图标，在 <a href="https://fontawesome.com/v4/icons/">FontAwesome</a> 上找到相应的图标名  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [地址] , [内容] , [图标 规格] %&#125;</span><br><span class="line"></span><br><span class="line">[地址]：当使用外链绝对引用时，无按钮，样式类似Markdown链接跳转</span><br><span class="line">[图标 规格]: 使用无`fa-`开头的FontAwesome图标，可以用以下规格定义图标大小</span><br><span class="line">fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但是不知道为什么显示不出来 hhh  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home-2x]&#125;  </span><br><span class="line"></span><br><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home]&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>哎哎，显示不出来我就给他用多行代码的形式注释掉了。。。  </p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nexT美化</title>
     <url>/2024/04/09/nextT%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<p>额额。。。此贴的所有操作都是基于 <code>next8</code> 版本进行的。。。<br>版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎  </p>
 <span id="more"></span>
@@ -41,6 +136,18 @@
 </ul>
 </blockquote>
 <p>按照佬的方案轻松解决 ^ ^</p>
+<h2 id="waline加速"><a href="#waline加速" class="headerlink" title="waline加速"></a>waline加速</h2><p>由于<code>vercel</code>在国内被dns污染了所以访问起来不挂梯子是看不到评论区的<br>参考了网上的一些方法，刚好域名备案下来了，搞一下waline的加速<br><br><br>！注意，这个操作是要基于已有域名的情况下才能继续进行<br>我们要做的就是<strong>用已有的博客域名去免费申请一个子域名来代替vercel.app那个被污染的域名。</strong>  </p>
+<ol>
+<li>进入域名控制台，找到你的博客域名，添加解析记录<ol>
+<li>记录类型选择 <code>CNAME</code></li>
+<li>主机记录填 <code>comment</code> (可以自定，这一步完成你的二级域名就是 comment + 你的一级域名)</li>
+<li>添加记录值为 <code>cname.vercel-dns.com</code> <br>
+ 比如我的域名是 `szf.cool`，那么操作完，我的二级域名应该是 `comment.szf.cool`</li>
+</ol>
+</li>
+<li>进入vercel控制台，进入你的项目，在<code>setting</code>-<code>Domains</code>下，在输入框中输入你的二级域名 &#x3D;&gt; add添加</li>
+<li>这样就可以了，随后部署测试一下评论区是否能够正常访问即可</li>
+</ol>
 <h1 id="文件跳过渲染"><a href="#文件跳过渲染" class="headerlink" title="文件跳过渲染"></a>文件跳过渲染</h1><p>修改站点配置文件中的 <code>skip_render</code> 配置项。<br>只有 <code>source</code> 目录下的文件才会发布，因此 Hexo 只渲染 source 目录下的文件。<code>skip_render</code> 参数设置的路径是相对于 <code>source</code> 目录的路径。  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#单个文件</span><br><span class="line">skip_render: hello.html</span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件</span><br><span class="line">skip_render: test/* </span><br><span class="line"></span><br><span class="line">#单个文件夹下指定类型文件</span><br><span class="line">skip_render: test/*.md  </span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件以及子目录</span><br><span class="line">skip_render: test/**  </span><br><span class="line"></span><br><span class="line">#跳过多个目录，或者多个文件</span><br><span class="line">skip_render: [&#x27;*.html&#x27;, demo/**, test/*]</span><br></pre></td></tr></table></figure>
 
@@ -57,109 +164,7 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-        <tag>NextT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo本地博客+云服务器个人博客搭建</title>
-    <url>/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<p>记录一下本地搭建 <code>hexo</code> 个人博客并部署到云服务器的过程。。。<br>本地环境是 <code>win11</code> ，云服务器是 <code>Ubuntu 22.04LTS</code>  </p>
-<p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br>所以当然也可以用 <code>GitHub.io</code> 去进行部署，这是取决于各位的。。。</p>
-<span id="more"></span>
-
-<h2 id="Node-js-git"><a href="#Node-js-git" class="headerlink" title="Node.js &amp;&amp; git"></a>Node.js &amp;&amp; git</h2><p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
-<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a href="https://git-scm.com/download/win">git下载地址</a><br>可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>按需下载即可</p>
-<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><a href="https://nodejs.cn/download/">Nodejs下载地址</a><br>同样按需下载，没有特殊要求无脑继续就可以了。。<br>可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求  </p>
-<h4 id="npm更换淘宝镜像源"><a href="#npm更换淘宝镜像源" class="headerlink" title="npm更换淘宝镜像源"></a>npm更换淘宝镜像源</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#最新地址 淘宝 NPM 镜像站喊你切换新域名啦!</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry </span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复官方源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
-
-<h4 id="npm更新"><a href="#npm更新" class="headerlink" title="npm更新"></a>npm更新</h4><p><a href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br>这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure>
-
-<p>其他命令就不展示了，善用搜索引擎 hh  </p>
-<h2 id="配置-hexo"><a href="#配置-hexo" class="headerlink" title="配置 hexo"></a>配置 hexo</h2><p>在命令行中输入  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>找到你要写博客的父目录，比如你想将文件夹放在桌面就取到桌面的路径下  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt; // folder为你的博客目录名字</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt; // 进入该目录</span><br><span class="line">npm install // 安装依赖</span><br></pre></td></tr></table></figure>
-
-<p>到此，本地博客就已经搭建完成了  </p>
-<h2 id="将本地博客部署到云服务器中"><a href="#将本地博客部署到云服务器中" class="headerlink" title="将本地博客部署到云服务器中"></a>将本地博客部署到云服务器中</h2><p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd 下的ssh连接<br>貌似 win 下已经自带了 openssh 吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^  </p>
-<h3 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h3><p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code> 所以就没有安装了。。<br>既然需要同步，那么自然不能每次都要登录 <code>git</code> ，所以要配置一下免密登录  </p>
-<h4 id="1-创建用户并设置密码"><a href="#1-创建用户并设置密码" class="headerlink" title="1. 创建用户并设置密码"></a>1. 创建用户并设置密码</h4><p>下面的 <code>username</code> 设置为你喜欢的用户名，并设置一个属于这个账户的密码</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
-<p>可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可 hh</p>
-<h4 id="2-分配用户权限"><a href="#2-分配用户权限" class="headerlink" title="2. 分配用户权限"></a>2. 分配用户权限</h4><p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-本地创建密钥"><a href="#3-本地创建密钥" class="headerlink" title="3. 本地创建密钥"></a>3. 本地创建密钥</h4><p>！！！ 注意是在本地 <code>win11</code> 创建密钥，相当于身份证了，就可以实现免密登录了<br>在本机终端中输入</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>然后无脑回车，得到一个新的密钥<br>一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:\Users\Administrator.ssh（不确定可以百度一下 hh）</p>
-<p>复制id_rsa.pub文件中的内容备用。</p>
-<h4 id="4-配置公钥"><a href="#4-配置公钥" class="headerlink" title="4. 配置公钥"></a>4. 配置公钥</h4><p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure>
-
-<p>创建 <code>.ssh</code> 文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure>
-
-<p>利用 <code>vi</code> 或 <code>vim</code> 新建 <code>authorized_keys</code> 文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>将刚刚 <code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
-<h3 id="git-仓库配置"><a href="#git-仓库配置" class="headerlink" title="git 仓库配置"></a>git 仓库配置</h3><p>退出用户登录</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure>
-
-<p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code> 目录，并修改目录的所有权和用户权限</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /home/git/</span><br><span class="line"><span class="built_in">chown</span> -R [username]:[username] /home/git/   <span class="comment"># 是你刚刚创建的用户名</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/git/</span><br></pre></td></tr></table></figure>
-
-<p>进入目录，建立git仓库，修改权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/git/</span><br><span class="line">git init --bare blog.git</span><br><span class="line">chown [username]:[username] -R blog.git</span><br></pre></td></tr></table></figure>
-
-<p>新建钩子文件，但是要看你具体的 git 版本<br>我的是 <code>post-update.xxx</code>（文件类型忘了，配置时忘了记录）<br>需要进入修改添加两行内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /home/git/blog.git/hooks/post (然后这里直接按 tab 补全补出来)</span><br></pre></td></tr></table></figure>
-
-<p>进入文件后添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
-
-<p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为 <code>post-update</code> 才能生效，具体问题具体分析吧，用 rm 命令重命名好了，然后<code>wq</code>保存退出  </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全) # ./post-update</span><br></pre></td></tr></table></figure>
-
-<p>然后修改文件权限</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h3><p>安装 <code>nginx</code> </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-install nginx </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样可以查看版本判断是否安装成功</span></span><br><span class="line">nginx -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置开机启动</span></span><br><span class="line">systemctl enable nginx.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 nginx 状态</span></span><br><span class="line">systemctl status nginx.service</span><br></pre></td></tr></table></figure>
-
-<p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样 <code>/usr/local/nginx/conf/nginx.conf</code><br>这里可能有点麻烦的是我自己还修改了 <code>default</code> 文件<br>众说纷纭，我将我自己尝试过程中遇到的两种方案都贴给大家<br><a href="https://zhuanlan.zhihu.com/p/158678677">配置 conf 文件</a><br><a href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置 default 文件</a></p>
-<p>配置完重启下 <code>nginx</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
-
-<h3 id="更改本地-hexo-配置文件"><a href="#更改本地-hexo-配置文件" class="headerlink" title="更改本地 hexo 配置文件"></a>更改本地 hexo 配置文件</h3><p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br>应该在最后的位置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@100.0.0.100:/home/git/blog.git   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>在本地hexo博客根目录下，打开终端，部署  </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>然后访问服务器的 IP 地址应该就可以看到 hexo 已经部署完成了。。。<br>后续就是善用搜索引擎的过程了。。。  </p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>git</tag>
-        <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo中的markdown语法技巧</title>
-    <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>参考这篇<a href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>markdown</tag>
+        <tag>NexT</tag>
       </tags>
   </entry>
   <entry>
@@ -254,12 +259,12 @@
 <h3 id="修改文章间的分割线"><a href="#修改文章间的分割线" class="headerlink" title="修改文章间的分割线"></a>修改文章间的分割线</h3><p>找到文件 <code>themes/next/source/css/_common/components/post/post-footer.styl</code><br>进入修改如下内容</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-eof</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: $grey-light;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">3px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: $post-eof-margin-top auto $post-eof-margin-bottom;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.post-block</span><span class="selector-pseudo">:last-of-type</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以自行根据喜好决定参数大小  </p>
-<h3 id="NextT的目录和标签"><a href="#NextT的目录和标签" class="headerlink" title="NextT的目录和标签"></a>NextT的目录和标签</h3><p>按照之前的步骤，<code>hexo new page</code> 完之后，要在 <code>tags</code> 和 <code>categories</code> 的 <code>index.md</code> 里修改一下 <code>type</code><br>就是在<code>date</code>下加上<code>type: &quot;tags&quot;</code>  </p>
+<h3 id="nexT的目录和标签"><a href="#nexT的目录和标签" class="headerlink" title="nexT的目录和标签"></a>nexT的目录和标签</h3><p>按照之前的步骤，<code>hexo new page</code> 完之后，要在 <code>tags</code> 和 <code>categories</code> 的 <code>index.md</code> 里修改一下 <code>type</code><br>就是在<code>date</code>下加上<code>type: &quot;tags&quot;</code>  </p>
 <p>以 <code>tags</code> 为例  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date : xxxx</span><br><span class="line">type : &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>然后回到<code>_post</code>要推送的笔记下面，在相应文章的标签上加上<code>tags</code>即可<br>如下所示: </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxxx</span><br><span class="line">date: xxxx</span><br><span class="line">categories: hexo</span><br><span class="line">tags: # 标签（多标签）</span><br><span class="line">- hexo</span><br><span class="line">- NextT</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxxx</span><br><span class="line">date: xxxx</span><br><span class="line">categories: hexo</span><br><span class="line">tags: # 标签（多标签）</span><br><span class="line">- hexo</span><br><span class="line">- nexT</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>然后 <code>hexo</code> 三连即可</p>
 ]]></content>
@@ -268,7 +273,96 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-        <tag>NextT</tag>
+        <tag>nexT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo本地博客+云服务器个人博客搭建</title>
+    <url>/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>记录一下本地搭建 <code>hexo</code> 个人博客并部署到云服务器的过程。。。<br>本地环境是 <code>win11</code> ，云服务器是 <code>Ubuntu 22.04LTS</code>  </p>
+<p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br>所以当然也可以用 <code>GitHub.io</code> 去进行部署，这是取决于各位的。。。</p>
+<span id="more"></span>
+
+<h2 id="Node-js-git"><a href="#Node-js-git" class="headerlink" title="Node.js &amp;&amp; git"></a>Node.js &amp;&amp; git</h2><p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a href="https://git-scm.com/download/win">git下载地址</a><br>可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>按需下载即可</p>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><a href="https://nodejs.cn/download/">Nodejs下载地址</a><br>同样按需下载，没有特殊要求无脑继续就可以了。。<br>可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求  </p>
+<h4 id="npm更换淘宝镜像源"><a href="#npm更换淘宝镜像源" class="headerlink" title="npm更换淘宝镜像源"></a>npm更换淘宝镜像源</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#最新地址 淘宝 NPM 镜像站喊你切换新域名啦!</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry </span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复官方源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+
+<h4 id="npm更新"><a href="#npm更新" class="headerlink" title="npm更新"></a>npm更新</h4><p><a href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br>这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure>
+
+<p>其他命令就不展示了，善用搜索引擎 hh  </p>
+<h2 id="配置-hexo"><a href="#配置-hexo" class="headerlink" title="配置 hexo"></a>配置 hexo</h2><p>在命令行中输入  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>找到你要写博客的父目录，比如你想将文件夹放在桌面就取到桌面的路径下  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt; // folder为你的博客目录名字</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt; // 进入该目录</span><br><span class="line">npm install // 安装依赖</span><br></pre></td></tr></table></figure>
+
+<p>到此，本地博客就已经搭建完成了  </p>
+<h2 id="将本地博客部署到云服务器中"><a href="#将本地博客部署到云服务器中" class="headerlink" title="将本地博客部署到云服务器中"></a>将本地博客部署到云服务器中</h2><p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd 下的ssh连接<br>貌似 win 下已经自带了 openssh 吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^  </p>
+<h3 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h3><p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code> 所以就没有安装了。。<br>既然需要同步，那么自然不能每次都要登录 <code>git</code> ，所以要配置一下免密登录  </p>
+<h4 id="1-创建用户并设置密码"><a href="#1-创建用户并设置密码" class="headerlink" title="1. 创建用户并设置密码"></a>1. 创建用户并设置密码</h4><p>下面的 <code>username</code> 设置为你喜欢的用户名，并设置一个属于这个账户的密码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
+<p>可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可 hh</p>
+<h4 id="2-分配用户权限"><a href="#2-分配用户权限" class="headerlink" title="2. 分配用户权限"></a>2. 分配用户权限</h4><p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-本地创建密钥"><a href="#3-本地创建密钥" class="headerlink" title="3. 本地创建密钥"></a>3. 本地创建密钥</h4><p>！！！ 注意是在本地 <code>win11</code> 创建密钥，相当于身份证了，就可以实现免密登录了<br>在本机终端中输入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>然后无脑回车，得到一个新的密钥<br>一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:\Users\Administrator.ssh（不确定可以百度一下 hh）</p>
+<p>复制id_rsa.pub文件中的内容备用。</p>
+<h4 id="4-配置公钥"><a href="#4-配置公钥" class="headerlink" title="4. 配置公钥"></a>4. 配置公钥</h4><p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure>
+
+<p>创建 <code>.ssh</code> 文件夹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure>
+
+<p>利用 <code>vi</code> 或 <code>vim</code> 新建 <code>authorized_keys</code> 文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>将刚刚 <code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
+<h3 id="git-仓库配置"><a href="#git-仓库配置" class="headerlink" title="git 仓库配置"></a>git 仓库配置</h3><p>退出用户登录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure>
+
+<p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code> 目录，并修改目录的所有权和用户权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /home/git/</span><br><span class="line"><span class="built_in">chown</span> -R [username]:[username] /home/git/   <span class="comment"># 是你刚刚创建的用户名</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/git/</span><br></pre></td></tr></table></figure>
+
+<p>进入目录，建立git仓库，修改权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/git/</span><br><span class="line">git init --bare blog.git</span><br><span class="line">chown [username]:[username] -R blog.git</span><br></pre></td></tr></table></figure>
+
+<p>新建钩子文件，但是要看你具体的 git 版本<br>我的是 <code>post-update.xxx</code>（文件类型忘了，配置时忘了记录）<br>需要进入修改添加两行内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /home/git/blog.git/hooks/post (然后这里直接按 tab 补全补出来)</span><br></pre></td></tr></table></figure>
+
+<p>进入文件后添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
+
+<p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为 <code>post-update</code> 才能生效，具体问题具体分析吧，用 rm 命令重命名好了，然后<code>wq</code>保存退出  </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全) # ./post-update</span><br></pre></td></tr></table></figure>
+
+<p>然后修改文件权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h3><p>安装 <code>nginx</code> </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-install nginx </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样可以查看版本判断是否安装成功</span></span><br><span class="line">nginx -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置开机启动</span></span><br><span class="line">systemctl enable nginx.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 nginx 状态</span></span><br><span class="line">systemctl status nginx.service</span><br></pre></td></tr></table></figure>
+
+<p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样 <code>/usr/local/nginx/conf/nginx.conf</code><br>这里可能有点麻烦的是我自己还修改了 <code>default</code> 文件<br>众说纷纭，我将我自己尝试过程中遇到的两种方案都贴给大家<br><a href="https://zhuanlan.zhihu.com/p/158678677">配置 conf 文件</a><br><a href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置 default 文件</a></p>
+<p>配置完重启下 <code>nginx</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+
+<h3 id="更改本地-hexo-配置文件"><a href="#更改本地-hexo-配置文件" class="headerlink" title="更改本地 hexo 配置文件"></a>更改本地 hexo 配置文件</h3><p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br>应该在最后的位置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@100.0.0.100:/home/git/blog.git   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>在本地hexo博客根目录下，打开终端，部署  </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>然后访问服务器的 IP 地址应该就可以看到 hexo 已经部署完成了。。。<br>后续就是善用搜索引擎的过程了。。。  </p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>git</tag>
+        <tag>nodejs</tag>
       </tags>
   </entry>
 </search>
