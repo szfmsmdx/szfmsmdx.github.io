@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%85%E4%B8%AD%E5%BC%95%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">居中引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A9%E8%89%B2-tag"><span class="nav-number">2.</span> <span class="nav-text">彩色 tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A9%E8%89%B2-note"><span class="nav-number">3.</span> <span class="nav-text">彩色 note</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E6%8D%A2-tabs"><span class="nav-number">4.</span> <span class="nav-text">切换 tabs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%89%E9%92%AE-Btn"><span class="nav-number">5.</span> <span class="nav-text">按钮 Btn</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%85%E4%B8%AD%E5%BC%95%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">居中引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A9%E8%89%B2-tag"><span class="nav-number">2.</span> <span class="nav-text">彩色 tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A9%E8%89%B2-note"><span class="nav-number">3.</span> <span class="nav-text">彩色 note</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E6%8D%A2-tabs"><span class="nav-number">4.</span> <span class="nav-text">切换 tabs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%89%E9%92%AE-btn"><span class="nav-number">5.</span> <span class="nav-text">按钮 Btn</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -295,37 +295,36 @@
     
 
 
-    <div class="post-body" itemprop="articleBody"><p>参考这篇<a target="_blank" rel="noopener" href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
+    <div class="post-body" itemprop="articleBody"><p>参考这篇<a
+target="_blank" rel="noopener" href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
 <span id="more"></span>
-
-<h1 id="居中引用"><a href="#居中引用" class="headerlink" title="居中引用"></a>居中引用</h1><blockquote class="blockquote-center">
-<p>hello world </p>
+<h1 id="居中引用">居中引用</h1>
+<blockquote class="blockquote-center">
+<p>hello world</p>
 
 </blockquote>
-
-<h1 id="彩色-tag"><a href="#彩色-tag" class="headerlink" title="彩色 tag"></a>彩色 tag</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% label [class] @ 标签内容 %&#125;</span><br><span class="line">class：</span><br><span class="line"> - default: 浅灰色,可留空</span><br><span class="line"> - primary: 浅紫色</span><br><span class="line"> - success: 浅绿色</span><br><span class="line"> - info: 浅蓝色</span><br><span class="line"> - warning: 浅黄色</span><br><span class="line"> - danger: 浅红色</span><br></pre></td></tr></table></figure>
-
-<mark class="label [warning]"> test</mark>  
-<p>注意，由于之前安装的darkmode插件导致了前端css被覆盖，所以实际显示的颜色可能有不同  </p>
-<h1 id="彩色-note"><a href="#彩色-note" class="headerlink" title="彩色 note"></a>彩色 note</h1><p>我个人很喜欢这个东西 ^ ^  </p>
-<p>(为了避免编译错误，所以放在不同的行了。。。)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note [class]%&#125; </span><br><span class="line">内容</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">class: </span><br><span class="line"> - default: 灰色</span><br><span class="line"> - primary: 紫色</span><br><span class="line"> - success: 绿色</span><br><span class="line"> - info: 蓝色</span><br><span class="line"> - warning: 黄色</span><br><span class="line"> - danger: 红色</span><br></pre></td></tr></table></figure>
-
+<h1 id="彩色-tag">彩色 tag</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% label [class] @ 标签内容 %&#125;</span><br><span class="line">class：</span><br><span class="line"> - default: 浅灰色,可留空</span><br><span class="line"> - primary: 浅紫色</span><br><span class="line"> - success: 浅绿色</span><br><span class="line"> - info: 浅蓝色</span><br><span class="line"> - warning: 浅黄色</span><br><span class="line"> - danger: 浅红色</span><br></pre></td></tr></table></figure>
+<mark class="label [warning]"> test</mark>
+<p>注意，由于之前安装的darkmode插件导致了前端css被覆盖，所以实际显示的颜色可能有不同</p>
+<h1 id="彩色-note">彩色 note</h1>
+<p>我个人很喜欢这个东西 ^ ^</p>
+<p>(为了避免编译错误，所以放在不同的行了。。。) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note [class]%&#125; </span><br><span class="line">内容</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">class: </span><br><span class="line"> - default: 灰色</span><br><span class="line"> - primary: 紫色</span><br><span class="line"> - success: 绿色</span><br><span class="line"> - info: 蓝色</span><br><span class="line"> - warning: 黄色</span><br><span class="line"> - danger: 红色</span><br></pre></td></tr></table></figure></p>
 <details class="note "><summary><p>[info]</p>
 </summary>
-<p>hello world </p>
+<p>hello world</p>
 
 </details>
-
-<h1 id="切换-tabs"><a href="#切换-tabs" class="headerlink" title="切换 tabs"></a>切换 tabs</h1><p>这个也不错，感觉之后不论是放代码还是放对比的东西，比上下文叠放好用多了。。。  </p>
-<div class="tabs" id="[class]"><ul class="nav-tabs"><li class="tab active"><a href="#[class]-1">Tab1</a></li><li class="tab"><a href="#[class]-2">Tab2</a></li><li class="tab"><a href="#[class]-3">3号Tab</a></li></ul><div class="tab-content"><div class="tab-pane active" id="[class]-1"><p>这里是1号Tab内容</p></div><div class="tab-pane" id="[class]-2"><p>这里是2号Tab内容</p></div><div class="tab-pane" id="[class]-3"><p>这里是3号Tab内容，上面的tab也可以改 ^ ^</p></div></div></div>
-
-<h1 id="按钮-Btn"><a href="#按钮-Btn" class="headerlink" title="按钮 Btn"></a>按钮 Btn</h1><p>使用自带 FontAwesome 图标，在 <a target="_blank" rel="noopener" href="https://fontawesome.com/v4/icons/">FontAwesome</a> 上找到相应的图标名  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% btn [地址] , [内容] , [图标 规格] %&#125;</span><br><span class="line"></span><br><span class="line">[地址]：当使用外链绝对引用时，无按钮，样式类似Markdown链接跳转</span><br><span class="line">[图标 规格]: 使用无`fa-`开头的FontAwesome图标，可以用以下规格定义图标大小</span><br><span class="line">fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>但是不知道为什么显示不出来 hhh  </p>
+<h1 id="切换-tabs">切换 tabs</h1>
+<p>这个也不错，感觉之后不论是放代码还是放对比的东西，比上下文叠放好用多了。。。<br />
+<div class="tabs" id="[class]"><ul class="nav-tabs"><li class="tab active"><a href="#[class]-1">Tab1</a></li><li class="tab"><a href="#[class]-2">Tab2</a></li><li class="tab"><a href="#[class]-3">3号Tab</a></li></ul><div class="tab-content"><div class="tab-pane active" id="[class]-1"><p>这里是1号Tab内容</p></div><div class="tab-pane" id="[class]-2"><p>这里是2号Tab内容</p></div><div class="tab-pane" id="[class]-3"><p>这里是3号Tab内容，上面的tab也可以改 ^ ^</p></div></div></div></p>
+<h1 id="按钮-btn">按钮 Btn</h1>
+<p>使用自带 FontAwesome 图标，在 <a
+target="_blank" rel="noopener" href="https://fontawesome.com/v4/icons/">FontAwesome</a>
+上找到相应的图标名<br />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% btn [地址] , [内容] , [图标 规格] %&#125;</span><br><span class="line"></span><br><span class="line">[地址]：当使用外链绝对引用时，无按钮，样式类似Markdown链接跳转</span><br><span class="line">[图标 规格]: 使用无`fa-`开头的FontAwesome图标，可以用以下规格定义图标大小</span><br><span class="line">fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line"></span><br></pre></td></tr></table></figure> 但是不知道为什么显示不出来 hhh</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home-2x]&#125;  </span><br><span class="line"></span><br><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home]&#125;  </span><br></pre></td></tr></table></figure>
-
-<p>哎哎，显示不出来我就给他用多行代码的形式注释掉了。。。  </p>
+<p>哎哎，显示不出来我就给他用多行代码的形式注释掉了。。。</p>
 
     </div>
 
@@ -452,6 +451,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.szf.cool","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"locale":null,"placeholder":"友好交流，善意评论 ^ ^","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","dark":"body.darkmode--activated","el":"#waline","comment":true,"path":"/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/"}</script>
