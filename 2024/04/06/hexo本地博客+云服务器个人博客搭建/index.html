@@ -27,11 +27,12 @@
 <meta property="og:description" content="记录一下本地搭建 hexo 个人博客并部署到云服务器的过程。。。本地环境是 win11 ，云服务器是 Ubuntu 22.04LTS   大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家所以当然也可以用 GitHub.io 去进行部署，这是取决于各位的。。。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-06T04:00:03.000Z">
-<meta property="article:modified_time" content="2024-04-15T06:35:44.564Z">
+<meta property="article:modified_time" content="2024-04-16T02:09:36.084Z">
 <meta property="article:author" content="Szfmsmdx">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
 
 
@@ -51,7 +52,7 @@
 
 
 
-<link rel="dns-prefetch" href="blog-comments-khaki-three.vercel.app">
+<link rel="dns-prefetch" href="comment.szf.cool">
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -142,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-git"><span class="nav-number">1.</span> <span class="nav-text">Node.js &amp;&amp; git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git"><span class="nav-number">1.1.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js"><span class="nav-number">1.2.</span> <span class="nav-text">Node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-hexo"><span class="nav-number">2.</span> <span class="nav-text">配置 hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD"><span class="nav-number">3.</span> <span class="nav-text">将本地博客部署到云服务器中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">git 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">git 仓库配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-nginx"><span class="nav-number">3.3.</span> <span class="nav-text">配置 nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E6%9C%AC%E5%9C%B0-hexo-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">更改本地 hexo 配置文件</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js-git"><span class="nav-number">1.</span> <span class="nav-text">Node.js &amp;&amp; git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">1.1.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js"><span class="nav-number">1.2.</span> <span class="nav-text">Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm%E6%9B%B4%E6%8D%A2%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">npm更换淘宝镜像源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm%E6%9B%B4%E6%96%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">npm更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-hexo"><span class="nav-number">2.</span> <span class="nav-text">配置 hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%86%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD"><span class="nav-number">3.</span> <span class="nav-text">将本地博客部署到云服务器中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">git 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 创建用户并设置密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%86%E9%85%8D%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 分配用户权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%9C%AC%E5%9C%B0%E5%88%9B%E5%BB%BA%E5%AF%86%E9%92%A5"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 本地创建密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. 配置公钥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">git 仓库配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-nginx"><span class="nav-number">3.3.</span> <span class="nav-text">配置 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E6%9C%AC%E5%9C%B0-hexo-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">更改本地 hexo 配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">域名配置</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +169,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -244,7 +245,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-15 14:35:44" itemprop="dateModified" datetime="2024-04-15T14:35:44+08:00">2024-04-15</time>
+      <time title="修改时间：2024-04-16 10:09:36" itemprop="dateModified" datetime="2024-04-16T10:09:36+08:00">2024-04-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -300,35 +301,35 @@
 <p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br>所以当然也可以用 <code>GitHub.io</code> 去进行部署，这是取决于各位的。。。</p>
 <span id="more"></span>
 
-<h2 id="Node-js-git"><a href="#Node-js-git" class="headerlink" title="Node.js &amp;&amp; git"></a>Node.js &amp;&amp; git</h2><p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
-<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git下载地址</a><br>可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>按需下载即可</p>
-<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><a target="_blank" rel="noopener" href="https://nodejs.cn/download/">Nodejs下载地址</a><br>同样按需下载，没有特殊要求无脑继续就可以了。。<br>可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求  </p>
-<h4 id="npm更换淘宝镜像源"><a href="#npm更换淘宝镜像源" class="headerlink" title="npm更换淘宝镜像源"></a>npm更换淘宝镜像源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#最新地址 淘宝 NPM 镜像站喊你切换新域名啦!</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry </span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复官方源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+<h1 id="Node-js-git"><a href="#Node-js-git" class="headerlink" title="Node.js &amp;&amp; git"></a>Node.js &amp;&amp; git</h1><p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git下载地址</a><br>可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>按需下载即可</p>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p><a target="_blank" rel="noopener" href="https://nodejs.cn/download/">Nodejs下载地址</a><br>同样按需下载，没有特殊要求无脑继续就可以了。。<br>可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求  </p>
+<h3 id="npm更换淘宝镜像源"><a href="#npm更换淘宝镜像源" class="headerlink" title="npm更换淘宝镜像源"></a>npm更换淘宝镜像源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#最新地址 淘宝 NPM 镜像站喊你切换新域名啦!</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry </span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复官方源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
 
-<h4 id="npm更新"><a href="#npm更新" class="headerlink" title="npm更新"></a>npm更新</h4><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br>这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理</p>
+<h3 id="npm更新"><a href="#npm更新" class="headerlink" title="npm更新"></a>npm更新</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br>这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure>
 
 <p>其他命令就不展示了，善用搜索引擎 hh  </p>
-<h2 id="配置-hexo"><a href="#配置-hexo" class="headerlink" title="配置 hexo"></a>配置 hexo</h2><p>在命令行中输入  </p>
+<h1 id="配置-hexo"><a href="#配置-hexo" class="headerlink" title="配置 hexo"></a>配置 hexo</h1><p>在命令行中输入  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
 <p>找到你要写博客的父目录，比如你想将文件夹放在桌面就取到桌面的路径下  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt; // folder为你的博客目录名字</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt; // 进入该目录</span><br><span class="line">npm install // 安装依赖</span><br></pre></td></tr></table></figure>
 
 <p>到此，本地博客就已经搭建完成了  </p>
-<h2 id="将本地博客部署到云服务器中"><a href="#将本地博客部署到云服务器中" class="headerlink" title="将本地博客部署到云服务器中"></a>将本地博客部署到云服务器中</h2><p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd 下的ssh连接<br>貌似 win 下已经自带了 openssh 吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^  </p>
-<h3 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h3><p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code> 所以就没有安装了。。<br>既然需要同步，那么自然不能每次都要登录 <code>git</code> ，所以要配置一下免密登录  </p>
-<h4 id="1-创建用户并设置密码"><a href="#1-创建用户并设置密码" class="headerlink" title="1. 创建用户并设置密码"></a>1. 创建用户并设置密码</h4><p>下面的 <code>username</code> 设置为你喜欢的用户名，并设置一个属于这个账户的密码</p>
+<h1 id="将本地博客部署到云服务器中"><a href="#将本地博客部署到云服务器中" class="headerlink" title="将本地博客部署到云服务器中"></a>将本地博客部署到云服务器中</h1><p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd 下的ssh连接<br>貌似 win 下已经自带了 openssh 吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^  </p>
+<h2 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h2><p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code> 所以就没有安装了。。<br>既然需要同步，那么自然不能每次都要登录 <code>git</code> ，所以要配置一下免密登录  </p>
+<h3 id="1-创建用户并设置密码"><a href="#1-创建用户并设置密码" class="headerlink" title="1. 创建用户并设置密码"></a>1. 创建用户并设置密码</h3><p>下面的 <code>username</code> 设置为你喜欢的用户名，并设置一个属于这个账户的密码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
 <p>可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可 hh</p>
-<h4 id="2-分配用户权限"><a href="#2-分配用户权限" class="headerlink" title="2. 分配用户权限"></a>2. 分配用户权限</h4><p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）</p>
+<h3 id="2-分配用户权限"><a href="#2-分配用户权限" class="headerlink" title="2. 分配用户权限"></a>2. 分配用户权限</h3><p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-本地创建密钥"><a href="#3-本地创建密钥" class="headerlink" title="3. 本地创建密钥"></a>3. 本地创建密钥</h4><p>！！！ 注意是在本地 <code>win11</code> 创建密钥，相当于身份证了，就可以实现免密登录了<br>在本机终端中输入</p>
+<h3 id="3-本地创建密钥"><a href="#3-本地创建密钥" class="headerlink" title="3. 本地创建密钥"></a>3. 本地创建密钥</h3><p>！！！ 注意是在本地 <code>win11</code> 创建密钥，相当于身份证了，就可以实现免密登录了<br>在本机终端中输入</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 <p>然后无脑回车，得到一个新的密钥<br>一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:\Users\Administrator.ssh（不确定可以百度一下 hh）</p>
 <p>复制id_rsa.pub文件中的内容备用。</p>
-<h4 id="4-配置公钥"><a href="#4-配置公钥" class="headerlink" title="4. 配置公钥"></a>4. 配置公钥</h4><p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中</p>
+<h3 id="4-配置公钥"><a href="#4-配置公钥" class="headerlink" title="4. 配置公钥"></a>4. 配置公钥</h3><p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure>
 
 <p>创建 <code>.ssh</code> 文件夹</p>
@@ -337,7 +338,7 @@
 <p>利用 <code>vi</code> 或 <code>vim</code> 新建 <code>authorized_keys</code> 文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
 <p>将刚刚 <code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
-<h3 id="git-仓库配置"><a href="#git-仓库配置" class="headerlink" title="git 仓库配置"></a>git 仓库配置</h3><p>退出用户登录</p>
+<h2 id="git-仓库配置"><a href="#git-仓库配置" class="headerlink" title="git 仓库配置"></a>git 仓库配置</h2><p>退出用户登录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure>
 
 <p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code> 目录，并修改目录的所有权和用户权限</p>
@@ -358,21 +359,21 @@
 <p>然后修改文件权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure>
 
-<h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h3><p>安装 <code>nginx</code> </p>
+<h2 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h2><p>安装 <code>nginx</code> </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apt-install nginx </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样可以查看版本判断是否安装成功</span></span><br><span class="line">nginx -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置开机启动</span></span><br><span class="line">systemctl enable nginx.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 nginx 状态</span></span><br><span class="line">systemctl status nginx.service</span><br></pre></td></tr></table></figure>
 
 <p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样 <code>/usr/local/nginx/conf/nginx.conf</code><br>这里可能有点麻烦的是我自己还修改了 <code>default</code> 文件<br>众说纷纭，我将我自己尝试过程中遇到的两种方案都贴给大家<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158678677">配置 conf 文件</a><br><a target="_blank" rel="noopener" href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置 default 文件</a></p>
 <p>配置完重启下 <code>nginx</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
 
-<h3 id="更改本地-hexo-配置文件"><a href="#更改本地-hexo-配置文件" class="headerlink" title="更改本地 hexo 配置文件"></a>更改本地 hexo 配置文件</h3><p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br>应该在最后的位置</p>
+<h2 id="更改本地-hexo-配置文件"><a href="#更改本地-hexo-配置文件" class="headerlink" title="更改本地 hexo 配置文件"></a>更改本地 hexo 配置文件</h2><p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br>应该在最后的位置</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@100.0.0.100:/home/git/blog.git   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
 <p>在本地hexo博客根目录下，打开终端，部署  </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
 <p>然后访问服务器的 IP 地址应该就可以看到 hexo 已经部署完成了。。。<br>后续就是善用搜索引擎的过程了。。。  </p>
-
+<h1 id="域名配置"><a href="#域名配置" class="headerlink" title="域名配置"></a>域名配置</h1>
     </div>
 
     
@@ -411,6 +412,7 @@
               <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
               <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
               <a href="/tags/nodejs/" rel="tag"><i class="fa fa-tag"></i> nodejs</a>
+              <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
           </div>
 
         
@@ -452,13 +454,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">10k</span>
+    <span title="站点总字数">11k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">19 分钟</span>
+    <span title="站点阅读时长">20 分钟</span>
   </span>
 </div>
 
@@ -498,7 +500,7 @@
 
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"blog-comments-khaki-three.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"locale":null,"placeholder":"友好交流，善意评论 ^ ^","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","dark":"body.darkmode--activated","el":"#waline","comment":true,"path":"/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.szf.cool","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"locale":null,"placeholder":"友好交流，善意评论 ^ ^","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","dark":"body.darkmode--activated","el":"#waline","comment":true,"path":"/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"}</script>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 <script>
 document.addEventListener('page:loaded', () => {
