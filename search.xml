@@ -141,13 +141,11 @@
 <li>进入域名控制台，找到你的博客域名，添加解析记录<ol>
 <li>记录类型选择 <code>CNAME</code></li>
 <li>主机记录填 <code>comment</code> (可以自定，这一步完成你的二级域名就是 comment + 你的一级域名)</li>
-<li>添加记录值为 <code>cname.vercel-dns.com</code> <br>
- 比如我的域名是 `szf.cool`，那么操作完，我的二级域名应该是 `comment.szf.cool`</li>
+<li>添加记录值为 <code>cname.vercel-dns.com</code></li>
 </ol>
 </li>
-<li>进入vercel控制台，进入你的项目，在<code>setting</code>-<code>Domains</code>下，在输入框中输入你的二级域名 &#x3D;&gt; add添加</li>
-<li>这样就可以了，随后部署测试一下评论区是否能够正常访问即可</li>
 </ol>
+<p>(比如我的域名是 <code>szf.cool</code>，那么操作完，我的二级域名应该是 <code>comment.szf.cool</code>)<br><br><br>2. 进入vercel控制台，进入你的项目，在<code>setting</code>-<code>Domains</code>下，在输入框中输入你的二级域名 &#x3D;&gt; add添加<br>3. 这样就可以了，随后部署测试一下评论区是否能够正常访问即可 </p>
 <h1 id="文件跳过渲染"><a href="#文件跳过渲染" class="headerlink" title="文件跳过渲染"></a>文件跳过渲染</h1><p>修改站点配置文件中的 <code>skip_render</code> 配置项。<br>只有 <code>source</code> 目录下的文件才会发布，因此 Hexo 只渲染 source 目录下的文件。<code>skip_render</code> 参数设置的路径是相对于 <code>source</code> 目录的路径。  </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#单个文件</span><br><span class="line">skip_render: hello.html</span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件</span><br><span class="line">skip_render: test/* </span><br><span class="line"></span><br><span class="line">#单个文件夹下指定类型文件</span><br><span class="line">skip_render: test/*.md  </span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件以及子目录</span><br><span class="line">skip_render: test/**  </span><br><span class="line"></span><br><span class="line">#跳过多个目录，或者多个文件</span><br><span class="line">skip_render: [&#x27;*.html&#x27;, demo/**, test/*]</span><br></pre></td></tr></table></figure>
 
