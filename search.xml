@@ -468,8 +468,9 @@ hh）</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-install nginx </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样可以查看版本判断是否安装成功</span></span><br><span class="line">nginx -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置开机启动</span></span><br><span class="line">systemctl enable nginx.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 nginx 状态</span></span><br><span class="line">systemctl status nginx.service</span><br></pre></td></tr></table></figure>
 <p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样
 <code>/usr/local/nginx/conf/nginx.conf</code><br />
-这里可能有点麻烦的是我自己还修改了 <code>default</code> 文件<br />
-众说纷纭，我将我自己尝试过程中遇到的两种方案都贴给大家<br />
+我的安装位置是<code>/etc/nginx/nginx.conf</code><br />
+在网上我看到两种说法，一种修改 default一种修改
+conf，但我个人觉得还是修改conf吧。。。<br />
 <a href="https://zhuanlan.zhihu.com/p/158678677">配置 conf
 文件</a><br />
 <a
@@ -478,13 +479,59 @@ default 文件</a></p>
 <p>配置完重启下 <code>nginx</code> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure></p>
 <h2 id="更改本地-hexo-配置文件">更改本地 hexo 配置文件</h2>
 <p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br />
-应该在最后的位置 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@100.0.0.100:/home/git/blog.git   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+应该在最后的位置 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@[公网ip]:[/home/git/blog.git]   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
 <p>在本地hexo博客根目录下，打开终端，部署<br />
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
 <p>然后访问服务器的 IP 地址应该就可以看到 hexo
 已经部署完成了。。。<br />
 后续就是善用搜索引擎的过程了。。。</p>
 <h1 id="域名配置">域名配置</h1>
+<p>但是目前访问博客的时候有个问题，就是网址栏一直有个不安全，这是由于通过http访问<br />
+我们需要将其改为 https 访问(https = http + ssl)<br />
+所以首先要申请 ssl 证书，然后再去nginx里配置一下<br />
+1. 去服务商拿ssl免费证书<br />
+我是阿里的服务器，<a
+href="https://yundun.console.aliyun.com/?spm=5176.7968328.J_8413632810.1.62ae685bLZTqIi&amp;p=cas&amp;showBuy=1#/certExtend/free/cn-hangzhou">地址</a>在这里
+2. 选择免费证书，然后一路系统配置申领就好了<br />
+3. 申领结束点击下载 nginx 版本<br />
+4. 将证书传到服务器的指定位置(!需要记住)<br />
+我放在了 <code>/etc/nginx/conf.d</code>文件夹下 5. 修改
+<code>nginx.conf</code> 配置文件内容<br />
+注意如果在 conf 文件下修改，要在 http
+的域内修改，所以要排查一下"{}"是否闭合，防止漏了hh<br />
+添加或者修改<code>server</code>域<br />
+这是https的433端口配置<br />
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">HTTPS的默认访问端口443。</span></span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">如果未在此处配置HTTPS的默认访问端口，可能会造成Nginx无法启动。</span></span><br><span class="line">   listen 443 ssl;</span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">填写证书绑定的域名</span></span><br><span class="line">   server_name domain_name;</span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">填写证书文件名称</span></span><br><span class="line">   ssl_certificate cert/domain_name.pem;</span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">填写证书私钥文件名称</span></span><br><span class="line">   ssl_certificate_key cert/domain_name.key;</span><br><span class="line">   ssl_session_cache shared:SSL:1m;</span><br><span class="line">   ssl_session_timeout 5m;</span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">自定义设置使用的TLS协议的类型以及加密套件（以下为配置示例，请您自行评估是否需要配置）</span></span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">TLS协议版本越高，HTTPS通信的安全性越高，但是相较于低版本TLS协议，高版本TLS协议对浏览器的兼容性较差。</span></span><br><span class="line">   ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">   ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">表示优先使用服务端加密套件。默认开启</span></span><br><span class="line">   ssl_prefer_server_ciphers on;</span><br><span class="line">  location / &#123;</span><br><span class="line">        #配置域名最终向后端发送请求的url地址</span><br><span class="line">        proxy_pass http://127.0.0.1:8008;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是http的80端口配置<br />
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">      # 配置阿里云域名和监听的80端口</span><br><span class="line">      listen       80;</span><br><span class="line">      server_name  domain_name;</span><br><span class="line">      #charset koi8-r;</span><br><span class="line">      #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">      #将所有HTTP请求通过rewrite指令重定向到HTTPS。</span><br><span class="line">      rewrite ^(.*)$ https://$host$1;</span><br><span class="line">      location / &#123;</span><br><span class="line">          #配置域名最终向后端发送请求的url地址</span><br><span class="line">          proxy_pass http://127.0.0.1:8008;</span><br><span class="line">      &#125;</span><br><span class="line">      #error_page  404              /404.html;</span><br><span class="line">      # redirect server error pages to the static page /50x.html</span><br><span class="line">      #</span><br><span class="line">      error_page   500 502 503 504  /50x.html;</span><br><span class="line">      location = /50x.html &#123;</span><br><span class="line">          root   html;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="6" type="1">
+<li>配置完依次执行命令 <code>service nginx restart</code> 命令和
+<code>nginx -t</code>(或<code>systemctl status nginx.service</code>)命令，查看nginx的运行状态，如果是successful，那么就可以访问一下你的域名，网址栏的<code>不安全</code>字段是否消失并变为小锁了，如果是说明配置完成</li>
+</ol>
+<h2 id="error">Error。。。</h2>
+<p>但是很抱歉，笔者按照上述流程没有配置成功，在配置转发端口的时候，访问遇到了502
+error。。。<br />
+然后取消转发配置，能发现ssl证书成功配置<br />
+接下来排查一下为啥转发失败了 ^ ^</p>
+<hr />
+<p>先看一下 <code>proxy_pass</code> 设置，遇到两个问题 - 设置为
+<code>127.0.0.1</code> 报502错误 - 设置为 <code>公网IP</code> 报 504
+错误</p>
+<p>理一下，首先，ssl证书配置成功，说明 443 端口是可以正常访问的<br />
+我们的配置思路是，如果通过 http 的 80 端口访问，那么强制改写为 443 走
+https 端口访问，然后443端口转发到4000的hexo博客端口</p>
+<p>好，那么先排查 80 端口是否能正常访问<br />
+&gt; 要先安装 telnet<br />
+&gt;
+在控制面板-程序-程序和功能-（侧边的）启动或关闭Windows功能-telnet勾选<br />
+&gt; 等他安装完即可</p>
+<p>在shell中 <code>telnet ip port</code> 如果出现空白页面即可<br />
+&gt; 靠，注意是空格不是冒号！！！</p>
+<p>ok，80端口能ping通（试了下 443
+端口同样能ping通，但是4000端口ping不通<br />
+好，那么问题就在4000端口了</p>
+<hr />
+<p>查看 4000 端口的进程</p>
 ]]></content>
       <categories>
         <category>hexo</category>
