@@ -461,7 +461,7 @@ hh）</p>
 <p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为
 <code>post-update</code> 才能生效，具体问题具体分析吧，用 rm
 命令重命名好了，然后<code>wq</code>保存退出<br />
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全) # ./post-update</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全)  ./post-update</span><br></pre></td></tr></table></figure></p>
 <p>然后修改文件权限 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure></p>
 <h2 id="配置-nginx">配置 nginx</h2>
 <p>安装 <code>nginx</code></p>
