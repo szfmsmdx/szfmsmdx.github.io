@@ -13,10 +13,8 @@
 (hard-code)
 ，而计算机可以使用逻辑推理规则自动理解这些形式化语言中的声明。这就是人工智能的<strong>知识库</strong>
 (knowledge base)</p>
-<p><br></p>
 <p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习
 (machine learning) 的能力</p>
-<p><br></p>
 <p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong>
 (representation learning)<br />
 &gt; 一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器
@@ -24,12 +22,10 @@
 函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br />
 &gt;
 而我们的目标是：数据经过编码器和解码器能够尽可能多地保留信息，同时，新的表示有一些好的特性。。。</p>
-<p><br></p>
 <p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的
 <strong>变差因素</strong> (factors of variation) 。 &gt;
 这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br />
 &gt; 比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。</p>
-<p><br></p>
 <p>深度学习 (deep learning)
 通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题<br />
 &gt; 如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br />
@@ -38,7 +34,6 @@
 &gt; 输入展示在可见层 (visible
 layer)，命名的原因是它包含我们能够观察到的变量<br />
 &gt; 然后经过一系列的隐藏层 (hiden layer)</p>
-<p><br></p>
 <p>评估模型深度的方式主要有两种： - 评估计算流深度 - 评估概念关联深度 -
 比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的
 n 次计算，也就是说计算的图包含 2n 层</p>
@@ -51,7 +46,6 @@ class="math inline">\(A=[\alpha_1,\alpha_2,\alpha_3,\cdots,\alpha_n]\)</span>
 可以被描述为我们需要沿着第<span
 class="math inline">\(i\)</span>个向量的方向走<span
 class="math inline">\(x_i\)</span>的步长</p>
-<p><br></p>
 <p>一组向量的生成子空间(span)是原始向量线性组合后所能抵达的点的集合<br />
 也就是说，方程 <span
 class="math inline">\(Ax=b\)</span>是否有解，相当于：确定向量<span
@@ -59,7 +53,6 @@ class="math inline">\(b\)</span>是否在<span
 class="math inline">\(A\)</span>的列向量集合的生成子空间中，这个特殊的生成子空间也被称为
 <span class="math inline">\(A\)</span> 的列空间(column space)或是<span
 class="math inline">\(A\)</span>的值域(range)。</p>
-<p><br></p>
 ]]></content>
       <categories>
         <category>Deep Learning</category>
@@ -215,7 +208,6 @@ Darkmode.js，如果插件不生效，这很有可能是 Darkmode.js 的 CDN
 3.
 同时修改next的config文件，更换一下<code>serverURL</code>字段即可<br />
 4. 这样就可以了，随后部署测试一下评论区是否能够正常访问即可</p>
-<p><br></p>
 <p>额额但是在博客的评论区里，power by waline的版本是2.x。。。<br />
 在管理页面是 3.x 版本，目前还没出问题，不至于以后会不会有问题。。。</p>
 <h1 id="文件跳过渲染">文件跳过渲染</h1>
@@ -508,7 +500,7 @@ href="https://yundun.console.aliyun.com/?spm=5176.7968328.J_8413632810.1.62ae685
 <li>配置完依次执行命令 <code>service nginx restart</code> 命令和
 <code>nginx -t</code>(或<code>systemctl status nginx.service</code>)命令，查看nginx的运行状态，如果是successful，那么就可以访问一下你的域名，网址栏的<code>不安全</code>字段是否消失并变为小锁了，如果是说明配置完成</li>
 </ol>
-<h2 id="error">Error。。。</h2>
+<h2 id="一次的error记录">一次🤡的Error记录。。。</h2>
 <p>但是很抱歉，笔者按照上述流程没有配置成功，在配置转发端口的时候，访问遇到了502
 error。。。<br />
 然后取消转发配置，能发现ssl证书成功配置<br />
@@ -531,7 +523,24 @@ https 端口访问，然后443端口转发到4000的hexo博客端口</p>
 端口同样能ping通，但是4000端口ping不通<br />
 好，那么问题就在4000端口了</p>
 <hr />
-<p>查看 4000 端口的进程</p>
+<p>查看 4000 端口的进程<br />
+<code>netstat -nplt</code><br />
+发现根本就没有4000端口？！<br />
+看到这里突然恍然大悟了，这下🤡了呀<br />
+原来咱们部署的原理是，在本地deploy的时候，通过git
+hook将文件自动push到服务器的仓库中<br />
+然后访问80端口，配置nginx将root修改到博客的静态资源处实现访问。。。<br />
+这下是彻底理解咱们的整体部署是在干什么了。。。<br />
+哎，蒙头按照教程配置还是一知半解<br />
+我也将这次🤡记录在博客上，供大家参考</p>
+<hr />
+<p>接下来修改 nginx 的配置文件就很清晰了。。。<br />
+因为我的博客地址是 <code>/home/blog/</code><br />
+直接去conf文件下，首先修改 root 字段的地址<br />
+然后 index 字段看一眼没问题，ok 重启，登网站，完美。。。</p>
+<p>现在的逻辑是：通过域名访问 80 端口-&gt;转发到 433，433去 root 下面搜
+index 给出的文件名<br />
+&gt; 终于解决了hhhh</p>
 ]]></content>
       <categories>
         <category>hexo</category>
