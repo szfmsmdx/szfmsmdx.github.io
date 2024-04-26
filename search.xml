@@ -1,6 +1,564 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>花书（一）</title>
+    <url>/2024/04/15/%E8%8A%B1%E4%B9%A6%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括<strong>线性代数</strong>与<strong>概率论</strong>部分内容</p>
+
+</blockquote>
+<span id="more"></span>
+<p>当然，笔者所记不能是花书所有的内容，只能是笔者自己觉得有提升、有意义的部分，所以很多课堂上已经掌握的内容就没有纳入本文的内容了</p>
+<h1 id="引言">引言</h1>
+<p>一些人工智能项目旨在将世界所包含的知识用形式化的语言进行硬编码
+(hard-code)
+，而计算机可以使用逻辑推理规则自动理解这些形式化语言中的声明。这就是人工智能的<strong>知识库</strong>
+(knowledge base)</p>
+<p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习
+(machine learning) 的能力</p>
+<p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong>
+(representation learning)</p>
+<blockquote>
+<p>一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器 (encoder)
+和一个解码器 (decoder)
+函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br />
+而我们的目标是：数据经过编码器和解码器能够尽可能多地保留信息，同时，新的表示有一些好的特性。。。</p>
+</blockquote>
+<p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的
+<strong>变差因素</strong> (factors of variation) 。</p>
+<blockquote>
+<p>这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br />
+比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。</p>
+</blockquote>
+<p>深度学习 (deep learning)
+通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题</p>
+<blockquote>
+<p>如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br />
+直接处理，让机器学习或评估几乎是不可能的<br />
+深度学习将复杂的映射分解为一系列嵌套的简单的映射<br />
+输入展示在可见层 (visible
+layer)，命名的原因是它包含我们能够观察到的变量<br />
+然后经过一系列的隐藏层 (hiden layer)</p>
+</blockquote>
+<p>评估模型深度的方式主要有两种：</p>
+<ul>
+<li>评估计算流深度</li>
+<li>评估概念关联深度
+<ul>
+<li>比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的
+n 次计算，也就是说计算的图包含 2n 层</li>
+</ul></li>
+</ul>
+<hr />
+<h1 id="线性代数">线性代数</h1>
+<p>在这里，矩阵被看作是列向量集合，即 <span
+class="math inline">\(A=[\alpha_1,\alpha_2,\alpha_3,\cdots,\alpha_n]\)</span>
+，而每个列向量被看作是方向的描述<br />
+因此 <span class="math inline">\(Ax=\sum_i x_iA_{:,i}\)</span>
+可以被描述为我们需要沿着第<span
+class="math inline">\(i\)</span>个向量的方向走<span
+class="math inline">\(x_i\)</span>的步长</p>
+<p>一组向量的 <strong>生成子空间(span)</strong>
+是原始向量线性组合后所能抵达的点的集合<br />
+也就是说，方程 <span
+class="math inline">\(Ax=b\)</span>是否有解，相当于：确定向量<span
+class="math inline">\(b\)</span>是否在<span
+class="math inline">\(A\)</span>的列向量集合的生成子空间中，这个特殊的生成子空间也被称为
+<span class="math inline">\(A\)</span> 的<strong>列空间(column
+space)</strong> 或是<span
+class="math inline">\(A\)</span>的<strong>值域(range)</strong> 。</p>
+<h2 id="讨论方程-axb-是否有解">讨论方程 <span
+class="math inline">\(Ax=b\)</span> 是否有解？</h2>
+<blockquote>
+<p>前提我们记 <span class="math inline">\(A\)</span> 的形状为 <span
+class="math inline">\(m \times n\)</span></p>
+</blockquote>
+<p>那么一方面，若要求该方程对任意的<span
+class="math inline">\(b\)</span>都要有解，由于<span
+class="math inline">\(Ax\)</span> 看作是<span
+class="math inline">\(A\)</span>的第<span
+class="math inline">\(i\)</span>个列向量，所以<span
+class="math inline">\(Ax\)</span>自然有<span
+class="math inline">\(n\)</span>个，故若<span
+class="math inline">\(Ax\)</span>的列空间是整个<span
+class="math inline">\(\mathbb{R}^m\)</span>要求<span
+class="math inline">\(n\ge m\)</span><br />
+（当然，这只是必要条件，这些列向量会存在冗余，这种现象称之为
+<strong>线性相关</strong> ）</p>
+<p><br></p>
+<p>另一方面，如果想要该矩阵可逆，需要使得方程对每一个 <span
+class="math inline">\(b\)</span> 至多有一个解。</p>
+<blockquote>
+<p>这一句可能有些同学一开始看会愣一下，笔者在这里卡了一下，作者的意思是
+<span class="math inline">\(Ax=b\)</span>，既然<span
+class="math inline">\(A\)</span>是广义上可逆的，那么<span
+class="math inline">\(x=A^{-1}b\)</span>，也就是说，x是<span
+class="math inline">\(A^{-1}\)</span>的列空间中的一个向量，所以说，x至多也只能有一个，不可能在<span
+class="math inline">\(A\)</span>可逆的情况下一个<span
+class="math inline">\(b\)</span>向量对应多个<span
+class="math inline">\(x\)</span>向量</p>
+</blockquote>
+<p>所以该矩阵需要确保至多有 <span class="math inline">\(m\)</span>
+个列，当然，这是个充分条件<br />
+综上所述，如果方程有唯一解那么<span
+class="math inline">\(A\)</span>​矩阵首先要是方阵，其次他所有的列向量都要是无关的</p>
+<h2 id="范数">范数</h2>
+<p>在机器学习中，我们通过称为 <strong>范数</strong>
+(norm)的函数来衡量向量的大小，形式上 <span
+class="math inline">\(L^p\)</span>范数的定义为： <span
+class="math display">\[ | | x | | _ { p } = \left( \sum _ { i } | x _ {
+i } | ^ { p } \right) ^ { \frac { 1 } { p } }\]</span><br />
+范数能够将向量映射为非负值<br />
+直观上来看，向量<span
+class="math inline">\(x\)</span>的范数衡量了从原点到点<span
+class="math inline">\(x\)</span>的距离，更严格地说，范数满足如下性质：</p>
+<ul>
+<li><span class="math inline">\(f(x)=0 \rightarrow x=\vec
+0\)</span></li>
+<li><span class="math inline">\(f(x+y) \le f(x) + f(y)\)</span></li>
+<li><span class="math inline">\(\forall \alpha \in R , f (\alpha x) =
+|{\alpha}|f(x)\)</span></li>
+</ul>
+<p>举几个例子吧！</p>
+<ul>
+<li>当 <span class="math inline">\(p = 2\)</span> 时，<span
+class="math inline">\(L^2\)</span> 范数称为
+<strong>欧几里得范数</strong>(Euclidean norm)：表示从原点出发到向量
+<span class="math inline">\(x\)</span>
+确定的点的欧几里得距离。通常情况也用 <span
+class="math inline">\(L^2\)</span> 范数的平方去代替 <span
+class="math inline">\(L^2\)</span>
+范数，不过也有利有弊，一方面，平方在原点附近的增长非常缓慢，另一方面，平方的导数只取决于对应的元素</li>
+<li>当 <span class="math inline">\(p = 1\)</span> 时， <span
+class="math inline">\(L^1\)</span>
+范数却能够给我们区分零元素和非零元素， <span
+class="math inline">\(L^1\)</span>
+范数的计算也非常简单，即各位的绝对值和</li>
+<li>当 <span class="math inline">\(p = 0\)</span> 时，这种 <span
+class="math inline">\(L^0\)</span>
+范数用来统计向量中非零元素的个数，有时我们会用他来衡量一个向量的大小，但这个概念对于前面数学上的严格定义是不对的，首先第三条就不满足了。。。</li>
+<li>当 <span class="math inline">\(p = +\infty\)</span>
+时，也被称为<strong>最大范数</strong>(max
+norm)，这个范数表示向量中具有最大幅值的元素的绝对值：<span
+class="math inline">\(||x||_\infty=\max_i |x_i|\)</span></li>
+<li>当然，在机器学习中，我们有时也希望有类似的定义能够去衡量矩阵的大小，这要引入
+<strong>Frobenius范数</strong>(Frobenius norm)：<span
+class="math inline">\(||A||_F=\sqrt{\sum_{i,j}A^2_{i,j}}\)</span>​
+（类似于向量的 L2 范数？）</li>
+</ul>
+<h2 id="特征分解">特征分解</h2>
+<blockquote>
+<p>许多数学对象可以通过将它们分解成多个组成部分或者找到它们的一些属性而更好地理解，这些属性是通用的，而不是由我们选择表示它们的方式产生的。<br />
+例如：$12=2×3×3 $，从中我们可以获得一些信息，比如12不能被5整除</p>
+</blockquote>
+<p>通过矩阵的<strong>特征分解</strong>(eigen
+decomposition)我们同样能够获得一些信息，方阵 A 的 特征向量（eigen
+vector）是指与 A 相乘后相当于对该向量进行缩放的非零向量 v：<span
+class="math inline">\(Av=\lambda v\)</span><br />
+其中 <span class="math inline">\(\lambda\)</span>
+称为这个特征向量对应的特征值(eigen value)。（类似地，我们也可以定义
+左特征向量（left eigen vector）<span class="math inline">\(v^⊤A =
+λv^⊤\)</span>，但是通常我们更关注 右特征向量（right eigen
+vector））。显然，对特征向量缩放后的向量依然是矩阵的特征向量。<br />
+假设矩阵 A 有 n 个线性无关的特征向量<span
+class="math inline">\(\{v^{(1)},\cdots,v^{(n)}\}\)</span>对应着特征值<span
+class="math inline">\(\{\lambda^{(1)},\cdots,\lambda^{(n)}\}\)</span>,
+因此 A 的特征分解可以记作： <span class="math inline">\(A=V\rm
+diag(\lambda)V^{-1}\)</span><br />
+不过值得注意的是，并不是所有实矩阵都总有实特征分解，有些特征分解存在但是涉及到复数，不过值得注意的是，所有的<strong><em>实对称阵</em></strong>都可以分解成实特征向量和实特征值：<span
+class="math inline">\(A=Q \Lambda Q^T\)</span>，其中 <span
+class="math inline">\(Q\)</span> 是 <span
+class="math inline">\(A\)</span> 的特征向量组成的正交矩阵，<span
+class="math inline">\(\Lambda\)</span>​ 是对角矩阵。<br />
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251812391.png"
+alt="image-20240425181235305" /></p>
+<h2 id="奇异值分解">奇异值分解</h2>
+<p>对于非方阵矩阵，我们同样希望能够进行分解，换句话说我们希望将特征分解的范围拓展<br />
+这种分解方法被称为 <strong>奇异值分解</strong>（singular value
+decomposition, SVD），将矩阵分解为 奇异向量（singular vector）和
+<strong>奇异值</strong>（singular value）<br />
+同样地，奇异值分解为：<span class="math inline">\(A=UDV^T\)</span><br />
+假设 A 是一个 <span class="math inline">\(m\times
+n\)</span>的矩阵,那么U是一个 <span class="math inline">\(m\times
+m\)</span>的矩阵,D是一个<span class="math inline">\(m\times
+n\)</span>的矩阵,V是一个 <span class="math inline">\(n \times n\)</span>
+的矩阵<br />
+矩阵 U 和 V 都定义为 <strong>正交矩阵</strong>，而矩阵 D
+定义为<strong>对角矩阵</strong>。注意，矩阵 D 不一定是方阵。<br />
+对角矩阵 D 对角线上的元素被称为矩阵 A 的
+<strong>奇异值</strong>（singular value）。矩阵U 的列向量被称为
+<strong>左奇异向量</strong>（left singular vector），矩阵 V 的列向量被称
+<strong>右奇异向量</strong>（right singular vector）。<br />
+事实上，我们可以用与 A 相关的特征分解去解释 A 的奇异值分解。A 的
+左奇异向量（left singular vector）是 <span
+class="math inline">\(AA^⊤\)</span> 的特征向量。A 的 右奇异向量（right
+singular vector）是 <span class="math inline">\(A^⊤A\)</span>
+的特征向量。A 的非零奇异值是 <span class="math inline">\(A^⊤A\)</span>
+特征值的平方根，同时也是<span class="math inline">\(AA^⊤\)</span>
+特征值的平方根。<br />
+奇异值分解的推导如下：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261123476.jpg" alt="53ad37ea04a14b4601663211b5ac23d" style="zoom: 50%;" /></p>
+<blockquote>
+<p><a
+href="https://www.bilibili.com/video/BV1544y1v7Am/?spm_id_from=333.337.search-card.all.click">参考视频</a></p>
+</blockquote>
+<h2 id="mp伪逆">MP伪逆</h2>
+<p>对于非方阵而言，其逆运算没有定义，因此我们也需要对逆的概念进行拓展<br />
+如果矩阵 A 的行数大于列数，那么上述方程可能没有解。如果矩阵 A
+的行数小于列数，那么上述矩阵可能有多个解<br />
+Moore-Penrose 伪逆（Moore-Penrose
+pseudoinverse）使我们在这类问题上取得了一定的进展。矩阵 A
+的伪逆定义为：$ A ^ { + } = _ { } ( A ^ { T } A + I ) ^ { - 1 } A ^ { T
+}$</p>
+<p>而计算伪逆通常使用奇异值分解：$ A ^ { + } = V D ^ { + } U ^ { T }
+$<br />
+其中，矩阵 U，D 和 V 是矩阵 A奇异值分解后得到的矩阵。对角矩阵 D
+的伪逆<span class="math inline">\(D^+\)</span>
+是其非零元素<strong>取倒数之后再转置</strong>得到的。<br />
+MP伪逆在方程解的问题中也有很多应用，比如：</p>
+<ul>
+<li>当 <span class="math inline">\(n &gt; m\)</span> 时，<span
+class="math inline">\(x = A^+ y\)</span>是所有方程可行解中<span
+class="math inline">\(L_2\)</span>范数最小的那个</li>
+<li>当 <span class="math inline">\(n &gt; m\)</span>​
+时，MP伪逆得到的解使得 <span class="math inline">\(Ax\)</span>​ 与 <span
+class="math inline">\(y\)</span>​​ 的欧几里得距离最小</li>
+</ul>
+<h2 id="迹运算">迹运算</h2>
+<p>迹运算主要集中于以下几点</p>
+<ul>
+<li><span class="math inline">\(Tr(A) = \sum_i A_{i,i}\)</span></li>
+<li><span class="math inline">\(Tr(A) = Tr(A^T)\)</span></li>
+<li><span class="math inline">\(||A||_F=\sqrt{Tr(AA^T)}\)</span></li>
+<li>$ Tr ( {_ { i = 1 } ^ { n }} {F ^ { ( i ) }} ) = Tr ( F ^ { ( n ) }
+{_ { i = 1 } ^ { n - 1 }} {F ^ { ( i ) }} ) $​
+(多个矩阵相乘得到的方阵的迹，和将这些矩阵中的最后一个挪到最前面之后相乘的迹是相同的)</li>
+</ul>
+<h2 id="行列式">行列式</h2>
+<p>行列式，记作 det(A)，是一个将方阵 A
+映射到实数的函数。行列式等于矩阵特征值的乘积。行列式的绝对值可以用来衡量矩阵参与矩阵乘法后空间扩大或者缩小了多少。如果行列式是
+0，那么空间至少沿着某一维完全收缩了，使其失去了所有的体积。如果行列式是
+1，那么这个转换保持空间体积不变。</p>
+<h2 id="主成分分析">主成分分析</h2>
+<p>主成分分析（principal components analysis, PCA）</p>
+<hr />
+<p>首先，假设我们有 <strong>m 个 n 维的样本 <span
+class="math inline">\(\{x_1,x_2, \cdots,x_m\},x_i\in
+R^n\)</span></strong> ，我们希望使用某种压缩，对于每个 <span
+class="math inline">\(x_i\)</span> 找到对应的 <strong><span
+class="math inline">\(c_i \in R^l\)</span> ，一般的 $l &lt; n $</strong>
+，进行压缩</p>
+<ul>
+<li>对于编码器 <span class="math inline">\(f(x) = c\)</span></li>
+<li>对于解码器 <span class="math inline">\(x \approx
+g(c)=g(f(x))\)</span></li>
+</ul>
+<p>为了简化解码函数的选择，我们可以通过矩阵乘法将其映射回 n 维空间，即
+<span class="math inline">\(g(c) = Dc\)</span></p>
+<p>注意到，当 c
+等比例扩大缩小时，D同样等比例缩小扩大，可以得到无数个结果，因此我们限制
+D 中的所有列向量都有单位范数</p>
+<p>同样，为了让编码问题更简单，PCA限制 D
+的列向量彼此正交（D不是严格意义上的正交阵）</p>
+<p>我们如何去找到这个 c
+，使得他能够被精确解码？这里给出的方法是最小化原始向量<span
+class="math inline">\(x\)</span>与重构向量<span
+class="math inline">\(g(c^*)\)</span>的距离，即<span
+class="math inline">\(c^*={\rm arg\ min}_c ||x-g(c)||_2\)</span>
+，由于二范数非负性，所以我们可以通过平方进行优化</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261520572.png" alt="image-20240426152011469" style="zoom:33%;" /></p>
+<p>由于第一项并不依赖于 c ，所以可以再度简化为 <span
+class="math inline">\(c^*={\rm arg\ min}_c -2 x^T g(c)+g(c)^T
+g(c)\)</span></p>
+<p>带入 <span class="math inline">\(g(c)\)</span> 的定于，以及 <span
+class="math inline">\(D\)</span>
+矩阵的列向量互相正交的一些约定，我们有</p>
+<p><span class="math display">\[c^* = {\rm arg\ min}_c - 2 x ^ { T } D c
++ c ^ { T } c\]</span></p>
+<p>通过向量微积分，能够推导得到结论：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261229634.png" alt="image-20240426122900565" style="zoom:33%;" /></p>
+<p>所以推导得到编码函数也就能够写成 <span
+class="math inline">\(f(x)=D^Tx\)</span></p>
+<p>那么，另一方面该如何选取投影矩阵 D ？</p>
+<p>当然这个 D
+是作用在全体样本上，与刚刚的思路类似，我们需要使得误差矩阵的 Frobenius
+范数最小，也就是 <span class="math inline">\(D^*={\rm arg\ min}_D
+\sqrt{\sum_{i,j}(x_j^{(i)}-r(x^{(i)})_j)^2}{\rm \ subject\ to\
+}D^TD=I_l\)</span> 其中 <span
+class="math inline">\(r(x)=g(f(x))=DD^Tx\)</span></p>
+<p>首先考虑一维的情况，问题简化为：</p>
+<p><span class="math display">\[d^*={\rm arg\ min}_d
+\sqrt{\sum_{i}(x^{(i)}-d{d^T}{x^{(i)}})^2}{\rm \ subject\ to\
+}||d||_2=1\]</span></p>
+<p>由于 <span class="math inline">\(d^T x\)</span>
+是标量，可以重排位置，参考花书</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261243605.png" alt="image-20240426124335517" style="zoom: 50%;" /></p>
+<p>这里求和号实际上不方便理解，因此我们写成矩阵的形式，重新表述为<span
+class="math display">\[d^*={\rm arg\ min}_d ||X-Xd{d^T}||_F^2\ {\rm
+subject\ to\ }d^Td=1\]</span></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261248438.png" alt="image-20240426124828340" style="zoom:67%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261253697.png" alt="image-20240426125338607" style="zoom:50%;" /></p>
+<p>这里将 <span class="math inline">\(X^TX\)</span> 处理为对称阵，那么
+<span class="math inline">\(y^TX^TXy\)</span>
+就是一个二次型，那么显然他的最大值应该是最大特征值，对应y向量为对应特征值的特征向量。。。</p>
+<h1 id="概率论">概率论</h1>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+        <tag>花书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo中的markdown语法技巧</title>
+    <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>参考这篇<a
+href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
+<span id="more"></span>
+<h1 id="居中引用">居中引用</h1>
+<blockquote class="blockquote-center">
+<p>hello world</p>
+
+</blockquote>
+<h1 id="彩色-tag">彩色 tag</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% label [class] @ 标签内容 %&#125;</span><br><span class="line">class：</span><br><span class="line"> - default: 浅灰色,可留空</span><br><span class="line"> - primary: 浅紫色</span><br><span class="line"> - success: 浅绿色</span><br><span class="line"> - info: 浅蓝色</span><br><span class="line"> - warning: 浅黄色</span><br><span class="line"> - danger: 浅红色</span><br></pre></td></tr></table></figure>
+<mark class="label [warning]"> test</mark>
+<p>注意，由于之前安装的darkmode插件导致了前端css被覆盖，所以实际显示的颜色可能有不同</p>
+<h1 id="彩色-note">彩色 note</h1>
+<p>我个人很喜欢这个东西 ^ ^</p>
+<p>(为了避免编译错误，所以放在不同的行了。。。) <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note [class]%&#125; </span><br><span class="line">内容</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">class: </span><br><span class="line"> - default: 灰色</span><br><span class="line"> - primary: 紫色</span><br><span class="line"> - success: 绿色</span><br><span class="line"> - info: 蓝色</span><br><span class="line"> - warning: 黄色</span><br><span class="line"> - danger: 红色</span><br></pre></td></tr></table></figure></p>
+<details class="note "><summary><p>[info]</p>
+</summary>
+<p>hello world</p>
+
+</details>
+<h1 id="切换-tabs">切换 tabs</h1>
+<p>这个也不错，感觉之后不论是放代码还是放对比的东西，比上下文叠放好用多了。。。<br />
+<div class="tabs" id="[class]"><ul class="nav-tabs"><li class="tab active"><a href="#[class]-1">Tab1</a></li><li class="tab"><a href="#[class]-2">Tab2</a></li><li class="tab"><a href="#[class]-3">3号Tab</a></li></ul><div class="tab-content"><div class="tab-pane active" id="[class]-1"><p>这里是1号Tab内容</p></div><div class="tab-pane" id="[class]-2"><p>这里是2号Tab内容</p></div><div class="tab-pane" id="[class]-3"><p>这里是3号Tab内容，上面的tab也可以改 ^ ^</p></div></div></div></p>
+<h1 id="按钮-btn">按钮 Btn</h1>
+<p>使用自带 FontAwesome 图标，在 <a
+href="https://fontawesome.com/v4/icons/">FontAwesome</a>
+上找到相应的图标名<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [地址] , [内容] , [图标 规格] %&#125;</span><br><span class="line"></span><br><span class="line">[地址]：当使用外链绝对引用时，无按钮，样式类似Markdown链接跳转</span><br><span class="line">[图标 规格]: 使用无`fa-`开头的FontAwesome图标，可以用以下规格定义图标大小</span><br><span class="line">fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line"></span><br></pre></td></tr></table></figure> 但是不知道为什么显示不出来 hhh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home-2x]&#125;  </span><br><span class="line"></span><br><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home]&#125;  </span><br></pre></td></tr></table></figure>
+<p>哎哎，显示不出来我就给他用多行代码的形式注释掉了。。。</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nexT美化</title>
+    <url>/2024/04/09/nextT%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>额额。。。此贴的所有操作都是基于 <code>next8</code>
+版本进行的。。。<br />
+版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎</p>
+<span id="more"></span>
+<h1 id="可切换模式按钮">可切换模式按钮</h1>
+<p><del>参考了这个佬的<a
+href="https://haomingzhang.com/hexo_3/">博客</a></del><br />
+<del>在路径<code>themes/next/_vendors.yml</code> 下添加
+<code>darkmode.js</code> 的cdn</del><br />
+<del>然后我在next目录下没有找到 <code>_config.next.yml</code>
+但是我添加在 <code>_config.yml</code> 里</del></p>
+<p><br></p>
+<p>失败了。。。<br />
+可能是版本不对，更新给文件删了吧。。。</p>
+<hr />
+<p>我又找到了另一个佬的<a
+href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a><br />
+废话我不多说了，有用！<br />
+然后如果要自定义可以在这个路径下进行修改<br />
+<code>\[root]\node_modules\hexo-next-darkmode\lib</code><br />
+root 就是你的博客根目录，其他 npm install 的包也在这里，可以找一找
+hh</p>
+<h1 id="文章底部添加">文章底部添加</h1>
+<p>额原理就是加一个html的div标签<br />
+在路径 <code>\themes\next\layout\_macro</code> 中新建
+<code>passage-end-tag.swig</code> 文件,并添加以下内容：<br />
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span>-------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-paw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>接着打开<code>\themes\next\layout\_macro\post.swig</code>文件，在post-body
+之后， post-footer
+之前添加如下画红色部分代码（post-footer之前两个DIV，在END POST
+BODY之后的部分）： <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>但是我是没有 <code>post.swig</code> 文件的，我操作了
+<code>post.njk</code> 文件，同样可以</p>
+<p>然后打开主题配置文件(_config.yml),在末尾添加： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure></p>
+<h1 id="把底部-标签换成图标">把底部 # 标签换成图标</h1>
+<p>修改模板<code>/themes/next/layout/_macro/post.njk</code> 在尾部找到
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; if theme.tag_icon else &#x27;#&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"># 删去 if theme.tag_icon else &#x27;#&#x27; 即可</span><br><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;%&#125;</span><br><span class="line">重新渲染后可正确使用</span><br></pre></td></tr></table></figure></p>
+<h1 id="首页折叠">首页折叠</h1>
+<p>起因是我觉得每次进主页都直接看全文很麻烦。。。<br />
+然后去搜了下压缩结果是静态资源的压缩，在这篇<a
+href="https://akilar.top/posts/49b73b87/">博客</a>里<br />
+但我其实搜错关键字了hh<br />
+歪打正着给博客静态资源压缩了<br />
+参考这篇<a
+href="https://blog.csdn.net/yueyue200830/article/details/104470646">博客</a>
+没想到主页文章折叠在 <code>next</code> 的 <code>_config.yml</code>
+文件里就有<br />
+不过貌似优先级比较低？在我的<code>markdown</code>生成目录的文章里，如果填在
+<code>&lt;!--TOC--&gt;</code> 标签之前就无法折叠了。。。</p>
+<h1 id="next文章评论区">next文章评论区</h1>
+<p>看了下 <code>next</code> 的 <code>_config.yml</code> 文件<br />
+额额最终还是采用了 <code>waline</code>
+搭建个人博客（<code>gitalk</code>折腾了半天一直会报
+<code>e.toLowerCase is not a function</code>的错，他在GitHub的issue下面是有相关问题的，但是我按照其他人给出的解决方案没有搞定，只能转战
+<code>waline</code> 了<br />
+waline的参考手册还是很详细的，按照步骤很方便快速地部署完成了</p>
+<h2 id="vercel-部署">vercel 部署</h2>
+<p>采用了 <code>vercel</code> 自动部署 <code>waline</code><br />
+参考文档如下： - <a
+href="https://waline.js.org/guide/deploy/vercel.html#%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2">Waline</a></p>
+<p>管理界面地址为 https://[your app address]/ui<br />
+或者进入你的app中，看页面上方的导航标签有管理可以进入。。。<br />
+但是有一个问题就是通过vercel部署访问的速度实在太慢了。。。<br />
+之后考虑看看有没有其他办法能够部署到国内</p>
+<h2 id="waline-dark">waline dark</h2>
+<p>配置好的 waline 是不支持黑夜模式的，看了官方文档但是我没有找到 client
+文件，所以直接修改 css 作罢<br />
+随后考虑修改 <code>_config.yml</code>
+文件中的字段看是否能够修改（？字段几乎都不起作用，奇怪）<br />
+最后考虑到之前做的 dark mode按钮，那个是直接覆盖页面的
+css，应该也可以修改评论区的css<br />
+一查发现佬的文章里已经做了说明。 &gt; 由于暗黑模式切换插件依赖了
+Darkmode.js，如果插件不生效，这很有可能是 Darkmode.js 的 CDN
+资源失效了（在国内访问被墙）。<br />
+&gt; 此时，建议使用暗黑模式切换插件的 libUrl 配置参数来指定可用的 CDN
+资源链接，如下所示： &gt; - 使用 Unpkg 免费提供的 CDN 资源 &gt;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line"> ...</span><br><span class="line"> libUrl: &#x27;https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js&#x27;</span><br></pre></td></tr></table></figure> &gt; - 使用 Jsdelivr 免费提供的 CDN 资源 &gt;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line"> ...</span><br><span class="line"> libUrl: &#x27;https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js&#x27;</span><br></pre></td></tr></table></figure></p>
+<p>按照佬的方案轻松解决 ^ ^</p>
+<h2 id="waline加速">waline加速</h2>
+<p>由于<code>vercel</code>在国内被dns污染了所以访问起来不挂梯子是看不到评论区的<br />
+参考了网上的一些方法，刚好域名备案下来了，搞一下waline的加速<br />
+<br> ！注意，这个操作是要基于已有域名的情况下才能继续进行<br />
+我们要做的就是<strong>用已有的博客域名去免费申请一个子域名来代替vercel.app那个被污染的域名。</strong></p>
+<ol type="1">
+<li>进入域名控制台，找到你的博客域名，添加解析记录
+<ol type="1">
+<li>记录类型选择 <code>CNAME</code></li>
+<li>主机记录填 <code>comment</code>
+(可以自定，这一步完成你的二级域名就是 comment + 你的一级域名)</li>
+<li>添加记录值为 <code>cname.vercel-dns.com</code></li>
+</ol></li>
+</ol>
+<p>(比如我的域名是 <code>szf.cool</code>，那么操作完，我的二级域名应该是
+<code>comment.szf.cool</code>)<br />
+<br> 2.
+进入vercel控制台，进入你的项目，在<code>setting</code>-<code>Domains</code>下，在输入框中输入你的二级域名
+=&gt; add添加<br />
+3.
+同时修改next的config文件，更换一下<code>serverURL</code>字段即可<br />
+4. 这样就可以了，随后部署测试一下评论区是否能够正常访问即可</p>
+<p>额额但是在博客的评论区里，power by waline的版本是2.x。。。<br />
+在管理页面是 3.x 版本，目前还没出问题，不至于以后会不会有问题。。。</p>
+<h1 id="文件跳过渲染">文件跳过渲染</h1>
+<p>修改站点配置文件中的 <code>skip_render</code> 配置项。<br />
+只有 <code>source</code> 目录下的文件才会发布，因此 Hexo 只渲染 source
+目录下的文件。<code>skip_render</code> 参数设置的路径是相对于
+<code>source</code> 目录的路径。<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#单个文件</span><br><span class="line">skip_render: hello.html</span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件</span><br><span class="line">skip_render: test/* </span><br><span class="line"></span><br><span class="line">#单个文件夹下指定类型文件</span><br><span class="line">skip_render: test/*.md  </span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件以及子目录</span><br><span class="line">skip_render: test/**  </span><br><span class="line"></span><br><span class="line">#跳过多个目录，或者多个文件</span><br><span class="line">skip_render: [&#x27;*.html&#x27;, demo/**, test/*]</span><br></pre></td></tr></table></figure></p>
+<h1 id="文章置顶功能">文章置顶功能</h1>
+<p>参考这篇<a
+href="https://blog.csdn.net/stormdony/article/details/86745805">博客</a><br />
+首先修改本地的仓库<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm uninstall hexo-generator-index --save</span><br><span class="line">$ npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure></p>
+<p>然后就可以在文章的顶部信息修改 <code>top</code> 字段了。。。<br />
+同时要设置一下置顶的标签 hh</p>
+<p>我是在<code>\next\layout\_marco\post.nijk</code> 文件下的
+<code>post-meta-container</code>标签中添加的相关代码<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">  &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;font color=7D26CD&gt;置顶&lt;/font&gt;</span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure> 注意缩进 ^ ^<br />
+但是这个紫色的颜色不好看，我修改了 font color的值</p>
+<h1 id="更新markdown渲染">更新markdown渲染</h1>
+<p>额额看花书洋洋洒洒写了点文字，结果没想到markdown的渲染好像不是很行，于是按照教程重新折腾了一下markdown的渲染。。。<br />
+教程在<a
+href="https://blog.csdn.net/qq_42951560/article/details/123596899">这里</a><br />
+笔者又找到一个markdown的依赖包<a
+href="https://blog.csdn.net/qq_36667170/article/details/105846999">教程</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>nexT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown生成目录</title>
+    <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<!-- TOC -->
+<!-- vscode-markdown-toc -->
+<ul>
+<li><a href="#test">test</a></li>
+<li><a
+href="#VSCMarkdownTOC">利用VSC的插件<code>Markdown TOC</code>生成目录</a></li>
+<li><a href="#test-1">test</a>
+<ul>
+<li><a href="#test1">test1</a> <!-- vscode-markdown-toc-config
+  numbering=false
+  autoSave=true
+  /vscode-markdown-toc-config --> <!-- /TOC --></li>
+</ul></li>
+</ul>
+<span id="more"></span>
+<h1 id="在hexo中开启侧边栏文章目录">在hexo中开启侧边栏文章目录</h1>
+<p>看了网上的一些帖子，好像因为 <code>next</code> 版本不匹配导致<br />
+其实好像不用大费周章寻找
+<code>_custom.styl</code>（至少我是这样。。。）<br />
+只需要在<code>_config.md</code> 下修改 toc 词条即可<br />
+这是我的配置<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 3</span><br></pre></td></tr></table></figure> 按照英文指示自行按照喜好修改参数即可hh</p>
+<h2 id="test"><a name='test'></a>test</h2>
+<blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+<h1 id="markdown中插入目录">markdown中插入目录</h1>
+<h2
+id="利用vsc的插件markdown-toc生成目录"><a name='VSCMarkdownTOC'></a>利用VSC的插件<code>Markdown TOC</code>生成目录</h2>
+<p>直接在VSC的插件里搜索
+<code>Markdown TOC</code>，第一个下载最高的插件下载<br />
+根据插件给出的使用方法<br />
+&gt; 1. <code>ctrl + shift + p</code> 呼出面板 &gt; 2.
+将光标移动到你要生成目录的地方 &gt; 3. 输入 <code>Generate</code>
+找到命令 <code>Generate TOC for markdown</code> &gt; 4.
+选择该命令就可以了。。。 &gt; 5. 可以在他注释的地方修改参数 &gt;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numbering=false # 为true则开启标签目录带序号</span><br><span class="line">autoSave=true   # 为true生成目录时自动保存文件</span><br></pre></td></tr></table></figure></p>
+<p>不过好像这个插件会自动将你md文件中的标签改成 html 的格式<br />
+但是初次生成的时候，好像默认两个参数都是true，我也没找到在哪里修改他的配置文件，所以就怪怪的要生成两次，先生成一次然后修改参数，删掉原来的目录（保存注释），再生成一次他就会按照参数生成一份</p>
+<p><br></p>
+<p>而且感觉这东西好像不太实用呢，我需要将他生成的目录先放到hexo生成的两个<code>---</code>后面，然后这个插件为啥不支持生成一级文件。。。<br />
+此文仅做个记录以后不用了。。。</p>
+<h2 id="test-1"><a name='test-1'></a>test</h2>
+<blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+<h3 id="test1"><a name='test1'></a>test1</h3>
+<blockquote>
+<p>test for generate TOC</p>
+</blockquote>
+<h2 id="typora">typora</h2>
+<p>。。。才发现 typora能自动生成目录啊<br />
+<code>[TOC]</code>即可。。。<br />
+有点 🤡 了呀</p>
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo 主题更换</title>
     <url>/2024/04/07/hexo-%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2/</url>
     <content><![CDATA[<p>今天折腾一下 hexo 的主题变换 hh</p>
@@ -68,48 +626,6 @@ href="https://zhuanlan.zhihu.com/p/618864711">文章</a></p>
       <tags>
         <tag>hexo</tag>
         <tag>nexT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo中的markdown语法技巧</title>
-    <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>参考这篇<a
-href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
-<span id="more"></span>
-<h1 id="居中引用">居中引用</h1>
-<blockquote class="blockquote-center">
-<p>hello world</p>
-
-</blockquote>
-<h1 id="彩色-tag">彩色 tag</h1>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% label [class] @ 标签内容 %&#125;</span><br><span class="line">class：</span><br><span class="line"> - default: 浅灰色,可留空</span><br><span class="line"> - primary: 浅紫色</span><br><span class="line"> - success: 浅绿色</span><br><span class="line"> - info: 浅蓝色</span><br><span class="line"> - warning: 浅黄色</span><br><span class="line"> - danger: 浅红色</span><br></pre></td></tr></table></figure>
-<mark class="label [warning]"> test</mark>
-<p>注意，由于之前安装的darkmode插件导致了前端css被覆盖，所以实际显示的颜色可能有不同</p>
-<h1 id="彩色-note">彩色 note</h1>
-<p>我个人很喜欢这个东西 ^ ^</p>
-<p>(为了避免编译错误，所以放在不同的行了。。。) <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note [class]%&#125; </span><br><span class="line">内容</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">class: </span><br><span class="line"> - default: 灰色</span><br><span class="line"> - primary: 紫色</span><br><span class="line"> - success: 绿色</span><br><span class="line"> - info: 蓝色</span><br><span class="line"> - warning: 黄色</span><br><span class="line"> - danger: 红色</span><br></pre></td></tr></table></figure></p>
-<details class="note "><summary><p>[info]</p>
-</summary>
-<p>hello world</p>
-
-</details>
-<h1 id="切换-tabs">切换 tabs</h1>
-<p>这个也不错，感觉之后不论是放代码还是放对比的东西，比上下文叠放好用多了。。。<br />
-<div class="tabs" id="[class]"><ul class="nav-tabs"><li class="tab active"><a href="#[class]-1">Tab1</a></li><li class="tab"><a href="#[class]-2">Tab2</a></li><li class="tab"><a href="#[class]-3">3号Tab</a></li></ul><div class="tab-content"><div class="tab-pane active" id="[class]-1"><p>这里是1号Tab内容</p></div><div class="tab-pane" id="[class]-2"><p>这里是2号Tab内容</p></div><div class="tab-pane" id="[class]-3"><p>这里是3号Tab内容，上面的tab也可以改 ^ ^</p></div></div></div></p>
-<h1 id="按钮-btn">按钮 Btn</h1>
-<p>使用自带 FontAwesome 图标，在 <a
-href="https://fontawesome.com/v4/icons/">FontAwesome</a>
-上找到相应的图标名<br />
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [地址] , [内容] , [图标 规格] %&#125;</span><br><span class="line"></span><br><span class="line">[地址]：当使用外链绝对引用时，无按钮，样式类似Markdown链接跳转</span><br><span class="line">[图标 规格]: 使用无`fa-`开头的FontAwesome图标，可以用以下规格定义图标大小</span><br><span class="line">fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line"></span><br></pre></td></tr></table></figure> 但是不知道为什么显示不出来 hhh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home-2x]&#125;  </span><br><span class="line"></span><br><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home]&#125;  </span><br></pre></td></tr></table></figure>
-<p>哎哎，显示不出来我就给他用多行代码的形式注释掉了。。。</p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -346,432 +862,6 @@ src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251800449.png"
         <tag>git</tag>
         <tag>nodejs</tag>
         <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>markdown生成目录</title>
-    <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<!-- TOC -->
-<!-- vscode-markdown-toc -->
-<ul>
-<li><a href="#test">test</a></li>
-<li><a
-href="#VSCMarkdownTOC">利用VSC的插件<code>Markdown TOC</code>生成目录</a></li>
-<li><a href="#test-1">test</a>
-<ul>
-<li><a href="#test1">test1</a> <!-- vscode-markdown-toc-config
-  numbering=false
-  autoSave=true
-  /vscode-markdown-toc-config --> <!-- /TOC --></li>
-</ul></li>
-</ul>
-<span id="more"></span>
-<h1 id="在hexo中开启侧边栏文章目录">在hexo中开启侧边栏文章目录</h1>
-<p>看了网上的一些帖子，好像因为 <code>next</code> 版本不匹配导致<br />
-其实好像不用大费周章寻找
-<code>_custom.styl</code>（至少我是这样。。。）<br />
-只需要在<code>_config.md</code> 下修改 toc 词条即可<br />
-这是我的配置<br />
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 3</span><br></pre></td></tr></table></figure> 按照英文指示自行按照喜好修改参数即可hh</p>
-<h2 id="test"><a name='test'></a>test</h2>
-<blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-<h1 id="markdown中插入目录">markdown中插入目录</h1>
-<h2
-id="利用vsc的插件markdown-toc生成目录"><a name='VSCMarkdownTOC'></a>利用VSC的插件<code>Markdown TOC</code>生成目录</h2>
-<p>直接在VSC的插件里搜索
-<code>Markdown TOC</code>，第一个下载最高的插件下载<br />
-根据插件给出的使用方法<br />
-&gt; 1. <code>ctrl + shift + p</code> 呼出面板 &gt; 2.
-将光标移动到你要生成目录的地方 &gt; 3. 输入 <code>Generate</code>
-找到命令 <code>Generate TOC for markdown</code> &gt; 4.
-选择该命令就可以了。。。 &gt; 5. 可以在他注释的地方修改参数 &gt;
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numbering=false # 为true则开启标签目录带序号</span><br><span class="line">autoSave=true   # 为true生成目录时自动保存文件</span><br></pre></td></tr></table></figure></p>
-<p>不过好像这个插件会自动将你md文件中的标签改成 html 的格式<br />
-但是初次生成的时候，好像默认两个参数都是true，我也没找到在哪里修改他的配置文件，所以就怪怪的要生成两次，先生成一次然后修改参数，删掉原来的目录（保存注释），再生成一次他就会按照参数生成一份</p>
-<p><br></p>
-<p>而且感觉这东西好像不太实用呢，我需要将他生成的目录先放到hexo生成的两个<code>---</code>后面，然后这个插件为啥不支持生成一级文件。。。<br />
-此文仅做个记录以后不用了。。。</p>
-<h2 id="test-1"><a name='test-1'></a>test</h2>
-<blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-<h3 id="test1"><a name='test1'></a>test1</h3>
-<blockquote>
-<p>test for generate TOC</p>
-</blockquote>
-<h2 id="typora">typora</h2>
-<p>。。。才发现 typora能自动生成目录啊<br />
-<code>[TOC]</code>即可。。。<br />
-有点 🤡 了呀</p>
-]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nexT美化</title>
-    <url>/2024/04/09/nextT%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p>额额。。。此贴的所有操作都是基于 <code>next8</code>
-版本进行的。。。<br />
-版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎</p>
-<span id="more"></span>
-<h1 id="可切换模式按钮">可切换模式按钮</h1>
-<p><del>参考了这个佬的<a
-href="https://haomingzhang.com/hexo_3/">博客</a></del><br />
-<del>在路径<code>themes/next/_vendors.yml</code> 下添加
-<code>darkmode.js</code> 的cdn</del><br />
-<del>然后我在next目录下没有找到 <code>_config.next.yml</code>
-但是我添加在 <code>_config.yml</code> 里</del></p>
-<p><br></p>
-<p>失败了。。。<br />
-可能是版本不对，更新给文件删了吧。。。</p>
-<hr />
-<p>我又找到了另一个佬的<a
-href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a><br />
-废话我不多说了，有用！<br />
-然后如果要自定义可以在这个路径下进行修改<br />
-<code>\[root]\node_modules\hexo-next-darkmode\lib</code><br />
-root 就是你的博客根目录，其他 npm install 的包也在这里，可以找一找
-hh</p>
-<h1 id="文章底部添加">文章底部添加</h1>
-<p>额原理就是加一个html的div标签<br />
-在路径 <code>\themes\next\layout\_macro</code> 中新建
-<code>passage-end-tag.swig</code> 文件,并添加以下内容：<br />
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span>-------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-paw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>接着打开<code>\themes\next\layout\_macro\post.swig</code>文件，在post-body
-之后， post-footer
-之前添加如下画红色部分代码（post-footer之前两个DIV，在END POST
-BODY之后的部分）： <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>但是我是没有 <code>post.swig</code> 文件的，我操作了
-<code>post.njk</code> 文件，同样可以</p>
-<p>然后打开主题配置文件(_config.yml),在末尾添加： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure></p>
-<h1 id="把底部-标签换成图标">把底部 # 标签换成图标</h1>
-<p>修改模板<code>/themes/next/layout/_macro/post.njk</code> 在尾部找到
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; if theme.tag_icon else &#x27;#&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"># 删去 if theme.tag_icon else &#x27;#&#x27; 即可</span><br><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;%&#125;</span><br><span class="line">重新渲染后可正确使用</span><br></pre></td></tr></table></figure></p>
-<h1 id="首页折叠">首页折叠</h1>
-<p>起因是我觉得每次进主页都直接看全文很麻烦。。。<br />
-然后去搜了下压缩结果是静态资源的压缩，在这篇<a
-href="https://akilar.top/posts/49b73b87/">博客</a>里<br />
-但我其实搜错关键字了hh<br />
-歪打正着给博客静态资源压缩了<br />
-参考这篇<a
-href="https://blog.csdn.net/yueyue200830/article/details/104470646">博客</a>
-没想到主页文章折叠在 <code>next</code> 的 <code>_config.yml</code>
-文件里就有<br />
-不过貌似优先级比较低？在我的<code>markdown</code>生成目录的文章里，如果填在
-<code>&lt;!--TOC--&gt;</code> 标签之前就无法折叠了。。。</p>
-<h1 id="next文章评论区">next文章评论区</h1>
-<p>看了下 <code>next</code> 的 <code>_config.yml</code> 文件<br />
-额额最终还是采用了 <code>waline</code>
-搭建个人博客（<code>gitalk</code>折腾了半天一直会报
-<code>e.toLowerCase is not a function</code>的错，他在GitHub的issue下面是有相关问题的，但是我按照其他人给出的解决方案没有搞定，只能转战
-<code>waline</code> 了<br />
-waline的参考手册还是很详细的，按照步骤很方便快速地部署完成了</p>
-<h2 id="vercel-部署">vercel 部署</h2>
-<p>采用了 <code>vercel</code> 自动部署 <code>waline</code><br />
-参考文档如下： - <a
-href="https://waline.js.org/guide/deploy/vercel.html#%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2">Waline</a></p>
-<p>管理界面地址为 https://[your app address]/ui<br />
-或者进入你的app中，看页面上方的导航标签有管理可以进入。。。<br />
-但是有一个问题就是通过vercel部署访问的速度实在太慢了。。。<br />
-之后考虑看看有没有其他办法能够部署到国内</p>
-<h2 id="waline-dark">waline dark</h2>
-<p>配置好的 waline 是不支持黑夜模式的，看了官方文档但是我没有找到 client
-文件，所以直接修改 css 作罢<br />
-随后考虑修改 <code>_config.yml</code>
-文件中的字段看是否能够修改（？字段几乎都不起作用，奇怪）<br />
-最后考虑到之前做的 dark mode按钮，那个是直接覆盖页面的
-css，应该也可以修改评论区的css<br />
-一查发现佬的文章里已经做了说明。 &gt; 由于暗黑模式切换插件依赖了
-Darkmode.js，如果插件不生效，这很有可能是 Darkmode.js 的 CDN
-资源失效了（在国内访问被墙）。<br />
-&gt; 此时，建议使用暗黑模式切换插件的 libUrl 配置参数来指定可用的 CDN
-资源链接，如下所示： &gt; - 使用 Unpkg 免费提供的 CDN 资源 &gt;
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line"> ...</span><br><span class="line"> libUrl: &#x27;https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js&#x27;</span><br></pre></td></tr></table></figure> &gt; - 使用 Jsdelivr 免费提供的 CDN 资源 &gt;
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line"> ...</span><br><span class="line"> libUrl: &#x27;https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js&#x27;</span><br></pre></td></tr></table></figure></p>
-<p>按照佬的方案轻松解决 ^ ^</p>
-<h2 id="waline加速">waline加速</h2>
-<p>由于<code>vercel</code>在国内被dns污染了所以访问起来不挂梯子是看不到评论区的<br />
-参考了网上的一些方法，刚好域名备案下来了，搞一下waline的加速<br />
-<br> ！注意，这个操作是要基于已有域名的情况下才能继续进行<br />
-我们要做的就是<strong>用已有的博客域名去免费申请一个子域名来代替vercel.app那个被污染的域名。</strong></p>
-<ol type="1">
-<li>进入域名控制台，找到你的博客域名，添加解析记录
-<ol type="1">
-<li>记录类型选择 <code>CNAME</code></li>
-<li>主机记录填 <code>comment</code>
-(可以自定，这一步完成你的二级域名就是 comment + 你的一级域名)</li>
-<li>添加记录值为 <code>cname.vercel-dns.com</code></li>
-</ol></li>
-</ol>
-<p>(比如我的域名是 <code>szf.cool</code>，那么操作完，我的二级域名应该是
-<code>comment.szf.cool</code>)<br />
-<br> 2.
-进入vercel控制台，进入你的项目，在<code>setting</code>-<code>Domains</code>下，在输入框中输入你的二级域名
-=&gt; add添加<br />
-3.
-同时修改next的config文件，更换一下<code>serverURL</code>字段即可<br />
-4. 这样就可以了，随后部署测试一下评论区是否能够正常访问即可</p>
-<p>额额但是在博客的评论区里，power by waline的版本是2.x。。。<br />
-在管理页面是 3.x 版本，目前还没出问题，不至于以后会不会有问题。。。</p>
-<h1 id="文件跳过渲染">文件跳过渲染</h1>
-<p>修改站点配置文件中的 <code>skip_render</code> 配置项。<br />
-只有 <code>source</code> 目录下的文件才会发布，因此 Hexo 只渲染 source
-目录下的文件。<code>skip_render</code> 参数设置的路径是相对于
-<code>source</code> 目录的路径。<br />
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#单个文件</span><br><span class="line">skip_render: hello.html</span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件</span><br><span class="line">skip_render: test/* </span><br><span class="line"></span><br><span class="line">#单个文件夹下指定类型文件</span><br><span class="line">skip_render: test/*.md  </span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件以及子目录</span><br><span class="line">skip_render: test/**  </span><br><span class="line"></span><br><span class="line">#跳过多个目录，或者多个文件</span><br><span class="line">skip_render: [&#x27;*.html&#x27;, demo/**, test/*]</span><br></pre></td></tr></table></figure></p>
-<h1 id="文章置顶功能">文章置顶功能</h1>
-<p>参考这篇<a
-href="https://blog.csdn.net/stormdony/article/details/86745805">博客</a><br />
-首先修改本地的仓库<br />
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm uninstall hexo-generator-index --save</span><br><span class="line">$ npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure></p>
-<p>然后就可以在文章的顶部信息修改 <code>top</code> 字段了。。。<br />
-同时要设置一下置顶的标签 hh</p>
-<p>我是在<code>\next\layout\_marco\post.nijk</code> 文件下的
-<code>post-meta-container</code>标签中添加的相关代码<br />
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">  &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;font color=7D26CD&gt;置顶&lt;/font&gt;</span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure> 注意缩进 ^ ^<br />
-但是这个紫色的颜色不好看，我修改了 font color的值</p>
-<h1 id="更新markdown渲染">更新markdown渲染</h1>
-<p>额额看花书洋洋洒洒写了点文字，结果没想到markdown的渲染好像不是很行，于是按照教程重新折腾了一下markdown的渲染。。。<br />
-教程在<a
-href="https://blog.csdn.net/qq_42951560/article/details/123596899">这里</a><br />
-笔者又找到一个markdown的依赖包<a
-href="https://blog.csdn.net/qq_36667170/article/details/105846999">教程</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>nexT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>花书（一）</title>
-    <url>/2024/04/15/%E8%8A%B1%E4%B9%A6%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括<strong>线性代数</strong>与<strong>概率论</strong>部分内容</p>
-
-</blockquote>
-<span id="more"></span>
-<p>当然，笔者所记不能是花书所有的内容，只能是笔者自己觉得有提升、有意义的部分，所以很多课堂上已经掌握的内容就没有纳入本文的内容了</p>
-<h1 id="引言">引言</h1>
-<p>一些人工智能项目旨在将世界所包含的知识用形式化的语言进行硬编码
-(hard-code)
-，而计算机可以使用逻辑推理规则自动理解这些形式化语言中的声明。这就是人工智能的<strong>知识库</strong>
-(knowledge base)</p>
-<p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习
-(machine learning) 的能力</p>
-<p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong>
-(representation learning)<br />
-&gt; 一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器
-(encoder) 和一个解码器 (decoder)
-函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br />
-&gt;
-而我们的目标是：数据经过编码器和解码器能够尽可能多地保留信息，同时，新的表示有一些好的特性。。。</p>
-<p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的
-<strong>变差因素</strong> (factors of variation) 。 &gt;
-这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br />
-&gt; 比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。</p>
-<p>深度学习 (deep learning)
-通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题<br />
-&gt; 如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br />
-&gt; 直接处理，让机器学习或评估几乎是不可能的<br />
-&gt; 深度学习将复杂的映射分解为一系列嵌套的简单的映射<br />
-&gt; 输入展示在可见层 (visible
-layer)，命名的原因是它包含我们能够观察到的变量<br />
-&gt; 然后经过一系列的隐藏层 (hiden layer)</p>
-<p>评估模型深度的方式主要有两种： - 评估计算流深度 - 评估概念关联深度 -
-比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的
-n 次计算，也就是说计算的图包含 2n 层</p>
-<hr />
-<h1 id="线性代数">线性代数</h1>
-<p>在这里，矩阵被看作是列向量集合，即 <span
-class="math inline">\(A=[\alpha_1,\alpha_2,\alpha_3,\cdots,\alpha_n]\)</span>
-，而每个列向量被看作是方向的描述<br />
-因此 <span class="math inline">\(Ax=\sum_i x_iA_{:,i}\)</span>
-可以被描述为我们需要沿着第<span
-class="math inline">\(i\)</span>个向量的方向走<span
-class="math inline">\(x_i\)</span>的步长</p>
-<p>一组向量的 <strong>生成子空间(span)</strong>
-是原始向量线性组合后所能抵达的点的集合<br />
-也就是说，方程 <span
-class="math inline">\(Ax=b\)</span>是否有解，相当于：确定向量<span
-class="math inline">\(b\)</span>是否在<span
-class="math inline">\(A\)</span>的列向量集合的生成子空间中，这个特殊的生成子空间也被称为
-<span class="math inline">\(A\)</span> 的<strong>列空间(column
-space)</strong> 或是<span
-class="math inline">\(A\)</span>的<strong>值域(range)</strong> 。</p>
-<h2 id="讨论方程-axb-是否有解">讨论方程 <span
-class="math inline">\(Ax=b\)</span> 是否有解？</h2>
-<blockquote>
-<p>前提我们记 <span class="math inline">\(A\)</span> 的形状为 <span
-class="math inline">\(m \times n\)</span></p>
-</blockquote>
-<p>那么一方面，若要求该方程对任意的<span
-class="math inline">\(b\)</span>都要有解，由于<span
-class="math inline">\(Ax\)</span> 看作是<span
-class="math inline">\(A\)</span>的第<span
-class="math inline">\(i\)</span>个列向量，所以<span
-class="math inline">\(Ax\)</span>自然有<span
-class="math inline">\(n\)</span>个，故若<span
-class="math inline">\(Ax\)</span>的列空间是整个<span
-class="math inline">\(\mathbb{R}^m\)</span>要求<span
-class="math inline">\(n\ge m\)</span><br />
-（当然，这只是必要条件，这些列向量会存在冗余，这种现象称之为
-<strong>线性相关</strong> ）</p>
-<p><br></p>
-<p>另一方面，如果想要该矩阵可逆，需要使得方程对每一个 <span
-class="math inline">\(b\)</span> 至多有一个解。<br />
-&gt;
-这一句可能有些同学一开始看会愣一下，笔者在这里卡了一下，作者的意思是
-<span class="math inline">\(Ax=b\)</span>，既然<span
-class="math inline">\(A\)</span>是广义上可逆的，那么<span
-class="math inline">\(x=A^{-1}b\)</span>，也就是说，x是<span
-class="math inline">\(A^{-1}\)</span>的列空间中的一个向量，所以说，x至多也只能有一个，不可能在<span
-class="math inline">\(A\)</span>可逆的情况下一个<span
-class="math inline">\(b\)</span>向量对应多个<span
-class="math inline">\(x\)</span>向量</p>
-<p>所以该矩阵需要确保至多有 <span class="math inline">\(m\)</span>
-个列，当然，这是个充分条件<br />
-综上所述，如果方程有唯一解那么<span
-class="math inline">\(A\)</span>矩阵首先要是方阵，其次他所有的列向量都要是无关的</p>
-<h2 id="范数">范数</h2>
-<p>在机器学习中，我们通过称为 <strong>范数</strong>
-(norm)的函数来衡量向量的大小，形式上 <span
-class="math inline">\(L^p\)</span>范数的定义为： <span
-class="math display">\[ | | x | | _ { p } = \left( \sum _ { i } | x _ {
-i } | ^ { p } \right) ^ { \frac { 1 } { p } }\]</span><br />
-范数能够将向量映射为非负值<br />
-直观上来看，向量<span
-class="math inline">\(x\)</span>的范数衡量了从原点到点<span
-class="math inline">\(x\)</span>的距离，更严格地说，范数满足如下性质：</p>
-<ul>
-<li><span class="math inline">\(f(x)=0 \rightarrow x=\vec
-0\)</span></li>
-<li><span class="math inline">\(f(x+y) \le f(x) + f(y)\)</span></li>
-<li>$ R , f ( x ) = | | f ( x )$</li>
-</ul>
-<p>举几个例子吧！<br />
-- 当 <span class="math inline">\(p = 2\)</span> 时，<span
-class="math inline">\(L^2\)</span> 范数称为
-<strong>欧几里得范数</strong>(Euclidean norm)：表示从原点出发到向量
-<span class="math inline">\(x\)</span>
-确定的点的欧几里得距离。通常情况也用 <span
-class="math inline">\(L^2\)</span> 范数的平方去代替 <span
-class="math inline">\(L^2\)</span>
-范数，不过也有利有弊，一方面，平方在原点附近的增长非常缓慢，另一方面，平方的导数只取决于对应的元素
-- 当 <span class="math inline">\(p = 1\)</span> 时， <span
-class="math inline">\(L^1\)</span>
-范数却能够给我们区分零元素和非零元素， <span
-class="math inline">\(L^1\)</span>
-范数的计算也非常简单，即各位的绝对值和 - 当 <span
-class="math inline">\(p = 0\)</span> 时，这种 <span
-class="math inline">\(L^0\)</span>
-范数用来统计向量中非零元素的个数，有时我们会用他来衡量一个向量的大小，但这个概念对于前面数学上的严格定义是不对的，首先第三条就不满足了。。。
-- 当 <span class="math inline">\(p = +\infty\)</span>
-时，也被称为<strong>最大范数</strong>(max
-norm)，这个范数表示向量中具有最大幅值的元素的绝对值：<span
-class="math inline">\(||x||_\infty=\max_i |x_i|\)</span> -
-当然，在机器学习中，我们有时也希望有类似的定义能够去衡量矩阵的大小，这要引入
-<strong>Frobenius范数</strong>(Frobenius norm)：<span
-class="math inline">\(||A||_F=\sqrt{\sum_{i,j}A^2_{i,j}}\)</span>
-（类似于向量的 L2 范数？）</p>
-<h2 id="特征分解">特征分解</h2>
-<blockquote>
-<p>许多数学对象可以通过将它们分解成多个组成部分或者找到它们的一些属性而更好地理解，这些属性是通用的，而不是由我们选择表示它们的方式产生的。<br />
-例如：$12=2 $，从中我们可以获得一些信息，比如12不能被5整除</p>
-</blockquote>
-<p>通过矩阵的<strong>特征分解</strong>(eigen
-decomposition)我们同样能够获得一些信息，方阵 A 的 特征向量（eigen
-vector）是指与 A 相乘后相当于对该向量进行缩放的非零向量 v：<span
-class="math inline">\(Av=\lambda v\)</span><br />
-其中 <span class="math inline">\(\lambda\)</span>
-称为这个特征向量对应的特征值(eigen value)。（类似地，我们也可以定义
-左特征向量（left eigen vector）<span class="math inline">\(v^⊤A =
-λv^⊤\)</span>，但是通常我们更关注 右特征向量（right eigen
-vector））。显然，对特征向量缩放后的向量依然是矩阵的特征向量。<br />
-假设矩阵 A 有 n 个线性无关的特征向量<span
-class="math inline">\(\{v^{(1)},\cdots,v^{(n)}\}\)</span>对应着特征值<span
-class="math inline">\(\{\lambda^{(1)},\cdots,\lambda^{(n)}\}\)</span>,
-因此 A 的特征分解可以记作： <span class="math inline">\(A=V\rm
-diag(\lambda)V^{-1}\)</span><br />
-不过值得注意的是，并不是所有实矩阵都总有实特征分解，有些特征分解存在但是涉及到复数，不过值得注意的是，所有的<strong><em>实对称阵</em></strong>都可以分解成实特征向量和实特征值：<span
-class="math inline">\(A=Q \Lambda Q^T\)</span>，其中 <span
-class="math inline">\(Q\)</span> 是 <span
-class="math inline">\(A\)</span> 的特征向量组成的正交矩阵，<span
-class="math inline">\(\Lambda\)</span>​ 是对角矩阵。<br />
-<img
-src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251812391.png"
-alt="image-20240425181235305" /></p>
-<h2 id="奇异值分解">奇异值分解</h2>
-<p>对于非方阵矩阵，我们同样希望能够进行分解，换句话说我们希望将特征分解的范围拓展<br />
-这种分解方法被称为 <strong>奇异值分解</strong>（singular value
-decomposition, SVD），将矩阵分解为 奇异向量（singular vector）和
-<strong>奇异值</strong>（singular value）<br />
-同样地，奇异值分解为：<span class="math inline">\(A=UDV^T\)</span><br />
-假设 A 是一个 <span class="math inline">\(m\times
-n\)</span>的矩阵,那么U是一个 <span class="math inline">\(m\times
-m\)</span>的矩阵,D是一个<span class="math inline">\(m\times
-n\)</span>的矩阵,V是一个 <span class="math inline">\(n \times n\)</span>
-的矩阵<br />
-矩阵 U 和 V 都定义为 <strong>正交矩阵</strong>，而矩阵 D
-定义为<strong>对角矩阵</strong>。注意，矩阵 D 不一定是方阵。<br />
-对角矩阵 D 对角线上的元素被称为矩阵 A 的
-<strong>奇异值</strong>（singular value）。矩阵U 的列向量被称为
-<strong>左奇异向量</strong>（left singular vector），矩阵 V 的列向量被称
-<strong>右奇异向量</strong>（right singular vector）。<br />
-事实上，我们可以用与 A 相关的特征分解去解释 A 的奇异值分解。A 的
-左奇异向量（left singular vector）是 <span
-class="math inline">\(AA^⊤\)</span> 的特征向量。A 的 右奇异向量（right
-singular vector）是 <span class="math inline">\(A^⊤A\)</span>
-的特征向量。A 的非零奇异值是 <span class="math inline">\(A^⊤A\)</span>
-特征值的平方根，同时也是<span class="math inline">\(AA^⊤\)</span>
-特征值的平方根。<br />
-奇异值分解的推导如下：</p>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261123476.jpg" alt="53ad37ea04a14b4601663211b5ac23d" style="zoom: 50%;" /></p>
-<blockquote>
-<p><a
-href="https://www.bilibili.com/video/BV1544y1v7Am/?spm_id_from=333.337.search-card.all.click">参考视频</a></p>
-</blockquote>
-<h2 id="mp伪逆">MP伪逆</h2>
-<p>对于非方阵而言，其逆运算没有定义，因此我们也需要对逆的概念进行拓展<br />
-如果矩阵 A 的行数大于列数，那么上述方程可能没有解。如果矩阵 A
-的行数小于列数，那么上述矩阵可能有多个解<br />
-Moore-Penrose 伪逆（Moore-Penrose
-pseudoinverse）使我们在这类问题上取得了一定的进展。矩阵 A
-的伪逆定义为：$ A ^ { + } = _ { } ( A ^ { T } A + I ) ^ { - 1 } A ^ { T
-}$</p>
-<p>而计算伪逆通常使用奇异值分解：$ A ^ { + } = V D ^ { + } U ^ { T }
-$<br />
-其中，矩阵 U，D 和 V 是矩阵 A奇异值分解后得到的矩阵。对角矩阵 D
-的伪逆<span class="math inline">\(D^+\)</span>
-是其非零元素<strong>取倒数之后再转置</strong>得到的。<br />
-MP伪逆在方程解的问题中也有很多应用，比如： - 当 <span
-class="math inline">\(n &gt; m\)</span> 时，<span
-class="math inline">\(x = A^+ y\)</span>是所有方程可行解中<span
-class="math inline">\(L_2\)</span>范数最小的那个 - 当 <span
-class="math inline">\(n &gt; m\)</span>​ 时，MP伪逆得到的解使得 <span
-class="math inline">\(Ax\)</span>​ 与 <span
-class="math inline">\(y\)</span>​ 的欧几里得距离最小</p>
-<h2 id="迹运算">迹运算</h2>
-<ul>
-<li><span class="math inline">\({\rm Tr}(A)=\sum_i A_{i,i}\)</span></li>
-<li>$||A||_F=</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Deep Learning</category>
-      </categories>
-      <tags>
-        <tag>Deep Learning</tag>
-        <tag>花书</tag>
       </tags>
   </entry>
 </search>

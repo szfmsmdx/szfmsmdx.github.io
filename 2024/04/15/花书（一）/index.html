@@ -27,8 +27,13 @@
 <meta property="og:description" content="研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括线性代数与概率论部分内容">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261123476.jpg">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261520572.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261229634.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261243605.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261248438.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261253697.png">
 <meta property="article:published_time" content="2024-04-15T05:55:21.000Z">
-<meta property="article:modified_time" content="2024-04-26T06:22:26.113Z">
+<meta property="article:modified_time" content="2024-04-26T07:20:26.997Z">
 <meta property="article:author" content="Szfmsmdx">
 <meta property="article:tag" content="Deep Learning">
 <meta property="article:tag" content="花书">
@@ -143,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA%E6%96%B9%E7%A8%8B-axb-%E6%98%AF%E5%90%A6%E6%9C%89%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">讨论方程 \(Ax&#x3D;b\) 是否有解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8C%83%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">范数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%88%86%E8%A7%A3"><span class="nav-number">2.3.</span> <span class="nav-text">特征分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">奇异值分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mp%E4%BC%AA%E9%80%86"><span class="nav-number">2.5.</span> <span class="nav-text">MP伪逆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%B9%E8%BF%90%E7%AE%97"><span class="nav-number">2.6.</span> <span class="nav-text">迹运算</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA%E6%96%B9%E7%A8%8B-axb-%E6%98%AF%E5%90%A6%E6%9C%89%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">讨论方程 \(Ax&#x3D;b\) 是否有解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8C%83%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">范数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%88%86%E8%A7%A3"><span class="nav-number">2.3.</span> <span class="nav-text">特征分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">奇异值分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mp%E4%BC%AA%E9%80%86"><span class="nav-number">2.5.</span> <span class="nav-text">MP伪逆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%B9%E8%BF%90%E7%AE%97"><span class="nav-number">2.6.</span> <span class="nav-text">迹运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="nav-number">2.7.</span> <span class="nav-text">行列式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90"><span class="nav-number">2.8.</span> <span class="nav-text">主成分分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">概率论</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -249,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-26 14:22:26" itemprop="dateModified" datetime="2024-04-26T14:22:26+08:00">2024-04-26</time>
+      <time title="修改时间：2024-04-26 15:20:26" itemprop="dateModified" datetime="2024-04-26T15:20:26+08:00">2024-04-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -282,14 +287,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.2k</span>
+      <span>5.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span>10 分钟</span>
     </span>
 </div>
 
@@ -315,27 +320,38 @@
 <p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习
 (machine learning) 的能力</p>
 <p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong>
-(representation learning)<br />
-&gt; 一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器
-(encoder) 和一个解码器 (decoder)
+(representation learning)</p>
+<blockquote>
+<p>一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器 (encoder)
+和一个解码器 (decoder)
 函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br />
-&gt;
 而我们的目标是：数据经过编码器和解码器能够尽可能多地保留信息，同时，新的表示有一些好的特性。。。</p>
+</blockquote>
 <p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的
-<strong>变差因素</strong> (factors of variation) 。 &gt;
-这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br />
-&gt; 比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。</p>
+<strong>变差因素</strong> (factors of variation) 。</p>
+<blockquote>
+<p>这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br />
+比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。</p>
+</blockquote>
 <p>深度学习 (deep learning)
-通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题<br />
-&gt; 如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br />
-&gt; 直接处理，让机器学习或评估几乎是不可能的<br />
-&gt; 深度学习将复杂的映射分解为一系列嵌套的简单的映射<br />
-&gt; 输入展示在可见层 (visible
+通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题</p>
+<blockquote>
+<p>如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br />
+直接处理，让机器学习或评估几乎是不可能的<br />
+深度学习将复杂的映射分解为一系列嵌套的简单的映射<br />
+输入展示在可见层 (visible
 layer)，命名的原因是它包含我们能够观察到的变量<br />
-&gt; 然后经过一系列的隐藏层 (hiden layer)</p>
-<p>评估模型深度的方式主要有两种： - 评估计算流深度 - 评估概念关联深度 -
-比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的
-n 次计算，也就是说计算的图包含 2n 层</p>
+然后经过一系列的隐藏层 (hiden layer)</p>
+</blockquote>
+<p>评估模型深度的方式主要有两种：</p>
+<ul>
+<li>评估计算流深度</li>
+<li>评估概念关联深度
+<ul>
+<li>比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的
+n 次计算，也就是说计算的图包含 2n 层</li>
+</ul></li>
+</ul>
 <hr />
 <h1 id="线性代数">线性代数</h1>
 <p>在这里，矩阵被看作是列向量集合，即 <span
@@ -374,9 +390,9 @@ class="math inline">\(n\ge m\)</span><br />
 <strong>线性相关</strong> ）</p>
 <p><br></p>
 <p>另一方面，如果想要该矩阵可逆，需要使得方程对每一个 <span
-class="math inline">\(b\)</span> 至多有一个解。<br />
-&gt;
-这一句可能有些同学一开始看会愣一下，笔者在这里卡了一下，作者的意思是
+class="math inline">\(b\)</span> 至多有一个解。</p>
+<blockquote>
+<p>这一句可能有些同学一开始看会愣一下，笔者在这里卡了一下，作者的意思是
 <span class="math inline">\(Ax=b\)</span>，既然<span
 class="math inline">\(A\)</span>是广义上可逆的，那么<span
 class="math inline">\(x=A^{-1}b\)</span>，也就是说，x是<span
@@ -384,10 +400,11 @@ class="math inline">\(A^{-1}\)</span>的列空间中的一个向量，所以说�
 class="math inline">\(A\)</span>可逆的情况下一个<span
 class="math inline">\(b\)</span>向量对应多个<span
 class="math inline">\(x\)</span>向量</p>
+</blockquote>
 <p>所以该矩阵需要确保至多有 <span class="math inline">\(m\)</span>
 个列，当然，这是个充分条件<br />
 综上所述，如果方程有唯一解那么<span
-class="math inline">\(A\)</span>矩阵首先要是方阵，其次他所有的列向量都要是无关的</p>
+class="math inline">\(A\)</span>​矩阵首先要是方阵，其次他所有的列向量都要是无关的</p>
 <h2 id="范数">范数</h2>
 <p>在机器学习中，我们通过称为 <strong>范数</strong>
 (norm)的函数来衡量向量的大小，形式上 <span
@@ -402,37 +419,40 @@ class="math inline">\(x\)</span>的距离，更严格地说，范数满足如下
 <li><span class="math inline">\(f(x)=0 \rightarrow x=\vec
 0\)</span></li>
 <li><span class="math inline">\(f(x+y) \le f(x) + f(y)\)</span></li>
-<li>$ R , f ( x ) = | | f ( x )$</li>
+<li><span class="math inline">\(\forall \alpha \in R , f (\alpha x) =
+|{\alpha}|f(x)\)</span></li>
 </ul>
-<p>举几个例子吧！<br />
-- 当 <span class="math inline">\(p = 2\)</span> 时，<span
+<p>举几个例子吧！</p>
+<ul>
+<li>当 <span class="math inline">\(p = 2\)</span> 时，<span
 class="math inline">\(L^2\)</span> 范数称为
 <strong>欧几里得范数</strong>(Euclidean norm)：表示从原点出发到向量
 <span class="math inline">\(x\)</span>
 确定的点的欧几里得距离。通常情况也用 <span
 class="math inline">\(L^2\)</span> 范数的平方去代替 <span
 class="math inline">\(L^2\)</span>
-范数，不过也有利有弊，一方面，平方在原点附近的增长非常缓慢，另一方面，平方的导数只取决于对应的元素
-- 当 <span class="math inline">\(p = 1\)</span> 时， <span
+范数，不过也有利有弊，一方面，平方在原点附近的增长非常缓慢，另一方面，平方的导数只取决于对应的元素</li>
+<li>当 <span class="math inline">\(p = 1\)</span> 时， <span
 class="math inline">\(L^1\)</span>
 范数却能够给我们区分零元素和非零元素， <span
 class="math inline">\(L^1\)</span>
-范数的计算也非常简单，即各位的绝对值和 - 当 <span
-class="math inline">\(p = 0\)</span> 时，这种 <span
+范数的计算也非常简单，即各位的绝对值和</li>
+<li>当 <span class="math inline">\(p = 0\)</span> 时，这种 <span
 class="math inline">\(L^0\)</span>
-范数用来统计向量中非零元素的个数，有时我们会用他来衡量一个向量的大小，但这个概念对于前面数学上的严格定义是不对的，首先第三条就不满足了。。。
-- 当 <span class="math inline">\(p = +\infty\)</span>
+范数用来统计向量中非零元素的个数，有时我们会用他来衡量一个向量的大小，但这个概念对于前面数学上的严格定义是不对的，首先第三条就不满足了。。。</li>
+<li>当 <span class="math inline">\(p = +\infty\)</span>
 时，也被称为<strong>最大范数</strong>(max
 norm)，这个范数表示向量中具有最大幅值的元素的绝对值：<span
-class="math inline">\(||x||_\infty=\max_i |x_i|\)</span> -
-当然，在机器学习中，我们有时也希望有类似的定义能够去衡量矩阵的大小，这要引入
+class="math inline">\(||x||_\infty=\max_i |x_i|\)</span></li>
+<li>当然，在机器学习中，我们有时也希望有类似的定义能够去衡量矩阵的大小，这要引入
 <strong>Frobenius范数</strong>(Frobenius norm)：<span
-class="math inline">\(||A||_F=\sqrt{\sum_{i,j}A^2_{i,j}}\)</span>
-（类似于向量的 L2 范数？）</p>
+class="math inline">\(||A||_F=\sqrt{\sum_{i,j}A^2_{i,j}}\)</span>​
+（类似于向量的 L2 范数？）</li>
+</ul>
 <h2 id="特征分解">特征分解</h2>
 <blockquote>
 <p>许多数学对象可以通过将它们分解成多个组成部分或者找到它们的一些属性而更好地理解，这些属性是通用的，而不是由我们选择表示它们的方式产生的。<br />
-例如：$12=2 $，从中我们可以获得一些信息，比如12不能被5整除</p>
+例如：$12=2×3×3 $，从中我们可以获得一些信息，比如12不能被5整除</p>
 </blockquote>
 <p>通过矩阵的<strong>特征分解</strong>(eigen
 decomposition)我们同样能够获得一些信息，方阵 A 的 特征向量（eigen
@@ -499,18 +519,93 @@ $<br />
 其中，矩阵 U，D 和 V 是矩阵 A奇异值分解后得到的矩阵。对角矩阵 D
 的伪逆<span class="math inline">\(D^+\)</span>
 是其非零元素<strong>取倒数之后再转置</strong>得到的。<br />
-MP伪逆在方程解的问题中也有很多应用，比如： - 当 <span
-class="math inline">\(n &gt; m\)</span> 时，<span
-class="math inline">\(x = A^+ y\)</span>是所有方程可行解中<span
-class="math inline">\(L_2\)</span>范数最小的那个 - 当 <span
-class="math inline">\(n &gt; m\)</span>​ 时，MP伪逆得到的解使得 <span
-class="math inline">\(Ax\)</span>​ 与 <span
-class="math inline">\(y\)</span>​ 的欧几里得距离最小</p>
-<h2 id="迹运算">迹运算</h2>
+MP伪逆在方程解的问题中也有很多应用，比如：</p>
 <ul>
-<li><span class="math inline">\({\rm Tr}(A)=\sum_i A_{i,i}\)</span></li>
-<li>$||A||_F=</li>
+<li>当 <span class="math inline">\(n &gt; m\)</span> 时，<span
+class="math inline">\(x = A^+ y\)</span>是所有方程可行解中<span
+class="math inline">\(L_2\)</span>范数最小的那个</li>
+<li>当 <span class="math inline">\(n &gt; m\)</span>​
+时，MP伪逆得到的解使得 <span class="math inline">\(Ax\)</span>​ 与 <span
+class="math inline">\(y\)</span>​​ 的欧几里得距离最小</li>
 </ul>
+<h2 id="迹运算">迹运算</h2>
+<p>迹运算主要集中于以下几点</p>
+<ul>
+<li><span class="math inline">\(Tr(A) = \sum_i A_{i,i}\)</span></li>
+<li><span class="math inline">\(Tr(A) = Tr(A^T)\)</span></li>
+<li><span class="math inline">\(||A||_F=\sqrt{Tr(AA^T)}\)</span></li>
+<li>$ Tr ( {_ { i = 1 } ^ { n }} {F ^ { ( i ) }} ) = Tr ( F ^ { ( n ) }
+{_ { i = 1 } ^ { n - 1 }} {F ^ { ( i ) }} ) $​
+(多个矩阵相乘得到的方阵的迹，和将这些矩阵中的最后一个挪到最前面之后相乘的迹是相同的)</li>
+</ul>
+<h2 id="行列式">行列式</h2>
+<p>行列式，记作 det(A)，是一个将方阵 A
+映射到实数的函数。行列式等于矩阵特征值的乘积。行列式的绝对值可以用来衡量矩阵参与矩阵乘法后空间扩大或者缩小了多少。如果行列式是
+0，那么空间至少沿着某一维完全收缩了，使其失去了所有的体积。如果行列式是
+1，那么这个转换保持空间体积不变。</p>
+<h2 id="主成分分析">主成分分析</h2>
+<p>主成分分析（principal components analysis, PCA）</p>
+<hr />
+<p>首先，假设我们有 <strong>m 个 n 维的样本 <span
+class="math inline">\(\{x_1,x_2, \cdots,x_m\},x_i\in
+R^n\)</span></strong> ，我们希望使用某种压缩，对于每个 <span
+class="math inline">\(x_i\)</span> 找到对应的 <strong><span
+class="math inline">\(c_i \in R^l\)</span> ，一般的 $l &lt; n $</strong>
+，进行压缩</p>
+<ul>
+<li>对于编码器 <span class="math inline">\(f(x) = c\)</span></li>
+<li>对于解码器 <span class="math inline">\(x \approx
+g(c)=g(f(x))\)</span></li>
+</ul>
+<p>为了简化解码函数的选择，我们可以通过矩阵乘法将其映射回 n 维空间，即
+<span class="math inline">\(g(c) = Dc\)</span></p>
+<p>注意到，当 c
+等比例扩大缩小时，D同样等比例缩小扩大，可以得到无数个结果，因此我们限制
+D 中的所有列向量都有单位范数</p>
+<p>同样，为了让编码问题更简单，PCA限制 D
+的列向量彼此正交（D不是严格意义上的正交阵）</p>
+<p>我们如何去找到这个 c
+，使得他能够被精确解码？这里给出的方法是最小化原始向量<span
+class="math inline">\(x\)</span>与重构向量<span
+class="math inline">\(g(c^*)\)</span>的距离，即<span
+class="math inline">\(c^*={\rm arg\ min}_c ||x-g(c)||_2\)</span>
+，由于二范数非负性，所以我们可以通过平方进行优化</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261520572.png" alt="image-20240426152011469" style="zoom:33%;" /></p>
+<p>由于第一项并不依赖于 c ，所以可以再度简化为 <span
+class="math inline">\(c^*={\rm arg\ min}_c -2 x^T g(c)+g(c)^T
+g(c)\)</span></p>
+<p>带入 <span class="math inline">\(g(c)\)</span> 的定于，以及 <span
+class="math inline">\(D\)</span>
+矩阵的列向量互相正交的一些约定，我们有</p>
+<p><span class="math display">\[c^* = {\rm arg\ min}_c - 2 x ^ { T } D c
++ c ^ { T } c\]</span></p>
+<p>通过向量微积分，能够推导得到结论：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261229634.png" alt="image-20240426122900565" style="zoom:33%;" /></p>
+<p>所以推导得到编码函数也就能够写成 <span
+class="math inline">\(f(x)=D^Tx\)</span></p>
+<p>那么，另一方面该如何选取投影矩阵 D ？</p>
+<p>当然这个 D
+是作用在全体样本上，与刚刚的思路类似，我们需要使得误差矩阵的 Frobenius
+范数最小，也就是 <span class="math inline">\(D^*={\rm arg\ min}_D
+\sqrt{\sum_{i,j}(x_j^{(i)}-r(x^{(i)})_j)^2}{\rm \ subject\ to\
+}D^TD=I_l\)</span> 其中 <span
+class="math inline">\(r(x)=g(f(x))=DD^Tx\)</span></p>
+<p>首先考虑一维的情况，问题简化为：</p>
+<p><span class="math display">\[d^*={\rm arg\ min}_d
+\sqrt{\sum_{i}(x^{(i)}-d{d^T}{x^{(i)}})^2}{\rm \ subject\ to\
+}||d||_2=1\]</span></p>
+<p>由于 <span class="math inline">\(d^T x\)</span>
+是标量，可以重排位置，参考花书</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261243605.png" alt="image-20240426124335517" style="zoom: 50%;" /></p>
+<p>这里求和号实际上不方便理解，因此我们写成矩阵的形式，重新表述为<span
+class="math display">\[d^*={\rm arg\ min}_d ||X-Xd{d^T}||_F^2\ {\rm
+subject\ to\ }d^Td=1\]</span></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261248438.png" alt="image-20240426124828340" style="zoom:67%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261253697.png" alt="image-20240426125338607" style="zoom:50%;" /></p>
+<p>这里将 <span class="math inline">\(X^TX\)</span> 处理为对称阵，那么
+<span class="math inline">\(y^TX^TXy\)</span>
+就是一个二次型，那么显然他的最大值应该是最大特征值，对应y向量为对应特征值的特征向量。。。</p>
+<h1 id="概率论">概率论</h1>
 
     </div>
 
@@ -592,13 +687,13 @@ class="math inline">\(y\)</span>​ 的欧几里得距离最小</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">17k</span>
+    <span title="站点总字数">19k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">31 分钟</span>
+    <span title="站点阅读时长">34 分钟</span>
   </span>
 </div>
 
