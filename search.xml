@@ -5,68 +5,61 @@
     <url>/2024/04/07/hexo-%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2/</url>
     <content><![CDATA[<p>今天折腾一下 hexo 的主题变换 hh</p>
 <span id="more"></span>
-<p>翻了一下<a href="https://hexo.io/themes/">hexo主题</a>，看到几个我自己觉得比较简洁还不错的</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><a href="https://github.com/hooozen/hexo-theme-tranquility">Tranquility</a></p>
-</li>
-<li class="lvl-2">
-<p><a href="https://github.com/Lhcfl/hexo-theme-anatolo">Anatolo</a></p>
-</li>
-<li class="lvl-2">
-<p><a href="https://github.com/jerryc127/hexo-theme-butterfly">butterfly</a></p>
-</li>
-<li class="lvl-2">
-<p>… 之后再看看吧 hhh</p>
-</li>
-</ul>
-<hr>
+<p>翻了一下<a
+href="https://hexo.io/themes/">hexo主题</a>，看到几个我自己觉得比较简洁还不错的<br />
+- <a
+href="https://github.com/hooozen/hexo-theme-tranquility">Tranquility</a>
+- <a href="https://github.com/Lhcfl/hexo-theme-anatolo">Anatolo</a> - <a
+href="https://github.com/jerryc127/hexo-theme-butterfly">butterfly</a> -
+... 之后再看看吧 hhh</p>
+<hr />
 <blockquote>
-<p>安装的过程参考了这篇<a href="https://zhuanlan.zhihu.com/p/618864711">文章</a></p>
+<p>安装的过程参考了这篇<a
+href="https://zhuanlan.zhihu.com/p/618864711">文章</a></p>
 </blockquote>
-<h1>安装 next</h1>
-<p>在根目录下执行</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>下载完成后进入 <code>_config.yml</code> 文件修改 <code>theme</code>，输入 next 即可<br>
+<h1 id="安装-next">安装 next</h1>
+<p>在根目录下执行 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
+<p>下载完成后进入 <code>_config.yml</code> 文件修改
+<code>theme</code>，输入 next 即可<br />
 然后 hexo 三连就能看到主页主题已经发生变化了</p>
-<p>版本查看在 <code>/themes/next/package.json</code>文件的version词条里</p>
+<p>版本查看在
+<code>/themes/next/package.json</code>文件的version词条里</p>
 <h2 id="安装插件">安装插件</h2>
 <h3 id="博客信息">博客信息</h3>
-<p>此为在根目录下的总的博客信息，包括 <code>title</code>、<code>subtitle</code> 等等内容</p>
+<p>此为在根目录下的总的博客信息，包括
+<code>title</code>、<code>subtitle</code> 等等内容</p>
 <h3 id="配置-next-主页">配置 next 主页</h3>
-<p>进 <code>next</code> 的 <code>_config.yml</code> 文件进行修改注释是不行的，因为他找不到相应的路径<br>
-所以要先在根目录下建立相应的文件夹然后再去修改 <code>next</code> 的配置文件</p>
+<p>进 <code>next</code> 的 <code>_config.yml</code>
+文件进行修改注释是不行的，因为他找不到相应的路径<br />
+所以要先在根目录下建立相应的文件夹然后再去修改 <code>next</code>
+的配置文件</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new page [tags名称] # 比如和注释里相同的 about、tags之类</span><br></pre></td></tr></table></figure>
-<p>同理创建其他菜单，然后在 <code>next</code> 的配置文件中进行修改即可…<br>
-可以在source里面找到菜单，其实里面就是一些 md 文件，也可以自己进行修改添加内容等</p>
+<p>同理创建其他菜单，然后在 <code>next</code>
+的配置文件中进行修改即可...<br />
+可以在source里面找到菜单，其实里面就是一些 md
+文件，也可以自己进行修改添加内容等</p>
 <h3 id="搜索功能">搜索功能</h3>
-<p>添加搜索功能与预计阅读时间<br>
-需要安装 <code>symbols-count-time</code> 插件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-time</span><br></pre></td></tr></table></figure>
+<p>添加搜索功能与预计阅读时间<br />
+需要安装 <code>symbols-count-time</code> 插件<br />
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-time</span><br></pre></td></tr></table></figure></p>
 <h3 id="账户头像">账户头像</h3>
-<p>首先要将图片放在 <code>/next/source/images</code> 下<br>
-然后修改 <code>next</code> 的配置文件，更改avatar的图片路径为刚刚的路径即可</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>rounded 是图片是否被圆形切割</p>
-</li>
-<li class="lvl-2">
-<p>rotated 是头像是否随鼠标旋转</p>
-</li>
-</ul>
+<p>首先要将图片放在 <code>/next/source/images</code> 下<br />
+然后修改 <code>next</code>
+的配置文件，更改avatar的图片路径为刚刚的路径即可<br />
+- rounded 是图片是否被圆形切割 - rotated 是头像是否随鼠标旋转</p>
 <h3 id="修改文章间的分割线">修改文章间的分割线</h3>
-<p>找到文件 <code>themes/next/source/css/_common/components/post/post-footer.styl</code><br>
-进入修改如下内容</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-eof</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: $grey-light;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">3px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: $post-eof-margin-top auto $post-eof-margin-bottom;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.post-block</span><span class="selector-pseudo">:last-of-type</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以自行根据喜好决定参数大小</p>
-<h3 id="nexT的目录和标签">nexT的目录和标签</h3>
-<p>按照之前的步骤，<code>hexo new page</code> 完之后，要在 <code>tags</code> 和 <code>categories</code> 的 <code>index.md</code> 里修改一下 <code>type</code><br>
-就是在<code>date</code>下加上<code>type: &quot;tags&quot;</code></p>
+<p>找到文件
+<code>themes/next/source/css/_common/components/post/post-footer.styl</code>
+进入修改如下内容 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-eof</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: $grey-light;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">3px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: $post-eof-margin-top auto $post-eof-margin-bottom;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.post-block</span><span class="selector-pseudo">:last-of-type</span> &amp; &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 可以自行根据喜好决定参数大小</p>
+<h3 id="next的目录和标签">nexT的目录和标签</h3>
+<p>按照之前的步骤，<code>hexo new page</code> 完之后，要在
+<code>tags</code> 和 <code>categories</code> 的 <code>index.md</code>
+里修改一下 <code>type</code><br />
+就是在<code>date</code>下加上<code>type: "tags"</code></p>
 <p>以 <code>tags</code> 为例</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date : xxxx</span><br><span class="line">type : &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>然后回到<code>_post</code>要推送的笔记下面，在相应文章的标签上加上<code>tags</code>即可<br>
-如下所示:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxxx</span><br><span class="line">date: xxxx</span><br><span class="line">categories: hexo</span><br><span class="line">tags: # 标签（多标签）</span><br><span class="line">- hexo</span><br><span class="line">- nexT</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>然后回到<code>_post</code>要推送的笔记下面，在相应文章的标签上加上<code>tags</code>即可<br />
+如下所示: <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxxx</span><br><span class="line">date: xxxx</span><br><span class="line">categories: hexo</span><br><span class="line">tags: # 标签（多标签）</span><br><span class="line">- hexo</span><br><span class="line">- nexT</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
 <p>然后 <code>hexo</code> 三连即可</p>
 ]]></content>
       <categories>
@@ -80,33 +73,34 @@
   <entry>
     <title>hexo中的markdown语法技巧</title>
     <url>/2024/04/10/hexo%E4%B8%AD%E7%9A%84markdown%E8%AF%AD%E6%B3%95%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>参考这篇<a href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
+    <content><![CDATA[<p>参考这篇<a
+href="https://www.imczw.com/post/tech/hexo-next-tags-markdown.html">博客</a>，效果确实是很震惊</p>
 <span id="more"></span>
-<h1>居中引用</h1>
+<h1 id="居中引用">居中引用</h1>
 <blockquote class="blockquote-center">
 <p>hello world</p>
 
 </blockquote>
-<h1>彩色 tag</h1>
+<h1 id="彩色-tag">彩色 tag</h1>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% label [class] @ 标签内容 %&#125;</span><br><span class="line">class：</span><br><span class="line"> - default: 浅灰色,可留空</span><br><span class="line"> - primary: 浅紫色</span><br><span class="line"> - success: 浅绿色</span><br><span class="line"> - info: 浅蓝色</span><br><span class="line"> - warning: 浅黄色</span><br><span class="line"> - danger: 浅红色</span><br></pre></td></tr></table></figure>
-<mark class="label [warning]"> test</mark>  
+<mark class="label [warning]"> test</mark>
 <p>注意，由于之前安装的darkmode插件导致了前端css被覆盖，所以实际显示的颜色可能有不同</p>
-<h1>彩色 note</h1>
+<h1 id="彩色-note">彩色 note</h1>
 <p>我个人很喜欢这个东西 ^ ^</p>
-<p>(为了避免编译错误，所以放在不同的行了。。。)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note [class]%&#125; </span><br><span class="line">内容</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">class: </span><br><span class="line"> - default: 灰色</span><br><span class="line"> - primary: 紫色</span><br><span class="line"> - success: 绿色</span><br><span class="line"> - info: 蓝色</span><br><span class="line"> - warning: 黄色</span><br><span class="line"> - danger: 红色</span><br></pre></td></tr></table></figure>
+<p>(为了避免编译错误，所以放在不同的行了。。。) <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note [class]%&#125; </span><br><span class="line">内容</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">class: </span><br><span class="line"> - default: 灰色</span><br><span class="line"> - primary: 紫色</span><br><span class="line"> - success: 绿色</span><br><span class="line"> - info: 蓝色</span><br><span class="line"> - warning: 黄色</span><br><span class="line"> - danger: 红色</span><br></pre></td></tr></table></figure></p>
 <details class="note "><summary><p>[info]</p>
 </summary>
 <p>hello world</p>
 
 </details>
-<h1>切换 tabs</h1>
-<p>这个也不错，感觉之后不论是放代码还是放对比的东西，比上下文叠放好用多了。。。</p>
-<div class="tabs" id="[class]"><ul class="nav-tabs"><li class="tab active"><a href="#[class]-1">Tab1</a></li><li class="tab"><a href="#[class]-2">Tab2</a></li><li class="tab"><a href="#[class]-3">3号Tab</a></li></ul><div class="tab-content"><div class="tab-pane active" id="[class]-1"><p>这里是1号Tab内容</p></div><div class="tab-pane" id="[class]-2"><p>这里是2号Tab内容</p></div><div class="tab-pane" id="[class]-3"><p>这里是3号Tab内容，上面的tab也可以改 ^ ^</p></div></div></div>
-<h1>按钮 Btn</h1>
-<p>使用自带 FontAwesome 图标，在 <a href="https://fontawesome.com/v4/icons/">FontAwesome</a> 上找到相应的图标名</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [地址] , [内容] , [图标 规格] %&#125;</span><br><span class="line"></span><br><span class="line">[地址]：当使用外链绝对引用时，无按钮，样式类似Markdown链接跳转</span><br><span class="line">[图标 规格]: 使用无`fa-`开头的FontAwesome图标，可以用以下规格定义图标大小</span><br><span class="line">fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>但是不知道为什么显示不出来 hhh</p>
+<h1 id="切换-tabs">切换 tabs</h1>
+<p>这个也不错，感觉之后不论是放代码还是放对比的东西，比上下文叠放好用多了。。。<br />
+<div class="tabs" id="[class]"><ul class="nav-tabs"><li class="tab active"><a href="#[class]-1">Tab1</a></li><li class="tab"><a href="#[class]-2">Tab2</a></li><li class="tab"><a href="#[class]-3">3号Tab</a></li></ul><div class="tab-content"><div class="tab-pane active" id="[class]-1"><p>这里是1号Tab内容</p></div><div class="tab-pane" id="[class]-2"><p>这里是2号Tab内容</p></div><div class="tab-pane" id="[class]-3"><p>这里是3号Tab内容，上面的tab也可以改 ^ ^</p></div></div></div></p>
+<h1 id="按钮-btn">按钮 Btn</h1>
+<p>使用自带 FontAwesome 图标，在 <a
+href="https://fontawesome.com/v4/icons/">FontAwesome</a>
+上找到相应的图标名<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [地址] , [内容] , [图标 规格] %&#125;</span><br><span class="line"></span><br><span class="line">[地址]：当使用外链绝对引用时，无按钮，样式类似Markdown链接跳转</span><br><span class="line">[图标 规格]: 使用无`fa-`开头的FontAwesome图标，可以用以下规格定义图标大小</span><br><span class="line">fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line"></span><br></pre></td></tr></table></figure> 但是不知道为什么显示不出来 hhh</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home-2x]&#125;  </span><br><span class="line"></span><br><span class="line">&#123;% btn [https://www.baidu.com/] [百度] [fa-home]&#125;  </span><br></pre></td></tr></table></figure>
 <p>哎哎，显示不出来我就给他用多行代码的形式注释掉了。。。</p>
 ]]></content>
@@ -121,175 +115,228 @@
   <entry>
     <title>hexo本地博客+云服务器个人博客搭建</title>
     <url>/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<p>记录一下本地搭建 <code>hexo</code> 个人博客并部署到云服务器的过程。。。<br>
-本地环境是 <code>win11</code> ，云服务器是 <code>Ubuntu 22.04LTS</code></p>
-<p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br>
-所以当然也可以用 <code>GitHub.io</code> 去进行部署，这是取决于各位的。。。</p>
+    <content><![CDATA[<p>记录一下本地搭建 <code>hexo</code>
+个人博客并部署到云服务器的过程。。。<br />
+本地环境是 <code>win11</code> ，云服务器是
+<code>Ubuntu 22.04LTS</code></p>
+<p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br />
+所以当然也可以用 <code>GitHub.io</code>
+去进行部署，这是取决于各位的。。。</p>
 <span id="more"></span>
-<h1>Node.js &amp;&amp; git</h1>
-<p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
+<h1 id="node.js-git">Node.js &amp;&amp; git</h1>
+<p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code>
+安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直
+next 安装即可。。。</p>
 <h2 id="git">git</h2>
-<p><a href="https://git-scm.com/download/win">git下载地址</a><br>
-可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>
+<p><a href="https://git-scm.com/download/win">git下载地址</a><br />
+可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code>
+版本判断是否成功安装<br />
 按需下载即可</p>
-<h2 id="Node-js">Node.js</h2>
-<p><a href="https://nodejs.cn/download/">Nodejs下载地址</a><br>
-同样按需下载，没有特殊要求无脑继续就可以了。。<br>
-可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>
-注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求</p>
+<h2 id="node.js">Node.js</h2>
+<p><a href="https://nodejs.cn/download/">Nodejs下载地址</a><br />
+同样按需下载，没有特殊要求无脑继续就可以了。。<br />
+可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code>
+命令查看版本（查看是否成功安装了 node）<br />
+注意 <code>node</code> 自带 <code>npm</code>
+,但是版本和下载路径可能不满足大家的需求</p>
 <h3 id="npm更换淘宝镜像源">npm更换淘宝镜像源</h3>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#最新地址 淘宝 NPM 镜像站喊你切换新域名啦!</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry </span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复官方源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
 <h3 id="npm更新">npm更新</h3>
-<p><a href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br>
-这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure>
+<p><a
+href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br />
+这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure></p>
 <p>其他命令就不展示了，善用搜索引擎 hh</p>
-<h1>配置 hexo</h1>
-<p>在命令行中输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h1 id="配置-hexo">配置 hexo</h1>
+<p>在命令行中输入<br />
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
 <p>找到你要写博客的父目录，比如你想将文件夹放在桌面就取到桌面的路径下</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt; // folder为你的博客目录名字</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt; // 进入该目录</span><br><span class="line">npm install // 安装依赖</span><br></pre></td></tr></table></figure>
 <p>到此，本地博客就已经搭建完成了</p>
-<h1>将本地博客部署到云服务器中</h1>
-<p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd 下的ssh连接<br>
-貌似 win 下已经自带了 openssh 吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^</p>
+<h1 id="将本地博客部署到云服务器中">将本地博客部署到云服务器中</h1>
+<p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd
+下的ssh连接<br />
+貌似 win 下已经自带了 openssh
+吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^</p>
 <h2 id="git-安装">git 安装</h2>
-<p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code> 所以就没有安装了。。<br>
-既然需要同步，那么自然不能每次都要登录 <code>git</code> ，所以要配置一下免密登录</p>
-<h3 id="1-创建用户并设置密码">1. 创建用户并设置密码</h3>
-<p>下面的 <code>username</code> 设置为你喜欢的用户名，并设置一个属于这个账户的密码</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
-<p>可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可 hh</p>
-<h3 id="2-分配用户权限">2. 分配用户权限</h3>
-<p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure>
-<h3 id="3-本地创建密钥">3. 本地创建密钥</h3>
-<p>！！！ 注意是在本地 <code>win11</code> 创建密钥，相当于身份证了，就可以实现免密登录了<br>
-在本机终端中输入</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>然后无脑回车，得到一个新的密钥一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:\Users\Administrator.ssh（不确定可以百度一下 hh）</p>
+<p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code>
+所以就没有安装了。。<br />
+既然需要同步，那么自然不能每次都要登录 <code>git</code>
+，所以要配置一下免密登录</p>
+<h3 id="创建用户并设置密码">1. 创建用户并设置密码</h3>
+<p>下面的 <code>username</code>
+设置为你喜欢的用户名，并设置一个属于这个账户的密码 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
+可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可
+hh</p>
+<h3 id="分配用户权限">2. 分配用户权限</h3>
+<p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure></p>
+<h3 id="本地创建密钥">3. 本地创建密钥</h3>
+<p>！！！ 注意是在本地 <code>win11</code>
+创建密钥，相当于身份证了，就可以实现免密登录了<br />
+在本机终端中输入 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure> 然后无脑回车，得到一个新的密钥
+一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:.ssh（不确定可以百度一下
+hh）</p>
 <p>复制id_rsa.pub文件中的内容备用。</p>
-<h3 id="4-配置公钥">4. 配置公钥</h3>
-<p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure>
-<p>创建 <code>.ssh</code> 文件夹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure>
-<p>利用 <code>vi</code> 或 <code>vim</code> 新建 <code>authorized_keys</code> 文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>将刚刚 <code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
+<h3 id="配置公钥">4. 配置公钥</h3>
+<p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure></p>
+<p>创建 <code>.ssh</code> 文件夹 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure></p>
+<p>利用 <code>vi</code> 或 <code>vim</code> 新建
+<code>authorized_keys</code> 文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure> 将刚刚
+<code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
 <h2 id="git-仓库配置">git 仓库配置</h2>
-<p>退出用户登录</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure>
-<p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code> 目录，并修改目录的所有权和用户权限</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /home/git/</span><br><span class="line"><span class="built_in">chown</span> -R [username]:[username] /home/git/   <span class="comment"># 是你刚刚创建的用户名</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/git/</span><br></pre></td></tr></table></figure>
-<p>进入目录，建立git仓库，修改权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/git/</span><br><span class="line">git init --bare blog.git</span><br><span class="line">chown [username]:[username] -R blog.git</span><br></pre></td></tr></table></figure>
-<p>新建钩子文件，但是要看你具体的 git 版本我的是 <code>post-update.xxx</code>（文件类型忘了，配置时忘了记录）<br>
-需要进入修改添加两行内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /home/git/blog.git/hooks/post (然后这里直接按 tab 补全补出来)</span><br></pre></td></tr></table></figure>
-<p>进入文件后添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
-<p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为 <code>post-update</code> 才能生效，具体问题具体分析吧，用 rm 命令重命名好了，然后<code>wq</code>保存退出</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全)  ./post-update</span><br></pre></td></tr></table></figure>
-<p>然后修改文件权限</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure>
+<p>退出用户登录 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure></p>
+<p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code>
+目录，并修改目录的所有权和用户权限 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /home/git/</span><br><span class="line"><span class="built_in">chown</span> -R [username]:[username] /home/git/   <span class="comment"># 是你刚刚创建的用户名</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/git/</span><br></pre></td></tr></table></figure></p>
+<p>进入目录，建立git仓库，修改权限 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/git/</span><br><span class="line">git init --bare blog.git</span><br><span class="line">chown [username]:[username] -R blog.git</span><br></pre></td></tr></table></figure></p>
+<p>新建钩子文件，但是要看你具体的 git 版本 我的是
+<code>post-update.xxx</code>（文件类型忘了，配置时忘了记录）<br />
+需要进入修改添加两行内容 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /home/git/blog.git/hooks/post (然后这里直接按 tab 补全补出来)</span><br></pre></td></tr></table></figure></p>
+<p>进入文件后添加 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure></p>
+<p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为
+<code>post-update</code> 才能生效，具体问题具体分析吧，用 rm
+命令重命名好了，然后<code>wq</code>保存退出<br />
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm ./post- (tab 补全)  ./post-update</span><br></pre></td></tr></table></figure></p>
+<p>然后修改文件权限 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure></p>
 <h2 id="配置-nginx">配置 nginx</h2>
 <p>安装 <code>nginx</code></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-install nginx </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样可以查看版本判断是否安装成功</span></span><br><span class="line">nginx -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置开机启动</span></span><br><span class="line">systemctl enable nginx.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 nginx 状态</span></span><br><span class="line">systemctl status nginx.service</span><br></pre></td></tr></table></figure>
-<p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样 <code>/usr/local/nginx/conf/nginx.conf</code><br>
-我的安装位置是<code>/etc/nginx/nginx.conf</code><br>
-在网上我看到两种说法，一种修改 default一种修改 conf，但我个人觉得还是修改conf吧。。。<br>
-<a href="https://zhuanlan.zhihu.com/p/158678677">配置 conf 文件</a><br>
-<a href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置 default 文件</a></p>
-<p>配置完重启下 <code>nginx</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+<p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样
+<code>/usr/local/nginx/conf/nginx.conf</code><br />
+我的安装位置是<code>/etc/nginx/nginx.conf</code><br />
+在网上我看到两种说法，一种修改 default一种修改
+conf，但我个人觉得还是修改conf吧。。。<br />
+<a href="https://zhuanlan.zhihu.com/p/158678677">配置 conf
+文件</a><br />
+<a
+href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置
+default 文件</a></p>
+<p>配置完重启下 <code>nginx</code> <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure></p>
 <h2 id="更改本地-hexo-配置文件">更改本地 hexo 配置文件</h2>
-<p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br>
-应该在最后的位置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@[公网ip]:[/home/git/blog.git]   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>在本地hexo博客根目录下，打开终端，部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>然后访问服务器的 IP 地址应该就可以看到 hexo 已经部署完成了。。。<br>
+<p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br />
+应该在最后的位置 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@[公网ip]:[/home/git/blog.git]   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>在本地hexo博客根目录下，打开终端，部署<br />
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<p>然后访问服务器的 IP 地址应该就可以看到 hexo
+已经部署完成了。。。<br />
 后续就是善用搜索引擎的过程了。。。</p>
-<h1>域名配置</h1>
-<p>但是目前访问博客的时候有个问题，就是网址栏一直有个不安全，这是由于通过http访问<br>
-我们需要将其改为 https 访问(https = http + ssl)<br>
-所以首先要申请 ssl 证书，然后再去nginx里配置一下</p>
-<ol>
-<li class="lvl-3">
-<p>去服务商拿ssl免费证书<br>
-我是阿里的服务器，<a href="https://yundun.console.aliyun.com/?spm=5176.7968328.J_8413632810.1.62ae685bLZTqIi&amp;p=cas&amp;showBuy=1#/certExtend/free/cn-hangzhou">地址</a>在这里</p>
-</li>
-<li class="lvl-3">
-<p>选择免费证书，然后一路系统配置申领就好了</p>
-</li>
-<li class="lvl-3">
-<p>申领结束点击下载 nginx 版本</p>
-</li>
-<li class="lvl-3">
-<p>将证书传到服务器的指定位置(!需要记住)<br>
-我放在了 <code>/etc/nginx/conf.d</code>文件夹下</p>
-</li>
-<li class="lvl-3">
-<p>修改 <code>nginx.conf</code> 配置文件内容<br>
-注意如果在 conf 文件下修改，要在 http 的域内修改，所以要排查一下&quot;{}&quot;是否闭合，防止漏了hh<br>
-添加或者修改<code>server</code>域<br>
-这是https的433端口配置</p>
- <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">HTTPS的默认访问端口443。</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">如果未在此处配置HTTPS的默认访问端口，可能会造成Nginx无法启动。</span></span><br><span class="line">  listen 443 ssl;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书绑定的域名</span></span><br><span class="line">  server_name domain_name;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书文件名称</span></span><br><span class="line">  ssl_certificate cert/domain_name.pem;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书私钥文件名称</span></span><br><span class="line">  ssl_certificate_key cert/domain_name.key;</span><br><span class="line">  ssl_session_cache shared:SSL:1m;</span><br><span class="line">  ssl_session_timeout 5m;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">自定义设置使用的TLS协议的类型以及加密套件（以下为配置示例，请您自行评估是否需要配置）</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">TLS协议版本越高，HTTPS通信的安全性越高，但是相较于低版本TLS协议，高版本TLS协议对浏览器的兼容性较差。</span></span><br><span class="line">  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">  ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">表示优先使用服务端加密套件。默认开启</span></span><br><span class="line">  ssl_prefer_server_ciphers on;</span><br><span class="line">  location / &#123;</span><br><span class="line">        #配置域名最终向后端发送请求的url地址</span><br><span class="line">        proxy_pass http://127.0.0.1:8008;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这是http的80端口配置</p>
- <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">      # 配置阿里云域名和监听的80端口</span><br><span class="line">      listen       80;</span><br><span class="line">      server_name  domain_name;</span><br><span class="line">      #charset koi8-r;</span><br><span class="line">      #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">      #将所有HTTP请求通过rewrite指令重定向到HTTPS。</span><br><span class="line">      rewrite ^(.*)$ https://$host$1;</span><br><span class="line">      location / &#123;</span><br><span class="line">          #配置域名最终向后端发送请求的url地址</span><br><span class="line">          proxy_pass http://127.0.0.1:8008;</span><br><span class="line">      &#125;</span><br><span class="line">      #error_page  404              /404.html;</span><br><span class="line">      # redirect server error pages to the static page /50x.html</span><br><span class="line">      #</span><br><span class="line">      error_page   500 502 503 504  /50x.html;</span><br><span class="line">      location = /50x.html &#123;</span><br><span class="line">          root   html;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li class="lvl-3">
-<p>配置完依次执行命令 <code>service nginx restart</code> 命令和 <code>nginx -t</code>(或<code>systemctl status nginx.service</code>)命令，查看nginx的运行状态，如果是successful，那么就可以访问一下你的域名，网址栏的<code>不安全</code>字段是否消失并变为小锁了，如果是说明配置完成</p>
-</li>
+<h1 id="域名配置">域名配置</h1>
+<p>但是目前访问博客的时候有个问题，就是网址栏一直有个不安全，这是由于通过http访问<br />
+我们需要将其改为 https 访问(https = http + ssl)<br />
+所以首先要申请 ssl 证书，然后再去nginx里配置一下<br />
+1. 去服务商拿ssl免费证书<br />
+我是阿里的服务器，<a
+href="https://yundun.console.aliyun.com/?spm=5176.7968328.J_8413632810.1.62ae685bLZTqIi&amp;p=cas&amp;showBuy=1#/certExtend/free/cn-hangzhou">地址</a>在这里<br />
+2. 选择免费证书，然后一路系统配置申领就好了<br />
+3. 申领结束点击下载 nginx 版本<br />
+4. 将证书传到服务器的指定位置(!需要记住)<br />
+我放在了 <code>/etc/nginx/conf.d</code>文件夹下 5. 修改
+<code>nginx.conf</code> 配置文件内容<br />
+注意如果在 conf 文件下修改，要在 http
+的域内修改，所以要排查一下"{}"是否闭合，防止漏了hh<br />
+添加或者修改<code>server</code>域<br />
+这是https的433端口配置<br />
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">HTTPS的默认访问端口443。</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">如果未在此处配置HTTPS的默认访问端口，可能会造成Nginx无法启动。</span></span><br><span class="line">  listen 443 ssl;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书绑定的域名</span></span><br><span class="line">  server_name domain_name;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书文件名称</span></span><br><span class="line">  ssl_certificate cert/domain_name.pem;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书私钥文件名称</span></span><br><span class="line">  ssl_certificate_key cert/domain_name.key;</span><br><span class="line">  ssl_session_cache shared:SSL:1m;</span><br><span class="line">  ssl_session_timeout 5m;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">自定义设置使用的TLS协议的类型以及加密套件（以下为配置示例，请您自行评估是否需要配置）</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">TLS协议版本越高，HTTPS通信的安全性越高，但是相较于低版本TLS协议，高版本TLS协议对浏览器的兼容性较差。</span></span><br><span class="line">  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">  ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">表示优先使用服务端加密套件。默认开启</span></span><br><span class="line">  ssl_prefer_server_ciphers on;</span><br><span class="line">  location / &#123;</span><br><span class="line">        #配置域名最终向后端发送请求的url地址</span><br><span class="line">        proxy_pass http://127.0.0.1:8008;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code>这是http的80端口配置
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">      # 配置阿里云域名和监听的80端口</span><br><span class="line">      listen       80;</span><br><span class="line">      server_name  domain_name;</span><br><span class="line">      #charset koi8-r;</span><br><span class="line">      #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">      #将所有HTTP请求通过rewrite指令重定向到HTTPS。</span><br><span class="line">      rewrite ^(.*)$ https://$host$1;</span><br><span class="line">      location / &#123;</span><br><span class="line">          #配置域名最终向后端发送请求的url地址</span><br><span class="line">          proxy_pass http://127.0.0.1:8008;</span><br><span class="line">      &#125;</span><br><span class="line">      #error_page  404              /404.html;</span><br><span class="line">      # redirect server error pages to the static page /50x.html</span><br><span class="line">      #</span><br><span class="line">      error_page   500 502 503 504  /50x.html;</span><br><span class="line">      location = /50x.html &#123;</span><br><span class="line">          root   html;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></code></pre>
+<ol start="6" type="1">
+<li>配置完依次执行命令 <code>service nginx restart</code> 命令和
+<code>nginx -t</code>(或<code>systemctl status nginx.service</code>)命令，查看nginx的运行状态，如果是successful，那么就可以访问一下你的域名，网址栏的<code>不安全</code>字段是否消失并变为小锁了，如果是说明配置完成</li>
 </ol>
-<h2 id="一次🤡的Error记录。。。">一次🤡的Error记录。。。</h2>
-<p>但是很抱歉，笔者按照上述流程没有配置成功，在配置转发端口的时候，访问遇到了502 error。。。<br>
-然后取消转发配置，能发现ssl证书成功配置<br>
+<h2 id="一次的error记录">一次🤡的Error记录。。。</h2>
+<p>但是很抱歉，笔者按照上述流程没有配置成功，在配置转发端口的时候，访问遇到了502
+error。。。<br />
+然后取消转发配置，能发现ssl证书成功配置<br />
 接下来排查一下为啥转发失败了 ^ ^</p>
-<hr>
-<p>先看一下 <code>proxy_pass</code> 设置，遇到两个问题</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>设置为 <code>127.0.0.1</code> 报502错误</p>
-</li>
-<li class="lvl-2">
-<p>设置为 <code>公网IP</code> 报 504 错误</p>
-</li>
-</ul>
-<p>理一下，首先，ssl证书配置成功，说明 443 端口是可以正常访问的<br>
-我们的配置思路是，如果通过 http 的 80 端口访问，那么强制改写为 443 走 https 端口访问，然后443端口转发到4000的hexo博客端口</p>
-<p>好，那么先排查 80 端口是否能正常访问</p>
-<blockquote>
-<p>要先安装 telnet<br>
-在控制面板-程序-程序和功能-（侧边的）启动或关闭Windows功能-telnet勾选<br>
-等他安装完即可</p>
-</blockquote>
-<p>在shell中 <code>telnet ip port</code> 如果出现空白页面即可</p>
-<blockquote>
-<p>靠，注意是空格不是冒号！！！</p>
-</blockquote>
-<p>ok，80端口能ping通（试了下 443 端口同样能ping通，但是4000端口ping不通<br>
+<hr />
+<p>先看一下 <code>proxy_pass</code> 设置，遇到两个问题 - 设置为
+<code>127.0.0.1</code> 报502错误 - 设置为 <code>公网IP</code> 报 504
+错误</p>
+<p>理一下，首先，ssl证书配置成功，说明 443 端口是可以正常访问的<br />
+我们的配置思路是，如果通过 http 的 80 端口访问，那么强制改写为 443 走
+https 端口访问，然后443端口转发到4000的hexo博客端口</p>
+<p>好，那么先排查 80 端口是否能正常访问<br />
+&gt; 要先安装 telnet<br />
+&gt;
+在控制面板-程序-程序和功能-（侧边的）启动或关闭Windows功能-telnet勾选<br />
+&gt; 等他安装完即可</p>
+<p>在shell中 <code>telnet ip port</code> 如果出现空白页面即可<br />
+&gt; 靠，注意是空格不是冒号！！！</p>
+<p>ok，80端口能ping通（试了下 443
+端口同样能ping通，但是4000端口ping不通<br />
 好，那么问题就在4000端口了</p>
-<hr>
-<p>查看 4000 端口的进程<br>
-<code>netstat -nplt</code><br>
-发现根本就没有4000端口？！<br>
-看到这里突然恍然大悟了，这下🤡了呀<br>
-原来咱们部署的原理是，在本地deploy的时候，通过git hook将文件自动push到服务器的仓库中<br>
-然后访问80端口，配置nginx将root修改到博客的静态资源处实现访问。。。<br>
-这下是彻底理解咱们的整体部署是在干什么了。。。<br>
-哎，蒙头按照教程配置还是一知半解<br>
+<hr />
+<p>查看 4000 端口的进程<br />
+<code>netstat -nplt</code><br />
+发现根本就没有4000端口？！<br />
+看到这里突然恍然大悟了，这下🤡了呀<br />
+原来咱们部署的原理是，在本地deploy的时候，通过git
+hook将文件自动push到服务器的仓库中<br />
+然后访问80端口，配置nginx将root修改到博客的静态资源处实现访问。。。<br />
+这下是彻底理解咱们的整体部署是在干什么了。。。<br />
+哎，蒙头按照教程配置还是一知半解<br />
 我也将这次🤡记录在博客上，供大家参考</p>
-<hr>
-<p>接下来修改 nginx 的配置文件就很清晰了。。。<br>
-因为我的博客地址是 <code>/home/blog/</code><br>
-直接去conf文件下，首先修改 root 字段的地址<br>
+<hr />
+<p>接下来修改 nginx 的配置文件就很清晰了。。。<br />
+因为我的博客地址是 <code>/home/blog/</code><br />
+直接去conf文件下，首先修改 root 字段的地址<br />
 然后 index 字段看一眼没问题，ok 重启，登网站，完美。。。</p>
-<p>现在的逻辑是：通过域名访问 80 端口-&gt;转发到 433，433去 root 下面搜 index 给出的文件名</p>
-<blockquote>
-<p>终于解决了hhhh</p>
-</blockquote>
+<p>现在的逻辑是：通过域名访问 80 端口-&gt;转发到 433，433去 root 下面搜
+index 给出的文件名<br />
+&gt; 终于解决了hhhh</p>
+<h1 id="图床搭建">图床搭建</h1>
+<p>写博客自然不能少了图片，但是放在 hexo
+的文件下，每次推送打包的过程实在是受不了，所以还是选择将图片放在服务器上，搭一个图床好了。。。<br />
+参考这篇<a
+href="https://blog.csdn.net/m0_51321469/article/details/127340237">文章</a><br />
+&gt; 主要的原理是利用 PicGo推送到阿里云的服务器，然后 typora
+修改图片索引为 url
+地址，这样加载的时候就可以直接在服务器的存储地址上进行搜索，不会占用本地资源了。。。</p>
+<h2 id="oss存储">OSS存储</h2>
+<p>本文用的是阿里云的OSS存储作为图片的放置，要花点小钱
+T.T买个资源包<br />
+首先在<a
+href="https://ecs.console.aliyun.com/server/region/cn-shanghai#/">阿里云的控制台</a>搜索oss，进入oss控制台，然后点击左侧概览下面的<code>Bucket列表</code>创建一个bucket
+- 名称自定 - 地域选择离自己近的就好 -
+注意读写权限要是公共读！不然博客无法去读取图片资源</p>
+<p>创建完成后，点击下面的资源包搞一个便宜点的资源包（有券的话应该免费 ^
+^）<br />
+资源购买完成后开始创建类似于私钥的东西<br />
+在一开始给出的<a
+href="https://ecs.console.aliyun.com/server/region/cn-shanghai#/">控制台</a>中，鼠标移动到右上角的头像下，有个
+<code>AccessKey管理</code>，点击进入有弹窗提示，这里选择稍微安全点的子用户（因为拿到你的<code>AccessKey</code>可以控制阿里云账户），然后创建用户
+- 登录名称自定 - 显示名称自定 -
+访问方式要勾选<code>OpenAPI调用访问</code>！！！</p>
+<p>创建完成后给他添加上OSS的权限让这个子用户能够访问OSS（直接点击添加权限，在列表里找一下带OSS的词条即可）<br />
+页面先不急关，待会要复制<code>ID</code>和<code>Key</code></p>
+<h2 id="picgo配置">PicGo配置</h2>
+<p>下载地址： - <a
+href="https://github.com/Molunerfinn/PicGo/releases">github</a> - <a
+href="https://mirrors.sdu.edu.cn/github-release/Molunerfinn_PicGo/v2.3.1/">山大镜像</a></p>
+<p>额额如果是windows直接找到 x64.exe后缀的文件下载安装即可<br />
+启动picgo，找到图床设置，选择阿里云OSS： - keyid就是刚刚子用户的id</p>
+<ul>
+<li><p>keysecret就是他的key</p></li>
+<li><p>bucket是bucket名字</p></li>
+<li><p>存储区域在</p>
+<p><img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251802510.png" /></p></li>
+<li><p>存储路径就是你这个bucket下的文件夹，如果没有的话直接就存在bucket里面了</p></li>
+</ul>
+<p>设置完成可以传一个图片给picgo，然后去阿里的oss刷新一下看看是否成功上传上去了</p>
+<h2 id="typora配置">typora配置</h2>
+<p>typora下载的资源应该网上一大堆，这个各位善用搜索引擎哈 ^ ^<br />
+进入typora点击<code>文件</code>-<code>偏好设置</code>-<code>图像</code></p>
+<p><img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251800449.png" /></p>
+<p>注意要选择上传图片啊！！！</p>
+<p>不然好像不行</p>
+<p>修改成你自己的picgo的配置即可，然后验证一下看是否能够成功上传即可</p>
+<hr />
+<p>好了，接下来就是 hexo 三连，测试一下hexo是否能够访问即可<br />
+到这里，一个博客总算是大部分都搭好咯（应该吧 hhh</p>
 ]]></content>
       <categories>
         <category>hexo</category>
@@ -302,259 +349,62 @@
       </tags>
   </entry>
   <entry>
-    <title>nexT美化</title>
-    <url>/2024/04/09/nextT%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p>额额。。。此贴的所有操作都是基于 <code>next8</code> 版本进行的。。。<br>
-版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎</p>
-<span id="more"></span>
-<h1>可切换模式按钮</h1>
-<p><s>参考了这个佬的<a href="https://haomingzhang.com/hexo_3/">博客</a></s><br>
-<s>在路径<code>themes/next/_vendors.yml</code> 下添加 <code>darkmode.js</code> 的cdn</s><br>
-<s>然后我在next目录下没有找到 <code>_config.next.yml</code> 但是我添加在 <code>_config.yml</code> 里</s></p>
-<br> 
-<p>失败了。。。<br>
-可能是版本不对，更新给文件删了吧。。。</p>
-<hr>
-<p>我又找到了另一个佬的<a href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a><br>
-废话我不多说了，有用！<br>
-然后如果要自定义可以在这个路径下进行修改<br>
-<code>\[root]\node_modules\hexo-next-darkmode\lib</code><br>
-root 就是你的博客根目录，其他 npm install 的包也在这里，可以找一找 hh</p>
-<h1>文章底部添加</h1>
-<p>额原理就是加一个html的div标签<br>
-在路径 <code>\themes\next\layout\_macro</code> 中新建 <code>passage-end-tag.swig</code> 文件,并添加以下内容：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span>-------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-paw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>接着打开<code>\themes\next\layout\_macro\post.swig</code>文件，在post-body 之后， post-footer 之前添加如下画红色部分代码（post-footer之前两个DIV，在END POST BODY之后的部分）：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>但是我是没有 <code>post.swig</code> 文件的，我操作了 <code>post.njk</code> 文件，同样可以</p>
-<p>然后打开主题配置文件(_config.yml),在末尾添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure>
-<h1>把底部 # 标签换成图标</h1>
-<p>修改模板<code>/themes/next/layout/_macro/post.njk</code> 在尾部找到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; if theme.tag_icon else &#x27;#&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"># 删去 if theme.tag_icon else &#x27;#&#x27; 即可</span><br><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;%&#125;</span><br><span class="line">重新渲染后可正确使用</span><br></pre></td></tr></table></figure>
-<h1>首页折叠</h1>
-<p>起因是我觉得每次进主页都直接看全文很麻烦。。。<br>
-然后去搜了下压缩结果是静态资源的压缩，在这篇<a href="https://akilar.top/posts/49b73b87/">博客</a>里<br>
-但我其实搜错关键字了hh<br>
-歪打正着给博客静态资源压缩了<br>
-参考这篇<a href="https://blog.csdn.net/yueyue200830/article/details/104470646">博客</a>没想到主页文章折叠在 <code>next</code> 的 <code>_config.yml</code> 文件里就有<br>
-不过貌似优先级比较低？在我的<code>markdown</code>生成目录的文章里，如果填在 <code>&lt;!--TOC--&gt;</code> 标签之前就无法折叠了。。。</p>
-<h1>next文章评论区</h1>
-<p>看了下 <code>next</code> 的 <code>_config.yml</code> 文件<br>
-额额最终还是采用了 <code>waline</code> 搭建个人博客（<code>gitalk</code>折腾了半天一直会报 <code>e.toLowerCase is not a function</code>的错，他在GitHub的issue下面是有相关问题的，但是我按照其他人给出的解决方案没有搞定，只能转战 <code>waline</code> 了<br>
-waline的参考手册还是很详细的，按照步骤很方便快速地部署完成了</p>
-<h2 id="vercel-部署">vercel 部署</h2>
-<p>采用了 <code>vercel</code> 自动部署 <code>waline</code><br>
-参考文档如下：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><a href="https://waline.js.org/guide/deploy/vercel.html#%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2">Waline</a></p>
-</li>
-</ul>
-<p>管理界面地址为 https://[your app address]/ui<br>
-或者进入你的app中，看页面上方的导航标签有管理可以进入。。。<br>
-但是有一个问题就是通过vercel部署访问的速度实在太慢了。。。<br>
-之后考虑看看有没有其他办法能够部署到国内</p>
-<h2 id="waline-dark">waline dark</h2>
-<p>配置好的 waline 是不支持黑夜模式的，看了官方文档但是我没有找到 client 文件，所以直接修改 css 作罢<br>
-随后考虑修改 <code>_config.yml</code> 文件中的字段看是否能够修改（？字段几乎都不起作用，奇怪）<br>
-最后考虑到之前做的 dark mode按钮，那个是直接覆盖页面的 css，应该也可以修改评论区的css<br>
-一查发现佬的文章里已经做了说明。</p>
-<blockquote>
-<p>由于暗黑模式切换插件依赖了 Darkmode.js，如果插件不生效，这很有可能是 Darkmode.js 的 CDN 资源失效了（在国内访问被墙）。<br>
-此时，建议使用暗黑模式切换插件的 libUrl 配置参数来指定可用的 CDN 资源链接，如下所示：</p>
-<ul class="lvl-1">
-<li class="lvl-2">使用 Unpkg 免费提供的 CDN 资源</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line"> ...</span><br><span class="line"> libUrl: &#x27;https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js&#x27;</span><br></pre></td></tr></table></figure>
-<ul class="lvl-1">
-<li class="lvl-2">使用 Jsdelivr 免费提供的 CDN 资源</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line"> ...</span><br><span class="line"> libUrl: &#x27;https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js&#x27;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>按照佬的方案轻松解决 ^ ^</p>
-<h2 id="waline加速">waline加速</h2>
-<p>由于<code>vercel</code>在国内被dns污染了所以访问起来不挂梯子是看不到评论区的<br>
-参考了网上的一些方法，刚好域名备案下来了，搞一下waline的加速<br>
-<br>！注意，这个操作是要基于已有域名的情况下才能继续进行<br>
-我们要做的就是<strong>用已有的博客域名去免费申请一个子域名来代替vercel.app那个被污染的域名。</strong></p>
-<ol>
-<li class="lvl-3">
-<p>进入域名控制台，找到你的博客域名，添加解析记录</p>
-<ol>
-<li class="lvl-7">记录类型选择 <code>CNAME</code></li>
-<li class="lvl-7">主机记录填 <code>comment</code> (可以自定，这一步完成你的二级域名就是 comment + 你的一级域名)</li>
-<li class="lvl-7">添加记录值为 <code>cname.vercel-dns.com</code></li>
-</ol>
-</li>
-</ol>
-<p>(比如我的域名是 <code>szf.cool</code>，那么操作完，我的二级域名应该是 <code>comment.szf.cool</code>)<br>
-<br><br>
-2. 进入vercel控制台，进入你的项目，在<code>setting</code>-<code>Domains</code>下，在输入框中输入你的二级域名 =&gt; add添加<br>
-3. 同时修改next的config文件，更换一下<code>serverURL</code>字段即可<br>
-4. 这样就可以了，随后部署测试一下评论区是否能够正常访问即可</p>
-<p>额额但是在博客的评论区里，power by waline的版本是2.x。。。<br>
-在管理页面是 3.x 版本，目前还没出问题，不至于以后会不会有问题。。。</p>
-<h1>文件跳过渲染</h1>
-<p>修改站点配置文件中的 <code>skip_render</code> 配置项。<br>
-只有 <code>source</code> 目录下的文件才会发布，因此 Hexo 只渲染 source 目录下的文件。<code>skip_render</code> 参数设置的路径是相对于 <code>source</code> 目录的路径。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#单个文件</span><br><span class="line">skip_render: hello.html</span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件</span><br><span class="line">skip_render: test/* </span><br><span class="line"></span><br><span class="line">#单个文件夹下指定类型文件</span><br><span class="line">skip_render: test/*.md  </span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件以及子目录</span><br><span class="line">skip_render: test/**  </span><br><span class="line"></span><br><span class="line">#跳过多个目录，或者多个文件</span><br><span class="line">skip_render: [&#x27;*.html&#x27;, demo/**, test/*]</span><br></pre></td></tr></table></figure>
-<h1>文章置顶功能</h1>
-<p>参考这篇<a href="https://blog.csdn.net/stormdony/article/details/86745805">博客</a><br>
-首先修改本地的仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm uninstall hexo-generator-index --save</span><br><span class="line">$ npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
-<p>然后就可以在文章的顶部信息修改 <code>top</code> 字段了。。。<br>
-同时要设置一下置顶的标签 hh</p>
-<p>我是在<code>\next\layout\_marco\post.nijk</code> 文件下的 <code>post-meta-container</code>标签中添加的相关代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">  &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;font color=7D26CD&gt;置顶&lt;/font&gt;</span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>注意缩进 ^ ^<br>
-但是这个紫色的颜色不好看，我修改了 font color的值</p>
-<h1>更新markdown渲染</h1>
-<p>额额看花书洋洋洒洒写了点文字，结果没想到markdown的渲染好像不是很行，于是按照教程重新折腾了一下markdown的渲染。。。<br>
-教程在<a href="https://blog.csdn.net/qq_42951560/article/details/123596899">这里</a><br>
-笔者又找到一个markdown的依赖包<a href="https://blog.csdn.net/qq_36667170/article/details/105846999">教程</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>NexT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>花书（一）</title>
-    <url>/2024/04/15/%E8%8A%B1%E4%B9%A6%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教</p>
-
-</blockquote>
-<span id="more"></span>
-<h1>引言</h1>
-<p>一些人工智能项目旨在将世界所包含的知识用形式化的语言进行硬编码 (hard-code) ，而计算机可以使用逻辑推理规则自动理解这些形式化语言中的声明。这就是人工智能的<strong>知识库</strong> (knowledge base)</p>
-<p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习 (machine learning) 的能力</p>
-<p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong> (representation learning)</p>
-<blockquote>
-<p>一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器 (encoder) 和一个解码器 (decoder) 函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br>
-而我们的目标是：数据经过编码器和解码器能够尽可能多地保留信息，同时，新的表示有一些好的特性。。。</p>
-</blockquote>
-<p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的 <strong>变差因素</strong> (factors of variation) 。</p>
-<blockquote>
-<p>这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br>
-比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。</p>
-</blockquote>
-<p>深度学习 (deep learning) 通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题</p>
-<blockquote>
-<p>如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br>
-直接处理，让机器学习或评估几乎是不可能的<br>
-深度学习将复杂的映射分解为一系列嵌套的简单的映射<br>
-输入展示在可见层 (visible layer)，命名的原因是它包含我们能够观察到的变量<br>
-然后经过一系列的隐藏层 (hiden layer)</p>
-</blockquote>
-<p>评估模型深度的方式主要有两种：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>评估计算流深度</p>
-</li>
-<li class="lvl-2">
-<p>评估概念关联深度</p>
-<ul class="lvl-2">
-<li class="lvl-6">比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的 n 次计算，也就是说计算的图包含 2n 层</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1>线性代数</h1>
-<p>在这里，矩阵被看作是列向量集合，即 $A=[\alpha_1,\alpha_2,\alpha_3,\cdots,\alpha_n]$  ，而每个列向量被看作是方向的描述<br>
-因此 $Ax=\sum_i x_iA_{:,i}$ 可以被描述为我们需要沿着第$i$个向量的方向走$x_i$的步长</p>
-<p>一组向量的 <strong>生成子空间(span)</strong> 是原始向量线性组合后所能抵达的点的集合<br>
-也就是说，方程 $Ax=b$是否有解，相当于：确定向量$b$是否在$A$的列向量集合的生成子空间中，这个特殊的生成子空间也被称为 $A$ 的<strong>列空间(column space)</strong> 或是$A$的<strong>值域(range)</strong> 。</p>
-<h2 id="讨论方程-Ax-b-是否有解？">讨论方程 $Ax=b$ 是否有解？</h2>
-<blockquote>
-<p>前提我们记 $A$ 的形状为 $m \times n$</p>
-</blockquote>
-<p>那么一方面，若要求该方程对任意的$b$都要有解，由于$Ax$ 看作是$A$的第$i$个列向量，所以$Ax$自然有$n$个，故若$Ax$的列空间是整个$\mathbb{R}^m$要求$n\ge m$<br>
-（当然，这只是必要条件，这些列向量会存在冗余，这种现象称之为 <strong>线性相关</strong> ）<br>
-<br></p>
-<p>另一方面，如果想要该矩阵可逆，需要使得方程对每一个 $b$ 至多有一个解。为此，需要确保该矩阵至多有 $m$ 个列向量，即 $n\le m$<br>
-这意味着，该矩阵需要是一个方阵</p>
-]]></content>
-      <categories>
-        <category>Deep Learning</category>
-      </categories>
-      <tags>
-        <tag>Deep Learning</tag>
-        <tag>花书</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>markdown生成目录</title>
     <url>/2024/04/09/markdown%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<!-- TOC -->
 <!-- vscode-markdown-toc -->
-<ul class="lvl-0">
-<li class="lvl-2"><a href="#test">test</a></li>
-<li class="lvl-2"><a href="#VSCMarkdownTOC">利用VSC的插件<code>Markdown TOC</code>生成目录</a></li>
-<li class="lvl-2"><a href="#test-1">test</a>
-<ul class="lvl-2">
-<li class="lvl-6"><a href="#test1">test1</a></li>
+<ul>
+<li><a href="#test">test</a></li>
+<li><a
+href="#VSCMarkdownTOC">利用VSC的插件<code>Markdown TOC</code>生成目录</a></li>
+<li><a href="#test-1">test</a>
+<ul>
+<li><a href="#test1">test1</a> <!-- vscode-markdown-toc-config
+  numbering=false
+  autoSave=true
+  /vscode-markdown-toc-config --> <!-- /TOC --></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<!-- vscode-markdown-toc-config
-	numbering=false
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /TOC -->
 <span id="more"></span>
-<h1>在hexo中开启侧边栏文章目录</h1>
-<p>看了网上的一些帖子，好像因为 <code>next</code> 版本不匹配导致<br>
-其实好像不用大费周章寻找 <code>_custom.styl</code>（至少我是这样。。。）<br>
-只需要在<code>_config.md</code> 下修改 toc 词条即可<br>
-这是我的配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 3</span><br></pre></td></tr></table></figure>
-<p>按照英文指示自行按照喜好修改参数即可hh</p>
-<h2 id="a-name-test-a-test"><a name='test'></a>test</h2>
+<h1 id="在hexo中开启侧边栏文章目录">在hexo中开启侧边栏文章目录</h1>
+<p>看了网上的一些帖子，好像因为 <code>next</code> 版本不匹配导致<br />
+其实好像不用大费周章寻找
+<code>_custom.styl</code>（至少我是这样。。。）<br />
+只需要在<code>_config.md</code> 下修改 toc 词条即可<br />
+这是我的配置<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (nonsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 3</span><br></pre></td></tr></table></figure> 按照英文指示自行按照喜好修改参数即可hh</p>
+<h2 id="test"><a name='test'></a>test</h2>
 <blockquote>
 <p>test for generate TOC</p>
 </blockquote>
-<h1>markdown中插入目录</h1>
-<h2 id="a-name-VSCMarkdownTOC-a-利用VSC的插件Markdown-TOC生成目录"><a name='VSCMarkdownTOC'></a>利用VSC的插件<code>Markdown TOC</code>生成目录</h2>
-<p>直接在VSC的插件里搜索 <code>Markdown TOC</code>，第一个下载最高的插件下载<br>
-根据插件给出的使用方法</p>
-<blockquote>
-<ol>
-<li class="lvl-3">
-<p><code>ctrl + shift + p</code> 呼出面板</p>
-</li>
-<li class="lvl-3">
-<p>将光标移动到你要生成目录的地方</p>
-</li>
-<li class="lvl-3">
-<p>输入 <code>Generate</code> 找到命令 <code>Generate TOC for markdown</code></p>
-</li>
-<li class="lvl-3">
-<p>选择该命令就可以了。。。</p>
-</li>
-<li class="lvl-3">
-<p>可以在他注释的地方修改参数</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numbering=false # 为true则开启标签目录带序号</span><br><span class="line">autoSave=true   # 为true生成目录时自动保存文件</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>不过好像这个插件会自动将你md文件中的标签改成 html 的格式<br>
+<h1 id="markdown中插入目录">markdown中插入目录</h1>
+<h2
+id="利用vsc的插件markdown-toc生成目录"><a name='VSCMarkdownTOC'></a>利用VSC的插件<code>Markdown TOC</code>生成目录</h2>
+<p>直接在VSC的插件里搜索
+<code>Markdown TOC</code>，第一个下载最高的插件下载<br />
+根据插件给出的使用方法<br />
+&gt; 1. <code>ctrl + shift + p</code> 呼出面板 &gt; 2.
+将光标移动到你要生成目录的地方 &gt; 3. 输入 <code>Generate</code>
+找到命令 <code>Generate TOC for markdown</code> &gt; 4.
+选择该命令就可以了。。。 &gt; 5. 可以在他注释的地方修改参数 &gt;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numbering=false # 为true则开启标签目录带序号</span><br><span class="line">autoSave=true   # 为true生成目录时自动保存文件</span><br></pre></td></tr></table></figure></p>
+<p>不过好像这个插件会自动将你md文件中的标签改成 html 的格式<br />
 但是初次生成的时候，好像默认两个参数都是true，我也没找到在哪里修改他的配置文件，所以就怪怪的要生成两次，先生成一次然后修改参数，删掉原来的目录（保存注释），再生成一次他就会按照参数生成一份</p>
-<br>
-<p>而且感觉这东西好像不太实用呢，我需要将他生成的目录先放到hexo生成的两个<code>---</code>后面，然后这个插件为啥不支持生成一级文件。。。<br>
+<p><br></p>
+<p>而且感觉这东西好像不太实用呢，我需要将他生成的目录先放到hexo生成的两个<code>---</code>后面，然后这个插件为啥不支持生成一级文件。。。<br />
 此文仅做个记录以后不用了。。。</p>
-<h2 id="a-name-test-1-a-test"><a name='test-1'></a>test</h2>
+<h2 id="test-1"><a name='test-1'></a>test</h2>
 <blockquote>
 <p>test for generate TOC</p>
 </blockquote>
-<h3 id="a-name-test1-a-test1"><a name='test1'></a>test1</h3>
+<h3 id="test1"><a name='test1'></a>test1</h3>
 <blockquote>
 <p>test for generate TOC</p>
 </blockquote>
+<h2 id="typora">typora</h2>
+<p>。。。才发现 typora能自动生成目录啊<br />
+<code>[TOC]</code>即可。。。<br />
+有点 🤡 了呀</p>
 ]]></content>
       <categories>
         <category>markdown</category>
@@ -562,6 +412,366 @@ waline的参考手册还是很详细的，按照步骤很方便快速地部署�
       <tags>
         <tag>hexo</tag>
         <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nexT美化</title>
+    <url>/2024/04/09/nextT%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>额额。。。此贴的所有操作都是基于 <code>next8</code>
+版本进行的。。。<br />
+版本对应不上可能导致相关文件找不到，还请各位善用搜索引擎</p>
+<span id="more"></span>
+<h1 id="可切换模式按钮">可切换模式按钮</h1>
+<p><del>参考了这个佬的<a
+href="https://haomingzhang.com/hexo_3/">博客</a></del><br />
+<del>在路径<code>themes/next/_vendors.yml</code> 下添加
+<code>darkmode.js</code> 的cdn</del><br />
+<del>然后我在next目录下没有找到 <code>_config.next.yml</code>
+但是我添加在 <code>_config.yml</code> 里</del></p>
+<p><br></p>
+<p>失败了。。。<br />
+可能是版本不对，更新给文件删了吧。。。</p>
+<hr />
+<p>我又找到了另一个佬的<a
+href="https://www.techgrow.cn/posts/abf4aee1.html">博客</a><br />
+废话我不多说了，有用！<br />
+然后如果要自定义可以在这个路径下进行修改<br />
+<code>\[root]\node_modules\hexo-next-darkmode\lib</code><br />
+root 就是你的博客根目录，其他 npm install 的包也在这里，可以找一找
+hh</p>
+<h1 id="文章底部添加">文章底部添加</h1>
+<p>额原理就是加一个html的div标签<br />
+在路径 <code>\themes\next\layout\_macro</code> 中新建
+<code>passage-end-tag.swig</code> 文件,并添加以下内容：<br />
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span>-------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-paw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读-------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>接着打开<code>\themes\next\layout\_macro\post.swig</code>文件，在post-body
+之后， post-footer
+之前添加如下画红色部分代码（post-footer之前两个DIV，在END POST
+BODY之后的部分）： <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">    &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>但是我是没有 <code>post.swig</code> 文件的，我操作了
+<code>post.njk</code> 文件，同样可以</p>
+<p>然后打开主题配置文件(_config.yml),在末尾添加： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文章末尾添加“本文结束”标记</span><br><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure></p>
+<h1 id="把底部-标签换成图标">把底部 # 标签换成图标</h1>
+<p>修改模板<code>/themes/next/layout/_macro/post.njk</code> 在尾部找到
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; if theme.tag_icon else &#x27;#&#x27; %&#125;</span><br><span class="line"></span><br><span class="line"># 删去 if theme.tag_icon else &#x27;#&#x27; 即可</span><br><span class="line">&#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;%&#125;</span><br><span class="line">重新渲染后可正确使用</span><br></pre></td></tr></table></figure></p>
+<h1 id="首页折叠">首页折叠</h1>
+<p>起因是我觉得每次进主页都直接看全文很麻烦。。。<br />
+然后去搜了下压缩结果是静态资源的压缩，在这篇<a
+href="https://akilar.top/posts/49b73b87/">博客</a>里<br />
+但我其实搜错关键字了hh<br />
+歪打正着给博客静态资源压缩了<br />
+参考这篇<a
+href="https://blog.csdn.net/yueyue200830/article/details/104470646">博客</a>
+没想到主页文章折叠在 <code>next</code> 的 <code>_config.yml</code>
+文件里就有<br />
+不过貌似优先级比较低？在我的<code>markdown</code>生成目录的文章里，如果填在
+<code>&lt;!--TOC--&gt;</code> 标签之前就无法折叠了。。。</p>
+<h1 id="next文章评论区">next文章评论区</h1>
+<p>看了下 <code>next</code> 的 <code>_config.yml</code> 文件<br />
+额额最终还是采用了 <code>waline</code>
+搭建个人博客（<code>gitalk</code>折腾了半天一直会报
+<code>e.toLowerCase is not a function</code>的错，他在GitHub的issue下面是有相关问题的，但是我按照其他人给出的解决方案没有搞定，只能转战
+<code>waline</code> 了<br />
+waline的参考手册还是很详细的，按照步骤很方便快速地部署完成了</p>
+<h2 id="vercel-部署">vercel 部署</h2>
+<p>采用了 <code>vercel</code> 自动部署 <code>waline</code><br />
+参考文档如下： - <a
+href="https://waline.js.org/guide/deploy/vercel.html#%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2">Waline</a></p>
+<p>管理界面地址为 https://[your app address]/ui<br />
+或者进入你的app中，看页面上方的导航标签有管理可以进入。。。<br />
+但是有一个问题就是通过vercel部署访问的速度实在太慢了。。。<br />
+之后考虑看看有没有其他办法能够部署到国内</p>
+<h2 id="waline-dark">waline dark</h2>
+<p>配置好的 waline 是不支持黑夜模式的，看了官方文档但是我没有找到 client
+文件，所以直接修改 css 作罢<br />
+随后考虑修改 <code>_config.yml</code>
+文件中的字段看是否能够修改（？字段几乎都不起作用，奇怪）<br />
+最后考虑到之前做的 dark mode按钮，那个是直接覆盖页面的
+css，应该也可以修改评论区的css<br />
+一查发现佬的文章里已经做了说明。 &gt; 由于暗黑模式切换插件依赖了
+Darkmode.js，如果插件不生效，这很有可能是 Darkmode.js 的 CDN
+资源失效了（在国内访问被墙）。<br />
+&gt; 此时，建议使用暗黑模式切换插件的 libUrl 配置参数来指定可用的 CDN
+资源链接，如下所示： &gt; - 使用 Unpkg 免费提供的 CDN 资源 &gt;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line"> ...</span><br><span class="line"> libUrl: &#x27;https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js&#x27;</span><br></pre></td></tr></table></figure> &gt; - 使用 Jsdelivr 免费提供的 CDN 资源 &gt;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">darkmode_js:</span><br><span class="line"> ...</span><br><span class="line"> libUrl: &#x27;https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js&#x27;</span><br></pre></td></tr></table></figure></p>
+<p>按照佬的方案轻松解决 ^ ^</p>
+<h2 id="waline加速">waline加速</h2>
+<p>由于<code>vercel</code>在国内被dns污染了所以访问起来不挂梯子是看不到评论区的<br />
+参考了网上的一些方法，刚好域名备案下来了，搞一下waline的加速<br />
+<br> ！注意，这个操作是要基于已有域名的情况下才能继续进行<br />
+我们要做的就是<strong>用已有的博客域名去免费申请一个子域名来代替vercel.app那个被污染的域名。</strong></p>
+<ol type="1">
+<li>进入域名控制台，找到你的博客域名，添加解析记录
+<ol type="1">
+<li>记录类型选择 <code>CNAME</code></li>
+<li>主机记录填 <code>comment</code>
+(可以自定，这一步完成你的二级域名就是 comment + 你的一级域名)</li>
+<li>添加记录值为 <code>cname.vercel-dns.com</code></li>
+</ol></li>
+</ol>
+<p>(比如我的域名是 <code>szf.cool</code>，那么操作完，我的二级域名应该是
+<code>comment.szf.cool</code>)<br />
+<br> 2.
+进入vercel控制台，进入你的项目，在<code>setting</code>-<code>Domains</code>下，在输入框中输入你的二级域名
+=&gt; add添加<br />
+3.
+同时修改next的config文件，更换一下<code>serverURL</code>字段即可<br />
+4. 这样就可以了，随后部署测试一下评论区是否能够正常访问即可</p>
+<p>额额但是在博客的评论区里，power by waline的版本是2.x。。。<br />
+在管理页面是 3.x 版本，目前还没出问题，不至于以后会不会有问题。。。</p>
+<h1 id="文件跳过渲染">文件跳过渲染</h1>
+<p>修改站点配置文件中的 <code>skip_render</code> 配置项。<br />
+只有 <code>source</code> 目录下的文件才会发布，因此 Hexo 只渲染 source
+目录下的文件。<code>skip_render</code> 参数设置的路径是相对于
+<code>source</code> 目录的路径。<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#单个文件</span><br><span class="line">skip_render: hello.html</span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件</span><br><span class="line">skip_render: test/* </span><br><span class="line"></span><br><span class="line">#单个文件夹下指定类型文件</span><br><span class="line">skip_render: test/*.md  </span><br><span class="line"></span><br><span class="line">#单个文件夹下全部文件以及子目录</span><br><span class="line">skip_render: test/**  </span><br><span class="line"></span><br><span class="line">#跳过多个目录，或者多个文件</span><br><span class="line">skip_render: [&#x27;*.html&#x27;, demo/**, test/*]</span><br></pre></td></tr></table></figure></p>
+<h1 id="文章置顶功能">文章置顶功能</h1>
+<p>参考这篇<a
+href="https://blog.csdn.net/stormdony/article/details/86745805">博客</a><br />
+首先修改本地的仓库<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm uninstall hexo-generator-index --save</span><br><span class="line">$ npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure></p>
+<p>然后就可以在文章的顶部信息修改 <code>top</code> 字段了。。。<br />
+同时要设置一下置顶的标签 hh</p>
+<p>我是在<code>\next\layout\_marco\post.nijk</code> 文件下的
+<code>post-meta-container</code>标签中添加的相关代码<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if post.top %&#125;</span><br><span class="line">  &lt;i class=&quot;fa fa-thumb-tack&quot;&gt;&lt;/i&gt;</span><br><span class="line">  &lt;font color=7D26CD&gt;置顶&lt;/font&gt;</span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure> 注意缩进 ^ ^<br />
+但是这个紫色的颜色不好看，我修改了 font color的值</p>
+<h1 id="更新markdown渲染">更新markdown渲染</h1>
+<p>额额看花书洋洋洒洒写了点文字，结果没想到markdown的渲染好像不是很行，于是按照教程重新折腾了一下markdown的渲染。。。<br />
+教程在<a
+href="https://blog.csdn.net/qq_42951560/article/details/123596899">这里</a><br />
+笔者又找到一个markdown的依赖包<a
+href="https://blog.csdn.net/qq_36667170/article/details/105846999">教程</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>nexT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>花书（一）</title>
+    <url>/2024/04/15/%E8%8A%B1%E4%B9%A6%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括<strong>线性代数</strong>与<strong>概率论</strong>部分内容</p>
+
+</blockquote>
+<span id="more"></span>
+<p>当然，笔者所记不能是花书所有的内容，只能是笔者自己觉得有提升、有意义的部分，所以很多课堂上已经掌握的内容就没有纳入本文的内容了</p>
+<h1 id="引言">引言</h1>
+<p>一些人工智能项目旨在将世界所包含的知识用形式化的语言进行硬编码
+(hard-code)
+，而计算机可以使用逻辑推理规则自动理解这些形式化语言中的声明。这就是人工智能的<strong>知识库</strong>
+(knowledge base)</p>
+<p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习
+(machine learning) 的能力</p>
+<p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong>
+(representation learning)<br />
+&gt; 一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器
+(encoder) 和一个解码器 (decoder)
+函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br />
+&gt;
+而我们的目标是：数据经过编码器和解码器能够尽可能多地保留信息，同时，新的表示有一些好的特性。。。</p>
+<p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的
+<strong>变差因素</strong> (factors of variation) 。 &gt;
+这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br />
+&gt; 比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。</p>
+<p>深度学习 (deep learning)
+通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题<br />
+&gt; 如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br />
+&gt; 直接处理，让机器学习或评估几乎是不可能的<br />
+&gt; 深度学习将复杂的映射分解为一系列嵌套的简单的映射<br />
+&gt; 输入展示在可见层 (visible
+layer)，命名的原因是它包含我们能够观察到的变量<br />
+&gt; 然后经过一系列的隐藏层 (hiden layer)</p>
+<p>评估模型深度的方式主要有两种： - 评估计算流深度 - 评估概念关联深度 -
+比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的
+n 次计算，也就是说计算的图包含 2n 层</p>
+<hr />
+<h1 id="线性代数">线性代数</h1>
+<p>在这里，矩阵被看作是列向量集合，即 <span
+class="math inline">\(A=[\alpha_1,\alpha_2,\alpha_3,\cdots,\alpha_n]\)</span>
+，而每个列向量被看作是方向的描述<br />
+因此 <span class="math inline">\(Ax=\sum_i x_iA_{:,i}\)</span>
+可以被描述为我们需要沿着第<span
+class="math inline">\(i\)</span>个向量的方向走<span
+class="math inline">\(x_i\)</span>的步长</p>
+<p>一组向量的 <strong>生成子空间(span)</strong>
+是原始向量线性组合后所能抵达的点的集合<br />
+也就是说，方程 <span
+class="math inline">\(Ax=b\)</span>是否有解，相当于：确定向量<span
+class="math inline">\(b\)</span>是否在<span
+class="math inline">\(A\)</span>的列向量集合的生成子空间中，这个特殊的生成子空间也被称为
+<span class="math inline">\(A\)</span> 的<strong>列空间(column
+space)</strong> 或是<span
+class="math inline">\(A\)</span>的<strong>值域(range)</strong> 。</p>
+<h2 id="讨论方程-axb-是否有解">讨论方程 <span
+class="math inline">\(Ax=b\)</span> 是否有解？</h2>
+<blockquote>
+<p>前提我们记 <span class="math inline">\(A\)</span> 的形状为 <span
+class="math inline">\(m \times n\)</span></p>
+</blockquote>
+<p>那么一方面，若要求该方程对任意的<span
+class="math inline">\(b\)</span>都要有解，由于<span
+class="math inline">\(Ax\)</span> 看作是<span
+class="math inline">\(A\)</span>的第<span
+class="math inline">\(i\)</span>个列向量，所以<span
+class="math inline">\(Ax\)</span>自然有<span
+class="math inline">\(n\)</span>个，故若<span
+class="math inline">\(Ax\)</span>的列空间是整个<span
+class="math inline">\(\mathbb{R}^m\)</span>要求<span
+class="math inline">\(n\ge m\)</span><br />
+（当然，这只是必要条件，这些列向量会存在冗余，这种现象称之为
+<strong>线性相关</strong> ）</p>
+<p><br></p>
+<p>另一方面，如果想要该矩阵可逆，需要使得方程对每一个 <span
+class="math inline">\(b\)</span> 至多有一个解。<br />
+&gt;
+这一句可能有些同学一开始看会愣一下，笔者在这里卡了一下，作者的意思是
+<span class="math inline">\(Ax=b\)</span>，既然<span
+class="math inline">\(A\)</span>是广义上可逆的，那么<span
+class="math inline">\(x=A^{-1}b\)</span>，也就是说，x是<span
+class="math inline">\(A^{-1}\)</span>的列空间中的一个向量，所以说，x至多也只能有一个，不可能在<span
+class="math inline">\(A\)</span>可逆的情况下一个<span
+class="math inline">\(b\)</span>向量对应多个<span
+class="math inline">\(x\)</span>向量</p>
+<p>所以该矩阵需要确保至多有 <span class="math inline">\(m\)</span>
+个列，当然，这是个充分条件<br />
+综上所述，如果方程有唯一解那么<span
+class="math inline">\(A\)</span>矩阵首先要是方阵，其次他所有的列向量都要是无关的</p>
+<h2 id="范数">范数</h2>
+<p>在机器学习中，我们通过称为 <strong>范数</strong>
+(norm)的函数来衡量向量的大小，形式上 <span
+class="math inline">\(L^p\)</span>范数的定义为： <span
+class="math display">\[ | | x | | _ { p } = \left( \sum _ { i } | x _ {
+i } | ^ { p } \right) ^ { \frac { 1 } { p } }\]</span><br />
+范数能够将向量映射为非负值<br />
+直观上来看，向量<span
+class="math inline">\(x\)</span>的范数衡量了从原点到点<span
+class="math inline">\(x\)</span>的距离，更严格地说，范数满足如下性质：</p>
+<ul>
+<li><span class="math inline">\(f(x)=0 \rightarrow x=\vec
+0\)</span></li>
+<li><span class="math inline">\(f(x+y) \le f(x) + f(y)\)</span></li>
+<li>$ R , f ( x ) = | | f ( x )$</li>
+</ul>
+<p>举几个例子吧！<br />
+- 当 <span class="math inline">\(p = 2\)</span> 时，<span
+class="math inline">\(L^2\)</span> 范数称为
+<strong>欧几里得范数</strong>(Euclidean norm)：表示从原点出发到向量
+<span class="math inline">\(x\)</span>
+确定的点的欧几里得距离。通常情况也用 <span
+class="math inline">\(L^2\)</span> 范数的平方去代替 <span
+class="math inline">\(L^2\)</span>
+范数，不过也有利有弊，一方面，平方在原点附近的增长非常缓慢，另一方面，平方的导数只取决于对应的元素
+- 当 <span class="math inline">\(p = 1\)</span> 时， <span
+class="math inline">\(L^1\)</span>
+范数却能够给我们区分零元素和非零元素， <span
+class="math inline">\(L^1\)</span>
+范数的计算也非常简单，即各位的绝对值和 - 当 <span
+class="math inline">\(p = 0\)</span> 时，这种 <span
+class="math inline">\(L^0\)</span>
+范数用来统计向量中非零元素的个数，有时我们会用他来衡量一个向量的大小，但这个概念对于前面数学上的严格定义是不对的，首先第三条就不满足了。。。
+- 当 <span class="math inline">\(p = +\infty\)</span>
+时，也被称为<strong>最大范数</strong>(max
+norm)，这个范数表示向量中具有最大幅值的元素的绝对值：<span
+class="math inline">\(||x||_\infty=\max_i |x_i|\)</span> -
+当然，在机器学习中，我们有时也希望有类似的定义能够去衡量矩阵的大小，这要引入
+<strong>Frobenius范数</strong>(Frobenius norm)：<span
+class="math inline">\(||A||_F=\sqrt{\sum_{i,j}A^2_{i,j}}\)</span>
+（类似于向量的 L2 范数？）</p>
+<h2 id="特征分解">特征分解</h2>
+<blockquote>
+<p>许多数学对象可以通过将它们分解成多个组成部分或者找到它们的一些属性而更好地理解，这些属性是通用的，而不是由我们选择表示它们的方式产生的。<br />
+例如：$12=2 $，从中我们可以获得一些信息，比如12不能被5整除</p>
+</blockquote>
+<p>通过矩阵的<strong>特征分解</strong>(eigen
+decomposition)我们同样能够获得一些信息，方阵 A 的 特征向量（eigen
+vector）是指与 A 相乘后相当于对该向量进行缩放的非零向量 v：<span
+class="math inline">\(Av=\lambda v\)</span><br />
+其中 <span class="math inline">\(\lambda\)</span>
+称为这个特征向量对应的特征值(eigen value)。（类似地，我们也可以定义
+左特征向量（left eigen vector）<span class="math inline">\(v^⊤A =
+λv^⊤\)</span>，但是通常我们更关注 右特征向量（right eigen
+vector））。显然，对特征向量缩放后的向量依然是矩阵的特征向量。<br />
+假设矩阵 A 有 n 个线性无关的特征向量<span
+class="math inline">\(\{v^{(1)},\cdots,v^{(n)}\}\)</span>对应着特征值<span
+class="math inline">\(\{\lambda^{(1)},\cdots,\lambda^{(n)}\}\)</span>,
+因此 A 的特征分解可以记作： <span class="math inline">\(A=V\rm
+diag(\lambda)V^{-1}\)</span><br />
+不过值得注意的是，并不是所有实矩阵都总有实特征分解，有些特征分解存在但是涉及到复数，不过值得注意的是，所有的<strong><em>实对称阵</em></strong>都可以分解成实特征向量和实特征值：<span
+class="math inline">\(A=Q \Lambda Q^T\)</span>，其中 <span
+class="math inline">\(Q\)</span> 是 <span
+class="math inline">\(A\)</span> 的特征向量组成的正交矩阵，<span
+class="math inline">\(\Lambda\)</span>​ 是对角矩阵。<br />
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251812391.png"
+alt="image-20240425181235305" /></p>
+<h2 id="奇异值分解">奇异值分解</h2>
+<p>对于非方阵矩阵，我们同样希望能够进行分解，换句话说我们希望将特征分解的范围拓展<br />
+这种分解方法被称为 <strong>奇异值分解</strong>（singular value
+decomposition, SVD），将矩阵分解为 奇异向量（singular vector）和
+<strong>奇异值</strong>（singular value）<br />
+同样地，奇异值分解为：<span class="math inline">\(A=UDV^T\)</span><br />
+假设 A 是一个 <span class="math inline">\(m\times
+n\)</span>的矩阵,那么U是一个 <span class="math inline">\(m\times
+m\)</span>的矩阵,D是一个<span class="math inline">\(m\times
+n\)</span>的矩阵,V是一个 <span class="math inline">\(n \times n\)</span>
+的矩阵<br />
+矩阵 U 和 V 都定义为 <strong>正交矩阵</strong>，而矩阵 D
+定义为<strong>对角矩阵</strong>。注意，矩阵 D 不一定是方阵。<br />
+对角矩阵 D 对角线上的元素被称为矩阵 A 的
+<strong>奇异值</strong>（singular value）。矩阵U 的列向量被称为
+<strong>左奇异向量</strong>（left singular vector），矩阵 V 的列向量被称
+<strong>右奇异向量</strong>（right singular vector）。<br />
+事实上，我们可以用与 A 相关的特征分解去解释 A 的奇异值分解。A 的
+左奇异向量（left singular vector）是 <span
+class="math inline">\(AA^⊤\)</span> 的特征向量。A 的 右奇异向量（right
+singular vector）是 <span class="math inline">\(A^⊤A\)</span>
+的特征向量。A 的非零奇异值是 <span class="math inline">\(A^⊤A\)</span>
+特征值的平方根，同时也是<span class="math inline">\(AA^⊤\)</span>
+特征值的平方根。<br />
+奇异值分解的推导如下：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261123476.jpg" alt="53ad37ea04a14b4601663211b5ac23d" style="zoom: 50%;" /></p>
+<blockquote>
+<p><a
+href="https://www.bilibili.com/video/BV1544y1v7Am/?spm_id_from=333.337.search-card.all.click">参考视频</a></p>
+</blockquote>
+<h2 id="mp伪逆">MP伪逆</h2>
+<p>对于非方阵而言，其逆运算没有定义，因此我们也需要对逆的概念进行拓展<br />
+如果矩阵 A 的行数大于列数，那么上述方程可能没有解。如果矩阵 A
+的行数小于列数，那么上述矩阵可能有多个解<br />
+Moore-Penrose 伪逆（Moore-Penrose
+pseudoinverse）使我们在这类问题上取得了一定的进展。矩阵 A
+的伪逆定义为：$ A ^ { + } = _ { } ( A ^ { T } A + I ) ^ { - 1 } A ^ { T
+}$</p>
+<p>而计算伪逆通常使用奇异值分解：$ A ^ { + } = V D ^ { + } U ^ { T }
+$<br />
+其中，矩阵 U，D 和 V 是矩阵 A奇异值分解后得到的矩阵。对角矩阵 D
+的伪逆<span class="math inline">\(D^+\)</span>
+是其非零元素<strong>取倒数之后再转置</strong>得到的。<br />
+MP伪逆在方程解的问题中也有很多应用，比如： - 当 <span
+class="math inline">\(n &gt; m\)</span> 时，<span
+class="math inline">\(x = A^+ y\)</span>是所有方程可行解中<span
+class="math inline">\(L_2\)</span>范数最小的那个 - 当 <span
+class="math inline">\(n &gt; m\)</span>​ 时，MP伪逆得到的解使得 <span
+class="math inline">\(Ax\)</span>​ 与 <span
+class="math inline">\(y\)</span>​ 的欧几里得距离最小</p>
+<h2 id="迹运算">迹运算</h2>
+<ul>
+<li><span class="math inline">\({\rm Tr}(A)=\sum_i A_{i,i}\)</span></li>
+<li>$||A||_F=</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+        <tag>花书</tag>
       </tags>
   </entry>
 </search>
