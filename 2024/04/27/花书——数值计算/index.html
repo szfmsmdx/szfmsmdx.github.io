@@ -19,28 +19,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"szf.cool","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":12,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null,"count":true,"text":true},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="To be a pure man">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://szf.cool/tags/">
+    <meta name="description" content="研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括数值计算部分内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="花书——数值计算">
+<meta property="og:url" content="http://szf.cool/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/">
 <meta property="og:site_name" content="Szf&#39;s blog ...">
-<meta property="og:description" content="To be a pure man">
+<meta property="og:description" content="研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括数值计算部分内容">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-08T09:31:14.000Z">
-<meta property="article:modified_time" content="2024-04-09T07:07:23.282Z">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271622235.png">
+<meta property="article:published_time" content="2024-04-27T06:56:54.000Z">
+<meta property="article:modified_time" content="2024-04-27T08:23:08.020Z">
 <meta property="article:author" content="Szfmsmdx">
+<meta property="article:tag" content="花书">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="数值计算">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271622235.png">
 
 
-<link rel="canonical" href="http://szf.cool/tags/">
+<link rel="canonical" href="http://szf.cool/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"http://szf.cool/tags/","path":"tags/index.html","title":"tags"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://szf.cool/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/","path":"2024/04/27/花书——数值计算/","title":"花书——数值计算"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>tags | Szf's blog ...
-</title>
+<title>花书——数值计算 | Szf's blog ...</title>
   
 
 
@@ -127,7 +131,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -140,6 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">上溢和下溢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">病态问题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -192,41 +197,194 @@
 
     </div>
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://szf.cool/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Szfmsmdx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Szf's blog ...">
+      <meta itemprop="description" content="To be a pure man">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="花书——数值计算 | Szf's blog ...">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          花书——数值计算
+        </h1>
+
+        
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-04-27 14:56:54 / 修改时间：16:23:08" itemprop="dateCreated datePublished" datetime="2024-04-27T14:56:54+08:00">2024-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
     
-    
-    
-    <div class="post-block" lang="zh-CN"><header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
-
-<div class="post-meta-container">
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>628</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      <div class="post-body"><div class="tag-cloud">
-  <div class="tag-cloud-title">
-    目前共计 12 个标签
-  </div>
-  <div class="tag-cloud-tags">
-    <a href="/tags/Deep-Learning/" style="font-size: 21px;" class="tag-cloud-5">Deep Learning</a> <a href="/tags/git/" style="font-size: 12px;" class="tag-cloud-0">git</a> <a href="/tags/hexo/" style="font-size: 30px;" class="tag-cloud-10">hexo</a> <a href="/tags/markdown/" style="font-size: 21px;" class="tag-cloud-5">markdown</a> <a href="/tags/nexT/" style="font-size: 21px;" class="tag-cloud-5">nexT</a> <a href="/tags/nginx/" style="font-size: 12px;" class="tag-cloud-0">nginx</a> <a href="/tags/nodejs/" style="font-size: 12px;" class="tag-cloud-0">nodejs</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/" style="font-size: 12px;" class="tag-cloud-0">信息论</a> <a href="/tags/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/" style="font-size: 12px;" class="tag-cloud-0">数值计算</a> <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" style="font-size: 12px;" class="tag-cloud-0">概率论</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 12px;" class="tag-cloud-0">线性代数</a> <a href="/tags/%E8%8A%B1%E4%B9%A6/" style="font-size: 21px;" class="tag-cloud-5">花书</a>
-  </div>
-</div>
+    
+    
+    
 
-      </div>
-      
-      
-      
+
+    <div class="post-body" itemprop="articleBody"><blockquote class="blockquote-center">
+<p>研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括<strong>数值计算</strong>部分内容</p>
+
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>这里的数值计算通常是指通过迭代过程更新解的估计值来解决数学问题的算法，而不是通过解析过程推导出公式来提供正确解的方法</p>
+<p>常见的操作包括优化（找到最小化或最大化函数值的参数）和线性方程组的求解</p>
+</blockquote>
+<h1>上溢和下溢</h1>
+<p><mark>连续数学在数字计算机上的根本困难是，我们需要通过有限数量的位模式来表示无限多的实数</mark></p>
+<p>这意味着我们在计算机中表示实数时，几乎总会引入一些<strong>近似误差</strong>。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>下溢（underflow）</strong>：当接近零的数被四舍五入为 零时发生下溢。</p>
+</li>
+<li class="lvl-2">
+<p><strong>上溢（overflow）</strong>：当大量级的数被近似为 $+\infty$ 或 $-\infty$ 时发生上溢</p>
+</li>
+</ul>
+<p>softmax函数通常用于预测与范畴分布相关联的概率，定义为：$\mathrm {softmax}(x)<em>i=\frac{\exp(x_i)}{\sum</em>{j=1}^n\exp(x_j)}$</p>
+<p>考虑所有 x 都是常数 c 的情况，这使得所有的输出都应该是 1/n：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>当 c 很大时，计算 exp© 会爆发上溢</p>
+</li>
+<li class="lvl-2">
+<p>当 c 是个很小的负数时，使得 exp© 发生下溢，使得 exp© 几乎为0，那么分母就会无意义</p>
+</li>
+</ul>
+<p>但是 softmax 在计算时可以通过 softmax(z) 来解决，其中 $z=x-\max_i\ x_i$</p>
+<p>去除一个最大值使得 z 中的元素最大值为 0，这样 exp(0)=1既保证了分母不会为0，同时也保证了分子不会发生上溢</p>
+<h1>病态问题</h1>
+<p>参考[这篇博客](<a target="_blank" rel="noopener" href="https://flat2010.github.io/2018/06/30/%E7%97%85%E6%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E6%9D%A1%E4%BB%B6%E6%95%B0/">病态问题及条件数 | 断鸿声里，立尽斜阳 (flat2010.github.io)</a>)</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271622235.png" alt="image-20240427162132277"></p>
+
     </div>
 
     
     
+    
+
+    <div>
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Szfmsmdx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://szf.cool/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/" title="花书——数值计算">http://szf.cool/2024/04/27/花书——数值计算/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%8A%B1%E4%B9%A6/" rel="tag"><i class="fa fa-tag"></i> 花书</a>
+              <a href="/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
+              <a href="/tags/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/" rel="tag"><i class="fa fa-tag"></i> 数值计算</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/15/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E7%BA%BF%E4%BB%A3and%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="prev" title="花书——线代and概率论">
+                  <i class="fa fa-angle-left"></i> 花书——线代and概率论
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
 
 
     <div class="comments" id="waline"></div>
@@ -299,11 +457,11 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.szf.cool","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"locale":null,"placeholder":"友好交流，善意评论 ^ ^","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","dark":"body.darkmode--activated","el":"#waline","comment":true,"path":"/tags/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.szf.cool","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"locale":null,"placeholder":"友好交流，善意评论 ^ ^","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","dark":"body.darkmode--activated","el":"#waline","comment":true,"path":"/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/"}</script>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 <script>
 document.addEventListener('page:loaded', () => {
