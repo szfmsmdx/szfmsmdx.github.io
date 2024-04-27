@@ -26,7 +26,6 @@
 <meta property="og:site_name" content="Szf&#39;s blog ...">
 <meta property="og:description" content="研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括数值计算部分内容">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271622235.png">
 <meta property="article:published_time" content="2024-04-27T06:56:54.000Z">
 <meta property="article:modified_time" content="2024-04-27T08:23:08.020Z">
 <meta property="article:author" content="Szfmsmdx">
@@ -34,7 +33,6 @@
 <meta property="article:tag" content="Deep Learning">
 <meta property="article:tag" content="数值计算">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271622235.png">
 
 
 <link rel="canonical" href="http://szf.cool/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/">
@@ -144,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">上溢和下溢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">病态问题</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8A%E6%BA%A2%E5%92%8C%E4%B8%8B%E6%BA%A2"><span class="nav-number">1.</span> <span class="nav-text">上溢和下溢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%97%85%E6%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">病态问题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -273,7 +271,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>628</span>
+      <span>629</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -301,32 +299,38 @@
 <p>这里的数值计算通常是指通过迭代过程更新解的估计值来解决数学问题的算法，而不是通过解析过程推导出公式来提供正确解的方法</p>
 <p>常见的操作包括优化（找到最小化或最大化函数值的参数）和线性方程组的求解</p>
 </blockquote>
-<h1>上溢和下溢</h1>
-<p><mark>连续数学在数字计算机上的根本困难是，我们需要通过有限数量的位模式来表示无限多的实数</mark></p>
+<h1 id="上溢和下溢">上溢和下溢</h1>
+<p>==连续数学在数字计算机上的根本困难是，我们需要通过有限数量的位模式来表示无限多的实数==</p>
 <p>这意味着我们在计算机中表示实数时，几乎总会引入一些<strong>近似误差</strong>。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>下溢（underflow）</strong>：当接近零的数被四舍五入为 零时发生下溢。</p>
-</li>
-<li class="lvl-2">
-<p><strong>上溢（overflow）</strong>：当大量级的数被近似为 $+\infty$ 或 $-\infty$ 时发生上溢</p>
-</li>
+<ul>
+<li><strong>下溢（underflow）</strong>：当接近零的数被四舍五入为
+零时发生下溢。</li>
+<li><strong>上溢（overflow）</strong>：当大量级的数被近似为 <span
+class="math inline">\(+\infty\)</span> 或 <span
+class="math inline">\(-\infty\)</span> 时发生上溢</li>
 </ul>
-<p>softmax函数通常用于预测与范畴分布相关联的概率，定义为：$\mathrm {softmax}(x)<em>i=\frac{\exp(x_i)}{\sum</em>{j=1}^n\exp(x_j)}$</p>
+<p>softmax函数通常用于预测与范畴分布相关联的概率，定义为：<span
+class="math inline">\(\mathrm
+{softmax}(x)_i=\frac{\exp(x_i)}{\sum_{j=1}^n\exp(x_j)}\)</span></p>
 <p>考虑所有 x 都是常数 c 的情况，这使得所有的输出都应该是 1/n：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>当 c 很大时，计算 exp© 会爆发上溢</p>
-</li>
-<li class="lvl-2">
-<p>当 c 是个很小的负数时，使得 exp© 发生下溢，使得 exp© 几乎为0，那么分母就会无意义</p>
-</li>
+<ul>
+<li>当 c 很大时，计算 exp(c) 会爆发上溢</li>
+<li>当 c 是个很小的负数时，使得 exp(c) 发生下溢，使得 exp(c)
+几乎为0，那么分母就会无意义</li>
 </ul>
-<p>但是 softmax 在计算时可以通过 softmax(z) 来解决，其中 $z=x-\max_i\ x_i$</p>
-<p>去除一个最大值使得 z 中的元素最大值为 0，这样 exp(0)=1既保证了分母不会为0，同时也保证了分子不会发生上溢</p>
-<h1>病态问题</h1>
-<p>参考[这篇博客](<a target="_blank" rel="noopener" href="https://flat2010.github.io/2018/06/30/%E7%97%85%E6%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E6%9D%A1%E4%BB%B6%E6%95%B0/">病态问题及条件数 | 断鸿声里，立尽斜阳 (flat2010.github.io)</a>)</p>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271622235.png" alt="image-20240427162132277"></p>
+<p>但是 softmax 在计算时可以通过 softmax(z) 来解决，其中 <span
+class="math inline">\(z=x-\max_i\ x_i\)</span></p>
+<p>去除一个最大值使得 z 中的元素最大值为 0，这样
+exp(0)=1既保证了分母不会为0，同时也保证了分子不会发生上溢</p>
+<h1 id="病态问题">病态问题</h1>
+<p>参考<a
+href="%5B病态问题及条件数%20%7C%20断鸿声里，立尽斜阳%20(flat2010.github.io)%5D(https://flat2010.github.io/2018/06/30/病态问题及条件数/)">这篇博客</a></p>
+<figure>
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271622235.png"
+alt="image-20240427162132277" />
+<figcaption aria-hidden="true">image-20240427162132277</figcaption>
+</figure>
 
     </div>
 
@@ -415,7 +419,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">45 分钟</span>
+    <span title="站点阅读时长">46 分钟</span>
   </span>
 </div>
 

@@ -26,7 +26,6 @@
 <meta property="og:site_name" content="Szf&#39;s blog ...">
 <meta property="og:description" content="研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括线性代数与概率论部分内容">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251812391.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261123476.jpg">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261520572.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261229634.png">
@@ -52,7 +51,7 @@
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271413992.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271443153.png">
 <meta property="article:published_time" content="2024-04-15T05:55:21.000Z">
-<meta property="article:modified_time" content="2024-04-27T07:01:24.951Z">
+<meta property="article:modified_time" content="2024-04-27T16:32:42.178Z">
 <meta property="article:author" content="Szfmsmdx">
 <meta property="article:tag" content="花书">
 <meta property="article:tag" content="Deep Learning">
@@ -60,7 +59,7 @@
 <meta property="article:tag" content="概率论">
 <meta property="article:tag" content="信息论">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251812391.png">
+<meta name="twitter:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261123476.jpg">
 
 
 <link rel="canonical" href="http://szf.cool/2024/04/15/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E7%BA%BF%E4%BB%A3and%E6%A6%82%E7%8E%87%E8%AE%BA/">
@@ -170,7 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA%E6%96%B9%E7%A8%8B-Ax-b-%E6%98%AF%E5%90%A6%E6%9C%89%E8%A7%A3%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">讨论方程 $Ax&#x3D;b$ 是否有解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8C%83%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">范数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%88%86%E8%A7%A3"><span class="nav-number">2.3.</span> <span class="nav-text">特征分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">奇异值分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MP%E4%BC%AA%E9%80%86"><span class="nav-number">2.5.</span> <span class="nav-text">MP伪逆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%B9%E8%BF%90%E7%AE%97"><span class="nav-number">2.6.</span> <span class="nav-text">迹运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="nav-number">2.7.</span> <span class="nav-text">行列式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90"><span class="nav-number">2.8.</span> <span class="nav-text">主成分分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">概率论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">3.1.</span> <span class="nav-text">概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">离散型随机变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E6%80%A7%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">3.1.2.</span> <span class="nav-text">连续性随机变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87"><span class="nav-number">3.2.</span> <span class="nav-text">边缘概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-number">3.3.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E4%B8%8E%E6%9D%A1%E4%BB%B6%E7%8B%AC%E7%AB%8B"><span class="nav-number">3.4.</span> <span class="nav-text">独立与条件独立</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">3.5.</span> <span class="nav-text">常用概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bernoulli-%E5%88%86%E5%B8%83"><span class="nav-number">3.5.1.</span> <span class="nav-text">Bernoulli 分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multinoulli-%E5%88%86%E5%B8%83"><span class="nav-number">3.5.2.</span> <span class="nav-text">Multinoulli 分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83"><span class="nav-number">3.5.3.</span> <span class="nav-text">高斯分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E4%B8%8ELaplace%E5%88%86%E5%B8%83"><span class="nav-number">3.5.4.</span> <span class="nav-text">指数分布与Laplace分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dirac%E5%88%86%E5%B8%83%E5%92%8C%E7%BB%8F%E9%AA%8C%E5%88%86%E5%B8%83"><span class="nav-number">3.5.5.</span> <span class="nav-text">Dirac分布和经验分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E6%B7%B7%E5%90%88"><span class="nav-number">3.5.6.</span> <span class="nav-text">分布混合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E6%9C%89%E7%94%A8%E6%80%A7%E8%B4%A8"><span class="nav-number">3.6.</span> <span class="nav-text">常用函数的有用性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E8%A7%84%E5%88%99"><span class="nav-number">3.7.</span> <span class="nav-text">贝叶斯规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%9E%E7%BB%AD%E6%80%A7%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98"><span class="nav-number">3.8.</span> <span class="nav-text">关于连续性随机变量的一些技术问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E8%AE%BA"><span class="nav-number">3.9.</span> <span class="nav-text">信息论</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA%E6%96%B9%E7%A8%8B-axb-%E6%98%AF%E5%90%A6%E6%9C%89%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">讨论方程 \(Ax&#x3D;b\) 是否有解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8C%83%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">范数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%88%86%E8%A7%A3"><span class="nav-number">2.3.</span> <span class="nav-text">特征分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">奇异值分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mp%E4%BC%AA%E9%80%86"><span class="nav-number">2.5.</span> <span class="nav-text">MP伪逆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%B9%E8%BF%90%E7%AE%97"><span class="nav-number">2.6.</span> <span class="nav-text">迹运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="nav-number">2.7.</span> <span class="nav-text">行列式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90"><span class="nav-number">2.8.</span> <span class="nav-text">主成分分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">概率论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">3.1.</span> <span class="nav-text">概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">离散型随机变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E6%80%A7%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">3.1.2.</span> <span class="nav-text">连续性随机变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87"><span class="nav-number">3.2.</span> <span class="nav-text">边缘概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-number">3.3.</span> <span class="nav-text">条件概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E4%B8%8E%E6%9D%A1%E4%BB%B6%E7%8B%AC%E7%AB%8B"><span class="nav-number">3.4.</span> <span class="nav-text">独立与条件独立</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">3.5.</span> <span class="nav-text">常用概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bernoulli-%E5%88%86%E5%B8%83"><span class="nav-number">3.5.1.</span> <span class="nav-text">Bernoulli 分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multinoulli-%E5%88%86%E5%B8%83"><span class="nav-number">3.5.2.</span> <span class="nav-text">Multinoulli 分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83"><span class="nav-number">3.5.3.</span> <span class="nav-text">高斯分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E4%B8%8Elaplace%E5%88%86%E5%B8%83"><span class="nav-number">3.5.4.</span> <span class="nav-text">指数分布与Laplace分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dirac%E5%88%86%E5%B8%83%E5%92%8C%E7%BB%8F%E9%AA%8C%E5%88%86%E5%B8%83"><span class="nav-number">3.5.5.</span> <span class="nav-text">Dirac分布和经验分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E6%B7%B7%E5%90%88"><span class="nav-number">3.5.6.</span> <span class="nav-text">分布混合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E6%9C%89%E7%94%A8%E6%80%A7%E8%B4%A8"><span class="nav-number">3.6.</span> <span class="nav-text">常用函数的有用性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E8%A7%84%E5%88%99"><span class="nav-number">3.7.</span> <span class="nav-text">贝叶斯规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%9E%E7%BB%AD%E6%80%A7%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98"><span class="nav-number">3.8.</span> <span class="nav-text">关于连续性随机变量的一些技术问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E8%AE%BA"><span class="nav-number">3.9.</span> <span class="nav-text">信息论</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -272,7 +271,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-27 15:01:24" itemprop="dateModified" datetime="2024-04-27T15:01:24+08:00">2024-04-27</time>
+      <time title="修改时间：2024-04-28 00:32:42" itemprop="dateModified" datetime="2024-04-28T00:32:42+08:00">2024-04-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -330,392 +329,598 @@
 </blockquote>
 <span id="more"></span>
 <p>当然，笔者所记不能是花书所有的内容，只能是笔者自己觉得有提升、有意义的部分，所以很多课堂上已经掌握的内容就没有纳入本文的内容了</p>
-<h1>引言</h1>
-<p>一些人工智能项目旨在将世界所包含的知识用形式化的语言进行硬编码 (hard-code) ，而计算机可以使用逻辑推理规则自动理解这些形式化语言中的声明。这就是人工智能的<strong>知识库</strong> (knowledge base)</p>
-<p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习 (machine learning) 的能力</p>
-<p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong> (representation learning)</p>
+<h1 id="引言">引言</h1>
+<p>一些人工智能项目旨在将世界所包含的知识用形式化的语言进行硬编码
+(hard-code)
+，而计算机可以使用逻辑推理规则自动理解这些形式化语言中的声明。这就是人工智能的<strong>知识库</strong>
+(knowledge base)</p>
+<p>依靠硬编码的知识体系面对的困难表明，AI系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力——机器学习
+(machine learning) 的能力</p>
+<p>对于很多任务来说，我们很难知道应该提取哪些特征，解决这个问题的途径之一就是使用机器学习来发掘表示本身，而不仅仅把表示映射到输出，这种方法称之为<strong>表示学习</strong>
+(representation learning)</p>
 <blockquote>
-<p>一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器 (encoder) 和一个解码器 (decoder) 函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br>
+<p>一个典型例子是自编码器 (autoencoder)。自编码器由一个编码器 (encoder)
+和一个解码器 (decoder)
+函数构成。编码器函数将输入数据转为一种不同的表示，而解码器函数则将这个新的表示转换到原来的形式。<br />
 而我们的目标是：数据经过编码器和解码器能够尽可能多地保留信息，同时，新的表示有一些好的特性。。。</p>
 </blockquote>
-<p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的 <strong>变差因素</strong> (factors of variation) 。</p>
+<p>设计特征或设计用于学习特征的算法时，我们的目标通常是分离出能够解释观察数据的
+<strong>变差因素</strong> (factors of variation) 。</p>
 <blockquote>
-<p>这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br>
+<p>这些因素可能是现实世界中观察不到的物体或者不可观测的力，但会影响可观测的量<br />
 比如分析语音记录时，变差因素包括说话者的年龄、性别等等。。。</p>
 </blockquote>
-<p>深度学习 (deep learning) 通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题</p>
+<p>深度学习 (deep learning)
+通过其他较为简单的表示来表示复杂表达，解决了表示学习中的核心问题</p>
 <blockquote>
-<p>如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br>
-直接处理，让机器学习或评估几乎是不可能的<br>
-深度学习将复杂的映射分解为一系列嵌套的简单的映射<br>
-输入展示在可见层 (visible layer)，命名的原因是它包含我们能够观察到的变量<br>
+<p>如在图片理解这个任务上，计算机是难以理解以像素集合的图像的<br />
+直接处理，让机器学习或评估几乎是不可能的<br />
+深度学习将复杂的映射分解为一系列嵌套的简单的映射<br />
+输入展示在可见层 (visible
+layer)，命名的原因是它包含我们能够观察到的变量<br />
 然后经过一系列的隐藏层 (hiden layer)</p>
 </blockquote>
 <p>评估模型深度的方式主要有两种：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>评估计算流深度</p>
-</li>
-<li class="lvl-2">
-<p>评估概念关联深度</p>
-<ul class="lvl-2">
-<li class="lvl-6">比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的 n 次计算，也就是说计算的图包含 2n 层</li>
+<ul>
+<li>评估计算流深度</li>
+<li>评估概念关联深度
+<ul>
+<li>比如一个AI系统观察到一只眼睛在阴影中的脸部图象时，他可能看到一只眼睛。但是当其检测到脸部的存在后，系统可能推断第二只眼睛也是存在的。这种情况下，概念图包括两层关系（关于眼睛的层和关于脸的层），但如果我们细化每个概念的估计需要额外的
+n 次计算，也就是说计算的图包含 2n 层</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<hr>
-<h1>线性代数</h1>
-<p>在这里，矩阵被看作是列向量集合，即 $A=[\alpha_1,\alpha_2,\alpha_3,\cdots,\alpha_n]$  ，而每个列向量被看作是方向的描述<br>
-因此 $Ax=\sum_i x_iA_{:,i}$ 可以被描述为我们需要沿着第$i$个向量的方向走$x_i$的步长</p>
-<p>一组向量的 <strong>生成子空间(span)</strong> 是原始向量线性组合后所能抵达的点的集合<br>
-也就是说，方程 $Ax=b$是否有解，相当于：确定向量$b$是否在$A$的列向量集合的生成子空间中，这个特殊的生成子空间也被称为 $A$ 的<strong>列空间(column space)</strong> 或是$A$的<strong>值域(range)</strong> 。</p>
-<h2 id="讨论方程-Ax-b-是否有解？">讨论方程 $Ax=b$ 是否有解？</h2>
+<hr />
+<h1 id="线性代数">线性代数</h1>
+<p>在这里，矩阵被看作是列向量集合，即 <span
+class="math inline">\(A=[\alpha_1,\alpha_2,\alpha_3,\cdots,\alpha_n]\)</span>
+，而每个列向量被看作是方向的描述<br />
+因此 <span class="math inline">\(Ax=\sum_i x_iA_{:,i}\)</span>
+可以被描述为我们需要沿着第<span
+class="math inline">\(i\)</span>个向量的方向走<span
+class="math inline">\(x_i\)</span>的步长</p>
+<p>一组向量的 <strong>生成子空间(span)</strong>
+是原始向量线性组合后所能抵达的点的集合<br />
+也就是说，方程 <span
+class="math inline">\(Ax=b\)</span>是否有解，相当于：确定向量<span
+class="math inline">\(b\)</span>是否在<span
+class="math inline">\(A\)</span>的列向量集合的生成子空间中，这个特殊的生成子空间也被称为
+<span class="math inline">\(A\)</span> 的<strong>列空间(column
+space)</strong> 或是<span
+class="math inline">\(A\)</span>的<strong>值域(range)</strong> 。</p>
+<h2 id="讨论方程-axb-是否有解">讨论方程 <span
+class="math inline">\(Ax=b\)</span> 是否有解？</h2>
 <blockquote>
-<p>前提我们记 $A$ 的形状为 $m \times n$</p>
+<p>前提我们记 <span class="math inline">\(A\)</span> 的形状为 <span
+class="math inline">\(m \times n\)</span></p>
 </blockquote>
-<p>那么一方面，若要求该方程对任意的$b$都要有解，由于$Ax$ 看作是$A$的第$i$个列向量，所以$Ax$自然有$n$个，故若$Ax$的列空间是整个$\mathbb{R}^m$要求$n\ge m$<br>
-（当然，这只是必要条件，这些列向量会存在冗余，这种现象称之为 <strong>线性相关</strong> ）</p>
-<br>
-<p>另一方面，如果想要该矩阵可逆，需要使得方程对每一个 $b$ 至多有一个解。</p>
+<p>那么一方面，若要求该方程对任意的<span
+class="math inline">\(b\)</span>都要有解，由于<span
+class="math inline">\(Ax\)</span> 看作是<span
+class="math inline">\(A\)</span>的第<span
+class="math inline">\(i\)</span>个列向量，所以<span
+class="math inline">\(Ax\)</span>自然有<span
+class="math inline">\(n\)</span>个，故若<span
+class="math inline">\(Ax\)</span>的列空间是整个<span
+class="math inline">\(\mathbb{R}^m\)</span>要求<span
+class="math inline">\(n\ge m\)</span><br />
+（当然，这只是必要条件，这些列向量会存在冗余，这种现象称之为
+<strong>线性相关</strong> ）</p>
+<p><br></p>
+<p>另一方面，如果想要该矩阵可逆，需要使得方程对每一个 <span
+class="math inline">\(b\)</span> 至多有一个解。</p>
 <blockquote>
-<p>这一句可能有些同学一开始看会愣一下，笔者在这里卡了一下，作者的意思是 $Ax=b$，既然$A$是广义上可逆的，那么$x=A<sup>{-1}b$，也就是说，x是$A</sup>{-1}$的列空间中的一个向量，所以说，x至多也只能有一个，不可能在$A$可逆的情况下一个$b$向量对应多个$x$向量</p>
+<p>这一句可能有些同学一开始看会愣一下，笔者在这里卡了一下，作者的意思是
+<span class="math inline">\(Ax=b\)</span>，既然<span
+class="math inline">\(A\)</span>是广义上可逆的，那么 <span
+class="math inline">\(x=A^{-1}b\)</span> ，也就是说，x是 <span
+class="math inline">\(A^{-1}\)</span>
+的列空间中的一个向量，所以说，x至多也只能有一个，不可能在<span
+class="math inline">\(A\)</span>可逆的情况下一个 <span
+class="math inline">\(b\)</span> 向量对应多个 <span
+class="math inline">\(x\)</span> 向量</p>
 </blockquote>
-<p>所以该矩阵需要确保至多有 $m$ 个列，当然，这是个充分条件<br>
-综上所述，如果方程有唯一解那么$A$​矩阵首先要是方阵，其次他所有的列向量都要是无关的</p>
+<p>所以该矩阵需要确保至多有 <span class="math inline">\(m\)</span>
+个列，当然，这是个充分条件<br />
+综上所述，如果方程有唯一解那么 <span class="math inline">\(A\)</span>
+矩阵首先要是方阵，其次他所有的列向量都要是无关的</p>
 <h2 id="范数">范数</h2>
-<p>在机器学习中，我们通过称为 <strong>范数</strong> (norm)的函数来衡量向量的大小，形式上 $L^p$范数的定义为：<br>
-$$ | | x | | _ { p } = \left( \sum _ { i } | x _ { i } | ^ { p } \right) ^ { \frac { 1 } { p } }$$<br>
-范数能够将向量映射为非负值<br>
-直观上来看，向量$x$的范数衡量了从原点到点$x$的距离，更严格地说，范数满足如下性质：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>$f(x)=0 \rightarrow x=\vec 0$</p>
-</li>
-<li class="lvl-2">
-<p>$f(x+y) \le f(x) + f(y)$</p>
-</li>
-<li class="lvl-2">
-<p>$\forall \alpha \in R , f (\alpha x) = |{\alpha}|f(x)$</p>
-</li>
+<p>在机器学习中，我们通过称为 <strong>范数</strong>
+(norm)的函数来衡量向量的大小，形式上 <span
+class="math inline">\(L^p\)</span>范数的定义为： <span
+class="math display">\[ | | x | | _ { p } = \left( \sum _ { i } | x _ {
+i } | ^ { p } \right) ^ { \frac { 1 } { p } }\]</span><br />
+范数能够将向量映射为非负值<br />
+直观上来看，向量<span
+class="math inline">\(x\)</span>的范数衡量了从原点到点<span
+class="math inline">\(x\)</span>的距离，更严格地说，范数满足如下性质：</p>
+<ul>
+<li><span class="math inline">\(f(x)=0 \rightarrow x=\vec
+0\)</span></li>
+<li><span class="math inline">\(f(x+y) \le f(x) + f(y)\)</span></li>
+<li><span class="math inline">\(\forall \alpha \in R , f (\alpha x) =
+|{\alpha}|f(x)\)</span></li>
 </ul>
 <p>举几个例子吧！</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>当 $p = 2$ 时，$L^2$ 范数称为 <strong>欧几里得范数</strong>(Euclidean norm)：表示从原点出发到向量 $x$ 确定的点的欧几里得距离。通常情况也用 $L^2$ 范数的平方去代替 $L^2$ 范数，不过也有利有弊，一方面，平方在原点附近的增长非常缓慢，另一方面，平方的导数只取决于对应的元素</p>
-</li>
-<li class="lvl-2">
-<p>当 $p = 1$ 时， $L^1$ 范数却能够给我们区分零元素和非零元素， $L^1$ 范数的计算也非常简单，即各位的绝对值和</p>
-</li>
-<li class="lvl-2">
-<p>当 $p = 0$ 时，这种 $L^0$ 范数用来统计向量中非零元素的个数，有时我们会用他来衡量一个向量的大小，但这个概念对于前面数学上的严格定义是不对的，首先第三条就不满足了。。。</p>
-</li>
-<li class="lvl-2">
-<p>当 $p = +\infty$ 时，也被称为<strong>最大范数</strong>(max norm)，这个范数表示向量中具有最大幅值的元素的绝对值：$||x||_\infty=\max_i |x_i|$</p>
-</li>
-<li class="lvl-2">
-<p>当然，在机器学习中，我们有时也希望有类似的定义能够去衡量矩阵的大小，这要引入 <strong>Frobenius范数</strong>(Frobenius norm)：$||A||<em>F=\sqrt{\sum</em>{i,j}A^2_{i,j}}$​ （类似于向量的 L2 范数？）</p>
-</li>
+<ul>
+<li>当 <span class="math inline">\(p = 2\)</span> 时，<span
+class="math inline">\(L^2\)</span> 范数称为
+<strong>欧几里得范数</strong>(Euclidean norm)：表示从原点出发到向量
+<span class="math inline">\(x\)</span>
+确定的点的欧几里得距离。通常情况也用 <span
+class="math inline">\(L^2\)</span> 范数的平方去代替 <span
+class="math inline">\(L^2\)</span>
+范数，不过也有利有弊，一方面，平方在原点附近的增长非常缓慢，另一方面，平方的导数只取决于对应的元素</li>
+<li>当 <span class="math inline">\(p = 1\)</span> 时， <span
+class="math inline">\(L^1\)</span>
+范数却能够给我们区分零元素和非零元素， <span
+class="math inline">\(L^1\)</span>
+范数的计算也非常简单，即各位的绝对值和</li>
+<li>当 <span class="math inline">\(p = 0\)</span> 时，这种 <span
+class="math inline">\(L^0\)</span>
+范数用来统计向量中非零元素的个数，有时我们会用他来衡量一个向量的大小，但这个概念对于前面数学上的严格定义是不对的，首先第三条就不满足了。。。</li>
+<li>当 <span class="math inline">\(p = +\infty\)</span>
+时，也被称为<strong>最大范数</strong>(max
+norm)，这个范数表示向量中具有最大幅值的元素的绝对值：<span
+class="math inline">\(||x||_\infty=\max_i |x_i|\)</span></li>
+<li>当然，在机器学习中，我们有时也希望有类似的定义能够去衡量矩阵的大小，这要引入
+<strong>Frobenius范数</strong>(Frobenius norm)： <span
+class="math inline">\(||A||_F=\sqrt{\sum_{i,j}A^2_{i,j}}\)</span>
+（类似于向量的 L2 范数？）</li>
 </ul>
 <h2 id="特征分解">特征分解</h2>
 <blockquote>
-<p>许多数学对象可以通过将它们分解成多个组成部分或者找到它们的一些属性而更好地理解，这些属性是通用的，而不是由我们选择表示它们的方式产生的。<br>
+<p>许多数学对象可以通过将它们分解成多个组成部分或者找到它们的一些属性而更好地理解，这些属性是通用的，而不是由我们选择表示它们的方式产生的。<br />
 例如：$12=2×3×3 $，从中我们可以获得一些信息，比如12不能被5整除</p>
 </blockquote>
-<p>通过矩阵的<strong>特征分解</strong>(eigen decomposition)我们同样能够获得一些信息，方阵 A 的 特征向量（eigen vector）是指与 A 相乘后相当于对该向量进行缩放的非零向量 v：$Av=\lambda v$<br>
-其中 $\lambda$ 称为这个特征向量对应的特征值(eigen value)。（类似地，我们也可以定义 左特征向量（left eigen vector）$v^⊤A = λv^⊤$，但是通常我们更关注 右特征向量（right eigen vector））。显然，对特征向量缩放后的向量依然是矩阵的特征向量。<br>
-假设矩阵 A 有 n 个线性无关的特征向量${v<sup>{(1)},\cdots,v</sup>{(n)}}$对应着特征值${\lambda<sup>{(1)},\cdots,\lambda</sup>{(n)}}$, 因此 A 的特征分解可以记作： $A=V\rm diag(\lambda)V^{-1}$<br>
-不过值得注意的是，并不是所有实矩阵都总有实特征分解，有些特征分解存在但是涉及到复数，不过值得注意的是，所有的<em><strong>实对称阵</strong></em>都可以分解成实特征向量和实特征值：$A=Q \Lambda Q^T$，其中 $Q$ 是 $A$ 的特征向量组成的正交矩阵，$\Lambda$​ 是对角矩阵。<br>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251812391.png" alt="image-20240425181235305"></p>
+<p>通过矩阵的<strong>特征分解</strong>(eigen
+decomposition)我们同样能够获得一些信息，方阵 A 的 特征向量（eigen
+vector）是指与 A 相乘后相当于对该向量进行缩放的非零向量 v：<span
+class="math inline">\(Av=\lambda v\)</span><br />
+其中 <span class="math inline">\(\lambda\)</span>
+称为这个特征向量对应的特征值(eigen value)。（类似地，我们也可以定义
+左特征向量（left eigen vector）<span class="math inline">\(v^⊤A =
+λv^⊤\)</span>，但是通常我们更关注 右特征向量（right eigen
+vector））。显然，对特征向量缩放后的向量依然是矩阵的特征向量。<br />
+假设矩阵 A 有 n 个线性无关的特征向量 <span
+class="math inline">\(\{v^{(1)},\cdots,v^{(n)}\}\)</span> 对应着特征值
+<span
+class="math inline">\(\{\lambda^{(1)},\cdots,\lambda^{(n)}\}\)</span> ,
+因此 A 的特征分解可以记作： <span class="math inline">\(A=V\rm
+diag(\lambda)V^{-1}\)</span><br />
+不过值得注意的是，并不是所有实矩阵都总有实特征分解，有些特征分解存在但是涉及到复数，不过值得注意的是，所有的<strong><em>实对称阵</em></strong>都可以分解成实特征向量和实特征值：<span
+class="math inline">\(A=Q \Lambda Q^T\)</span>，其中 <span
+class="math inline">\(Q\)</span> 是 <span
+class="math inline">\(A\)</span> 的特征向量组成的正交矩阵，<span
+class="math inline">\(\Lambda\)</span> 是对角矩阵。<br />
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251812391.png"
+alt="image-20240425181235305" /></p>
 <h2 id="奇异值分解">奇异值分解</h2>
-<p>对于非方阵矩阵，我们同样希望能够进行分解，换句话说我们希望将特征分解的范围拓展<br>
-这种分解方法被称为 <strong>奇异值分解</strong>（singular value decomposition, SVD），将矩阵分解为 奇异向量（singular vector）和 <strong>奇异值</strong>（singular value）<br>
-同样地，奇异值分解为：$A=UDV^T$<br>
-假设 A 是一个 $m\times n$的矩阵,那么U是一个 $m\times m$的矩阵,D是一个$m\times n$的矩阵,V是一个 $n \times n$ 的矩阵<br>
-矩阵 U 和 V 都定义为 <strong>正交矩阵</strong>，而矩阵 D 定义为<strong>对角矩阵</strong>。注意，矩阵 D 不一定是方阵。<br>
-对角矩阵 D 对角线上的元素被称为矩阵 A 的 <strong>奇异值</strong>（singular value）。矩阵U 的列向量被称为 <strong>左奇异向量</strong>（left singular vector），矩阵 V 的列向量被称 <strong>右奇异向量</strong>（right singular vector）。<br>
-事实上，我们可以用与 A 相关的特征分解去解释 A 的奇异值分解。A 的 左奇异向量（left singular vector）是 $AA^⊤$ 的特征向量。A 的 右奇异向量（right singular vector）是 $A^⊤A$ 的特征向量。A 的非零奇异值是 $A^⊤A$ 特征值的平方根，同时也是$AA^⊤$ 特征值的平方根。<br>
+<p>对于非方阵矩阵，我们同样希望能够进行分解，换句话说我们希望将特征分解的范围拓展<br />
+这种分解方法被称为 <strong>奇异值分解</strong>（singular value
+decomposition, SVD），将矩阵分解为 奇异向量（singular vector）和
+<strong>奇异值</strong>（singular value）<br />
+同样地，奇异值分解为：<span class="math inline">\(A=UDV^T\)</span><br />
+假设 A 是一个 <span class="math inline">\(m\times
+n\)</span>的矩阵,那么U是一个 <span class="math inline">\(m\times
+m\)</span>的矩阵,D是一个<span class="math inline">\(m\times
+n\)</span>的矩阵,V是一个 <span class="math inline">\(n \times n\)</span>
+的矩阵<br />
+矩阵 U 和 V 都定义为 <strong>正交矩阵</strong>，而矩阵 D
+定义为<strong>对角矩阵</strong>。注意，矩阵 D 不一定是方阵。<br />
+对角矩阵 D 对角线上的元素被称为矩阵 A 的
+<strong>奇异值</strong>（singular value）。矩阵U 的列向量被称为
+<strong>左奇异向量</strong>（left singular vector），矩阵 V 的列向量被称
+<strong>右奇异向量</strong>（right singular vector）。<br />
+事实上，我们可以用与 A 相关的特征分解去解释 A 的奇异值分解。A 的
+左奇异向量（left singular vector）是 <span
+class="math inline">\(AA^⊤\)</span> 的特征向量。A 的 右奇异向量（right
+singular vector）是 <span class="math inline">\(A^⊤A\)</span>
+的特征向量。A 的非零奇异值是 <span class="math inline">\(A^⊤A\)</span>
+特征值的平方根，同时也是<span class="math inline">\(AA^⊤\)</span>
+特征值的平方根。<br />
 奇异值分解的推导如下：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261123476.jpg" alt="53ad37ea04a14b4601663211b5ac23d" style="zoom: 50%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261123476.jpg" alt="53ad37ea04a14b4601663211b5ac23d" style="zoom: 50%;" /></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1544y1v7Am/?spm_id_from=333.337.search-card.all.click">参考视频</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1544y1v7Am/?spm_id_from=333.337.search-card.all.click">参考视频</a></p>
 </blockquote>
-<h2 id="MP伪逆">MP伪逆</h2>
-<p>对于非方阵而言，其逆运算没有定义，因此我们也需要对逆的概念进行拓展<br>
-如果矩阵 A 的行数大于列数，那么上述方程可能没有解。如果矩阵 A 的行数小于列数，那么上述矩阵可能有多个解<br>
-Moore-Penrose 伪逆（Moore-Penrose pseudoinverse）使我们在这类问题上取得了一定的进展。矩阵 A 的伪逆定义为：$ A ^ { + } = \lim _ { \alpha \to 0 } ( A ^ { T } A + \alpha I ) ^ { - 1 } A ^ { T }$</p>
-<p>而计算伪逆通常使用奇异值分解：$ A ^ { + } = V D ^ { + } U ^ { T } $<br>
-其中，矩阵 U，D 和 V 是矩阵 A奇异值分解后得到的矩阵。对角矩阵 D 的伪逆$D^+$ 是其非零元素<strong>取倒数之后再转置</strong>得到的。<br>
+<h2 id="mp伪逆">MP伪逆</h2>
+<p>对于非方阵而言，其逆运算没有定义，因此我们也需要对逆的概念进行拓展<br />
+如果矩阵 A 的行数大于列数，那么上述方程可能没有解。如果矩阵 A
+的行数小于列数，那么上述矩阵可能有多个解<br />
+Moore-Penrose 伪逆（Moore-Penrose
+pseudoinverse）使我们在这类问题上取得了一定的进展。矩阵 A
+的伪逆定义为：$ A ^ { + } = _ { } ( A ^ { T } A + I ) ^ { - 1 } A ^ { T
+}$</p>
+<p>而计算伪逆通常使用奇异值分解：$ A ^ { + } = V D ^ { + } U ^ { T }
+$<br />
+其中，矩阵 U，D 和 V 是矩阵 A奇异值分解后得到的矩阵。对角矩阵 D
+的伪逆<span class="math inline">\(D^+\)</span>
+是其非零元素<strong>取倒数之后再转置</strong>得到的。<br />
 MP伪逆在方程解的问题中也有很多应用，比如：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>当 $n &gt; m$ 时，$x = A^+ y$是所有方程可行解中$L_2$范数最小的那个</p>
-</li>
-<li class="lvl-2">
-<p>当 $n &gt; m$​ 时，MP伪逆得到的解使得 $Ax$​ 与 $y$​​ 的欧几里得距离最小</p>
-</li>
+<ul>
+<li>当 <span class="math inline">\(n &gt; m\)</span> 时，<span
+class="math inline">\(x = A^+ y\)</span>是所有方程可行解中<span
+class="math inline">\(L_2\)</span>范数最小的那个</li>
+<li>当 <span class="math inline">\(n &gt; m\)</span>​
+时，MP伪逆得到的解使得 <span class="math inline">\(Ax\)</span>​ 与 <span
+class="math inline">\(y\)</span>​​ 的欧几里得距离最小</li>
 </ul>
 <h2 id="迹运算">迹运算</h2>
 <p>迹运算主要集中于以下几点</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>$Tr(A) = \sum_i A_{i,i}$</p>
-</li>
-<li class="lvl-2">
-<p>$Tr(A) = Tr(A^T)$</p>
-</li>
-<li class="lvl-2">
-<p>$||A||_F=\sqrt{Tr(AA^T)}$</p>
-</li>
-<li class="lvl-2">
-<p>$ Tr ( {\prod _ { i = 1 } ^ { n }} {F ^ { ( i ) }} ) = Tr ( F ^ { ( n ) } {\prod _ { i = 1 } ^ { n - 1 }} {F ^ { ( i ) }} ) $​  (多个矩阵相乘得到的方阵的迹，和将这些矩阵中的最后一个挪到最前面之后相乘的迹是相同的)</p>
-</li>
+<ul>
+<li><span class="math inline">\(Tr(A) = \sum_i A_{i,i}\)</span></li>
+<li><span class="math inline">\(Tr(A) = Tr(A^T)\)</span></li>
+<li><span class="math inline">\(||A||_F=\sqrt{Tr(AA^T)}\)</span></li>
+<li>$ Tr ( {_ { i = 1 } ^ { n }} {F ^ { ( i ) }} ) = Tr ( F ^ { ( n ) }
+{_ { i = 1 } ^ { n - 1 }} {F ^ { ( i ) }} ) $​
+(多个矩阵相乘得到的方阵的迹，和将这些矩阵中的最后一个挪到最前面之后相乘的迹是相同的)</li>
 </ul>
 <h2 id="行列式">行列式</h2>
-<p>行列式，记作 det(A)，是一个将方阵 A 映射到实数的函数。行列式等于矩阵特征值的乘积。行列式的绝对值可以用来衡量矩阵参与矩阵乘法后空间扩大或者缩小了多少。如果行列式是 0，那么空间至少沿着某一维完全收缩了，使其失去了所有的体积。如果行列式是 1，那么这个转换保持空间体积不变。</p>
+<p>行列式，记作 det(A)，是一个将方阵 A
+映射到实数的函数。行列式等于矩阵特征值的乘积。行列式的绝对值可以用来衡量矩阵参与矩阵乘法后空间扩大或者缩小了多少。如果行列式是
+0，那么空间至少沿着某一维完全收缩了，使其失去了所有的体积。如果行列式是
+1，那么这个转换保持空间体积不变。</p>
 <h2 id="主成分分析">主成分分析</h2>
 <p>主成分分析（principal components analysis, PCA）</p>
-<hr>
-<p>首先，假设我们有 <strong>m 个 n 维的样本 ${x_1,x_2, \cdots,x_m},x_i\in R^n$</strong> ，我们希望使用某种压缩，对于每个 $x_i$ 找到对应的 <strong>$c_i \in R^l$ ，一般的 $l &lt; n $</strong> ，进行压缩</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>对于编码器 $f(x) = c$</p>
-</li>
-<li class="lvl-2">
-<p>对于解码器 $x \approx g©=g(f(x))$</p>
-</li>
+<hr />
+<p>首先，假设我们有 <strong>m 个 n 维的样本 <span
+class="math inline">\(\{x_1,x_2, \cdots,x_m\},x_i\in
+R^n\)</span></strong> ，我们希望使用某种压缩，对于每个 <span
+class="math inline">\(x_i\)</span> 找到对应的 <strong><span
+class="math inline">\(c_i \in R^l\)</span> ，一般的 $l &lt; n $</strong>
+，进行压缩</p>
+<ul>
+<li>对于编码器 <span class="math inline">\(f(x) = c\)</span></li>
+<li>对于解码器 <span class="math inline">\(x \approx g
+(c)=g(f(x))\)</span></li>
 </ul>
-<p>为了简化解码函数的选择，我们可以通过矩阵乘法将其映射回 n 维空间，即 $g© = Dc$</p>
-<p>注意到，当 c 等比例扩大缩小时，D同样等比例缩小扩大，可以得到无数个结果，因此我们限制 D 中的所有列向量都有单位范数</p>
-<p>同样，为了让编码问题更简单，PCA限制 D 的列向量彼此正交（D不是严格意义上的正交阵）</p>
-<p>我们如何去找到这个 c ，使得他能够被精确解码？这里给出的方法是最小化原始向量$x$与重构向量$g(c<sup>*)$的距离，即$c</sup>*={\rm arg\ min}_c ||x-g©||_2$ ，由于二范数非负性，所以我们可以通过平方进行优化</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261520572.png" alt="image-20240426152011469" style="zoom:33%;" />
-<p>由于第一项并不依赖于 c ，所以可以再度简化为 $c^*={\rm arg\ min}_c -2 x^T g©+g©^T g©$</p>
-<p>带入 $g©$ 的定于，以及 $D$ 矩阵的列向量互相正交的一些约定，我们有</p>
-<p>$$c^* = {\rm arg\ min}_c - 2 x ^ { T } D c + c ^ { T } c$$</p>
+<p>为了简化解码函数的选择，我们可以通过矩阵乘法将其映射回 n 维空间，即
+<span class="math inline">\(g (c) = Dc\)</span></p>
+<p>注意到，当 c
+等比例扩大缩小时，D同样等比例缩小扩大，可以得到无数个结果，因此我们限制
+D 中的所有列向量都有单位范数</p>
+<p>同样，为了让编码问题更简单，PCA限制 D
+的列向量彼此正交（D不是严格意义上的正交阵）</p>
+<p>我们如何去找到这个 c
+，使得他能够被精确解码？这里给出的方法是最小化原始向量 <span
+class="math inline">\(x\)</span> 与重构向量 <span
+class="math inline">\(g(c^*)\)</span> 的距离，即 <span
+class="math inline">\(c^*={\rm arg\ min}_c ||x-g(c)||_2\)</span>
+，由于二范数非负性，所以我们可以通过平方进行优化</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261520572.png" alt="image-20240426152011469" style="zoom:33%;" /></p>
+<p>由于第一项并不依赖于 c ，所以可以再度简化为 <span
+class="math inline">\(c^*={\rm arg\ min}_c -2 x^T g (c)+g (c)^T g
+(c)\)</span></p>
+<p>带入 <span class="math inline">\(g (c)\)</span> 的定于，以及 <span
+class="math inline">\(D\)</span>
+矩阵的列向量互相正交的一些约定，我们有</p>
+<p><span class="math display">\[c^* = {\rm arg\ min}_c - 2 x ^ { T } D c
++ c ^ { T } c\]</span></p>
 <p>通过向量微积分，能够推导得到结论：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261229634.png" alt="image-20240426122900565" style="zoom:33%;" />
-<p>所以推导得到编码函数也就能够写成 $f(x)=D^Tx$</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261229634.png" alt="image-20240426122900565" style="zoom:33%;" /></p>
+<p>所以推导得到编码函数也就能够写成 <span
+class="math inline">\(f(x)=D^Tx\)</span></p>
 <p>那么，另一方面该如何选取投影矩阵 D ？</p>
-<p>当然这个 D 是作用在全体样本上，与刚刚的思路类似，我们需要使得误差矩阵的 <strong>Frobenius 范数</strong>最小，也就是 $D^*={\rm arg\ min}<em>D \sqrt{\sum</em>{i,j}(x_j<sup>{(i)}-r(x</sup>{(i)})_j)^2}{\rm \ subject\ to\ }D^TD=I_l$  其中 $r(x)=g(f(x))=DD^Tx$</p>
+<p>当然这个 D
+是作用在全体样本上，与刚刚的思路类似，我们需要使得误差矩阵的
+<strong>Frobenius 范数</strong>最小，也就是 <span
+class="math inline">\(D^*={\rm arg\ min}_D
+\sqrt{\sum_{i,j}(x_j^{(i)}-r(x^{(i)})_j)^2}{\rm \ subject\ to\
+}D^TD=I_l\)</span> 其中 <span
+class="math inline">\(r(x)=g(f(x))=DD^Tx\)</span></p>
 <p>首先考虑一维的情况，问题简化为：</p>
-<p>$$d^*={\rm arg\ min}<em>d \sqrt{\sum</em>{i}(x<sup>{(i)}-d{d</sup>T}{x<sup>{(i)}})</sup>2}{\rm \ subject\ to\ }||d||_2=1$$</p>
-<p>由于 $d^T x$ 是标量，可以重排位置，参考花书</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261243605.png" alt="image-20240426124335517" style="zoom: 50%;" />
-<p>这里求和号实际上不方便理解，因此我们写成矩阵的形式，重新表述为$$d^*={\rm arg\ min}_d ||X-Xd{d<sup>T}||_F</sup>2\ {\rm subject\ to\ }d^Td=1$$</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261248438.png" alt="image-20240426124828340" style="zoom:67%;" />
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261253697.png" alt="image-20240426125338607" style="zoom:50%;" />
-<p>这里将 $X^TX$ 处理为对称阵，那么 $y<sup>TX</sup>TXy$ 就是一个二次型，那么显然他的最大值应该是最大特征值，对应y向量为对应特征值的特征向量。。。</p>
-<h1>概率论</h1>
+<p><span class="math display">\[d^*={\rm arg\ min}_d
+\sqrt{\sum_{i}(x^{(i)}-d{d^T}{x^{(i)}})^2}{\rm \ subject\ to\
+}||d||_2=1\]</span></p>
+<p>由于 <span class="math inline">\(d^T x\)</span>
+是标量，可以重排位置，参考花书</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261243605.png" alt="image-20240426124335517" style="zoom: 50%;" /></p>
+<p>这里求和号实际上不方便理解，因此我们写成矩阵的形式，重新表述为<span
+class="math display">\[d^*={\rm arg\ min}_d ||X-Xd{d^T}||_F^2\ {\rm
+subject\ to\ }d^Td=1\]</span></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261248438.png" alt="image-20240426124828340" style="zoom:67%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261253697.png" alt="image-20240426125338607" style="zoom:50%;" /></p>
+<p>这里将 <span class="math inline">\(X^TX\)</span> 处理为对称阵，那么
+<span class="math inline">\(y^TX^TXy\)</span>
+就是一个二次型，那么显然他的最大值应该是最大特征值，对应y向量为对应特征值的特征向量。。。</p>
+<h1 id="概率论">概率论</h1>
 <p>不确定信息的来源：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>被建模系统内在的随机性。这个好理解，比如打扑克，洗牌当然存在一定的随机性</p>
-</li>
-<li class="lvl-2">
-<p>不完全观测。这个也好理解，我们没有办法总能够观察到所有驱动系统行为的变量。</p>
-</li>
-<li class="lvl-2">
-<p>不完全建模。当我们使用一些必须舍弃某些观测信息的模型时，舍弃的信息会导致模型的预测出现不确定性。</p>
-</li>
+<ul>
+<li>被建模系统内在的随机性。这个好理解，比如打扑克，洗牌当然存在一定的随机性</li>
+<li>不完全观测。这个也好理解，我们没有办法总能够观察到所有驱动系统行为的变量。</li>
+<li>不完全建模。当我们使用一些必须舍弃某些观测信息的模型时，舍弃的信息会导致模型的预测出现不确定性。</li>
 </ul>
 <p>在引入贝叶斯概率后，概率呈现出两种意义：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>直接与事件发生的概率相联系——<strong>频率派概率(frequentist probability)</strong></p>
-</li>
-<li class="lvl-2">
-<p>涉及到确定性水平——<strong>贝叶斯概率(Bayesian probability)</strong></p>
-</li>
+<ul>
+<li>直接与事件发生的概率相联系——<strong>频率派概率(frequentist
+probability)</strong></li>
+<li>涉及到确定性水平——<strong>贝叶斯概率(Bayesian
+probability)</strong></li>
 </ul>
 <h2 id="概率分布">概率分布</h2>
 <h3 id="离散型随机变量">离散型随机变量</h3>
-<p>离散型变量的概率分布可以用 <strong>概率质量函数(probability mass function, PMF)</strong> 来描述，通常用大写字母 P 来表示PMF。PMF可以同时作用于多个随机变量，这多个变量的概率分布被称为<strong>联合概率分布(joint probability distribution)</strong>，如果一个函数是随机变量x的PMF，必须要满足一些条件：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>P定义域为所有x的状态集合</p>
-</li>
-<li class="lvl-2">
-<p>$\forall x\in {\rm x},0\le P(x)\le 1$</p>
-</li>
-<li class="lvl-2">
-<p>$\sum_{x\in {\rm x}}P(x)=1$​ ，这条性质称为归一化的(normalized)</p>
-</li>
+<p>离散型变量的概率分布可以用 <strong>概率质量函数(probability mass
+function, PMF)</strong> 来描述，通常用大写字母 P
+来表示PMF。PMF可以同时作用于多个随机变量，这多个变量的概率分布被称为<strong>联合概率分布(joint
+probability
+distribution)</strong>，如果一个函数是随机变量x的PMF，必须要满足一些条件：</p>
+<ul>
+<li>P定义域为所有x的状态集合</li>
+<li><span class="math inline">\(\forall x\in {\rm x},0\le P(x)\le
+1\)</span></li>
+<li><span class="math inline">\(\sum_{x\in {\rm x}}P(x)=1\)</span>​
+，这条性质称为归一化的(normalized)</li>
 </ul>
 <h3 id="连续性随机变量">连续性随机变量</h3>
-<p>同理，这里的PMF被描述为概率密度函数**(probability density function，PDF)** ，同样的，他需要满足几个条件：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>p定义域是所有x可能的状态的集合</p>
-</li>
-<li class="lvl-2">
-<p>$\forall x\in {\rm x},p(x)\ge 0$ （！这里不要求 $p(x)\le 1$ 因为一个点处的密度哪怕是非常大，也不一定能够影响总体的概率</p>
-</li>
-<li class="lvl-2">
-<p>$\int p(x) \mathrm dx=1$</p>
-</li>
+<p>同理，这里的PMF被描述为概率密度函数<strong>(probability density
+function，PDF)</strong> ，同样的，他需要满足几个条件：</p>
+<ul>
+<li>p定义域是所有x可能的状态的集合</li>
+<li><span class="math inline">\(\forall x\in {\rm x},p(x)\ge 0\)</span>
+（！这里不要求 <span class="math inline">\(p(x)\le 1\)</span>
+因为一个点处的密度哪怕是非常大，也不一定能够影响总体的概率</li>
+<li><span class="math inline">\(\int p(x) \mathrm dx=1\)</span></li>
 </ul>
-<p>概率密度函数 $p(x)$ 并没有直接对特定的状态给出概率，相对的，它给出了落在面积为 $δx$ 的无限小的区域内的概率为 $p(x)δx$。</p>
+<p>概率密度函数 <span class="math inline">\(p(x)\)</span>
+并没有直接对特定的状态给出概率，相对的，它给出了落在面积为 <span
+class="math inline">\(δx\)</span> 的无限小的区域内的概率为 <span
+class="math inline">\(p(x)δx\)</span>。</p>
 <h2 id="边缘概率">边缘概率</h2>
 <p>若我们知道一组变量的联合概率分布，但只需要了解其中一个子集的分布，那么我们可以如下计算：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>离散型</p>
-</li>
+<ul>
+<li>离散型</li>
 </ul>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261538617.png" alt="image-20240426153859533" style="zoom: 50%;" />
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>连续型</p>
-</li>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261538617.png" alt="image-20240426153859533" style="zoom: 50%;" /></p>
+<ul>
+<li>连续型</li>
 </ul>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261539368.png" alt="image-20240426153922287" style="zoom:50%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261539368.png" alt="image-20240426153922287" style="zoom:50%;" /></p>
 <p>​</p>
 <h2 id="条件概率">条件概率</h2>
-<p>条件概率可以通过公式 $P(\mathrm y=y|\mathrm x=x)=\frac {P(\mathrm y=y,\mathrm x=x)}{P(\mathrm x=x)}$</p>
+<p>条件概率可以通过公式 <span class="math inline">\(P(\mathrm
+y=y|\mathrm x=x)=\frac {P(\mathrm y=y,\mathrm x=x)}{P(\mathrm
+x=x)}\)</span></p>
 <blockquote>
-<p>这里需要注意的是，不要把条件概率和计算当采用某个动作后会发生什么相混淆。假定某个人说德语，那么他是德国人的条件概率是非常高的，但是如果随机选择的一个人会说德语，他的国籍不会因此而改变。计算一个行动的后果被称为 <strong>干预查询（intervention query）</strong>。干预查询属于 **因果模型（causal modeling）**的范畴</p>
+<p>这里需要注意的是，不要把条件概率和计算当采用某个动作后会发生什么相混淆。假定某个人说德语，那么他是德国人的条件概率是非常高的，但是如果随机选择的一个人会说德语，他的国籍不会因此而改变。计算一个行动的后果被称为
+<strong>干预查询（intervention query）</strong>。干预查询属于
+<strong>因果模型（causal modeling）</strong>的范畴</p>
 </blockquote>
 <p>参考了网络上的一些解释，笔者的浅显理解是，调剂概率强调状态而干预查询强调改变</p>
-<p>例如$P(销售量|汉堡的价格为20元)$ 与 $P(销售量|降价至20元)$ ，前者是条件概率而后者则是干预查询</p>
+<p>例如<span class="math inline">\(P(销售量|汉堡的价格为20元)\)</span>
+与 <span class="math inline">\(P(销售量|降价至20元)\)</span>
+，前者是条件概率而后者则是干预查询</p>
 <h2 id="独立与条件独立">独立与条件独立</h2>
 <p>对于两个随机变量x和y，广义的独立是他们的某种概率可以拆分成互不相关的两个因子的乘积形式，即认为他们是独立的</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>独立：$\forall x\in \mathrm x,y\in \mathrm y,p(\mathrm x=x,\mathrm y=y)=p(\mathrm x=x)p(\mathrm y=y)$</p>
-</li>
-<li class="lvl-2">
-<p>条件独立：$\forall x\in \mathrm x,y\in \mathrm x,z\in \mathrm z,p(\mathrm x=x,\mathrm y=y|\mathrm z=z)=p(\mathrm x=x|\mathrm z=z)p(\mathrm y=y|\mathrm z=z)$</p>
-</li>
+<ul>
+<li>独立：<span class="math inline">\(\forall x\in \mathrm x,y\in
+\mathrm y,p(\mathrm x=x,\mathrm y=y)=p(\mathrm x=x)p(\mathrm
+y=y)\)</span></li>
+<li>条件独立：<span class="math inline">\(\forall x\in \mathrm x,y\in
+\mathrm x,z\in \mathrm z,p(\mathrm x=x,\mathrm y=y|\mathrm
+z=z)=p(\mathrm x=x|\mathrm z=z)p(\mathrm y=y|\mathrm z=z)\)</span></li>
 </ul>
 <p>可以使用一种较为简单的记号去描述他们的独立性</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>x和y相互独立：$x⊥y$</p>
-</li>
-<li class="lvl-2">
-<p>x和y在给定条件为z时条件独立：$x⊥y|z$</p>
-</li>
+<ul>
+<li>x和y相互独立：<span class="math inline">\(x⊥y\)</span></li>
+<li>x和y在给定条件为z时条件独立：<span
+class="math inline">\(x⊥y|z\)</span></li>
 </ul>
 <h2 id="常用概率分布">常用概率分布</h2>
-<h3 id="Bernoulli-分布">Bernoulli 分布</h3>
-<p>伯努利分布是单个二值随机变量的分布。他由单个参数 $\phi\in [0,1]$ 控制，他具有一些性质：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261625113.png" alt="image-20240426162520022" style="zoom:50%;" /> 
-<h3 id="Multinoulli-分布">Multinoulli 分布</h3>
-<p>**Multinoulli 分布（multinoulli distribution）**或者 **范畴分布（categorical distribution）**是指在具有 k 个不同状态的单个离散型随机变量上的分布，其中 k 是一个有限值</p>
-<p>Multinoulli分布由向量 $p\in [0,1]^{k-1}$ 参数化，其中每一个分量 $p_i$ 表示第 i 个状态的概率，第 k 个状态可以通过 $1-1^Tp$ 给出，因此需要加以限制 $1^Tp\le 1$</p>
+<h3 id="bernoulli-分布">Bernoulli 分布</h3>
+<p>伯努利分布是单个二值随机变量的分布。他由单个参数 <span
+class="math inline">\(\phi\in [0,1]\)</span> 控制，他具有一些性质：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261625113.png" alt="image-20240426162520022" style="zoom:50%;" /></p>
+<h3 id="multinoulli-分布">Multinoulli 分布</h3>
+<p><strong>Multinoulli 分布（multinoulli distribution） </strong> 或者
+<strong>范畴分布（categorical distribution）</strong> 是指在具有 k
+个不同状态的单个离散型随机变量上的分布，其中 k 是一个有限值</p>
+<p>Multinoulli分布由向量 <span class="math inline">\(p\in
+[0,1]^{k-1}\)</span> 参数化，其中每一个分量 <span
+class="math inline">\(p_i\)</span> 表示第 i 个状态的概率，第 k
+个状态可以通过 <span class="math inline">\(1-1^Tp\)</span>
+给出，因此需要加以限制 <span class="math inline">\(1^Tp\le
+1\)</span></p>
 <h3 id="高斯分布">高斯分布</h3>
-<p>实数上最常用的分布就是<strong>正态分布（normal distribution），也称为高斯分布 （Gaussian distribution）</strong>：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261635773.png" alt="image-20240426163530679" style="zoom:50%;" />
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261637708.png" style="zoom: 50%;" />
-<p>正态分布由两个参数控制，$\mu \in R$ 和 $\sigma\in (0,\infty)$ 。$\mu$ 给出了参数的均值，也是分布的均值，标准差用 $\sigma$ 控制，方差为 $\sigma^2$</p>
-<p>通常情况下，为了控制正态分布，不会选择直接控制 $\sigma$ 而是控制 $\beta = \sigma^{-1}$</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261641779.png" alt="image-20240426164110685" style="zoom: 50%;" />
+<p>实数上最常用的分布就是<strong>正态分布（normal
+distribution），也称为高斯分布 （Gaussian distribution）</strong>：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261635773.png" alt="image-20240426163530679" style="zoom:50%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261637708.png" style="zoom: 50%;" /></p>
+<p>正态分布由两个参数控制，<span class="math inline">\(\mu \in
+R\)</span> 和 <span class="math inline">\(\sigma\in (0,\infty)\)</span>
+。<span class="math inline">\(\mu\)</span>
+给出了参数的均值，也是分布的均值，标准差用 <span
+class="math inline">\(\sigma\)</span> 控制，方差为 <span
+class="math inline">\(\sigma^2\)</span></p>
+<p>通常情况下，为了控制正态分布，不会选择直接控制 <span
+class="math inline">\(\sigma\)</span> 而是控制 <span
+class="math inline">\(\beta = \sigma^{-1}\)</span></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261641779.png" alt="image-20240426164110685" style="zoom: 50%;" /></p>
 <p>一般地，当缺乏对某个实数上分布的先验知识而不知道怎么选择分布时，正态分布是默认比较好的选择，有两个原因：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>一方面，根据<strong>中心极限定理</strong>，很多独立随机变量的和近似服从正态分布。故实际上一些复杂的系统可以被建模成正态分布的噪声</p>
-</li>
-<li class="lvl-2">
-<p>另一方面，在具有相同方差的所有可能的概率分布中，正态分布在实数上具有<strong>最大的不确定性</strong>。</p>
-</li>
+<ul>
+<li>一方面，根据<strong>中心极限定理</strong>，很多独立随机变量的和近似服从正态分布。故实际上一些复杂的系统可以被建模成正态分布的噪声</li>
+<li>另一方面，在具有相同方差的所有可能的概率分布中，正态分布在实数上具有<strong>最大的不确定性</strong>。</li>
 </ul>
 <p>同样的，将正态分布推广到高维形式，其参数推广为矩阵化：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261647279.png" alt="image-20240426164738186" style="zoom:50%;" />
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261647004.png" alt="image-20240426164752911" style="zoom:50%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261647279.png" alt="image-20240426164738186" style="zoom:50%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261647004.png" alt="image-20240426164752911" style="zoom:50%;" /></p>
 <p>同样我们通过精度阵对概率密度函数进行控制</p>
-<h3 id="指数分布与Laplace分布">指数分布与Laplace分布</h3>
-<p>在深度学习中，我们经常会需要一个在 x = 0 点处取得边界点 (sharp point) 的分布。为了实现这一目的，我们可以使用 <strong>指数分布（exponential distribution）</strong>：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261649599.png" alt="image-20240426164952506" style="zoom: 50%;" />
-<p>指数分布使用<strong>指示函数(indicator function) $1_{x\ge 0}$</strong> 来使得x为负时的值为0</p>
-<p>一个与指数分布类似的函数是拉普拉斯分布，它能够控制在任意一点$\mu$ 处设置概率质量的峰值：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261651323.png" alt="image-20240426165159227" style="zoom:50%;" />
-<h3 id="Dirac分布和经验分布">Dirac分布和经验分布</h3>
-<p>既然拉普拉斯分布可以控制峰值，那么有没有一种分布可以控制将所有的质量集中在一个点处呢？答案是有的，可以通过 <strong>Dirac delta函数（Dirac delta function，也称单位脉冲函数）</strong> $\delta(x)$ 定义概率密度函数来实现：$p(x)=\delta(x-\mu)$</p>
-<p>Dirac delta函数被定义为在除了0以外的所有点的值都为0，但是积分为1，也就是说，他在$\mu$​ 处无限窄也无限高</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261710997.png" alt="image-20240426171020870" style="zoom:50%;" />
+<h3 id="指数分布与laplace分布">指数分布与Laplace分布</h3>
+<p>在深度学习中，我们经常会需要一个在 x = 0 点处取得边界点 (sharp point)
+的分布。为了实现这一目的，我们可以使用 <strong>指数分布（exponential
+distribution）</strong>：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261649599.png" alt="image-20240426164952506" style="zoom: 50%;" /></p>
+<p>指数分布使用<strong>指示函数(indicator function) <span
+class="math inline">\(1_{x\ge 0}\)</span></strong>
+来使得x为负时的值为0</p>
+<p>一个与指数分布类似的函数是拉普拉斯分布，它能够控制在任意一点<span
+class="math inline">\(\mu\)</span> 处设置概率质量的峰值：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261651323.png" alt="image-20240426165159227" style="zoom:50%;" /></p>
+<h3 id="dirac分布和经验分布">Dirac分布和经验分布</h3>
+<p>既然拉普拉斯分布可以控制峰值，那么有没有一种分布可以控制将所有的质量集中在一个点处呢？答案是有的，可以通过
+<strong>Dirac delta函数（Dirac delta
+function，也称单位脉冲函数）</strong> <span
+class="math inline">\(\delta(x)\)</span> 定义概率密度函数来实现：<span
+class="math inline">\(p(x)=\delta(x-\mu)\)</span></p>
+<p>Dirac
+delta函数被定义为在除了0以外的所有点的值都为0，但是积分为1，也就是说，他在<span
+class="math inline">\(\mu\)</span>​ 处无限窄也无限高</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261710997.png" alt="image-20240426171020870" style="zoom:50%;" /></p>
 <p><strong>说明</strong>:</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>严格来说狄拉克δ函数不能算是一个函数，而是一种<strong>数学对象</strong>, 因为满足以上条件的函数是不存在的, 但是我们可以用分布的概念来解释, 因此称为<strong>狄拉克分布</strong>或者<strong>δ分布</strong></p>
-</li>
-<li class="lvl-2">
-<p>它是一种极简单的<strong>广义函数</strong>. 广义函数是一种数学对象, 依据积分性质而定义. 我们可以把狄拉克δ函数想成一系列函数的极限点, 这一系列函数把除0以外的所有点的概率密度越变越小</p>
-</li>
+<ul>
+<li>严格来说狄拉克δ函数不能算是一个函数，而是一种<strong>数学对象</strong>,
+因为满足以上条件的函数是不存在的, 但是我们可以用分布的概念来解释,
+因此称为<strong>狄拉克分布</strong>或者<strong>δ分布</strong></li>
+<li>它是一种极简单的<strong>广义函数</strong>. 广义函数是一种数学对象,
+依据积分性质而定义. 我们可以把狄拉克δ函数想成一系列函数的极限点,
+这一系列函数把除0以外的所有点的概率密度越变越小</li>
 </ul>
-<p>Dirac狄拉克分布经常作为**经验分布（empirical distribution）**的一个组成部分出现：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261706821.png" alt="image-20240426170656725" style="zoom:50%;" />
-<p>经验分布将概率密度$\frac 1m$​ 赋给m个点，这些点是给定的数据集或者采样的集合。只有在定义连续型随机变量的经验分布时，Dirac delta 函数才是必要的。对于离散型随机变量，情况更加简单：经验分布可以被定义成一个 Multinoulli 分布，对于每一个可能的输入，其概率可以简单地设为在训练集上那个输入值的 <strong>经验频率（empirical frequency）</strong>。</p>
+<p>Dirac狄拉克分布经常作为<strong>经验分布（empirical
+distribution）</strong>的一个组成部分出现：</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261706821.png" alt="image-20240426170656725" style="zoom:50%;" /></p>
+<p>经验分布将概率密度<span class="math inline">\(\frac 1m\)</span>​
+赋给m个点，这些点是给定的数据集或者采样的集合。只有在定义连续型随机变量的经验分布时，Dirac
+delta
+函数才是必要的。对于离散型随机变量，情况更加简单：经验分布可以被定义成一个
+Multinoulli
+分布，对于每一个可能的输入，其概率可以简单地设为在训练集上那个输入值的
+<strong>经验频率（empirical frequency）</strong>。</p>
 <h3 id="分布混合">分布混合</h3>
-<p>通过组合一些简单的概率分布来定义新的概率分布也是很常见的。一种通用的组合方法是构造 <strong>混合分布（mixture distribution）</strong>。混合分布由一些组件 (component) 分布构成。</p>
+<p>通过组合一些简单的概率分布来定义新的概率分布也是很常见的。一种通用的组合方法是构造
+<strong>混合分布（mixture distribution）</strong>。混合分布由一些组件
+(component) 分布构成。</p>
 <p>简单来说就是根据范畴分布将一个概率密度集合进行抽样并组合</p>
-<p>可以看[这篇博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/tanghonghanhaoli/article/details/90543917">混合分布(mixture distribution)-CSDN博客</a>)</p>
+<p>可以看 <a
+href="%5B混合分布(mixture%20distribution)-CSDN博客%5D(https://blog.csdn.net/tanghonghanhaoli/article/details/90543917)">这篇博客</a></p>
 <h2 id="常用函数的有用性质">常用函数的有用性质</h2>
-<p>logistic sigmoid函数作为深度学习中的经典函数：$\sigma(x)=\frac 1{1+\exp(-x)}$</p>
-<p>logistic sigmoid 函数通常用来产生 Bernoulli 分布中的参数 ϕ，因为它的范围是(0, 1)，处在 ϕ 的有效取值范围内。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261724580.png" alt="image-20240426172450473" style="zoom:50%;" />
-<p>sigmoid 函数 在变量取绝对值非常大的正值或负值时会出现 **饱和（saturate）**现象，意味着函数会 变得很平，并且对输入的微小改变会变得不敏感。</p>
-<p>另一个常见函数是 <strong>softplus函数</strong>：$\zeta(x)=\log(1+\exp(x))$ ,softplus 函数可以用来产生正态分布的 β 和 σ 参数，因为它的范围是 $(0,\infty)$</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261727966.png" alt="image-20240426172710851" style="zoom:50%;" />
+<p>logistic sigmoid函数作为深度学习中的经典函数：<span
+class="math inline">\(\sigma(x)=\frac 1{1+\exp(-x)}\)</span></p>
+<p>logistic sigmoid 函数通常用来产生 Bernoulli 分布中的参数
+ϕ，因为它的范围是(0, 1)，处在 ϕ 的有效取值范围内。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261724580.png" alt="image-20240426172450473" style="zoom:50%;" /></p>
+<p>sigmoid 函数 在变量取绝对值非常大的正值或负值时会出现
+<strong>饱和（saturate）</strong>现象，意味着函数会
+变得很平，并且对输入的微小改变会变得不敏感。</p>
+<p>另一个常见函数是 <strong>softplus函数</strong>：<span
+class="math inline">\(\zeta(x)=\log(1+\exp(x))\)</span> ,softplus
+函数可以用来产生正态分布的 β 和 σ 参数，因为它的范围是 <span
+class="math inline">\((0,\infty)\)</span></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261727966.png" alt="image-20240426172710851" style="zoom:50%;" /></p>
 <blockquote>
 <p>一些有用的性质。。。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261727209.png" alt="image-20240426172733099" style="zoom:67%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404261727209.png" alt="image-20240426172733099" style="zoom:67%;" /></p>
 </blockquote>
-<p>函数 $\sigma^{-1}(x)$ 在统计学中被称为 <strong>分对数（logit）</strong></p>
+<p>函数 <span class="math inline">\(\sigma^{-1}(x)\)</span>
+在统计学中被称为 <strong>分对数（logit）</strong></p>
 <h2 id="贝叶斯规则">贝叶斯规则</h2>
-<p>通过贝叶斯规则，我们能够在已知 $P(\mathrm y|\mathrm x)$ 时计算 $P(\mathrm x | \mathrm y)$</p>
-<p>$P(\mathrm x | \mathrm y)=\frac{P(\mathrm x) P(\mathrm y | \mathrm x)}{P(\mathrm y)}$</p>
-<p>通常情况下，通过[全概率公式]([全概率公式_百度百科 (<a target="_blank" rel="noopener" href="http://baidu.com">baidu.com</a>)](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F/9980676#:~:text=%E8%8B%A5%E4%BA%8B%E4%BB%B6A1%EF%BC%8CA2%EF%BC%8C%E2%80%A6%E6%9E%84%E6%88%90%E4%B8%80%E4%B8%AA">https://baike.baidu.com/item/全概率公式/9980676#:~:text=若事件A1，A2，…构成一个</a> 完备事件组 且都有正概率，则对任意一个事件B，有如下公式成立： P (B)%3DP (BA1)%2BP (BA2)%2B…%2BP (BAn)%3DP,(B|A2)P (A2) %2B… %2B P (B|An)P (An). 此公式即为全概率公式。)计算 $P(y)$ 就不需要实现知道 y 的信息了</p>
-<h2 id="关于连续性随机变量的一些技术问题">关于连续性随机变量的一些技术问题</h2>
-<p>涉及到处理那种相互之间有确定性函数关系 的连续型变量。假设我们有两个随机变量 x 和 y 满足 y = g(x)，其中 g 是可逆的、 连续可微的函数。</p>
+<p>通过贝叶斯规则，我们能够在已知 <span class="math inline">\(P(\mathrm
+y|\mathrm x)\)</span> 时计算 <span class="math inline">\(P(\mathrm x |
+\mathrm y)\)</span></p>
+<p><span class="math inline">\(P(\mathrm x | \mathrm y)=\frac{P(\mathrm
+x) P(\mathrm y | \mathrm x)}{P(\mathrm y)}\)</span></p>
+<p>通常情况下，通过 [全概率公式](<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/全概率公式/9980676#:~:text=若事件A1，A2，…构成一个%20完备事件组%20且都有正概率，则对任意一个事件B，有如下公式成立：%20P%20(B)%3DP%20(BA1)%2BP%20(BA2)%2B...%2BP%20(BAn)%3DP,(B%7CA2)P%20(A2)%20%2B...%20%2B%20P%20(B%7CAn)P%20(An).%20此公式即为全概率公式。">全概率公式_百度百科
+(baidu.com)</a>计算 <span class="math inline">\(P(y)\)</span>
+就不需要实现知道 y 的信息了</p>
+<h2
+id="关于连续性随机变量的一些技术问题">关于连续性随机变量的一些技术问题</h2>
+<p>涉及到处理那种相互之间有确定性函数关系
+的连续型变量。假设我们有两个随机变量 x 和 y 满足 y = g(x)，其中 g
+是可逆的、 连续可微的函数。</p>
 <blockquote>
-<p>可能有人会想 $p_y(y) = p_x(g^{−1}(y))$。但实际上这并不对。</p>
+<p>可能有人会想 <span class="math inline">\(p_y(y) =
+p_x(g^{−1}(y))\)</span>。但实际上这并不对。</p>
 </blockquote>
-<p>假设我们有两个标量值随机变量 x 和 y，并且满足 y = x/2 以及 x ∼ U(0, 1)。如果我们使用 $p_y(y) = p_x(2y)$，那么 $p_y$ 除了区间 [0, 1/2 ] 以外都为 0，并且在这个区间上的值为 1。这意味着$\int p_y(y)dy=\frac12$​</p>
-<p>而这违背了概率密度的定义 (积分为 1)。这个常见错误之所以错是因为它没有考虑 到引入函数 g 后造成的空间变形。</p>
-<p>我们需要让他在无穷小区域内的概率相同，也就是 $p(x)\delta x$相同</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271353082.png" alt="image-20240427135350894" style="zoom:50%;" />
+<p>假设我们有两个标量值随机变量 x 和 y，并且满足 y = x/2 以及 x ∼ U(0,
+1)。如果我们使用 <span class="math inline">\(p_y(y) =
+p_x(2y)\)</span>，那么 <span class="math inline">\(p_y\)</span> 除了区间
+[0, 1/2 ] 以外都为 0，并且在这个区间上的值为 1。这意味着<span
+class="math inline">\(\int p_y(y)dy=\frac12\)</span>​</p>
+<p>而这违背了概率密度的定义 (积分为
+1)。这个常见错误之所以错是因为它没有考虑 到引入函数 g
+后造成的空间变形。</p>
+<p>我们需要让他在无穷小区域内的概率相同，也就是 <span
+class="math inline">\(p(x)\delta x\)</span>相同</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271353082.png" alt="image-20240427135350894" style="zoom:50%;" /></p>
 <h2 id="信息论">信息论</h2>
-<p>在机器学习中，我们也可以把信息论应用于连续型变量， 此时某些消息长度的解释不再适用。</p>
-<p>信息论的基本想法是一个不太可能的事件居然发生了，要比一个非常可能的事 件发生，能提供更多的信息。</p>
+<p>在机器学习中，我们也可以把信息论应用于连续型变量，
+此时某些消息长度的解释不再适用。</p>
+<p>信息论的基本想法是一个不太可能的事件居然发生了，要比一个非常可能的事
+件发生，能提供更多的信息。</p>
 <p>我们想要通过这种基本想法来量化信息。特别地，</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>非常可能发生的事件信息量要比较少，并且极端情况下，确保能够发生的事件 应该没有信息量。</p>
-</li>
-<li class="lvl-2">
-<p>较不可能发生的事件具有更高的信息量。</p>
-</li>
-<li class="lvl-2">
-<p>独立事件应具有增量的信息。例如，投掷的硬币两次正面朝上传递的信息量， 应该是投掷一次硬币正面朝上的信息量的两倍。</p>
-</li>
+<ul>
+<li>非常可能发生的事件信息量要比较少，并且极端情况下，确保能够发生的事件
+应该没有信息量。</li>
+<li>较不可能发生的事件具有更高的信息量。</li>
+<li>独立事件应具有增量的信息。例如，投掷的硬币两次正面朝上传递的信息量，
+应该是投掷一次硬币正面朝上的信息量的两倍。</li>
 </ul>
-<p>为了满足上述三个性质，我们定义一个事件 x = x 的 <strong>自信息（self-information）</strong> 为<br>
-$$ I(x) = -\log P(x)$$</p>
-<p>其中 $\log$ 就是以自然对数 e 为底的 $\ln $ 函数</p>
-<p>我们定义的 I(x) 单 位是 奈特（nats）。一奈特是以 1/e 的概率观测到一个事件时获得的信息量。</p>
-<p>亦有教材定义使用底数为 2 的对数，单位是 **比特（bit）**或者 香农（shannons）；通过比特度量的信息只是通过奈特度量信息的常数倍。</p>
-<p>我们可以用 **香农熵（Shannon entropy）**来对整个概 率分布中的不确定性总量进行量化：</p>
-<p>$$H(x)=\mathbb E_{x\sim P}[I(x)]=-\mathbb E_{x\sim P}[\log P(x)]$$ ，也记作 H(P)。</p>
-<p>换言之，一个分布的香农熵是指<mark>遵循这个分布的事件所产生的期望信息总量</mark>。</p>
-<p>当 x 是连续的，香农熵被称为 <strong>微分熵（differential entropy）</strong></p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271413992.png" alt="image-20240427141352865" style="zoom: 67%;" />
+<p>为了满足上述三个性质，我们定义一个事件 x = x 的
+<strong>自信息（self-information）</strong> 为 <span
+class="math display">\[ I(x) = -\log P(x)\]</span></p>
+<p>其中 <span class="math inline">\(\log\)</span> 就是以自然对数 e
+为底的 $$ 函数</p>
+<p>我们定义的 I(x) 单 位是 奈特（nats）。一奈特是以 1/e
+的概率观测到一个事件时获得的信息量。</p>
+<p>亦有教材定义使用底数为 2 的对数，单位是
+<strong>比特（bit）</strong>或者
+香农（shannons）；通过比特度量的信息只是通过奈特度量信息的常数倍。</p>
+<p>我们可以用 <strong>香农熵（Shannon entropy）</strong>来对整个概
+率分布中的不确定性总量进行量化：</p>
+<p><span class="math display">\[H(x)=\mathbb E_{x\sim P}[I(x)]=-\mathbb
+E_{x\sim P}[\log P(x)]\]</span> ，也记作 H(P)。</p>
+<p>换言之，一个分布的香农熵是指==遵循这个分布的事件所产生的期望信息总量==。</p>
+<p>当 x 是连续的，香农熵被称为 <strong>微分熵（differential
+entropy）</strong></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271413992.png" alt="image-20240427141352865" style="zoom: 67%;" /></p>
 <blockquote>
-<p><strong>二值随机变量</strong>的香农熵。该图说明了更接近确定性的分布是如何具有较低的香农熵，而更 接近均匀分布的分布是如何具有较高的香农熵。水平轴是 p，表示二值随机变量等于 1 的概率。熵由 $(p − 1)\log(1 − p) − p \log p$ 给出。当 p 接近 0 时，分布几乎是确定的，因为随机变量几乎总是 0。当 p 接近 1 时，分布也几乎是确定的，因为随机变量几乎总是 1。当 p = 0.5 时，熵是最大的， 因为分布在两个结果（0 和 1）上是均匀的。</p>
+<p><strong>二值随机变量</strong>的香农熵。该图说明了更接近确定性的分布是如何具有较低的香农熵，而更
+接近均匀分布的分布是如何具有较高的香农熵。水平轴是
+p，表示二值随机变量等于 1 的概率。熵由 <span class="math inline">\((p −
+1)\log(1 − p) − p \log p\)</span> 给出。当 p 接近 0
+时，分布几乎是确定的，因为随机变量几乎总是 0。当 p 接近 1
+时，分布也几乎是确定的，因为随机变量几乎总是 1。当 p = 0.5
+时，熵是最大的， 因为分布在两个结果（0 和 1）上是均匀的。</p>
 <p>推导：</p>
-<p>二值分布记其随机变量为 x，那么 $p(\mathrm x=x)=p<sup>x(1-p)</sup>{1-x}$</p>
-<p>所以 $H(x)=E(-\log (p<sup>x(1-p)</sup>{1-x}))=E(-x\log p+(x-1)\log (1-p))$</p>
-<p>由于 $E(x)=p$ ，于是有 $H(x)=(p-1)\log (1-p)-p\log p$</p>
+<p>二值分布记其随机变量为 x，那么 <span class="math inline">\(p(\mathrm
+x=x)={p^x} (1-p)^{1-x}\)</span></p>
+<p>所以 <span class="math inline">\(H(x)=E(-\log ({p^x}
+{(1-p)^{1-x}}))=E(-x\log p+(x-1)\log (1-p))\)</span></p>
+<p>由于 <span class="math inline">\(E(x)=p\)</span> ，于是有 <span
+class="math inline">\(H(x)=(p-1)\log (1-p)-p\log p\)</span></p>
 </blockquote>
-<p>对于同一个随机变量 x 有两个单独的概率分布 $P(x)$ 和 $Q(x)$​ ，使用 **KL 散度（Kullback-Leibler (KL) divergence）**来衡量这两个分布的差异：</p>
-<p>$$D_{KL}(P\ ||\ Q)=\mathbb E_{x\sim P}[\log \frac{P(x)}{Q(x)}]=\mathbb E_{x\sim P}[\log P(x)-\log Q(x)]$$</p>
+<p>对于同一个随机变量 x 有两个单独的概率分布 <span
+class="math inline">\(P(x)\)</span> 和 <span
+class="math inline">\(Q(x)\)</span>​ ，使用 <strong>KL
+散度（Kullback-Leibler (KL) divergence）</strong>
+来衡量这两个分布的差异：</p>
+<p><span class="math display">\[D_{KL}(P\ ||\ Q)=\mathbb E_{x\sim
+P}[\log \frac{P(x)}{Q(x)}]=\mathbb E_{x\sim P}[\log P(x)-\log
+Q(x)]\]</span></p>
 <p>KL散度衡量的是，当我们使用一种编码，这种编码能够使得概率分布Q产生的消息程度最短，在使用这种编码发送一种由概率分布P产生的消息时，所产生的额外信息</p>
-<p>KL 散度有很多有用的性质，最重要的是它是非负的。KL 散度为 0 当且仅当 P 和 Q 在离散型变量的情况下是相同的分布，或者在连续型变量的情况下是 ‘‘几乎 处处’’ 相同的。</p>
-<p>==因为 KL 散度是非负的并且衡量的是两个分布之间的差异，它经常 被用作分布之间的某种距离。==然而，它并不是真的距离因为它不是对称的：对于某 些 P 和 Q，$D_{KL}(P||Q)\neq D_{KL}(Q||P)$ 。这种非对称性意味着选择 $D_{KL}(P||Q)$ 还是$D_{KL}(Q||P)$影响很大。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271443153.png" alt="image-20240427144308978" style="zoom:67%;" />
-<p>!!!一个和 KL 散度密切联系的量是 <strong>交叉熵（cross-entropy）</strong>$H(P, Q) = H(P) + D_{KL}(P||Q)$，它和 KL 散度很像但是缺少左边一项：</p>
-<p>$$H(P,Q)=-\mathbb E_{x\sim P}\log Q(x)$$</p>
-<p>针对 Q 最小化交叉熵等价于最小化 KL 散度，因为 Q 并不参与被省略的那一项。</p>
-<p>在信息论的计算过程中，经常会遇到 $0\log 0$ 的表达式，按照惯例，将它处理成 $\lim_{x\to 0}x\log x=0$</p>
+<p>KL 散度有很多有用的性质，最重要的是它是非负的。KL 散度为 0 当且仅当 P
+和 Q 在离散型变量的情况下是相同的分布，或者在连续型变量的情况下是 ‘‘几乎
+处处’’ 相同的。</p>
+<p>==因为 KL 散度是非负的并且衡量的是两个分布之间的差异，它经常
+被用作分布之间的某种距离。==
+然而，它并不是真的距离因为它不是对称的：对于某 些 P 和 Q，<span
+class="math inline">\(D_{KL}(P||Q)\neq D_{KL}(Q||P)\)</span>
+。这种非对称性意味着选择 <span
+class="math inline">\(D_{KL}(P||Q)\)</span> 还是<span
+class="math inline">\(D_{KL}(Q||P)\)</span>影响很大。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271443153.png" alt="image-20240427144308978" style="zoom:67%;" /></p>
+<p>!!!一个和 KL 散度密切联系的量是
+<strong>交叉熵（cross-entropy）</strong><span class="math inline">\(H(P,
+Q) = H(P) + D_{KL}(P||Q)\)</span>，它和 KL
+散度很像但是缺少左边一项：</p>
+<p><span class="math display">\[H(P,Q)=-\mathbb E_{x\sim P}\log
+Q(x)\]</span></p>
+<p>针对 Q 最小化交叉熵等价于最小化 KL 散度，因为 Q
+并不参与被省略的那一项。</p>
+<p>在信息论的计算过程中，经常会遇到 <span class="math inline">\(0\log
+0\)</span> 的表达式，按照惯例，将它处理成 <span
+class="math inline">\(\lim_{x\to 0}x\log x=0\)</span></p>
 
     </div>
 
@@ -809,7 +1014,7 @@ $$ I(x) = -\log P(x)$$</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">45 分钟</span>
+    <span title="站点阅读时长">46 分钟</span>
   </span>
 </div>
 
