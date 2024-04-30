@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>129场双周赛&amp;&amp;395场周赛</title>
+    <url>/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/</url>
+    <content><![CDATA[<p>补一下这周打的两场周赛的题。。。</p>
+<span id="more"></span>
+<h1 id="场双周赛">129场双周赛</h1>
+<p><a
+href="https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-ii/description/">题目链接</a></p>
+<blockquote>
+<p>给你 3 个正整数 <code>zero</code> ，<code>one</code> 和
+<code>limit</code> 。</p>
+<p>一个二进制数组 <code>arr</code> 如果满足以下条件，那么我们称它是
+<strong>稳定的</strong> ：</p>
+<ul>
+<li>0 在 <code>arr</code> 中出现次数 <strong>恰好</strong> 为
+<code>zero</code> 。</li>
+<li>1 在 <code>arr</code> 中出现次数 <strong>恰好</strong> 为
+<code>one</code> 。</li>
+<li><code>arr</code> 中每个长度超过<code>limit</code> 的子数组都同时包含
+0 和 1 。</li>
+</ul>
+<p>请你返回 <strong>稳定</strong> 二进制数组的 <em>总</em> 数目。</p>
+<p>由于答案可能很大，将它对 <code>1e9 + 7</code> <strong>取余</strong>
+后返回。</p>
+</blockquote>
+<p>额额笔者一开始的思考是从组合数学去做， 首先，不考虑 limit
+的情况下，一共的选法应该是 <span
+class="math inline">\(C_{zoro+one}^{one}\)</span>
+，组合数用杨辉三角就可以做</p>
+<p>然后考虑 limit 的情况，只要减去不合法的情况即可</p>
+<p>那么也就是说，选取 [limit + 1， max(zero, one)] 个连续的 1 或
+0，这些都是不合法的，选完后整体法看作一个整体再插入这个数组中，但是没做出来</p>
+<p>！！！错的地方在于</p>
+<p>比如 limit = 1 时，选取了 2
+个连续的0，这显然是不合法的，但是如果这两个被看作整体和另一个0构成了三个不合法的0，这是与取连续三个0相冲突的，所以应该用容斥原理去考虑。。。</p>
+<p>虽然最后一点时间发现了问题但是已经没有时间作修改了。。。</p>
+<hr />
+<p>来看看正解吧，首先应该是一个经典的dp问题？原因是我们可以拆分成子规模的问题，比如说，我们记合法的数应该是
+dfs(i, j, k) ，其中i、j、k分别表示0的个数、1的个数和最后一位是0还是1</p>
+<p>那么举个例子，dfs(i, j, 0) 应该由 dfs(i-1, j, 0) 和 dfs(i-1, j, 1)
+给出</p>
+<p>但是考虑到 dfs(i-1,j,0) 表示的意义是 i-1
+个0，j个1，最后一位是0，那么就有可能已经出现了连续 limit
+个的情况，那么这时候，状态转移到 dfs(i, j, 0)
+时，末尾再添一个0就爆了</p>
+<p>==所以要排除连续 limit 个 0 的情况== ，也就是说，我们要排除
+dfs(i-1,j,0) 中末尾连续 limit 个 0的情况，由于 dfs
+表示的是合法的情况，所以既然末尾已经是 limit
+个了，那么已经达到上限，所以倒数第 limit + 1
+个位置一定是1，总的方案也应该是dfs(i-1-limit, j , 1)</p>
+<p>所以 dfs(i, j, 0) = dfs(i-1,j,0)+dfs(i-1,j,1)-dfs(i-1-limit,j,1)</p>
+<p>接下来考虑以下递归的边界问题？</p>
+<ul>
+<li>首先是 i - 1 - limit处，如果 i &lt;= limit 那显然没有必要计算了</li>
+<li>其次是只放一个数字的情况，如果 i=0 且 k=1 且 j &lt;=
+limit，那么只有一种情况，只放0同理</li>
+</ul>
+<p>最后的递归入口为 dfs(zero, one, 0) + dfs(zero, one, 1)</p>
+<p>所以给出 cpp 代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> ull;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">typedef</span> vector&lt;<span class="type">int</span>&gt; vi;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;array&lt;<span class="type">int</span>, 2&gt;&gt;&gt; memo;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j, <span class="type">int</span> l, <span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>) <span class="keyword">return</span> j &lt;= l &amp;&amp; k == <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">0</span>) <span class="keyword">return</span> i &lt;= l &amp;&amp; k == <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> &amp;res = memo[i][j][k];   <span class="comment">// 取引用;</span></span><br><span class="line">        <span class="keyword">if</span>(res != <span class="number">-1</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">0</span>)&#123;</span><br><span class="line">            res = ((ll)<span class="built_in">dfs</span>(i<span class="number">-1</span>,j,l,<span class="number">0</span>)+<span class="built_in">dfs</span>(i<span class="number">-1</span>,j,l,<span class="number">1</span>)+(i&gt;l?mod-<span class="built_in">dfs</span>(i-l<span class="number">-1</span>,j,l,<span class="number">1</span>):<span class="number">0</span>))%mod;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res = ((ll)<span class="built_in">dfs</span>(i,j<span class="number">-1</span>,l,<span class="number">0</span>)+<span class="built_in">dfs</span>(i,j<span class="number">-1</span>,l,<span class="number">1</span>)+(j&gt;l?mod-<span class="built_in">dfs</span>(i,j-l<span class="number">-1</span>,l,<span class="number">0</span>):<span class="number">0</span>))%mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numberOfStableArrays</span><span class="params">(<span class="type">int</span> zero, <span class="type">int</span> one, <span class="type">int</span> limit)</span> </span>&#123;</span><br><span class="line">        memo.<span class="built_in">resize</span>(zero+<span class="number">1</span>, vector&lt;array&lt;<span class="type">int</span>, <span class="number">2</span>&gt;&gt;(one+<span class="number">1</span>, &#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;));</span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">dfs</span>(zero, one, limit, <span class="number">0</span>)%mod + <span class="built_in">dfs</span>(zero, one, limit, <span class="number">1</span>)%mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>观察状态转移方程：</p>
+<p><span
+class="math display">\[f[i][j][0]=f[i-1][j][0]+f[i-1][j][1]-f[i-limit-1][j][1]\]</span></p>
+<p><span
+class="math display">\[f[i][j][1]=f[i][j-1][0]+f[i][j-1][1]-f[i][j-limit-1][0]\]</span></p>
+<p>于是我们可以改写成递推写法，稍微高效一些。。。</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> ull;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">typedef</span> vector&lt;<span class="type">int</span>&gt; vi;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numberOfStableArrays</span><span class="params">(<span class="type">int</span> zero, <span class="type">int</span> one, <span class="type">int</span> limit)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;array&lt;<span class="type">int</span>, 2&gt;&gt;&gt; <span class="built_in">f</span>(zero + <span class="number">1</span>, vector&lt;array&lt;<span class="type">int</span>, <span class="number">2</span>&gt;&gt;(one + <span class="number">1</span>, &#123;<span class="number">0</span>, <span class="number">0</span>&#125;));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="built_in">min</span>(limit, one); ++i) f[<span class="number">0</span>][i][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="built_in">min</span>(limit, zero); ++i) f[i][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= zero; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= one; ++j)&#123;</span><br><span class="line">                f[i][j][<span class="number">0</span>] = ((ll)f[i<span class="number">-1</span>][j][<span class="number">0</span>]+f[i<span class="number">-1</span>][j][<span class="number">1</span>] + (i&gt;limit? mod - f[i-limit<span class="number">-1</span>][j][<span class="number">1</span>] : <span class="number">0</span>))%mod;</span><br><span class="line">                f[i][j][<span class="number">1</span>] = ((ll)f[i][j<span class="number">-1</span>][<span class="number">0</span>]+f[i][j<span class="number">-1</span>][<span class="number">1</span>] + (j&gt;limit? mod - f[i][j - limit - <span class="number">1</span>][<span class="number">0</span>] : <span class="number">0</span>))%mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (f[zero][one][<span class="number">0</span>]+f[zero][one][<span class="number">1</span>])%mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="场周赛">395场周赛</h1>
+<p><a
+href="https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/description/">题目连接在这里</a></p>
+<blockquote>
+<p>给你一个整数数组 <code>nums</code> 。数组 <code>nums</code> 的
+<strong>唯一性数组</strong> 是一个按元素从小到大排序的数组，包含了
+<code>nums</code> 的所有非空子数组中不同元素的个数。</p>
+<p>换句话说，这是由所有 <code>0 &lt;= i &lt;= j &lt; nums.length</code>
+的 <code>distinct(nums[i..j])</code> 组成的递增数组。</p>
+<p>其中，<code>distinct(nums[i..j])</code> 表示从下标 <code>i</code>
+到下标 <code>j</code> 的子数组中不同元素的数量。</p>
+<p>返回 <code>nums</code> <strong>唯一性数组</strong> 的
+<strong>中位数</strong> 。</p>
+<p><strong>注意</strong>，数组的 <strong>中位数</strong>
+定义为有序数组的中间元素。如果有两个中间元素，则取值较小的那个。</p>
+</blockquote>
+<p>额额，应该是一个二分 + 滑窗 nlogn去解决。。。</p>
+<p>首先，一共是有 <span class="math inline">\(m = \frac
+{n(n+1)}2\)</span> 个子数组的（一个等差数列求和即可）</p>
+<p>那么中位数的下标是 <span class="math inline">\(m-1/2\)</span>
+下取整的，中位数的个数是 <span class="math inline">\(k=m + 1 /
+2\)</span> 下取整也就是 <span class="math inline">\(k = m/2\)</span>
+上取整了。。。</p>
+<p>==！那么，只需要二分中位数，记作 upper，问题就变成了 distinct 值 &lt;
+upper 的子数组有多少个== (√)</p>
+<p>并且记子数组个数为 cnt ，如果 k &lt; cnt ，那么自然说明二分的 upper
+小了（数组长度与 distinct 呈现单调的关系），那么就更新二分的左边界</p>
+<p>那如何去计算 distinct 值小于 upper 的子数组的个数？</p>
+<p>用滑窗滑一轮 O(n) 即可。。。</p>
+<p>用一个哈希表 freq 统计出现的个数，枚举窗口右端点，如果 freq 大小大于
+upper，那么就不断移除左端点元素（就是出现次数 -1， 如果为 0 直接从 freq
+移除</p>
+<p>那么一共就有 r - l + 1 个子数组</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">medianOfUniquenessArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        ll k = ((ll)n * (n + <span class="number">1</span>) / <span class="number">2</span> + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> check = [&amp;](<span class="type">int</span> upper)&#123;</span><br><span class="line">            ll cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> l = <span class="number">0</span>;</span><br><span class="line">            unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; freq;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> r = <span class="number">0</span>; r &lt; n; ++r)&#123;</span><br><span class="line">                freq[nums[r]] ++;</span><br><span class="line">                <span class="keyword">while</span>(freq.<span class="built_in">size</span>() &gt; upper)&#123;</span><br><span class="line">                    <span class="type">int</span> out = nums[l++];</span><br><span class="line">                    <span class="keyword">if</span>(--freq[out] == <span class="number">0</span>)&#123;</span><br><span class="line">                        freq.<span class="built_in">erase</span>(out);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                cnt += r - l + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(cnt &gt;= k)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n;</span><br><span class="line">        <span class="keyword">while</span>(left + <span class="number">1</span>&lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            (<span class="built_in">check</span>(mid) ? right : left) = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>周赛</tag>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>花书——机器学习基础</title>
+    <url>/2024/04/28/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>花书</tag>
+        <tag>Deep Learning</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>花书——数值计算</title>
     <url>/2024/04/27/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -38,12 +165,109 @@ exp(0)=1既保证了分母不会为0，同时也保证了分子不会发生上�
 <h1 id="病态问题">病态问题</h1>
 <p>参考<a
 href="%5B病态问题及条件数%20%7C%20断鸿声里，立尽斜阳%20(flat2010.github.io)%5D(https://flat2010.github.io/2018/06/30/病态问题及条件数/)">这篇博客</a></p>
+<p>基于条件数的定义：定义方程组关于A的条件数为：<span
+class="math inline">\(k(A)=||A|| · ||A^{-1}||\)</span></p>
+<p>所以假定 <span class="math inline">\(\vec b\)</span> 的变化为 <span
+class="math inline">\(\Delta \vec b\)</span> ，对应解的变化为 <span
+class="math inline">\(\Delta \vec x\)</span></p>
+<p>所以有 <span class="math inline">\(A(x+\Delta x)=b+\Delta b\)</span>
+由于方程组 <span class="math inline">\(Ax=b\)</span></p>
+<p>所以有 <span class="math inline">\(A·\Delta x=\Delta b\)</span>
+，由于条件数假定了 A 的非奇异的，因此存在逆矩阵，所以 <span
+class="math inline">\(\Delta x=A^{-1}b\)</span></p>
+<p>根据范数的三角不等式有 <span class="math inline">\(||\Delta x || = ||
+A^{-1} \Delta b ||\le ||A^{-1}|| · ||b||\)</span></p>
+<p>同样地，对原方程做同样的处理有 <span class="math inline">\(||A|| ·
+||x|| \ge ||Ax|| = ||b||\)</span></p>
+<p>于是能够得到 <span class="math inline">\(\frac {||\Delta x ||}{||A||·
+||x|} \le \frac{||A^{-1}|| · ||\Delta b|| }{||b ||}\)</span></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404281529331.png" alt="image-20240428152927261" style="zoom:50%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404281530640.png" alt="image-20240428153016606" style="zoom:50%;" /></p>
+<blockquote>
+<p>所以条件数本质上是输出相对于输出变化的灵敏度系数</p>
+</blockquote>
+<h3 id="二范数条件数">二范数条件数</h3>
+<p>如果取得是二范数 <span class="math inline">\(||·||_2\)</span>
+那么条件数为 <span class="math inline">\(k(A) = \frac
+{\sigma_{\max}(A)}{\sigma_{\min}(A)}\)</span>​</p>
+<p>其中 <span class="math inline">\(\sigma_{\max}\)</span> 、<span
+class="math inline">\(\sigma_{\min}\)</span> 分别是矩阵 A
+的最大、最小奇异值</p>
+<ul>
+<li>当 A 为正规阵时， <span
+class="math inline">\(k(A)=\frac{|\lambda_{\max}(A)|}{|\lambda_{\min}(A)|}\)</span>
+，这里为最大、最小特征值</li>
+<li>当 A 为酉矩阵时，<span class="math inline">\(k(A)=1\)</span></li>
+<li>当 A 为奇异阵时，由于A逆不存在所以 <span
+class="math inline">\(k(A)\to \infty\)</span></li>
+</ul>
+<h3 id="机器学习和条件数">机器学习和条件数</h3>
 <figure>
 <img
 src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271622235.png"
 alt="image-20240427162132277" />
 <figcaption aria-hidden="true">image-20240427162132277</figcaption>
 </figure>
+<blockquote>
+<p>病态的根源是矩阵的列向量相关性过大！</p>
+</blockquote>
+<h2 id="基于梯度的优化方法">基于梯度的优化方法</h2>
+<p>方向导数是函数 <span class="math inline">\(f(x + \alpha u)\)</span>
+关于 <span class="math inline">\(\alpha\)</span> 的导数（在 <span
+class="math inline">\(\alpha\)</span> 为0时取到），当 <span
+class="math inline">\(\alpha=0\)</span> 时有 <span
+class="math inline">\(\frac \part {\part \alpha}f(x + \alpha u)=u^T
+\nabla_x f(x)\)</span></p>
+<p>而计算方向导数为了得到使得 f 下降最快的方向 （梯度下降）</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404281918701.png" alt="image-20240428191800654" style="zoom:50%;" /></p>
+<p>关于梯度，是看的是函数增长的速度，二阶导数是对曲率的衡量。假设我
+们有一个二次函数（虽然很多实践中的函数都不是二次的，但至少在局部可以很好
+地用二次近似）。如果这样的函数具有零二阶导数，那就没有曲率。也就是一条完全
+平坦的线，仅用梯度就可以预测它的值。</p>
+<p>有时我们需要计算输入和输出都为向量的函数的所有偏导数。包含所有这样的
+偏导数的矩阵被称为 Jacobian 矩阵。具体来说，如果我们有一个函数：<span
+class="math inline">\(f:\mathbb R^m \to \mathbb R^n\)</span> ，f 的
+Jacobian 矩阵 <strong>J</strong><span class="math inline">\(\in \mathbb
+R^{n\times m}\)</span> 定义为 <span class="math inline">\(J_{i,j}=\frac
+\part {\part x_j}f(x)_i\)</span></p>
+<p>当我们的函数具有多维输入时，二阶导数也有很多。我们可以将这些导数合并
+成一个矩阵，称为 <strong>Hessian 矩阵</strong>。Hessian 矩阵 H(f)(x)
+定义为</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404281919062.png" alt="image-20240428191907022" style="zoom:50%;" /></p>
+<p>微分算子在任何二阶偏导连续的点处可交换，也就是它们的顺序可以互换
+=&gt; 因为 Hessian
+矩阵是实对称的，我们可以将其分解成一组实特征值和一组特征向量的正交基。在特定方向
+d 上的二阶导数可以写成 <span class="math inline">\(d^T Hd\)</span> 。当
+d 是 H 的一个特征向量时，这个方向的二阶导
+数就是对应的特征值。对于其他的方向
+d，方向二阶导数是所有特征值的加权平均， 权重在 0 和 1 之间，且与 d
+夹角越小的特征向量的权重越大。最大特征值确定最
+大二阶导数，最小特征值确定最小二阶导数。</p>
+<blockquote>
+<p>当作梯度下降时，我们通过泰勒公式去近似看一次下降能表现得多好（新的点x应该是
+<span class="math inline">\(x^{(0)-\epsilon g}\)</span> ,g为梯度）</p>
+<p>那么有近似</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404281924928.png" alt="image-20240428192440882" style="zoom:67%;" /></p>
+<p>其中有 3
+项：函数的原始值、函数斜率导致的预期改善、函数曲率导致的校正</p>
+<p>当 最后一项太大时，梯度下降实际上是可能向上移动的。当 g ⊤Hg
+为零或负时，近似的泰勒级数表明增加 ϵ 将永远使 f 下降。</p>
+<p>当 <span class="math inline">\(g^⊤Hg\)</span> 为正时，通
+过计算可得，使近似泰勒级数下降最多的最优步长为</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404281925071.png" alt="image-20240428192555024" style="zoom: 67%;" /></p>
+<p>最坏的情况下，g 与 H 最大特征值 <span
+class="math inline">\(λ_{\max}\)</span> 对应的特征向量对齐，则最优步长是
+<span class="math inline">\(\frac {1} {λ{_\max}}\)</span> 。</p>
+</blockquote>
+<p>对于鞍点或局部极值点的讨论：</p>
+<ul>
+<li>当 Hessian
+是正定的（所有特征值都是正的），则该临界点是局部极小点。</li>
+<li>当 Hessian
+是负定的（所有特征值都是负的），这个点就是局部极大点。</li>
+<li>如 果 Hessian 的特征值中至少一个是正的且至少一个是负的，那么 x 是 f
+某个横截面 的局部极大点，却是另一个横截面的局部极小点。</li>
+</ul>
 ]]></content>
       <categories>
         <category>Deep Learning</category>
@@ -555,7 +779,7 @@ y|\mathrm x)\)</span> 时计算 <span class="math inline">\(P(\mathrm x |
 x) P(\mathrm y | \mathrm x)}{P(\mathrm y)}\)</span></p>
 <p>通常情况下，通过 [全概率公式](<a
 href="https://baike.baidu.com/item/全概率公式/9980676#:~:text=若事件A1，A2，…构成一个%20完备事件组%20且都有正概率，则对任意一个事件B，有如下公式成立：%20P%20(B)%3DP%20(BA1)%2BP%20(BA2)%2B...%2BP%20(BAn)%3DP,(B%7CA2)P%20(A2)%20%2B...%20%2B%20P%20(B%7CAn)P%20(An).%20此公式即为全概率公式。">全概率公式_百度百科
-(baidu.com)</a>计算 <span class="math inline">\(P(y)\)</span>
+(baidu.com)</a> 计算 <span class="math inline">\(P(y)\)</span>
 就不需要实现知道 y 的信息了</p>
 <h2
 id="关于连续性随机变量的一些技术问题">关于连续性随机变量的一些技术问题</h2>
@@ -594,7 +818,7 @@ class="math inline">\(p(x)\delta x\)</span>相同</p>
 <strong>自信息（self-information）</strong> 为 <span
 class="math display">\[ I(x) = -\log P(x)\]</span></p>
 <p>其中 <span class="math inline">\(\log\)</span> 就是以自然对数 e
-为底的 $$ 函数</p>
+为底的 ln 函数</p>
 <p>我们定义的 I(x) 单 位是 奈特（nats）。一奈特是以 1/e
 的概率观测到一个事件时获得的信息量。</p>
 <p>亦有教材定义使用底数为 2 的对数，单位是
@@ -602,9 +826,10 @@ class="math display">\[ I(x) = -\log P(x)\]</span></p>
 香农（shannons）；通过比特度量的信息只是通过奈特度量信息的常数倍。</p>
 <p>我们可以用 <strong>香农熵（Shannon entropy）</strong>来对整个概
 率分布中的不确定性总量进行量化：</p>
-<p><span class="math display">\[H(x)=\mathbb E_{x\sim P}[I(x)]=-\mathbb
-E_{x\sim P}[\log P(x)]\]</span> ，也记作 H(P)。</p>
-<p>换言之，一个分布的香农熵是指==遵循这个分布的事件所产生的期望信息总量==。</p>
+<p><span class="math inline">\(H(x)=\mathbb E_{x\sim P}[I(x)]=-\mathbb
+E_{x\sim P}[\log P(x)]\)</span> ，也记作 H(P)。</p>
+<p>换言之，一个分布的香农熵是指
+==遵循这个分布的事件所产生的期望信息总量== 。</p>
 <p>当 x 是连续的，香农熵被称为 <strong>微分熵（differential
 entropy）</strong></p>
 <p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404271413992.png" alt="image-20240427141352865" style="zoom: 67%;" /></p>

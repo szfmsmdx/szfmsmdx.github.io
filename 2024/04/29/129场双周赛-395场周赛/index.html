@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"szf.cool","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":12,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null,"count":true,"text":true},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="补一下这周打的两场周赛的题。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="129场双周赛&amp;&amp;395场周赛">
+<meta property="og:url" content="http://szf.cool/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+<meta property="og:site_name" content="Szf&#39;s blog ...">
+<meta property="og:description" content="补一下这周打的两场周赛的题。。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-29T05:51:02.000Z">
+<meta property="article:modified_time" content="2024-04-30T02:50:08.305Z">
+<meta property="article:author" content="Szfmsmdx">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="周赛">
+<meta property="article:tag" content="Leetcode">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://szf.cool/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://szf.cool/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/","path":"2024/04/29/129场双周赛-395场周赛/","title":"129场双周赛&&395场周赛"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>129场双周赛&&395场周赛 | Szf's blog ...</title>
+  
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="comment.szf.cool">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Szf's blog ...</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">拨雪寻春，烧灯续昼</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B"><span class="nav-number">1.</span> <span class="nav-text">129场双周赛</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%BA%E5%91%A8%E8%B5%9B"><span class="nav-number">2.</span> <span class="nav-text">395场周赛</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Szfmsmdx"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Szfmsmdx</p>
+  <div class="site-description" itemprop="description">To be a pure man</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/szfmsmdx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;szfmsmdx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:szfmsmdx@163.com" title="E-Mail → mailto:szfmsmdx@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://szf.cool/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Szfmsmdx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Szf's blog ...">
+      <meta itemprop="description" content="To be a pure man">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="129场双周赛&&395场周赛 | Szf's blog ...">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          129场双周赛&&395场周赛
+        </h1>
+
+        
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-29 13:51:02" itemprop="dateCreated datePublished" datetime="2024-04-29T13:51:02+08:00">2024-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-30 10:50:08" itemprop="dateModified" datetime="2024-04-30T10:50:08+08:00">2024-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+
+
+    <div class="post-body" itemprop="articleBody"><p>补一下这周打的两场周赛的题。。。</p>
+<span id="more"></span>
+<h1 id="场双周赛">129场双周赛</h1>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-ii/description/">题目链接</a></p>
+<blockquote>
+<p>给你 3 个正整数 <code>zero</code> ，<code>one</code> 和
+<code>limit</code> 。</p>
+<p>一个二进制数组 <code>arr</code> 如果满足以下条件，那么我们称它是
+<strong>稳定的</strong> ：</p>
+<ul>
+<li>0 在 <code>arr</code> 中出现次数 <strong>恰好</strong> 为
+<code>zero</code> 。</li>
+<li>1 在 <code>arr</code> 中出现次数 <strong>恰好</strong> 为
+<code>one</code> 。</li>
+<li><code>arr</code> 中每个长度超过<code>limit</code> 的子数组都同时包含
+0 和 1 。</li>
+</ul>
+<p>请你返回 <strong>稳定</strong> 二进制数组的 <em>总</em> 数目。</p>
+<p>由于答案可能很大，将它对 <code>1e9 + 7</code> <strong>取余</strong>
+后返回。</p>
+</blockquote>
+<p>额额笔者一开始的思考是从组合数学去做， 首先，不考虑 limit
+的情况下，一共的选法应该是 <span
+class="math inline">\(C_{zoro+one}^{one}\)</span>
+，组合数用杨辉三角就可以做</p>
+<p>然后考虑 limit 的情况，只要减去不合法的情况即可</p>
+<p>那么也就是说，选取 [limit + 1， max(zero, one)] 个连续的 1 或
+0，这些都是不合法的，选完后整体法看作一个整体再插入这个数组中，但是没做出来</p>
+<p>！！！错的地方在于</p>
+<p>比如 limit = 1 时，选取了 2
+个连续的0，这显然是不合法的，但是如果这两个被看作整体和另一个0构成了三个不合法的0，这是与取连续三个0相冲突的，所以应该用容斥原理去考虑。。。</p>
+<p>虽然最后一点时间发现了问题但是已经没有时间作修改了。。。</p>
+<hr />
+<p>来看看正解吧，首先应该是一个经典的dp问题？原因是我们可以拆分成子规模的问题，比如说，我们记合法的数应该是
+dfs(i, j, k) ，其中i、j、k分别表示0的个数、1的个数和最后一位是0还是1</p>
+<p>那么举个例子，dfs(i, j, 0) 应该由 dfs(i-1, j, 0) 和 dfs(i-1, j, 1)
+给出</p>
+<p>但是考虑到 dfs(i-1,j,0) 表示的意义是 i-1
+个0，j个1，最后一位是0，那么就有可能已经出现了连续 limit
+个的情况，那么这时候，状态转移到 dfs(i, j, 0)
+时，末尾再添一个0就爆了</p>
+<p>==所以要排除连续 limit 个 0 的情况== ，也就是说，我们要排除
+dfs(i-1,j,0) 中末尾连续 limit 个 0的情况，由于 dfs
+表示的是合法的情况，所以既然末尾已经是 limit
+个了，那么已经达到上限，所以倒数第 limit + 1
+个位置一定是1，总的方案也应该是dfs(i-1-limit, j , 1)</p>
+<p>所以 dfs(i, j, 0) = dfs(i-1,j,0)+dfs(i-1,j,1)-dfs(i-1-limit,j,1)</p>
+<p>接下来考虑以下递归的边界问题？</p>
+<ul>
+<li>首先是 i - 1 - limit处，如果 i &lt;= limit 那显然没有必要计算了</li>
+<li>其次是只放一个数字的情况，如果 i=0 且 k=1 且 j &lt;=
+limit，那么只有一种情况，只放0同理</li>
+</ul>
+<p>最后的递归入口为 dfs(zero, one, 0) + dfs(zero, one, 1)</p>
+<p>所以给出 cpp 代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> ull;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">typedef</span> vector&lt;<span class="type">int</span>&gt; vi;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;array&lt;<span class="type">int</span>, 2&gt;&gt;&gt; memo;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j, <span class="type">int</span> l, <span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>) <span class="keyword">return</span> j &lt;= l &amp;&amp; k == <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">0</span>) <span class="keyword">return</span> i &lt;= l &amp;&amp; k == <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> &amp;res = memo[i][j][k];   <span class="comment">// 取引用;</span></span><br><span class="line">        <span class="keyword">if</span>(res != <span class="number">-1</span>) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">0</span>)&#123;</span><br><span class="line">            res = ((ll)<span class="built_in">dfs</span>(i<span class="number">-1</span>,j,l,<span class="number">0</span>)+<span class="built_in">dfs</span>(i<span class="number">-1</span>,j,l,<span class="number">1</span>)+(i&gt;l?mod-<span class="built_in">dfs</span>(i-l<span class="number">-1</span>,j,l,<span class="number">1</span>):<span class="number">0</span>))%mod;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res = ((ll)<span class="built_in">dfs</span>(i,j<span class="number">-1</span>,l,<span class="number">0</span>)+<span class="built_in">dfs</span>(i,j<span class="number">-1</span>,l,<span class="number">1</span>)+(j&gt;l?mod-<span class="built_in">dfs</span>(i,j-l<span class="number">-1</span>,l,<span class="number">0</span>):<span class="number">0</span>))%mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numberOfStableArrays</span><span class="params">(<span class="type">int</span> zero, <span class="type">int</span> one, <span class="type">int</span> limit)</span> </span>&#123;</span><br><span class="line">        memo.<span class="built_in">resize</span>(zero+<span class="number">1</span>, vector&lt;array&lt;<span class="type">int</span>, <span class="number">2</span>&gt;&gt;(one+<span class="number">1</span>, &#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;));</span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">dfs</span>(zero, one, limit, <span class="number">0</span>)%mod + <span class="built_in">dfs</span>(zero, one, limit, <span class="number">1</span>)%mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>观察状态转移方程：</p>
+<p><span
+class="math display">\[f[i][j][0]=f[i-1][j][0]+f[i-1][j][1]-f[i-limit-1][j][1]\]</span></p>
+<p><span
+class="math display">\[f[i][j][1]=f[i][j-1][0]+f[i][j-1][1]-f[i][j-limit-1][0]\]</span></p>
+<p>于是我们可以改写成递推写法，稍微高效一些。。。</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> ull;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">typedef</span> vector&lt;<span class="type">int</span>&gt; vi;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numberOfStableArrays</span><span class="params">(<span class="type">int</span> zero, <span class="type">int</span> one, <span class="type">int</span> limit)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;array&lt;<span class="type">int</span>, 2&gt;&gt;&gt; <span class="built_in">f</span>(zero + <span class="number">1</span>, vector&lt;array&lt;<span class="type">int</span>, <span class="number">2</span>&gt;&gt;(one + <span class="number">1</span>, &#123;<span class="number">0</span>, <span class="number">0</span>&#125;));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="built_in">min</span>(limit, one); ++i) f[<span class="number">0</span>][i][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="built_in">min</span>(limit, zero); ++i) f[i][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= zero; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= one; ++j)&#123;</span><br><span class="line">                f[i][j][<span class="number">0</span>] = ((ll)f[i<span class="number">-1</span>][j][<span class="number">0</span>]+f[i<span class="number">-1</span>][j][<span class="number">1</span>] + (i&gt;limit? mod - f[i-limit<span class="number">-1</span>][j][<span class="number">1</span>] : <span class="number">0</span>))%mod;</span><br><span class="line">                f[i][j][<span class="number">1</span>] = ((ll)f[i][j<span class="number">-1</span>][<span class="number">0</span>]+f[i][j<span class="number">-1</span>][<span class="number">1</span>] + (j&gt;limit? mod - f[i][j - limit - <span class="number">1</span>][<span class="number">0</span>] : <span class="number">0</span>))%mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (f[zero][one][<span class="number">0</span>]+f[zero][one][<span class="number">1</span>])%mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="场周赛">395场周赛</h1>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-median-of-the-uniqueness-array/description/">题目连接在这里</a></p>
+<blockquote>
+<p>给你一个整数数组 <code>nums</code> 。数组 <code>nums</code> 的
+<strong>唯一性数组</strong> 是一个按元素从小到大排序的数组，包含了
+<code>nums</code> 的所有非空子数组中不同元素的个数。</p>
+<p>换句话说，这是由所有 <code>0 &lt;= i &lt;= j &lt; nums.length</code>
+的 <code>distinct(nums[i..j])</code> 组成的递增数组。</p>
+<p>其中，<code>distinct(nums[i..j])</code> 表示从下标 <code>i</code>
+到下标 <code>j</code> 的子数组中不同元素的数量。</p>
+<p>返回 <code>nums</code> <strong>唯一性数组</strong> 的
+<strong>中位数</strong> 。</p>
+<p><strong>注意</strong>，数组的 <strong>中位数</strong>
+定义为有序数组的中间元素。如果有两个中间元素，则取值较小的那个。</p>
+</blockquote>
+<p>额额，应该是一个二分 + 滑窗 nlogn去解决。。。</p>
+<p>首先，一共是有 <span class="math inline">\(m = \frac
+{n(n+1)}2\)</span> 个子数组的（一个等差数列求和即可）</p>
+<p>那么中位数的下标是 <span class="math inline">\(m-1/2\)</span>
+下取整的，中位数的个数是 <span class="math inline">\(k=m + 1 /
+2\)</span> 下取整也就是 <span class="math inline">\(k = m/2\)</span>
+上取整了。。。</p>
+<p>==！那么，只需要二分中位数，记作 upper，问题就变成了 distinct 值 &lt;
+upper 的子数组有多少个== (√)</p>
+<p>并且记子数组个数为 cnt ，如果 k &lt; cnt ，那么自然说明二分的 upper
+小了（数组长度与 distinct 呈现单调的关系），那么就更新二分的左边界</p>
+<p>那如何去计算 distinct 值小于 upper 的子数组的个数？</p>
+<p>用滑窗滑一轮 O(n) 即可。。。</p>
+<p>用一个哈希表 freq 统计出现的个数，枚举窗口右端点，如果 freq 大小大于
+upper，那么就不断移除左端点元素（就是出现次数 -1， 如果为 0 直接从 freq
+移除</p>
+<p>那么一共就有 r - l + 1 个子数组</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">medianOfUniquenessArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        ll k = ((ll)n * (n + <span class="number">1</span>) / <span class="number">2</span> + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> check = [&amp;](<span class="type">int</span> upper)&#123;</span><br><span class="line">            ll cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> l = <span class="number">0</span>;</span><br><span class="line">            unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; freq;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> r = <span class="number">0</span>; r &lt; n; ++r)&#123;</span><br><span class="line">                freq[nums[r]] ++;</span><br><span class="line">                <span class="keyword">while</span>(freq.<span class="built_in">size</span>() &gt; upper)&#123;</span><br><span class="line">                    <span class="type">int</span> out = nums[l++];</span><br><span class="line">                    <span class="keyword">if</span>(--freq[out] == <span class="number">0</span>)&#123;</span><br><span class="line">                        freq.<span class="built_in">erase</span>(out);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                cnt += r - l + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(cnt &gt;= k)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n;</span><br><span class="line">        <span class="keyword">while</span>(left + <span class="number">1</span>&lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            (<span class="built_in">check</span>(mid) ? right : left) = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Szfmsmdx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://szf.cool/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/" title="129场双周赛&amp;&amp;395场周赛">http://szf.cool/2024/04/29/129场双周赛-395场周赛/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/DP/" rel="tag"><i class="fa fa-tag"></i> DP</a>
+              <a href="/tags/%E5%91%A8%E8%B5%9B/" rel="tag"><i class="fa fa-tag"></i> 周赛</a>
+              <a href="/tags/Leetcode/" rel="tag"><i class="fa fa-tag"></i> Leetcode</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/28/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" rel="prev" title="花书——机器学习基础">
+                  <i class="fa fa-angle-left"></i> 花书——机器学习基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">皖ICP备2023007923号-2 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Szfmsmdx</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">31k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">56 分钟</span>
+  </span>
+</div>
+
+<!--
+-->
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.szf.cool","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"locale":null,"placeholder":"友好交流，善意评论 ^ ^","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","dark":"body.darkmode--activated","el":"#waline","comment":true,"path":"/2024/04/29/129%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B-395%E5%9C%BA%E5%91%A8%E8%B5%9B/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '64px',
+  left: 'unset',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: false,
+  label: '🌓',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+if (window.darkmode && !window.darkmode.isActivated()) {
+  window.darkmode.toggle();
+  var toggleButtons = document.getElementsByClassName("darkmode-toggle");
+  if (toggleButtons && toggleButtons.length > 0) {
+    for (i = 0; i < toggleButtons.length; i++) {
+      toggleButtons[i].classList.add("darkmode-toggle--white");
+    }
+  }
+}
+</script>
+
+</body>
+</html>
