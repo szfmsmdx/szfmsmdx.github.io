@@ -1,9 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>399场周赛T3</title>
+    <url>/2024/05/27/399%E5%9C%BA%E5%91%A8%E8%B5%9BT3/</url>
+    <content><![CDATA[<p>补一下399场周赛T3。。。</p>
+<span id="more"></span>
+<p>其实感觉可以做的，当时在考虑质因数分解但是最终没写出来，没想到哈希表
++ 筛法居然能过。。。</p>
+<p>真是掉大分了</p>
+<blockquote>
+<p>给你两个整数数组 <code>nums1</code> 和 <code>nums2</code>，长度分别为
+<code>n</code> 和 <code>m</code>。同时给你一个<strong>正整数</strong>
+<code>k</code>。</p>
+<p>如果 <code>nums1[i]</code> 可以被 <code>nums2[j] * k</code>
+整除，则称数对 <code>(i, j)</code> 为
+<strong>优质数对</strong>（<code>0 &lt;= i &lt;= n - 1</code>,
+<code>0 &lt;= j &lt;= m - 1</code>）。</p>
+<p>返回 <strong>优质数对</strong> 的总数。</p>
+</blockquote>
+<p><a
+href="https://leetcode.cn/problems/find-the-number-of-good-pairs-ii/description/">原题连接</a></p>
+<p>废话不多说，主要是筛法的思想，但是因为有很多重复，所以考虑用个哈希表去一下重复就可以了。。。</p>
+<p>另外要注意的是提前 return，不然在取最大值那步就 segment default
+了（为空无法用ranges取最值）</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">numberOfPairs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; m1, m2;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums1.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums1[i] % k == <span class="number">0</span>)&#123;</span><br><span class="line">                m1[nums1[i] / k] ++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums2.<span class="built_in">size</span>(); ++i)&#123; m2[nums2[i]] ++;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(m1.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> mm = ranges::<span class="built_in">max_element</span>(m1)-&gt;first;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp;[i, c] : m2)&#123;</span><br><span class="line">            <span class="type">int</span> num = i;</span><br><span class="line">            <span class="type">long</span> <span class="type">long</span> tmp = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(num &lt;= mm)&#123;</span><br><span class="line">                tmp += m1.<span class="built_in">contains</span>(num) ? (<span class="type">long</span> <span class="type">long</span>)m1[num] : <span class="number">0</span>;</span><br><span class="line">                num += i;</span><br><span class="line">            &#125;</span><br><span class="line">            res += (<span class="type">long</span> <span class="type">long</span>)(tmp * c);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr />
+<p>T4 看了一下好像是线段树吧，但是我不会。。。</p>
+<p>暑假希望看完提高课能搞定吧。。。</p>
+<p>就先这样，开摆！</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>周赛</tag>
+        <tag>LeetCode</tag>
+        <tag>哈希表</tag>
+        <tag>筛法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>花书——卷积神经网络</title>
+    <url>/2024/05/22/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括<strong>卷积神经网络</strong>部分内容</p>
+
+</blockquote>
+<span id="more"></span>
+<p>假设我们正在用激光传感器追踪一艘宇宙飞船的位置。我们的激光传感器给出一个单独的输出
+x(t)，表示宇宙飞船在时刻 t 的位置。x 和 t
+都是实值的，这意味着我们可以在任意时刻从传感器中读出飞船的位置。</p>
+<p>现在假设我们的传感器受到一定程度的噪声干扰。为了得到飞船位置的低噪声估计，我们对得到的测量结果进行平均。显然，时间上越近的测量结果越相关，所以我们采用一种加权平均的方法，对于最近的测量结果赋予更高的权重。我们可以采用一个加权函数
+w(a) 来实现，其中 a
+表示测量结果距当前时刻的时间间隔。如果我们对任意时刻都采用这种加权平均的操作，就得到了一个新的对于飞船位置的平滑估计函数
+s： <span class="math display">\[
+s(t) = \int x(a)w(t-a) \mathrm d a
+\]</span> 这种运算就叫做
+<strong>卷积（convolution）</strong>。卷积运算通常用星号表示： <span
+class="math display">\[
+s(t) = (x * w) (t)
+\]</span> 在我们的例子中，w
+必须是一个有效的概率密度函数，否则输出就不再是一个 加权平均。</p>
+<p>在卷积网络的术语中，卷积的第一个参数（在这个例子中，函数 x）通常叫做
+<strong>输入（input）</strong>，第二个参数（函数 w）叫做
+<strong>核函数（kernel function）</strong>。输出有时被称作
+<strong>特征映射（feature map）</strong>。</p>
+<p>如果我们假设 x 和 w 都定义在整数时刻 t 上，就可以定义离散形式的卷积：
+<span class="math display">\[
+s(t) = (x*w)(t) = \sum_{a=-\infty}^\infty x(a)w(t-a)
+\]</span>
+最后，我们经常一次在多个维度上进行卷积运算。例如，如果把一张二维的图 像
+I 作为输入，我们也许也想要使用一个二维的核 K： <span
+class="math display">\[
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(m,n)K(i-m,j-n)
+\]</span> 卷积是<strong>可交换的
+(commutative)</strong>，我们可以等价地写作： <span
+class="math display">\[
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i-m,j-n)K(m, n)
+\]</span> 通常，下面的公式在机器学习库中实现更为简单，因为 m 和 n
+的有效取值范围较小，且当然是取输入更为方便</p>
+<p>卷积运算可交换性的出现是因为我们将核相对输入进行了 翻转（flip），从 m
+增大的角度来看，输入的索引在增大，但是核的索引在减小。</p>
+<p>许多神经网络库会实现一个相关的函数，称为
+<strong>互相关函数（cross-correlation）</strong>，和卷积运算几乎一样但是并没有对核进行翻转：
+<span class="math display">\[
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i + m, j + n) K(m, n)
+\]</span> 许多机器学习的库实现的是互相关函数但是称之为卷积。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405231116378.png" alt="image-20240523111641326" style="zoom:67%;" /></p>
+<p>为什么CNN可以有这么高效的应用于具有网格结构的数据呢？主要原因是</p>
+<ol type="1">
+<li>稀疏连接(sparse connectivity)</li>
+<li>参数共享(parameter sharing)</li>
+<li>等变表示(equivariant representations)</li>
+</ol>
+<p>传统的神经网络使用矩阵乘法来建立输入与输出的连接关系。其中，参数矩阵中每一个单独的参数都描述了一个输入单元与一个输出单元间的交互。这意味着每一个输出单元与每一个输入单元都产生交互。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405251159927.png" alt="image-20240525115933830" style="zoom:67%;" /></p>
+<p>参数共享（parameter
+sharing）是指在一个模型的多个函数中使用相同的参数。在传统的神经网络中，当计算一层的输出时，权重矩阵的每一个元素只使用一次，当它乘以输入的一个元素后就再也不会用到了。作为参数共享的同义词，我们可以说一个网络含有
+绑定的权重（tied weights），因为用于一个输入的权重也会被绑定在
+其他的权重上。在卷积神经网络中，核的每一个元素都作用在输入的每一位置上（是
+否考虑边界像素取决于对边界决策的设计）。</p>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>CNN</tag>
+        <tag>深度学习</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode398场周赛</title>
     <url>/2024/05/22/LeetCode398%E5%9C%BA%E5%91%A8%E8%B5%9B/</url>
-    <content><![CDATA[<p>补以下 LC 第 398 场周赛的T4。。。</p>
+    <content><![CDATA[<p>补一下 LC 第 398 场周赛的T4。。。</p>
 <span id="more"></span>
 <p><a
 href="https://leetcode.cn/problems/find-number-of-ways-to-reach-the-k-th-stair/description/">原题地址</a></p>
@@ -54,9 +164,9 @@ href="https://leetcode.cn/problems/find-number-of-ways-to-reach-the-k-th-stair/s
         <category>LeetCode</category>
       </categories>
       <tags>
+        <tag>周赛</tag>
         <tag>LeetCode</tag>
         <tag>记忆化搜索</tag>
-        <tag>周赛</tag>
       </tags>
   </entry>
   <entry>
@@ -245,8 +355,8 @@ f(\theta_0)
         <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>花书</tag>
         <tag>Deep Learning</tag>
+        <tag>花书</tag>
         <tag>优化器</tag>
       </tags>
   </entry>
@@ -560,8 +670,8 @@ Goodfellow进行的。他们可以制造一些对抗样本迷惑神经网络，�
         <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>花书</tag>
         <tag>Deep Learning</tag>
+        <tag>花书</tag>
         <tag>机器学习</tag>
         <tag>正则化</tag>
       </tags>
@@ -1085,8 +1195,8 @@ Hv=\nabla_x [(\nabla_x f(x))^T v]
         <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>花书</tag>
         <tag>Deep Learning</tag>
+        <tag>花书</tag>
         <tag>机器学习</tag>
         <tag>前馈神经网络</tag>
       </tags>
@@ -1196,11 +1306,11 @@ upper，那么就不断移除左端点元素（就是出现次数 -1， 如果�
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">medianOfUniquenessArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        ll k = ((ll)n * (n + <span class="number">1</span>) / <span class="number">2</span> + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> check = [&amp;](<span class="type">int</span> upper)&#123;</span><br><span class="line">            ll cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> l = <span class="number">0</span>;</span><br><span class="line">            unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; freq;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> r = <span class="number">0</span>; r &lt; n; ++r)&#123;</span><br><span class="line">                freq[nums[r]] ++;</span><br><span class="line">                <span class="keyword">while</span>(freq.<span class="built_in">size</span>() &gt; upper)&#123;</span><br><span class="line">                    <span class="type">int</span> out = nums[l++];</span><br><span class="line">                    <span class="keyword">if</span>(--freq[out] == <span class="number">0</span>)&#123;</span><br><span class="line">                        freq.<span class="built_in">erase</span>(out);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                cnt += r - l + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(cnt &gt;= k)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n;</span><br><span class="line">        <span class="keyword">while</span>(left + <span class="number">1</span>&lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            (<span class="built_in">check</span>(mid) ? right : left) = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Leetcode</category>
+        <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>周赛</tag>
         <tag>DP</tag>
+        <tag>周赛</tag>
         <tag>Leetcode</tag>
       </tags>
   </entry>
@@ -1791,8 +1901,8 @@ class="math inline">\(\mathbb R^n\)</span>
         <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>花书</tag>
         <tag>Deep Learning</tag>
+        <tag>花书</tag>
         <tag>机器学习</tag>
       </tags>
   </entry>
@@ -1942,8 +2052,8 @@ class="math inline">\(λ_{\max}\)</span> 对应的特征向量对齐，则最优
         <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>花书</tag>
         <tag>Deep Learning</tag>
+        <tag>花书</tag>
         <tag>数值计算</tag>
       </tags>
   </entry>
@@ -2554,8 +2664,8 @@ class="math inline">\(\lim_{x\to 0}x\log x=0\)</span></p>
         <category>Deep Learning</category>
       </categories>
       <tags>
-        <tag>花书</tag>
         <tag>Deep Learning</tag>
+        <tag>花书</tag>
         <tag>线性代数</tag>
         <tag>概率论</tag>
         <tag>信息论</tag>
