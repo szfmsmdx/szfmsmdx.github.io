@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"szf.cool","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":12,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null,"count":true,"text":true},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="UMich EECS 498-007 &#x2F; 598-005: Deep Learning for Computer Vision A1 lab 作业笔记。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EECS-498-007-Assignment-A1">
+<meta property="og:url" content="http://szf.cool/2024/06/07/EECS-498-007-Assignment-A1/">
+<meta property="og:site_name" content="Szf&#39;s blog ^ ^">
+<meta property="og:description" content="UMich EECS 498-007 &#x2F; 598-005: Deep Learning for Computer Vision A1 lab 作业笔记。。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071246948.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071246213.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071247882.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071250940.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081649411.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081709858.png">
+<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081747344.png">
+<meta property="article:published_time" content="2024-06-07T03:49:01.000Z">
+<meta property="article:modified_time" content="2024-06-12T15:48:20.918Z">
+<meta property="article:author" content="Szfmsmdx">
+<meta property="article:tag" content="CV">
+<meta property="article:tag" content="Pytorch">
+<meta property="article:tag" content="KNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071246948.png">
+
+
+<link rel="canonical" href="http://szf.cool/2024/06/07/EECS-498-007-Assignment-A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://szf.cool/2024/06/07/EECS-498-007-Assignment-A1/","path":"2024/06/07/EECS-498-007-Assignment-A1/","title":"EECS-498-007-Assignment-A1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>EECS-498-007-Assignment-A1 | Szf's blog ^ ^</title>
+  
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="comment.szf.cool">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Szf's blog ^ ^</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Yesterday you said tomorrow...</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pytorch"><span class="nav-number">1.</span> <span class="nav-text">Pytorch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#transpose-vs-permute"><span class="nav-number">1.1.</span> <span class="nav-text">transpose() vs permute() ?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E8%BF%9E%E7%BB%ADcontiguous%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">一个关于连续contiguous()的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reshape-vs-view"><span class="nav-number">1.2.</span> <span class="nav-text">reshape() vs view()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.1.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-contiguous"><span class="nav-number">1.2.2.</span> <span class="nav-text">关于 contiguous ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#view-%E5%92%8C-contiguous"><span class="nav-number">1.2.3.</span> <span class="nav-text">view 和 contiguous？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reshape-%E5%92%8C-view"><span class="nav-number">1.2.4.</span> <span class="nav-text">reshape 和 view ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all-in-all"><span class="nav-number">1.2.5.</span> <span class="nav-text">All in all</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E7%9A%84%E6%95%88%E7%8E%87%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">关于一个计算的效率问题</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Szfmsmdx"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Szfmsmdx</p>
+  <div class="site-description" itemprop="description">To be a pure man</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/szfmsmdx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;szfmsmdx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:szfmsmdx@163.com" title="E-Mail → mailto:szfmsmdx@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://szf.cool/2024/06/07/EECS-498-007-Assignment-A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Szfmsmdx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Szf's blog ^ ^">
+      <meta itemprop="description" content="To be a pure man">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="EECS-498-007-Assignment-A1 | Szf's blog ^ ^">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          EECS-498-007-Assignment-A1
+        </h1>
+
+        
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-07 11:49:01" itemprop="dateCreated datePublished" datetime="2024-06-07T11:49:01+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-12 23:48:20" itemprop="dateModified" datetime="2024-06-12T23:48:20+08:00">2024-06-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/EECS-498-007/" itemprop="url" rel="index"><span itemprop="name">EECS.498-007</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2024/06/07/EECS-498-007-Assignment-A1/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2024/06/07/EECS-498-007-Assignment-A1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+
+
+    <div class="post-body" itemprop="articleBody"><p><a
+target="_blank" rel="noopener" href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">UMich
+EECS 498-007 / 598-005: Deep Learning for Computer Vision</a> A1 lab
+作业笔记。。。</p>
+<span id="more"></span>
+<h1 id="pytorch">Pytorch</h1>
+<h2 id="transpose-vs-permute">transpose() vs permute() ?</h2>
+<p>pytorch 中涉及到交换轴 (axes) 的操作有 transpose 和 permute
+两个函数</p>
+<p>先看官方文档给出的解释</p>
+<ol type="1">
+<li>transpose()</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.transpose(<span class="built_in">input</span>, dim0=<span class="number">0</span>, dim1=<span class="number">1</span>, out=<span class="literal">None</span>) -&gt; Tensor</span><br></pre></td></tr></table></figure>
+<p>函数返回输入矩阵<code>input</code>的转置。交换维度<code>dim0</code>和<code>dim1</code></p>
+<ol start="2" type="1">
+<li>permute()</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">permute(dims) -&gt; Tensor</span><br></pre></td></tr></table></figure>
+<p>可以清楚的看见，对于操作高维矩阵，permute 更合适</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a tensor of shape (2, 3, 4)</span></span><br><span class="line">x0 = torch.tensor([</span><br><span class="line">     [[<span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">      [<span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">      [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]],</span><br><span class="line">     [[<span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>],</span><br><span class="line">      [<span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">      [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>]]])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Original tensor:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(x0)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;shape:&#x27;</span>, x0.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Swap axes 1 and 2; shape is (2, 4, 3)</span></span><br><span class="line">x1 = x0.transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nSwap axes 1 and 2:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(x1)</span><br><span class="line"><span class="built_in">print</span>(x1.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Permute axes; the argument (1, 2, 0) means:</span></span><br><span class="line"><span class="comment"># - Make the old dimension 1 appear at dimension 0;</span></span><br><span class="line"><span class="comment"># - Make the old dimension 2 appear at dimension 1;</span></span><br><span class="line"><span class="comment"># - Make the old dimension 0 appear at dimension 2</span></span><br><span class="line"><span class="comment"># This results in a tensor of shape (3, 4, 2)</span></span><br><span class="line">x2 = x0.permute(<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPermute axes&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(x2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;shape:&#x27;</span>, x2.shape)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">Original tensor:</span><br><span class="line">tensor([[[ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">         [ <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">         [ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]],</span><br><span class="line"></span><br><span class="line">        [[<span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>],</span><br><span class="line">         [<span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">         [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>]]])</span><br><span class="line">shape: torch.Size([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">Swap axes <span class="number">1</span> <span class="keyword">and</span> <span class="number">2</span>:</span><br><span class="line">tensor([[[ <span class="number">1</span>,  <span class="number">5</span>,  <span class="number">9</span>],</span><br><span class="line">         [ <span class="number">2</span>,  <span class="number">6</span>, <span class="number">10</span>],</span><br><span class="line">         [ <span class="number">3</span>,  <span class="number">7</span>, <span class="number">11</span>],</span><br><span class="line">         [ <span class="number">4</span>,  <span class="number">8</span>, <span class="number">12</span>]],</span><br><span class="line"></span><br><span class="line">        [[<span class="number">13</span>, <span class="number">17</span>, <span class="number">21</span>],</span><br><span class="line">         [<span class="number">14</span>, <span class="number">18</span>, <span class="number">22</span>],</span><br><span class="line">         [<span class="number">15</span>, <span class="number">19</span>, <span class="number">23</span>],</span><br><span class="line">         [<span class="number">16</span>, <span class="number">20</span>, <span class="number">24</span>]]])</span><br><span class="line">torch.Size([<span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">Permute axes</span><br><span class="line">tensor([[[ <span class="number">1</span>, <span class="number">13</span>],</span><br><span class="line">         [ <span class="number">2</span>, <span class="number">14</span>],</span><br><span class="line">         [ <span class="number">3</span>, <span class="number">15</span>],</span><br><span class="line">         [ <span class="number">4</span>, <span class="number">16</span>]],</span><br><span class="line"></span><br><span class="line">        [[ <span class="number">5</span>, <span class="number">17</span>],</span><br><span class="line">         [ <span class="number">6</span>, <span class="number">18</span>],</span><br><span class="line">         [ <span class="number">7</span>, <span class="number">19</span>],</span><br><span class="line">         [ <span class="number">8</span>, <span class="number">20</span>]],</span><br><span class="line"></span><br><span class="line">        [[ <span class="number">9</span>, <span class="number">21</span>],</span><br><span class="line">         [<span class="number">10</span>, <span class="number">22</span>],</span><br><span class="line">         [<span class="number">11</span>, <span class="number">23</span>],</span><br><span class="line">         [<span class="number">12</span>, <span class="number">24</span>]]])</span><br><span class="line">shape: torch.Size([<span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><font color=red> 此外，注意 transpose
+由于是交换两个轴长，所以具有交换性 </font>，也就是说</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(<span class="number">2</span>,<span class="number">3</span>) 	<span class="comment"># x.shape = (2,3)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------------------------------</span></span><br><span class="line">x1 = x.transpose(<span class="number">0</span>,<span class="number">1</span>) 	<span class="comment"># x1.shape = (3,2)</span></span><br><span class="line">x2 = x.transpose(<span class="number">1</span>,<span class="number">0</span>) 	<span class="comment"># x2.shape = (3,2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------------------------------</span></span><br><span class="line">x1 = x.permute(<span class="number">0</span>,<span class="number">1</span>) 	<span class="comment"># x1.shape = (2,3)</span></span><br><span class="line">x2 = x.permute(<span class="number">1</span>,<span class="number">0</span>)		<span class="comment"># x2.shape = (3,2)</span></span><br></pre></td></tr></table></figure>
+<p>因从，transpose函数还有后缀版 <code>transpose_()</code>
+，其作用等价于 <code>transpose(0,1)</code></p>
+<h3
+id="一个关于连续contiguous的问题">一个关于连续contiguous()的问题</h3>
+<p>是我在<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/xinjieyuan/article/details/105232802">这篇博客</a>上看到的</p>
+<p>经过 transpose 和 permute 转置过的 tensor
+内存地址是不连续的（<code>tensor.is_contiguous() == False</code>）</p>
+<p>这时只能使用 reshape 而不能使用 view</p>
+<p>但是，pytorch 官方并不推荐使用 reshape
+方法，除非<code>为了获取完全不同但是数据相同的克隆体</code> （为什么不
+copy 一下呢 hhh</p>
+<h2 id="reshape-vs-view">reshape() vs view()</h2>
+<p>先看文档解释</p>
+<ol type="1">
+<li>view()</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_tensor.view(*args) -&gt; Tensor</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><p>返回一个有<strong>相同数据</strong>但<strong>结构不同</strong>的tensor。</p></li>
+<li><p>返回的tensor必须有与原tensor相同的数据和相同数目的元素，但可以有不同的大小。</p></li>
+<li><p>一个tensor必须是连续的 contiguous 才能被view()。</p></li>
+<li><p>reshape()</p></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_tensor.reshape(*args) -&gt; Tensor</span><br></pre></td></tr></table></figure>
+<p>使用同 view，但是无需 contiguous</p>
+<h3 id="区别">区别</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randint(<span class="number">0</span>,<span class="number">20</span>,(<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">tensor([[ 7.,  2., 16.],</span></span><br><span class="line"><span class="string">        [17., 19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">y = x.view(<span class="number">6</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">tensor([ 7.,  2., 16., 17., 19., 15.])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">z = x.view(-<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">tensor([[ 7.,  2.],</span></span><br><span class="line"><span class="string">        [16., 17.],</span></span><br><span class="line"><span class="string">        [19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">##########区别##############</span></span><br><span class="line"><span class="comment"># 地址是否一样：</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(x)==<span class="built_in">id</span>(y), <span class="built_in">id</span>(x)==<span class="built_in">id</span>(z), <span class="built_in">id</span>(y)==<span class="built_in">id</span>(z))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(x.data)==<span class="built_in">id</span>(y.data), </span><br><span class="line">	  <span class="built_in">id</span>(x.data)==<span class="built_in">id</span>(z.data),</span><br><span class="line">	  <span class="built_in">id</span>(y.data)==<span class="built_in">id</span>(z.data))</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;&#x27;outputs: </span></span><br><span class="line"><span class="string">False False False</span></span><br><span class="line"><span class="string">True True True</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 改变x</span></span><br><span class="line">x[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;outputs: 统一变化</span></span><br><span class="line"><span class="string">tensor([[ 1.,  1.,  1.],</span></span><br><span class="line"><span class="string">        [17., 19., 15.]]) </span></span><br><span class="line"><span class="string"> tensor([ 1.,  1.,  1., 17., 19., 15.]) </span></span><br><span class="line"><span class="string"> tensor([[ 1.,  1.],</span></span><br><span class="line"><span class="string">        [ 1., 17.],</span></span><br><span class="line"><span class="string">        [19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 改变z</span></span><br><span class="line">z[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;&#x27;outputs: 统一变化</span></span><br><span class="line"><span class="string">tensor([[ 0.,  0.,  1.],</span></span><br><span class="line"><span class="string">        [17., 19., 15.]]) </span></span><br><span class="line"><span class="string"> tensor([ 0.,  0.,  1., 17., 19., 15.]) </span></span><br><span class="line"><span class="string"> tensor([[ 0.,  0.],</span></span><br><span class="line"><span class="string">        [ 1., 17.],</span></span><br><span class="line"><span class="string">        [19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>之所以出现上述三组 output，是因为：</p>
+<ol type="1">
+<li>python 和 pytorch 都是对象存储，比如 x = toch.tensor(1)，那么 对象 x
+和 x 的数据 1 是分开存储的，所以用 id 查看他们的地址时会出现第一组
+output</li>
+<li>view() 是共享内存而不共享对象，因为 view 一般 shape
+已经改变了，所以返回的是新形状下的数据，就是一个新的对象，而使用 []
+运算符直接访问数据所在地址进行修改，当然出现了第二、三组 output
+的结果</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x  = x + <span class="number">1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;ouputs</span></span><br><span class="line"><span class="string">tensor([[ 1.,  1.,  2.],</span></span><br><span class="line"><span class="string">        [18., 20., 16.]]) </span></span><br><span class="line"><span class="string"> tensor([ 0.,  0.,  1., 17., 19., 15.]) </span></span><br><span class="line"><span class="string"> tensor([[ 0.,  0.],</span></span><br><span class="line"><span class="string">        [ 1., 17.],</span></span><br><span class="line"><span class="string">        [19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>这里注意 <code>x = x + 1</code> 和 <code>x += 1</code>
+的区别，前者是将 <code>x + 1</code> 的结果开辟一个新的存储区域，然后让 x
+指向这个地址，后者则是直接在原内存上进行操作，这里就没有演示实验结果了。。。</p>
+<h3 id="关于-contiguous">关于 contiguous ？</h3>
+<p>contiguous 的判定是，逻辑上相邻的元素在内存上依然相邻，则称为
+contiguous</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071246948.png" alt="image-20240607124554838" style="zoom:50%;" /></p>
+<p>这是一个 3x4 的tensor，在实际存储的过程中，是以连续内存进行存储的</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071246213.png" alt="image-20240607124614165" style="zoom:50%;" /></p>
+<p>当调用了转置之后，在逻辑上应该是</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071247882.png" alt="image-20240607124703843" style="zoom:50%;" /></p>
+<p>此时，a逻辑上相邻的元素是 [0,4,8] 明显观察到，他们是不连续的</p>
+<h3 id="view-和-contiguous">view 和 contiguous？</h3>
+<p>参考了<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40765537/article/details/112471341">文章</a></p>
+<p>首先，view 仅仅是改变了 tensor
+的视图，并返回一个新的对象，这个新对象与原对象的 stride（每一步的步长）
+是不同的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = torch.tensor([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">&gt;&gt;&gt;a.stride()</span><br><span class="line">(<span class="number">1</span>,)</span><br><span class="line">&gt;&gt;&gt;b = a.view((<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">&gt;&gt;&gt;b.stride()</span><br><span class="line">(<span class="number">2</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>这里核心就在于b =
+a.view(shape)中的新形状shape基于不变的内存数据仍能以<strong>固定</strong>的步幅访问下一个元素，这样才能成功改变形状，否则若没有固定的步幅，我们无法实现元素的顺序访问，这种情况下程序会报错。</p>
+<p>这是 <code>b.view(12)</code> 的期望访问顺序</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071250940.png" alt="image-20240607125031899" style="zoom:50%;" /></p>
+<p>那这时，其对应的内存访问指针的移动步长应该是 4, 4, -7, 4, 4, -7, 4,
+4, 7, 4, 4，4 和 -7 并不是固定的步长！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = torch.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">&gt;&gt;&gt;a</span><br><span class="line">tensor([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">        [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">        [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]])</span><br><span class="line">&gt;&gt;&gt;b = a.T</span><br><span class="line">&gt;&gt;&gt;b</span><br><span class="line">tensor([[ <span class="number">0</span>,  <span class="number">4</span>,  <span class="number">8</span>],</span><br><span class="line">       	[ <span class="number">1</span>,  <span class="number">5</span>,  <span class="number">9</span>],</span><br><span class="line">       	[ <span class="number">2</span>,  <span class="number">6</span>, <span class="number">10</span>],</span><br><span class="line">        [ <span class="number">3</span>,  <span class="number">7</span>, <span class="number">11</span>]])</span><br><span class="line">&gt;&gt;&gt;c = b.view((<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">&gt;&gt;&gt;c</span><br><span class="line">tensor([[[ <span class="number">0</span>,  <span class="number">4</span>,  <span class="number">8</span>],</span><br><span class="line">         [ <span class="number">1</span>,  <span class="number">5</span>,  <span class="number">9</span>]],</span><br><span class="line">        [[ <span class="number">2</span>,  <span class="number">6</span>, <span class="number">10</span>],</span><br><span class="line">         [ <span class="number">3</span>,  <span class="number">7</span>, <span class="number">11</span>]]])</span><br><span class="line">&gt;&gt;&gt;b.shape, b.stride()</span><br><span class="line">(torch.Size([<span class="number">4</span>, <span class="number">3</span>]), (<span class="number">1</span>, <span class="number">4</span>))</span><br><span class="line">&gt;&gt;&gt;c.shape,c.stride()</span><br><span class="line">(torch.Size([<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]), (<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<p>所以可以看到，得让 view 前后的 stride
+保持逻辑上的对应，使得访问元素是 contiguous 的，才能够成功 view</p>
+<h3 id="reshape-和-view">reshape 和 view ？</h3>
+<ul>
+<li>如果新形状满足view函数所要求的条件(即基于不变的内存数据仍能以固定的新步幅访问该数据)，那么这时候reshape()跟view()等价，不会复制一份新的数据。</li>
+<li>如果新的形状不满足view函数所要求的条件(即无法求得满足条件的新步幅)，这时候reshape也能工作，这时候它会将原来非连续性的tensor按<strong>逻辑顺序</strong>copy到新的内存空间(即使得要使用view函数的tensor
+b其逻辑数据顺序和物理数据顺序一致)，然后再改变tensor b形状。</li>
+</ul>
+<h3 id="all-in-all">All in all</h3>
+<p>总而言之，在经过转置后的 tensor 先 contiguous() 撸顺一边后再作 view
+操作。。。</p>
+<h2 id="关于一个计算的效率问题">关于一个计算的效率问题</h2>
+<p>在我做 KNN 相关作业时，有一个 compute_distances_no_loops
+函数引发了一些 pytorch 的效率问题，下面是题面，需要替换 pass
+为正确的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_distances_no_loops</span>(<span class="params">x_train: torch.Tensor, x_test: torch.Tensor</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Computes the squared Euclidean distance between each element of training</span></span><br><span class="line"><span class="string">    set and each element of test set. Images should be flattened and treated</span></span><br><span class="line"><span class="string">    as vectors.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    This implementation should not use any Python loops. For memory-efficiency,</span></span><br><span class="line"><span class="string">    it also should not create any large intermediate tensors; in particular you</span></span><br><span class="line"><span class="string">    should not create any intermediate tensors with O(num_train * num_test)</span></span><br><span class="line"><span class="string">    elements.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Similar to `compute_distances_two_loops`, this should be able to handle</span></span><br><span class="line"><span class="string">    inputs with any number of dimensions. The inputs should not be modified.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    NOTE: Your implementation may not use `torch.norm`, `torch.dist`,</span></span><br><span class="line"><span class="string">    `torch.cdist`, or their instance method variants (`x.norm`, `x.dist`,</span></span><br><span class="line"><span class="string">    `x.cdist`, etc.). You may not use any functions from `torch.nn` or</span></span><br><span class="line"><span class="string">    `torch.nn.functional` modules.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        x_train: Tensor of shape (num_train, C, H, W)</span></span><br><span class="line"><span class="string">        x_test: Tensor of shape (num_test, C, H, W)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        dists: Tensor of shape (num_train, num_test) where dists[i, j] is</span></span><br><span class="line"><span class="string">            the squared Euclidean distance between the i-th training point and</span></span><br><span class="line"><span class="string">            the j-th test point.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    num_train = x_train.shape[<span class="number">0</span>]</span><br><span class="line">    num_test = x_test.shape[<span class="number">0</span>]</span><br><span class="line">    dists = x_train.new_zeros(num_train, num_test)</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment"># <span class="doctag">TODO:</span> need to be implement</span></span><br><span class="line">    <span class="keyword">return</span> dists</span><br></pre></td></tr></table></figure>
+<p>我一开始的解答是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x_train.unsqueeze_(<span class="number">1</span>)   </span><br><span class="line">x_test.unsqueeze_(<span class="number">0</span>)</span><br><span class="line">dists = torch.<span class="built_in">sum</span>((x_train - x_test) ** <span class="number">2</span>, dim=<span class="built_in">tuple</span>(<span class="built_in">range</span>(<span class="number">2</span>, <span class="built_in">len</span>(x_train.shape)))).sqrt()</span><br></pre></td></tr></table></figure>
+<p>主要思路是利用广播机制实现计算，但是效率非常低</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081649411.png" alt="image-20240608164944351" style="zoom:67%;" /></p>
+<p>只有两倍左右的提升，但是理论上来说，不通过 python 循环，直接调用
+pytorch api 去进行实现应该更快才对呀，所以我去翻了下GitHub上给的答案</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x0 = x_train.view(num_train, -<span class="number">1</span>)</span><br><span class="line">x1 = x_test.view(num_test, -<span class="number">1</span>)</span><br><span class="line">x0_1 = x0.mm(x1.t())</span><br><span class="line">dists = ((x0**<span class="number">2</span>).<span class="built_in">sum</span>(dim=<span class="number">1</span>).view(-<span class="number">1</span>, <span class="number">1</span>) - <span class="number">2</span> * x0_1 + (x1**<span class="number">2</span>).<span class="built_in">sum</span>(dim=<span class="number">1</span>)).sqrt()</span><br></pre></td></tr></table></figure>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081709858.png" alt="image-20240608170902807" style="zoom:67%;" /></p>
+<p>这速度，一下就合理起来了，分析一下底层，标答给的思路是将平方式拆开用加法做，最后的矩阵应该长这个样子（这里也用
+a 和 b 代替了，不然 latex
+码起来太麻烦了。。。）由于是欧几里得平方距离，所以是对应位置做差方，所以可以撸平再做
+<span class="math display">\[
+\begin{bmatrix}
+(a_1-b_1)^2 &amp; \cdots &amp; (a_1-b_n)^2 \\
+\vdots &amp; \ddots &amp; \vdots \\
+(a_n-b_1)^2 &amp; \cdots &amp;  (a_n - b_n)^2
+\end{bmatrix}
+\]</span> 然后外面再套个大的 sqrt
+，所以标答的做法应该是，利用完全平方，先将 -2ab
+的部分拆出来，这就是个简单的向量乘法，然后平方和的部分，比如看行，第一行都是
+<span class="math inline">\(a_1\)</span>
+，这是有规律的，可以利用广播机制拓展，这个加法拓展起来就是 500 + 500
+（两个平方，各500次平方操作算内积）次操作，再观察矩阵的乘法，实际他是两个向量的乘法，所以这也是个"线性的"，也还是
+500次，所以一共也才 1500 次操作</p>
+<p>而反观直接利用广播机制，我的思路是，一开始直接就直接利用规律，后面的几个维度不变，只需要对前面的
+500 这个维度进行拓展即可，所以当然是一个在索引为0 处升维，另一个在索引为
+1 处升维，所以经过广播后的两个数据的 shape 应该是 (500, 500, 3, 32, 32)
+这样，但是理论上，也不应该这么慢呀，唯一的问题就是，在<strong>给向量撸平</strong>这里，于是我想到，
+view 的底层是依靠 stride 实现的逻辑相邻，所以是 因为撸平了 stride
+更小，因为 device 是跑在 cpu 可以吃到
+cache，所以快了很多，而更大步长因为缓存命中率低所以更慢了？</p>
+<p>于是看了一下 stride ，发现确实可能是这个问题。。。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081747344.png" alt="image-20240608174740278" style="zoom: 67%;" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Szfmsmdx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://szf.cool/2024/06/07/EECS-498-007-Assignment-A1/" title="EECS-498-007-Assignment-A1">http://szf.cool/2024/06/07/EECS-498-007-Assignment-A1/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CV/" rel="tag"><i class="fa fa-tag"></i> CV</a>
+              <a href="/tags/Pytorch/" rel="tag"><i class="fa fa-tag"></i> Pytorch</a>
+              <a href="/tags/KNN/" rel="tag"><i class="fa fa-tag"></i> KNN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/28/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E5%BA%8F%E5%88%97%E5%BB%BA%E6%A8%A1%EF%BC%9A%E5%BE%AA%E7%8E%AF%E5%92%8C%E9%80%92%E5%BD%92%E7%BD%91%E7%BB%9C/" rel="prev" title="花书——序列建模：循环和递归网络">
+                  <i class="fa fa-angle-left"></i> 花书——序列建模：循环和递归网络
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/12/EECS-498-007-Assignment-A2/" rel="next" title="EECS-498-007-Assignment-A2">
+                  EECS-498-007-Assignment-A2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">皖ICP备2023007923号-2 </a>
+      <img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405231028849.png" alt=""><a href="https://beian.mps.gov.cn/#/query/webSearch?code=34018102340752" rel="noopener" target="_blank">皖公网安备34018102340752号 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Szfmsmdx</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">83k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:31</span>
+  </span>
+</div>
+
+<!--
+-->
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"comment.szf.cool","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"locale":null,"placeholder":"友好交流，善意评论 ^ ^","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","dark":"body.darkmode--activated","el":"#waline","comment":true,"path":"/2024/06/07/EECS-498-007-Assignment-A1/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '64px',
+  left: 'unset',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: false,
+  label: '🌓',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+if (window.darkmode && !window.darkmode.isActivated()) {
+  window.darkmode.toggle();
+  var toggleButtons = document.getElementsByClassName("darkmode-toggle");
+  if (toggleButtons && toggleButtons.length > 0) {
+    for (i = 0; i < toggleButtons.length; i++) {
+      toggleButtons[i].classList.add("darkmode-toggle--white");
+    }
+  }
+}
+</script>
+
+</body>
+</html>

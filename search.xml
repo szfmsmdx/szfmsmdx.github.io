@@ -1,6 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>EECS-498-007-Assignment-A2</title>
+    <url>/2024/06/12/EECS-498-007-Assignment-A2/</url>
+    <content><![CDATA[<p><a
+href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">UMich
+EECS 498-007 / 598-005: Deep Learning for Computer Vision</a> A2 lab
+作业笔记。。。</p>
+<span id="more"></span>
+<h1 id="linear-classifier">linear classifier</h1>
+<p>首先是针对 SVM loss function 的求导，该损失函数的表达式为： <span
+class="math display">\[
+\begin{aligned}
+&amp;L = \frac 1 N \sum_{i=1}^N L_i \\
+&amp;L_i = \sum_{j \neq y_i}^C \max {(0, s_j - s_{y_i} + \delta)}
+\end{aligned}
+\]</span> 在该 lab 中，<span class="math inline">\(\delta = 1\)</span>
+，<span class="math inline">\(s_j\)</span> 和 <span
+class="math inline">\(s_{y_i}\)</span> 则是不同的分类得分，就是 <span
+class="math inline">\(w[:j]·x[i]\)</span>
+，就是简单的权重矩阵乘上输入矩阵</p>
+<p>所以，对各部分求导的结果应该是 <span class="math display">\[
+\begin{aligned}
+&amp; j\neq y_i,\ w_j * x_i^T - w_{y_i} * x_i^T + \delta &gt; 0
+\Rightarrow \frac {\partial L_i}{\partial w_j}=x_i^T \\
+&amp; j\neq y_i,\ w_j * x_i^T - w_{y_i} * x_i^T + \delta &gt; 0
+\Rightarrow \frac {\partial L_i}{\partial w_{y_i}}=-x_i^T
+\end{aligned}
+\]</span></p>
+<hr />
+<p>额额，有个奇怪的事情是，lab 中说的
+<code>You will get 9.000197</code>，但是我只得到 loss：9.000888
+的结果，然而通过了后面的梯度测试？（误差小于 1e-5）很奇怪 hh</p>
+<h1 id="section"></h1>
+]]></content>
+      <categories>
+        <category>EECS.498-007</category>
+      </categories>
+      <tags>
+        <tag>pytorch</tag>
+        <tag>loss function</tag>
+        <tag>linear regression</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>EECS-498-007-Assignment-A1</title>
+    <url>/2024/06/07/EECS-498-007-Assignment-A1/</url>
+    <content><![CDATA[<p><a
+href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">UMich
+EECS 498-007 / 598-005: Deep Learning for Computer Vision</a> A1 lab
+作业笔记。。。</p>
+<span id="more"></span>
+<h1 id="pytorch">Pytorch</h1>
+<h2 id="transpose-vs-permute">transpose() vs permute() ?</h2>
+<p>pytorch 中涉及到交换轴 (axes) 的操作有 transpose 和 permute
+两个函数</p>
+<p>先看官方文档给出的解释</p>
+<ol type="1">
+<li>transpose()</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.transpose(<span class="built_in">input</span>, dim0=<span class="number">0</span>, dim1=<span class="number">1</span>, out=<span class="literal">None</span>) -&gt; Tensor</span><br></pre></td></tr></table></figure>
+<p>函数返回输入矩阵<code>input</code>的转置。交换维度<code>dim0</code>和<code>dim1</code></p>
+<ol start="2" type="1">
+<li>permute()</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">permute(dims) -&gt; Tensor</span><br></pre></td></tr></table></figure>
+<p>可以清楚的看见，对于操作高维矩阵，permute 更合适</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create a tensor of shape (2, 3, 4)</span></span><br><span class="line">x0 = torch.tensor([</span><br><span class="line">     [[<span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">      [<span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">      [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]],</span><br><span class="line">     [[<span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>],</span><br><span class="line">      [<span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">      [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>]]])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Original tensor:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(x0)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;shape:&#x27;</span>, x0.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Swap axes 1 and 2; shape is (2, 4, 3)</span></span><br><span class="line">x1 = x0.transpose(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nSwap axes 1 and 2:&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(x1)</span><br><span class="line"><span class="built_in">print</span>(x1.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Permute axes; the argument (1, 2, 0) means:</span></span><br><span class="line"><span class="comment"># - Make the old dimension 1 appear at dimension 0;</span></span><br><span class="line"><span class="comment"># - Make the old dimension 2 appear at dimension 1;</span></span><br><span class="line"><span class="comment"># - Make the old dimension 0 appear at dimension 2</span></span><br><span class="line"><span class="comment"># This results in a tensor of shape (3, 4, 2)</span></span><br><span class="line">x2 = x0.permute(<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPermute axes&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(x2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;shape:&#x27;</span>, x2.shape)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Original tensor:</span><br><span class="line">tensor([[[ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">         [ <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">         [ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]],</span><br><span class="line"></span><br><span class="line">        [[<span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>],</span><br><span class="line">         [<span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">         [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>]]])</span><br><span class="line">shape: torch.Size([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">Swap axes <span class="number">1</span> <span class="keyword">and</span> <span class="number">2</span>:</span><br><span class="line">tensor([[[ <span class="number">1</span>,  <span class="number">5</span>,  <span class="number">9</span>],</span><br><span class="line">         [ <span class="number">2</span>,  <span class="number">6</span>, <span class="number">10</span>],</span><br><span class="line">         [ <span class="number">3</span>,  <span class="number">7</span>, <span class="number">11</span>],</span><br><span class="line">         [ <span class="number">4</span>,  <span class="number">8</span>, <span class="number">12</span>]],</span><br><span class="line"></span><br><span class="line">        [[<span class="number">13</span>, <span class="number">17</span>, <span class="number">21</span>],</span><br><span class="line">         [<span class="number">14</span>, <span class="number">18</span>, <span class="number">22</span>],</span><br><span class="line">         [<span class="number">15</span>, <span class="number">19</span>, <span class="number">23</span>],</span><br><span class="line">         [<span class="number">16</span>, <span class="number">20</span>, <span class="number">24</span>]]])</span><br><span class="line">torch.Size([<span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">Permute axes</span><br><span class="line">tensor([[[ <span class="number">1</span>, <span class="number">13</span>],</span><br><span class="line">         [ <span class="number">2</span>, <span class="number">14</span>],</span><br><span class="line">         [ <span class="number">3</span>, <span class="number">15</span>],</span><br><span class="line">         [ <span class="number">4</span>, <span class="number">16</span>]],</span><br><span class="line"></span><br><span class="line">        [[ <span class="number">5</span>, <span class="number">17</span>],</span><br><span class="line">         [ <span class="number">6</span>, <span class="number">18</span>],</span><br><span class="line">         [ <span class="number">7</span>, <span class="number">19</span>],</span><br><span class="line">         [ <span class="number">8</span>, <span class="number">20</span>]],</span><br><span class="line"></span><br><span class="line">        [[ <span class="number">9</span>, <span class="number">21</span>],</span><br><span class="line">         [<span class="number">10</span>, <span class="number">22</span>],</span><br><span class="line">         [<span class="number">11</span>, <span class="number">23</span>],</span><br><span class="line">         [<span class="number">12</span>, <span class="number">24</span>]]])</span><br><span class="line">shape: torch.Size([<span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><font color=red> 此外，注意 transpose
+由于是交换两个轴长，所以具有交换性 </font>，也就是说</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = torch.randn(<span class="number">2</span>,<span class="number">3</span>) 	<span class="comment"># x.shape = (2,3)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------------------------------</span></span><br><span class="line">x1 = x.transpose(<span class="number">0</span>,<span class="number">1</span>) 	<span class="comment"># x1.shape = (3,2)</span></span><br><span class="line">x2 = x.transpose(<span class="number">1</span>,<span class="number">0</span>) 	<span class="comment"># x2.shape = (3,2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------------------------------</span></span><br><span class="line">x1 = x.permute(<span class="number">0</span>,<span class="number">1</span>) 	<span class="comment"># x1.shape = (2,3)</span></span><br><span class="line">x2 = x.permute(<span class="number">1</span>,<span class="number">0</span>)		<span class="comment"># x2.shape = (3,2)</span></span><br></pre></td></tr></table></figure>
+<p>因从，transpose函数还有后缀版 <code>transpose_()</code>
+，其作用等价于 <code>transpose(0,1)</code></p>
+<h3
+id="一个关于连续contiguous的问题">一个关于连续contiguous()的问题</h3>
+<p>是我在<a
+href="https://blog.csdn.net/xinjieyuan/article/details/105232802">这篇博客</a>上看到的</p>
+<p>经过 transpose 和 permute 转置过的 tensor
+内存地址是不连续的（<code>tensor.is_contiguous() == False</code>）</p>
+<p>这时只能使用 reshape 而不能使用 view</p>
+<p>但是，pytorch 官方并不推荐使用 reshape
+方法，除非<code>为了获取完全不同但是数据相同的克隆体</code> （为什么不
+copy 一下呢 hhh</p>
+<h2 id="reshape-vs-view">reshape() vs view()</h2>
+<p>先看文档解释</p>
+<ol type="1">
+<li>view()</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">x_tensor.view(*args) -&gt; Tensor</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><p>返回一个有<strong>相同数据</strong>但<strong>结构不同</strong>的tensor。</p></li>
+<li><p>返回的tensor必须有与原tensor相同的数据和相同数目的元素，但可以有不同的大小。</p></li>
+<li><p>一个tensor必须是连续的 contiguous 才能被view()。</p></li>
+<li><p>reshape()</p></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x_tensor.reshape(*args) -&gt; Tensor</span><br></pre></td></tr></table></figure>
+<p>使用同 view，但是无需 contiguous</p>
+<h3 id="区别">区别</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = torch.randint(<span class="number">0</span>,<span class="number">20</span>,(<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">tensor([[ 7.,  2., 16.],</span></span><br><span class="line"><span class="string">        [17., 19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">y = x.view(<span class="number">6</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">tensor([ 7.,  2., 16., 17., 19., 15.])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">z = x.view(-<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">tensor([[ 7.,  2.],</span></span><br><span class="line"><span class="string">        [16., 17.],</span></span><br><span class="line"><span class="string">        [19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">##########区别##############</span></span><br><span class="line"><span class="comment"># 地址是否一样：</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(x)==<span class="built_in">id</span>(y), <span class="built_in">id</span>(x)==<span class="built_in">id</span>(z), <span class="built_in">id</span>(y)==<span class="built_in">id</span>(z))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(x.data)==<span class="built_in">id</span>(y.data), </span><br><span class="line">	  <span class="built_in">id</span>(x.data)==<span class="built_in">id</span>(z.data),</span><br><span class="line">	  <span class="built_in">id</span>(y.data)==<span class="built_in">id</span>(z.data))</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;&#x27;outputs: </span></span><br><span class="line"><span class="string">False False False</span></span><br><span class="line"><span class="string">True True True</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 改变x</span></span><br><span class="line">x[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;outputs: 统一变化</span></span><br><span class="line"><span class="string">tensor([[ 1.,  1.,  1.],</span></span><br><span class="line"><span class="string">        [17., 19., 15.]]) </span></span><br><span class="line"><span class="string"> tensor([ 1.,  1.,  1., 17., 19., 15.]) </span></span><br><span class="line"><span class="string"> tensor([[ 1.,  1.],</span></span><br><span class="line"><span class="string">        [ 1., 17.],</span></span><br><span class="line"><span class="string">        [19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 改变z</span></span><br><span class="line">z[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;&#x27;outputs: 统一变化</span></span><br><span class="line"><span class="string">tensor([[ 0.,  0.,  1.],</span></span><br><span class="line"><span class="string">        [17., 19., 15.]]) </span></span><br><span class="line"><span class="string"> tensor([ 0.,  0.,  1., 17., 19., 15.]) </span></span><br><span class="line"><span class="string"> tensor([[ 0.,  0.],</span></span><br><span class="line"><span class="string">        [ 1., 17.],</span></span><br><span class="line"><span class="string">        [19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>之所以出现上述三组 output，是因为：</p>
+<ol type="1">
+<li>python 和 pytorch 都是对象存储，比如 x = toch.tensor(1)，那么 对象 x
+和 x 的数据 1 是分开存储的，所以用 id 查看他们的地址时会出现第一组
+output</li>
+<li>view() 是共享内存而不共享对象，因为 view 一般 shape
+已经改变了，所以返回的是新形状下的数据，就是一个新的对象，而使用 []
+运算符直接访问数据所在地址进行修改，当然出现了第二、三组 output
+的结果</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x  = x + <span class="number">1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;ouputs</span></span><br><span class="line"><span class="string">tensor([[ 1.,  1.,  2.],</span></span><br><span class="line"><span class="string">        [18., 20., 16.]]) </span></span><br><span class="line"><span class="string"> tensor([ 0.,  0.,  1., 17., 19., 15.]) </span></span><br><span class="line"><span class="string"> tensor([[ 0.,  0.],</span></span><br><span class="line"><span class="string">        [ 1., 17.],</span></span><br><span class="line"><span class="string">        [19., 15.]])</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>这里注意 <code>x = x + 1</code> 和 <code>x += 1</code>
+的区别，前者是将 <code>x + 1</code> 的结果开辟一个新的存储区域，然后让 x
+指向这个地址，后者则是直接在原内存上进行操作，这里就没有演示实验结果了。。。</p>
+<h3 id="关于-contiguous">关于 contiguous ？</h3>
+<p>contiguous 的判定是，逻辑上相邻的元素在内存上依然相邻，则称为
+contiguous</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071246948.png" alt="image-20240607124554838" style="zoom:50%;" /></p>
+<p>这是一个 3x4 的tensor，在实际存储的过程中，是以连续内存进行存储的</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071246213.png" alt="image-20240607124614165" style="zoom:50%;" /></p>
+<p>当调用了转置之后，在逻辑上应该是</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071247882.png" alt="image-20240607124703843" style="zoom:50%;" /></p>
+<p>此时，a逻辑上相邻的元素是 [0,4,8] 明显观察到，他们是不连续的</p>
+<h3 id="view-和-contiguous">view 和 contiguous？</h3>
+<p>参考了<a
+href="https://blog.csdn.net/qq_40765537/article/details/112471341">文章</a></p>
+<p>首先，view 仅仅是改变了 tensor
+的视图，并返回一个新的对象，这个新对象与原对象的 stride（每一步的步长）
+是不同的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;a = torch.tensor([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">&gt;&gt;&gt;a.stride()</span><br><span class="line">(<span class="number">1</span>,)</span><br><span class="line">&gt;&gt;&gt;b = a.view((<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">&gt;&gt;&gt;b.stride()</span><br><span class="line">(<span class="number">2</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>这里核心就在于b =
+a.view(shape)中的新形状shape基于不变的内存数据仍能以<strong>固定</strong>的步幅访问下一个元素，这样才能成功改变形状，否则若没有固定的步幅，我们无法实现元素的顺序访问，这种情况下程序会报错。</p>
+<p>这是 <code>b.view(12)</code> 的期望访问顺序</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406071250940.png" alt="image-20240607125031899" style="zoom:50%;" /></p>
+<p>那这时，其对应的内存访问指针的移动步长应该是 4, 4, -7, 4, 4, -7, 4,
+4, 7, 4, 4，4 和 -7 并不是固定的步长！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;a = torch.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">&gt;&gt;&gt;a</span><br><span class="line">tensor([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">        [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">        [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]])</span><br><span class="line">&gt;&gt;&gt;b = a.T</span><br><span class="line">&gt;&gt;&gt;b</span><br><span class="line">tensor([[ <span class="number">0</span>,  <span class="number">4</span>,  <span class="number">8</span>],</span><br><span class="line">       	[ <span class="number">1</span>,  <span class="number">5</span>,  <span class="number">9</span>],</span><br><span class="line">       	[ <span class="number">2</span>,  <span class="number">6</span>, <span class="number">10</span>],</span><br><span class="line">        [ <span class="number">3</span>,  <span class="number">7</span>, <span class="number">11</span>]])</span><br><span class="line">&gt;&gt;&gt;c = b.view((<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">&gt;&gt;&gt;c</span><br><span class="line">tensor([[[ <span class="number">0</span>,  <span class="number">4</span>,  <span class="number">8</span>],</span><br><span class="line">         [ <span class="number">1</span>,  <span class="number">5</span>,  <span class="number">9</span>]],</span><br><span class="line">        [[ <span class="number">2</span>,  <span class="number">6</span>, <span class="number">10</span>],</span><br><span class="line">         [ <span class="number">3</span>,  <span class="number">7</span>, <span class="number">11</span>]]])</span><br><span class="line">&gt;&gt;&gt;b.shape, b.stride()</span><br><span class="line">(torch.Size([<span class="number">4</span>, <span class="number">3</span>]), (<span class="number">1</span>, <span class="number">4</span>))</span><br><span class="line">&gt;&gt;&gt;c.shape,c.stride()</span><br><span class="line">(torch.Size([<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]), (<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<p>所以可以看到，得让 view 前后的 stride
+保持逻辑上的对应，使得访问元素是 contiguous 的，才能够成功 view</p>
+<h3 id="reshape-和-view">reshape 和 view ？</h3>
+<ul>
+<li>如果新形状满足view函数所要求的条件(即基于不变的内存数据仍能以固定的新步幅访问该数据)，那么这时候reshape()跟view()等价，不会复制一份新的数据。</li>
+<li>如果新的形状不满足view函数所要求的条件(即无法求得满足条件的新步幅)，这时候reshape也能工作，这时候它会将原来非连续性的tensor按<strong>逻辑顺序</strong>copy到新的内存空间(即使得要使用view函数的tensor
+b其逻辑数据顺序和物理数据顺序一致)，然后再改变tensor b形状。</li>
+</ul>
+<h3 id="all-in-all">All in all</h3>
+<p>总而言之，在经过转置后的 tensor 先 contiguous() 撸顺一边后再作 view
+操作。。。</p>
+<h2 id="关于一个计算的效率问题">关于一个计算的效率问题</h2>
+<p>在我做 KNN 相关作业时，有一个 compute_distances_no_loops
+函数引发了一些 pytorch 的效率问题，下面是题面，需要替换 pass
+为正确的内容</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_distances_no_loops</span>(<span class="params">x_train: torch.Tensor, x_test: torch.Tensor</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Computes the squared Euclidean distance between each element of training</span></span><br><span class="line"><span class="string">    set and each element of test set. Images should be flattened and treated</span></span><br><span class="line"><span class="string">    as vectors.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    This implementation should not use any Python loops. For memory-efficiency,</span></span><br><span class="line"><span class="string">    it also should not create any large intermediate tensors; in particular you</span></span><br><span class="line"><span class="string">    should not create any intermediate tensors with O(num_train * num_test)</span></span><br><span class="line"><span class="string">    elements.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Similar to `compute_distances_two_loops`, this should be able to handle</span></span><br><span class="line"><span class="string">    inputs with any number of dimensions. The inputs should not be modified.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    NOTE: Your implementation may not use `torch.norm`, `torch.dist`,</span></span><br><span class="line"><span class="string">    `torch.cdist`, or their instance method variants (`x.norm`, `x.dist`,</span></span><br><span class="line"><span class="string">    `x.cdist`, etc.). You may not use any functions from `torch.nn` or</span></span><br><span class="line"><span class="string">    `torch.nn.functional` modules.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        x_train: Tensor of shape (num_train, C, H, W)</span></span><br><span class="line"><span class="string">        x_test: Tensor of shape (num_test, C, H, W)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        dists: Tensor of shape (num_train, num_test) where dists[i, j] is</span></span><br><span class="line"><span class="string">            the squared Euclidean distance between the i-th training point and</span></span><br><span class="line"><span class="string">            the j-th test point.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    num_train = x_train.shape[<span class="number">0</span>]</span><br><span class="line">    num_test = x_test.shape[<span class="number">0</span>]</span><br><span class="line">    dists = x_train.new_zeros(num_train, num_test)</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment"># <span class="doctag">TODO:</span> need to be implement</span></span><br><span class="line">    <span class="keyword">return</span> dists</span><br></pre></td></tr></table></figure>
+<p>我一开始的解答是</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x_train.unsqueeze_(<span class="number">1</span>)   </span><br><span class="line">x_test.unsqueeze_(<span class="number">0</span>)</span><br><span class="line">dists = torch.<span class="built_in">sum</span>((x_train - x_test) ** <span class="number">2</span>, dim=<span class="built_in">tuple</span>(<span class="built_in">range</span>(<span class="number">2</span>, <span class="built_in">len</span>(x_train.shape)))).sqrt()</span><br></pre></td></tr></table></figure>
+<p>主要思路是利用广播机制实现计算，但是效率非常低</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081649411.png" alt="image-20240608164944351" style="zoom:67%;" /></p>
+<p>只有两倍左右的提升，但是理论上来说，不通过 python 循环，直接调用
+pytorch api 去进行实现应该更快才对呀，所以我去翻了下GitHub上给的答案</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x0 = x_train.view(num_train, -<span class="number">1</span>)</span><br><span class="line">x1 = x_test.view(num_test, -<span class="number">1</span>)</span><br><span class="line">x0_1 = x0.mm(x1.t())</span><br><span class="line">dists = ((x0**<span class="number">2</span>).<span class="built_in">sum</span>(dim=<span class="number">1</span>).view(-<span class="number">1</span>, <span class="number">1</span>) - <span class="number">2</span> * x0_1 + (x1**<span class="number">2</span>).<span class="built_in">sum</span>(dim=<span class="number">1</span>)).sqrt()</span><br></pre></td></tr></table></figure>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081709858.png" alt="image-20240608170902807" style="zoom:67%;" /></p>
+<p>这速度，一下就合理起来了，分析一下底层，标答给的思路是将平方式拆开用加法做，最后的矩阵应该长这个样子（这里也用
+a 和 b 代替了，不然 latex
+码起来太麻烦了。。。）由于是欧几里得平方距离，所以是对应位置做差方，所以可以撸平再做
+<span class="math display">\[
+\begin{bmatrix}
+(a_1-b_1)^2 &amp; \cdots &amp; (a_1-b_n)^2 \\
+\vdots &amp; \ddots &amp; \vdots \\
+(a_n-b_1)^2 &amp; \cdots &amp;  (a_n - b_n)^2
+\end{bmatrix}
+\]</span> 然后外面再套个大的 sqrt
+，所以标答的做法应该是，利用完全平方，先将 -2ab
+的部分拆出来，这就是个简单的向量乘法，然后平方和的部分，比如看行，第一行都是
+<span class="math inline">\(a_1\)</span>
+，这是有规律的，可以利用广播机制拓展，这个加法拓展起来就是 500 + 500
+（两个平方，各500次平方操作算内积）次操作，再观察矩阵的乘法，实际他是两个向量的乘法，所以这也是个"线性的"，也还是
+500次，所以一共也才 1500 次操作</p>
+<p>而反观直接利用广播机制，我的思路是，一开始直接就直接利用规律，后面的几个维度不变，只需要对前面的
+500 这个维度进行拓展即可，所以当然是一个在索引为0 处升维，另一个在索引为
+1 处升维，所以经过广播后的两个数据的 shape 应该是 (500, 500, 3, 32, 32)
+这样，但是理论上，也不应该这么慢呀，唯一的问题就是，在<strong>给向量撸平</strong>这里，于是我想到，
+view 的底层是依靠 stride 实现的逻辑相邻，所以是 因为撸平了 stride
+更小，因为 device 是跑在 cpu 可以吃到
+cache，所以快了很多，而更大步长因为缓存命中率低所以更慢了？</p>
+<p>于是看了一下 stride ，发现确实可能是这个问题。。。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202406081747344.png" alt="image-20240608174740278" style="zoom: 67%;" /></p>
+]]></content>
+      <categories>
+        <category>EECS.498-007</category>
+      </categories>
+      <tags>
+        <tag>CV</tag>
+        <tag>Pytorch</tag>
+        <tag>KNN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>花书——序列建模：循环和递归网络</title>
     <url>/2024/05/28/%E8%8A%B1%E4%B9%A6%E2%80%94%E2%80%94%E5%BA%8F%E5%88%97%E5%BB%BA%E6%A8%A1%EF%BC%9A%E5%BE%AA%E7%8E%AF%E5%92%8C%E9%80%92%E5%BD%92%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -138,8 +335,8 @@ href="https://leetcode.cn/problems/find-the-number-of-good-pairs-ii/description/
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>周赛</tag>
         <tag>LeetCode</tag>
+        <tag>周赛</tag>
         <tag>哈希表</tag>
         <tag>筛法</tag>
       </tags>
@@ -314,9 +511,9 @@ href="https://leetcode.cn/problems/find-number-of-ways-to-reach-the-k-th-stair/s
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>周赛</tag>
         <tag>LeetCode</tag>
         <tag>记忆化搜索</tag>
+        <tag>周赛</tag>
       </tags>
   </entry>
   <entry>
@@ -1459,8 +1656,8 @@ upper，那么就不断移除左端点元素（就是出现次数 -1， 如果�
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>周赛</tag>
+        <tag>DP</tag>
         <tag>Leetcode</tag>
       </tags>
   </entry>
