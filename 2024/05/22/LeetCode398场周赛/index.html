@@ -156,18 +156,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -297,48 +297,45 @@
 
     <div class="post-body" itemprop="articleBody"><p>补一下 LC 第 398 场周赛的T4。。。</p>
 <span id="more"></span>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-number-of-ways-to-reach-the-k-th-stair/description/">原题地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-number-of-ways-to-reach-the-k-th-stair/description/">原题地址</a></p>
 <blockquote>
-<p>给你有一个 <strong>非负</strong> 整数 <code>k</code>
-。有一个无限长度的台阶，<strong>最低</strong> 一层编号为 0 。</p>
-<p>虎老师有一个整数 <code>jump</code> ，一开始值为 0 。虎老师从台阶 1
-开始，虎老师可以使用 <strong>任意</strong> 次操作，目标是到达第
-<code>k</code> 级台阶。假设虎老师位于台阶 <code>i</code> ，一次
-<strong>操作</strong> 中，虎老师可以：</p>
-<ul>
-<li>向下走一级到 <code>i - 1</code> ，但该操作 <strong>不能</strong>
-连续使用，如果在台阶第 0 级也不能使用。</li>
-<li>向上走到台阶 <code>i + 2jump</code> 处，然后 <code>jump</code> 变为
-<code>jump + 1</code> 。</li>
+<p>给你有一个 <strong>非负</strong> 整数 <code>k</code> 。有一个无限长度的台阶，<strong>最低</strong> 一层编号为 0 。</p>
+<p>虎老师有一个整数 <code>jump</code> ，一开始值为 0 。虎老师从台阶 1 开始，虎老师可以使用 <strong>任意</strong> 次操作，目标是到达第 <code>k</code> 级台阶。假设虎老师位于台阶 <code>i</code> ，一次 <strong>操作</strong> 中，虎老师可以：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>向下走一级到 <code>i - 1</code> ，但该操作 <strong>不能</strong> 连续使用，如果在台阶第 0 级也不能使用。</p>
+</li>
+<li class="lvl-2">
+<p>向上走到台阶 <code>i + 2jump</code> 处，然后 <code>jump</code> 变为 <code>jump + 1</code> 。</p>
+</li>
 </ul>
 <p>请你返回虎老师到达台阶 <code>k</code> 处的总方案数。</p>
-<p><strong>注意</strong> ，虎老师可能到达台阶 <code>k</code>
-处后，通过一些操作重新回到台阶 <code>k</code> 处，这视为不同的方案。</p>
+<p><strong>注意</strong> ，虎老师可能到达台阶 <code>k</code> 处后，通过一些操作重新回到台阶 <code>k</code> 处，这视为不同的方案。</p>
 </blockquote>
-<p>首先考虑最基本的 dfs，可以给出 <span class="math inline">\(dfs(i, j,
-cur)\)</span> 为当前的状态定义，其中 p 为该步是否使用了 -1
-操作，那么该状态的总方案数应该有如下情况构成：</p>
-<ul>
-<li>P = F 时
-<ul>
-<li><span class="math inline">\(dfs(i - 1, j, T)\)</span></li>
-<li><span class="math inline">\(dfs(i + 2^j, j + 1, F)\)</span></li>
-</ul></li>
-<li>P = T 时
-<ul>
-<li><span class="math inline">\(dfs(i + 2^j, j + 1, F)\)</span></li>
-</ul></li>
-<li>i = k 时，此时为一种情况</li>
+<p>首先考虑最基本的 dfs，可以给出 $dfs(i, j, cur)$ 为当前的状态定义，其中 p 为该步是否使用了 -1 操作，那么该状态的总方案数应该有如下情况构成：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>P = F 时</p>
+<ul class="lvl-2">
+<li class="lvl-6">$dfs(i - 1, j, T)$</li>
+<li class="lvl-6">$dfs(i + 2^j, j + 1, F)$</li>
 </ul>
-<p>其次观察到，当 i = k + 2 的时候，是永远无法通过 -1 操作来回到 k
-的状态了。。。</p>
+</li>
+<li class="lvl-2">
+<p>P = T 时</p>
+<ul class="lvl-2">
+<li class="lvl-6">$dfs(i + 2^j, j + 1, F)$</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>i = k 时，此时为一种情况</p>
+</li>
+</ul>
+<p>其次观察到，当 i = k + 2 的时候，是永远无法通过 -1 操作来回到 k 的状态了。。。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> ull;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">typedef</span> vector&lt;<span class="type">int</span>&gt; vi;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    unordered_map&lt;ll, <span class="type">int</span>&gt; memo;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j, <span class="type">bool</span> p, <span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt; k + <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        ll pp = (ll) i &lt;&lt; <span class="number">32</span> | j &lt;&lt; <span class="number">1</span> | p; <span class="comment">// 记录一下当前操作的状态;</span></span><br><span class="line">        <span class="keyword">if</span>(memo.<span class="built_in">count</span>(pp)) <span class="keyword">return</span> memo[pp];</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> res = (i == k);</span><br><span class="line">        res += <span class="built_in">dfs</span>(i + (<span class="number">1</span> &lt;&lt; j), j + <span class="number">1</span>, <span class="literal">false</span>, k);</span><br><span class="line">        <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; !p) res += <span class="built_in">dfs</span>(i - <span class="number">1</span>, j, <span class="literal">true</span>, k);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> memo[pp] = res;  <span class="comment">// 记录</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">waysToReachStair</span><span class="params">(<span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="literal">false</span>, k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<hr />
-<p>看灵神的<a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-number-of-ways-to-reach-the-k-th-stair/solutions/2782792/liang-chong-fang-fa-ji-yi-hua-sou-suo-zu-j227/">题解</a>，发现了数学解法</p>
-<p>本质上来说，本题共有 <span class="math inline">\(\log^2\)</span>
-的状态（j 有 log 个状态，i 是与 j 同大小的）</p>
+<hr>
+<p>看灵神的<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-number-of-ways-to-reach-the-k-th-stair/solutions/2782792/liang-chong-fang-fa-ji-yi-hua-sou-suo-zu-j227/">题解</a>，发现了数学解法</p>
+<p>本质上来说，本题共有 $\log^2$ 的状态（j 有 log 个状态，i 是与 j 同大小的）</p>
 <p>补一下组合数学的做法</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> c[<span class="number">31</span>][<span class="number">31</span>];</span><br><span class="line"><span class="keyword">auto</span> init = [] &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">31</span>; i++) &#123;</span><br><span class="line">        c[i][<span class="number">0</span>] = c[i][i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; i; j++) &#123;</span><br><span class="line">            c[i][j] = c[i - <span class="number">1</span>][j - <span class="number">1</span>] + c[i - <span class="number">1</span>][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">waysToReachStair</span><span class="params">(<span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">30</span>; ++j)&#123;</span><br><span class="line">            <span class="type">int</span> m = (<span class="number">1</span> &lt;&lt; j) - k;</span><br><span class="line">            <span class="keyword">if</span>(<span class="number">0</span> &lt;= m &amp;&amp; m &lt;= j + <span class="number">1</span>)&#123;</span><br><span class="line">                res += c[j + <span class="number">1</span>][m];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -427,13 +424,13 @@ target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-number-of
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">92k</span>
+    <span title="站点总字数">95k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:48</span>
+    <span title="站点阅读时长">2:53</span>
   </span>
 </div>
 

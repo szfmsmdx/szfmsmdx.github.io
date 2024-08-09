@@ -157,18 +157,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -298,27 +298,19 @@
 
     <div class="post-body" itemprop="articleBody"><p>补一下399场周赛T3。。。</p>
 <span id="more"></span>
-<p>其实感觉可以做的，当时在考虑质因数分解但是最终没写出来，没想到哈希表
-+ 筛法居然能过。。。</p>
+<p>其实感觉可以做的，当时在考虑质因数分解但是最终没写出来，没想到哈希表 + 筛法居然能过。。。</p>
 <p>真是掉大分了</p>
 <p>原题描述如下</p>
 <blockquote>
-<p>给你两个整数数组 <code>nums1</code> 和 <code>nums2</code>，长度分别为
-<code>n</code> 和 <code>m</code>。同时给你一个<strong>正整数</strong>
-<code>k</code>。</p>
-<p>如果 <code>nums1[i]</code> 可以被 <code>nums2[j] * k</code>
-整除，则称数对 <code>(i, j)</code> 为
-<strong>优质数对</strong>（<code>0 &lt;= i &lt;= n - 1</code>,
-<code>0 &lt;= j &lt;= m - 1</code>）。</p>
+<p>给你两个整数数组 <code>nums1</code> 和 <code>nums2</code>，长度分别为 <code>n</code> 和 <code>m</code>。同时给你一个<strong>正整数</strong> <code>k</code>。</p>
+<p>如果 <code>nums1[i]</code> 可以被 <code>nums2[j] * k</code> 整除，则称数对 <code>(i, j)</code> 为 <strong>优质数对</strong>（<code>0 &lt;= i &lt;= n - 1</code>, <code>0 &lt;= j &lt;= m - 1</code>）。</p>
 <p>返回 <strong>优质数对</strong> 的总数。</p>
 </blockquote>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-number-of-good-pairs-ii/description/">原题连接</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-number-of-good-pairs-ii/description/">原题连接</a></p>
 <p>废话不多说，主要是筛法的思想，但是因为有很多重复，所以考虑用个哈希表去一下重复就可以了。。。</p>
-<p>另外要注意的是提前 return，不然在取最大值那步就 segment default
-了（为空无法用ranges取最值）</p>
+<p>另外要注意的是提前 return，不然在取最大值那步就 segment default 了（为空无法用ranges取最值）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">numberOfPairs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; m1, m2;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums1.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums1[i] % k == <span class="number">0</span>)&#123;</span><br><span class="line">                m1[nums1[i] / k] ++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums2.<span class="built_in">size</span>(); ++i)&#123; m2[nums2[i]] ++;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(m1.<span class="built_in">size</span>() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> mm = ranges::<span class="built_in">max_element</span>(m1)-&gt;first;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp;[i, c] : m2)&#123;</span><br><span class="line">            <span class="type">int</span> num = i;</span><br><span class="line">            <span class="type">long</span> <span class="type">long</span> tmp = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(num &lt;= mm)&#123;</span><br><span class="line">                tmp += m1.<span class="built_in">contains</span>(num) ? (<span class="type">long</span> <span class="type">long</span>)m1[num] : <span class="number">0</span>;</span><br><span class="line">                num += i;</span><br><span class="line">            &#125;</span><br><span class="line">            res += (<span class="type">long</span> <span class="type">long</span>)(tmp * c);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<hr />
+<hr>
 <p>T4 看了一下好像是线段树吧，但是我不会。。。</p>
 <p>暑假希望看完提高课能搞定吧。。。</p>
 <p>就先这样，开摆！</p>
@@ -409,13 +401,13 @@ target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-numbe
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">92k</span>
+    <span title="站点总字数">95k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:48</span>
+    <span title="站点阅读时长">2:53</span>
   </span>
 </div>
 
