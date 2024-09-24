@@ -28,7 +28,6 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171131908.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171620309.png">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171624943.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171628055.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171628143.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181104497.png">
@@ -153,7 +152,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">参数范数惩罚</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#L-2-%E5%8F%82%E6%95%B0%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">$L^2$ 参数正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-1-%E5%8F%82%E6%95%B0%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">$L^1$ 参数正则化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">作为约束的范数惩罚</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">正则化和欠约束问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">数据集增强</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">噪声鲁棒性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">半监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">多任务学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">提前终止</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">参数绑定和参数共享</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">稀疏表示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">Bagging 和其他集成方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text">Dropout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">13.</span> <span class="nav-text">对抗训练</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%8C%83%E6%95%B0%E6%83%A9%E7%BD%9A"><span class="nav-number">1.</span> <span class="nav-text">参数范数惩罚</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#l2-%E5%8F%82%E6%95%B0%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">\(L^2\)
+参数正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l1-%E5%8F%82%E6%95%B0%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">\(L^1\)
+参数正则化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%9C%E4%B8%BA%E7%BA%A6%E6%9D%9F%E7%9A%84%E8%8C%83%E6%95%B0%E6%83%A9%E7%BD%9A"><span class="nav-number">2.</span> <span class="nav-text">作为约束的范数惩罚</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%E5%92%8C%E6%AC%A0%E7%BA%A6%E6%9D%9F%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">正则化和欠约束问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E5%A2%9E%E5%BC%BA"><span class="nav-number">4.</span> <span class="nav-text">数据集增强</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%99%AA%E5%A3%B0%E9%B2%81%E6%A3%92%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">噪声鲁棒性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">6.</span> <span class="nav-text">半监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%AD%A6%E4%B9%A0"><span class="nav-number">7.</span> <span class="nav-text">多任务学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E7%BB%88%E6%AD%A2"><span class="nav-number">8.</span> <span class="nav-text">提前终止</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A%E5%92%8C%E5%8F%82%E6%95%B0%E5%85%B1%E4%BA%AB"><span class="nav-number">9.</span> <span class="nav-text">参数绑定和参数共享</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E8%A1%A8%E7%A4%BA"><span class="nav-number">10.</span> <span class="nav-text">稀疏表示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bagging-%E5%92%8C%E5%85%B6%E4%BB%96%E9%9B%86%E6%88%90%E6%96%B9%E6%B3%95"><span class="nav-number">11.</span> <span class="nav-text">Bagging 和其他集成方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dropout"><span class="nav-number">12.</span> <span class="nav-text">Dropout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83"><span class="nav-number">13.</span> <span class="nav-text">对抗训练</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -288,7 +289,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.6k</span>
+      <span>7.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -311,249 +312,303 @@
 <p>研读花书，皆为拙记，如有错误还望各位不惜笔墨，不啬赐教。本节主要包括<strong>正则化</strong>部分内容</p>
 
 </blockquote>
-<span id="more"></span> 
+<span id="more"></span>
 <blockquote>
 <p>机器学习中的一个核心问题是设计不仅在训练数据上表现好，并且能在新输入上泛化好的算法。</p>
 <p>在机器学习中，许多策略显式地被设计来减少测试误差（可能会以增大训练误差为代价）。这些策略被统称为<strong>正则化</strong>。</p>
 </blockquote>
-<h1>参数范数惩罚</h1>
-<p>许多正则化方法通过对目标函数 J 添加一个参数范数惩罚 Ω(θ)，限制模型（如神经网络、线性回归或逻辑回归）的学习能力。<br>
-$$<br>
-\tilde J(\theta ;X, y)=J(\theta;X,y)+\alpha \Omega(\theta)<br>
-$$<br>
-其中 $\alpha \in [0, +\infty]$ 是权衡范数惩罚项 Ω 和标准目标函数 $J(X;\theta)$ 相对贡献的超参数将 α 设为 0 表示没有正则化。α 越大，对应正则化惩罚越大。</p>
+<h1 id="参数范数惩罚">参数范数惩罚</h1>
+<p>许多正则化方法通过对目标函数 J 添加一个参数范数惩罚
+Ω(θ)，限制模型（如神经网络、线性回归或逻辑回归）的学习能力。 <span
+class="math display">\[
+\tilde J(\theta ;X, y)=J(\theta;X,y)+\alpha \Omega(\theta)
+\]</span> 其中 <span class="math inline">\(\alpha \in [0,
++\infty]\)</span> 是权衡范数惩罚项 Ω 和标准目标函数 <span
+class="math inline">\(J(X;\theta)\)</span> 相对贡献的超参数将 α 设为 0
+表示没有正则化。α 越大，对应正则化惩罚越大。</p>
 <blockquote>
 <p>在神经网络中，参数包括每一层仿射变换的权重和偏置，我们通常只对<strong>权重</strong>做惩罚而不对偏置做正则惩罚。</p>
-<ul class="lvl-1">
-<li class="lvl-2">每个权重会指定两个变量如何相互作用。我们需要在各种条件下观察这两个变量才能良好地拟合权重。</li>
-<li class="lvl-2">而每个偏置仅控制一个单变量。这意味着，我们不对其进行正则化也不会导致太大的方差。</li>
+<ul>
+<li>每个权重会指定两个变量如何相互作用。我们需要在各种条件下观察这两个变量才能良好地拟合权重。</li>
+<li>而每个偏置仅控制一个单变量。这意味着，我们不对其进行正则化也不会导致太大的方差。</li>
 </ul>
-<p>另外，正则化偏置参数可能会导致明显的欠拟合。因此，我们使用向量 w 表示所有应受范数惩罚影响的权重，而向量 θ 表示所有参数 (包括 w 和无需正则化的参数)。</p>
+<p>另外，正则化偏置参数可能会导致明显的欠拟合。因此，我们使用向量 w
+表示所有应受范数惩罚影响的权重，而向量 θ 表示所有参数 (包括 w
+和无需正则化的参数)。</p>
 </blockquote>
-<p>在神经网络的情况下，有时希望对网络的每一层使用单独的惩罚，并分配不同的 α 系数。寻找合适的多个超参数的代价很大，因此为了减少搜索空间，我们会在所有层使用相同的权重衰减。</p>
-<h2 id="L-2-参数正则化">$L^2$ 参数正则化</h2>
-<p><strong>权重衰减（weight decay）</strong> 的 $L^2$ 参数范数惩罚，这个正则化策略通过向目标函数添加一个正则项 $\Omega(\theta)=\frac 12 ||w||^2$ 使得权重更加接近原点。同时 $L^2$ 也被称为岭回归或 Tikhonov 正则</p>
-<p>如果假定模型没有偏置参数，那么 $\theta$ 其实就是 $w$ ，所以目标函数应该是<br>
-$$<br>
-\tilde J(w;X,y)=\frac \alpha 2 w^T w + J(w; X, y)<br>
-$$<br>
-那么他的梯度应该是<br>
-$$<br>
-\nabla_w \tilde J(w;X,y)=\alpha w + \nabla_w J(w; X, y)<br>
-$$<br>
-使用单步梯度下降更新权重，即执行以下更新：<br>
-$$<br>
-w \gets w - \epsilon (\alpha w + \nabla_w J(w; X , y))=(1-\epsilon\alpha)w-\epsilon \nabla_w J(w;X,y)<br>
-$$<br>
-进一步地，令 $w^<em>$ 是不带正则化的最小训练误差权重向量，那么 $\hat J(\theta)$ 在 $w^</em>$ 处的一阶梯度应该是为0的，我们看他的二阶近似，有<br>
-$$<br>
-\hat J(\theta)=J(w^<em>) + \frac 12 (w-w<sup>*)</sup>T H (w-w^</em>)<br>
-$$<br>
-其中 H 是 J 在 $w^<em>$ 处的黑塞矩阵，当 $\hat J$ 取最小时，应该有 $\hat J$ 的梯度最小，那么<br>
-$$<br>
-\nabla_w \hat J(w)=H(w-w^</em>)<br>
-$$<br>
-为 0</p>
-<p>所以，此时添加正则项，由于加法法则，所以<br>
-$$<br>
-\alpha \tilde w + H(\tilde w - w^<em>)=0 \<br>
-(H+\alpha I)\tilde w=H w^</em> \<br>
-\tilde w = (H + \alpha I)^{-1} H w^*<br>
-$$<br>
-当 α 趋向于 0 时，正则化的解 $\tilde w$ 会趋向于 $w^<em>$​ ，下面再研究 $\alpha$ 增加时的特征，由于 H 是实对称的，于是可以对其进行对角化分解，于是有<br>
-$$<br>
-\begin{aligned}<br>
-\tilde w &amp;= (Q \Lambda Q^T + \alpha I)^{-1}Q \Lambda Q^T w^</em> \<br>
-&amp;=[Q(\Lambda + \alpha I)Q<sup>T]</sup>{-1}Q\Lambda Q^T w^* \<br>
-&amp;=Q(\Lambda + \alpha I)^{-1}\Lambda Q^T w^*<br>
-\end{aligned}<br>
-$$<br>
-我们可以看到权重衰减的效果是沿着由 H 的特征向量所定义的轴缩放 $w^*$​</p>
+<p>在神经网络的情况下，有时希望对网络的每一层使用单独的惩罚，并分配不同的
+α
+系数。寻找合适的多个超参数的代价很大，因此为了减少搜索空间，我们会在所有层使用相同的权重衰减。</p>
+<h2 id="l2-参数正则化"><span class="math inline">\(L^2\)</span>
+参数正则化</h2>
+<p><strong>权重衰减（weight decay）</strong> 的 <span
+class="math inline">\(L^2\)</span>
+参数范数惩罚，这个正则化策略通过向目标函数添加一个正则项 <span
+class="math inline">\(\Omega(\theta)=\frac 12 ||w||^2\)</span>
+使得权重更加接近原点。同时 <span class="math inline">\(L^2\)</span>
+也被称为岭回归或 Tikhonov 正则</p>
+<p>如果假定模型没有偏置参数，那么 <span
+class="math inline">\(\theta\)</span> 其实就是 <span
+class="math inline">\(w\)</span> ，所以目标函数应该是 <span
+class="math display">\[
+\tilde J(w;X,y)=\frac \alpha 2 w^T w + J(w; X, y)
+\]</span> 那么他的梯度应该是 <span class="math display">\[
+\nabla_w \tilde J(w;X,y)=\alpha w + \nabla_w J(w; X, y)
+\]</span> 使用单步梯度下降更新权重，即执行以下更新： <span
+class="math display">\[
+w \gets w - \epsilon (\alpha w + \nabla_w J(w; X ,
+y))=(1-\epsilon\alpha)w-\epsilon \nabla_w J(w;X,y)
+\]</span> 进一步地，令 <span class="math inline">\(w^*\)</span>
+是不带正则化的最小训练误差权重向量，那么 <span
+class="math inline">\(\hat J(\theta)\)</span> 在 <span
+class="math inline">\(w^*\)</span>
+处的一阶梯度应该是为0的，我们看他的二阶近似，有 <span
+class="math display">\[
+\hat J(\theta)=J(w^*) + \frac 12 (w-w^*)^T H (w-w^*)
+\]</span> 其中 H 是 J 在 <span class="math inline">\(w^*\)</span>
+处的黑塞矩阵，当 <span class="math inline">\(\hat J\)</span>
+取最小时，应该有 <span class="math inline">\(\hat J\)</span>
+的梯度最小，那么 <span class="math display">\[
+\nabla_w \hat J(w)=H(w-w^*)
+\]</span> 为 0</p>
+<p>所以，此时添加正则项，由于加法法则，所以 <span
+class="math display">\[
+\alpha \tilde w + H(\tilde w - w^*)=0 \\
+(H+\alpha I)\tilde w=H w^* \\
+\tilde w = (H + \alpha I)^{-1} H w^*
+\]</span> 当 α 趋向于 0 时，正则化的解 <span
+class="math inline">\(\tilde w\)</span> 会趋向于 <span
+class="math inline">\(w^*\)</span>​ ，下面再研究 <span
+class="math inline">\(\alpha\)</span> 增加时的特征，由于 H
+是实对称的，于是可以对其进行对角化分解，于是有 <span
+class="math display">\[
+\begin{aligned}
+\tilde w &amp;= (Q \Lambda Q^T + \alpha I)^{-1}Q \Lambda Q^T w^* \\
+&amp;=[Q(\Lambda + \alpha I)Q^T]^{-1}Q\Lambda Q^T w^* \\
+&amp;=Q(\Lambda + \alpha I)^{-1}\Lambda Q^T w^*
+\end{aligned}
+\]</span> 我们可以看到权重衰减的效果是沿着由 H 的特征向量所定义的轴缩放
+<span class="math inline">\(w^*\)</span>​</p>
 <blockquote>
-<p>具体来说，我们会根据 $\frac {\lambda_i}{\lambda_i + \alpha}$ 因子缩放与 H 第 i 个特征向量对其的 $w^*$​ 的分量</p>
-<p>沿着 H 特征值较大的方向 (如 λi ≫ α)正则化的影响较小。而 λi ≪ α 的分量将会收缩到几乎为零。</p>
+<p>具体来说，我们会根据 <span class="math inline">\(\frac
+{\lambda_i}{\lambda_i + \alpha}\)</span> 因子缩放与 H 第 i
+个特征向量对其的 <span class="math inline">\(w^*\)</span>​ 的分量</p>
+<p>沿着 H 特征值较大的方向 (如 λi ≫ α)正则化的影响较小。而 λi ≪ α
+的分量将会收缩到几乎为零。</p>
 </blockquote>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171131908.png" alt="image-20240517113113857" style="zoom:67%;" />
-<p>实线椭圆表示没有正则化目标的等值线。虚线圆圈表示 $L^2$ 正则化项的等值线。在 $\tilde w$ 点，这两个竞争目标达到平衡。目标函数 J 的 Hessian 的第一维特征值很小。当从 $w^*$​ 水平移动时，目标函数不会增加得太多。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171131908.png" alt="image-20240517113113857" style="zoom:67%;" /></p>
+<p>实线椭圆表示没有正则化目标的等值线。虚线圆圈表示 <span
+class="math inline">\(L^2\)</span> 正则化项的等值线。在 <span
+class="math inline">\(\tilde w\)</span>
+点，这两个竞争目标达到平衡。目标函数 J 的 Hessian
+的第一维特征值很小。当从 <span class="math inline">\(w^*\)</span>​
+水平移动时，目标函数不会增加得太多。</p>
 <p>简单来说，曲率大的地方说明黑塞阵的特征值是大的，所以在该区域移动会导致较大的变化，而如图中的等高线圆，在水平方向的特征值并不大，所以能够在水平移动较大距离</p>
-<h2 id="L-1-参数正则化">$L^1$ 参数正则化</h2>
-<p>形式地，对模型参数 w 的 $L^1$ 正则化被定义为：<br>
-$$<br>
-\Omega(\theta)=||w||_1=\sum_i |w_i|<br>
-$$<br>
-即各个参数的绝对值之和</p>
-<p>其正则化的目标函数 $\tilde J(w;X,y)$ 如下所示：<br>
-$$<br>
-\tilde J(w; X, y) = \alpha ||w||_1 + J(w; X , y)<br>
-$$<br>
-对应的梯度为<br>
-$$<br>
-\nabla_w \tilde J(w;X,y)=\alpha \mathrm{sign}(w) + \nabla_w J(w;X,y)<br>
-$$<br>
-可以看到正则化对梯度的影响不再是线性地缩放每个 wi；而是添加了一项与sign(wi) 同号的常数。使用这种形式的梯度之后，我们不一定能得到 $J(X,y;w)$ 二次近似的直接算术解</p>
-<p>同理于 $L^2$ 正则，有<br>
-$$<br>
-\nabla_w \hat J(w) = H(w - w*)<br>
-$$<br>
-同样，H 是 J 在 $w^*$ 处的 Hessian 矩阵（关于 $w$ )，同样的</p>
-<p>由于 $L^1$ 惩罚项在完全一般化的黑塞阵情况下，无法得到清晰的代数表达式，所以假设其是对角的**（对数据进行处理，去除相关性）**，即 $H = \mathrm{diag}([H_{1,1}, \cdots, H_{n,n}])$ ，其中 $H_{i,i} &gt; 0$ ，那么可以将 $L^1$ 正则化目标函数的二次近似分解成关于参数的求和：<br>
-$$<br>
-\hat J(w; X, y) = J(w^<em>;X, y) + \sum_i[\frac12 H_{i,i}(w_i - w_i<sup>*)</sup>2 + \alpha|w_i|]<br>
-$$<br>
-所以有解析解能够使得最小化这个近似代价函数<br>
-$$<br>
-w_i = \mathrm {sign}(w_i^</em>)\max {|w_i^<em>| - \frac\alpha {H_{i,i}},0}<br>
-$$<br>
-对每个 i, 考虑 $w_i^</em>&gt;0$ 的情形，会有两种可能结果：</p>
-<ol>
-<li class="lvl-3">
-<p>$w_i^* \le \frac \alpha {H_{i,i}}$ ：最优解是 $w_i = 0$</p>
-</li>
-<li class="lvl-3">
-<p>$w_i^* &gt; \frac \alpha {H_{i,i}}$：这种情况下，正则化不会将 $w_i$ 的最优值推至0，而仅仅在那个方向上移动 $\frac \alpha {H_{i,i}}$ 的距离</p>
-</li>
+<h2 id="l1-参数正则化"><span class="math inline">\(L^1\)</span>
+参数正则化</h2>
+<p>形式地，对模型参数 w 的 <span class="math inline">\(L^1\)</span>
+正则化被定义为： <span class="math display">\[
+\Omega(\theta)=||w||_1=\sum_i |w_i|
+\]</span> 即各个参数的绝对值之和</p>
+<p>其正则化的目标函数 <span class="math inline">\(\tilde
+J(w;X,y)\)</span> 如下所示： <span class="math display">\[
+\tilde J(w; X, y) = \alpha ||w||_1 + J(w; X , y)
+\]</span> 对应的梯度为 <span class="math display">\[
+\nabla_w \tilde J(w;X,y)=\alpha \mathrm{sign}(w) + \nabla_w J(w;X,y)
+\]</span> 可以看到正则化对梯度的影响不再是线性地缩放每个
+wi；而是添加了一项与sign(wi)
+同号的常数。使用这种形式的梯度之后，我们不一定能得到 <span
+class="math inline">\(J(X,y;w)\)</span> 二次近似的直接算术解</p>
+<p>同理于 <span class="math inline">\(L^2\)</span> 正则，有 <span
+class="math display">\[
+\nabla_w \hat J(w) = H(w - w*)
+\]</span> 同样，H 是 J 在 <span class="math inline">\(w^*\)</span> 处的
+Hessian 矩阵（关于 <span class="math inline">\(w\)</span> )，同样的</p>
+<p>由于 <span class="math inline">\(L^1\)</span>
+惩罚项在完全一般化的黑塞阵情况下，无法得到清晰的代数表达式，所以假设其是对角的<strong>（对数据进行处理，去除相关性）</strong>，即
+<span class="math inline">\(H = \mathrm{diag}([H_{1,1}, \cdots,
+H_{n,n}])\)</span> ，其中 <span class="math inline">\(H_{i,i} &gt;
+0\)</span> ，那么可以将 <span class="math inline">\(L^1\)</span>
+正则化目标函数的二次近似分解成关于参数的求和： <span
+class="math display">\[
+\hat J(w; X, y) = J(w^*;X, y) + \sum_i[\frac12 H_{i,i}(w_i - w_i^*)^2 +
+\alpha|w_i|]
+\]</span> 所以有解析解能够使得最小化这个近似代价函数 <span
+class="math display">\[
+w_i = \mathrm {sign}(w_i^*)\max \{|w_i^*| - \frac\alpha {H_{i,i}},0\}
+\]</span> 对每个 i, 考虑 <span class="math inline">\(w_i^*&gt;0\)</span>
+的情形，会有两种可能结果：</p>
+<ol type="1">
+<li><span class="math inline">\(w_i^* \le \frac \alpha
+{H_{i,i}}\)</span> ：最优解是 <span class="math inline">\(w_i =
+0\)</span></li>
+<li><span class="math inline">\(w_i^* &gt; \frac \alpha
+{H_{i,i}}\)</span>：这种情况下，正则化不会将 <span
+class="math inline">\(w_i\)</span> 的最优值推至0，而仅仅在那个方向上移动
+<span class="math inline">\(\frac \alpha {H_{i,i}}\)</span> 的距离</li>
 </ol>
-<p>由 L 1正则化导出的稀疏性质已经被广泛地用于 **特征选择（feature selection）**机制。特征选择从可用的特征子集选择出有意义的特征，化简机器学习问题。著名的LASSO 模型将 L 1 惩罚和线性模型结合，并使用最小二乘代价函数。L 1 惩罚使部分子集的权重为零，表明相应的特征可以被安全地忽略。</p>
-<h1>作为约束的范数惩罚</h1>
+<p>由 L 1正则化导出的稀疏性质已经被广泛地用于 <strong>特征选择（feature
+selection）</strong>机制。特征选择从可用的特征子集选择出有意义的特征，化简机器学习问题。著名的LASSO
+模型将 L 1 惩罚和线性模型结合，并使用最小二乘代价函数。L 1
+惩罚使部分子集的权重为零，表明相应的特征可以被安全地忽略。</p>
+<h1 id="作为约束的范数惩罚">作为约束的范数惩罚</h1>
 <p>其实就是引入了最优化方法里的一些技巧（KKT条件对之类）</p>
-<p>首先考虑对惩罚项施加约束条件<br>
-$$<br>
-\Omega(\theta) &lt; k<br>
-$$<br>
-于是构建广义拉格朗日函数<br>
-$$<br>
-\mathcal L(\theta,\alpha;X,y)=J(\theta;X,y) + \alpha(\Omega(\theta) - k)<br>
-$$<br>
-则最优的参数为：<br>
-$$<br>
-\theta^* = \arg \min_\theta \max_{\alpha, \alpha\ge 0}\mathcal L(\theta,\alpha)<br>
-$$<br>
-如果 Ω 是 L 2 范数，那么权重就是被约束在一个 L 2 球中。</p>
-<p>如果 Ω 是 L 1 范数，那么权重就是被约束在一个 L 1 范数限制的区域中。</p>
+<p>首先考虑对惩罚项施加约束条件 <span class="math display">\[
+\Omega(\theta) &lt; k
+\]</span> 于是构建广义拉格朗日函数 <span class="math display">\[
+\mathcal L(\theta,\alpha;X,y)=J(\theta;X,y) + \alpha(\Omega(\theta) - k)
+\]</span> 则最优的参数为： <span class="math display">\[
+\theta^* = \arg \min_\theta \max_{\alpha, \alpha\ge 0}\mathcal
+L(\theta,\alpha)
+\]</span> 如果 Ω 是 L 2 范数，那么权重就是被约束在一个 L 2 球中。</p>
+<p>如果 Ω 是 L 1 范数，那么权重就是被约束在一个 L 1
+范数限制的区域中。</p>
 <p>有时候，我们希望使用显式的限制，而不是惩罚。</p>
 <p>显式约束的好处：</p>
-<ol>
-<li class="lvl-3">
-<p>可以先计算J的梯度，再去考虑满足约束的最近的θ。</p>
-</li>
-<li class="lvl-3">
-<p>惩罚项可能导致目标函数非凸，非凸就会导致陷入局部最优的可能性。</p>
-</li>
-<li class="lvl-3">
-<p>增加一定的稳定性。</p>
-</li>
+<ol type="1">
+<li>可以先计算J的梯度，再去考虑满足约束的最近的θ。</li>
+<li>惩罚项可能导致目标函数非凸，非凸就会导致陷入局部最优的可能性。</li>
+<li>增加一定的稳定性。</li>
 </ol>
-<h1>正则化和欠约束问题</h1>
-<p>机器学习中的大多数模型，都依赖于对矩阵 $X^T X$ 求逆，只要其奇异，这些方法、模型就会失效</p>
-<p>但是正则化的许多形式对应求逆 $X^T X + \alpha I$ ，这个正则化矩阵是可以保证可逆的</p>
-<h1>数据集增强</h1>
+<h1 id="正则化和欠约束问题">正则化和欠约束问题</h1>
+<p>机器学习中的大多数模型，都依赖于对矩阵 <span
+class="math inline">\(X^T X\)</span>
+求逆，只要其奇异，这些方法、模型就会失效</p>
+<p>但是正则化的许多形式对应求逆 <span class="math inline">\(X^T X +
+\alpha I\)</span> ，这个正则化矩阵是可以保证可逆的</p>
+<h1 id="数据集增强">数据集增强</h1>
 <p>让机器学习模型泛化得更好的最好办法是使用更多的数据进行训练。解决这个问题的一种方法是创建假数据并添加到训练集中。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>对于图像，可以进行图像的<strong>平移/旋转/缩放/翻转/改变光照</strong>等变化。但是不能改变标记。（6不能旋转成9，b不能镜像到d）</p>
-</li>
-<li class="lvl-2">
-<p>语音识别任务也可以进行数据集增强。</p>
-</li>
-<li class="lvl-2">
-<p>数据增强的另一种方式是在<strong>输入层注入噪声</strong>(比如去噪自编码器)。也可以在隐藏单元注入噪声（抽象层的数据集增强）</p>
-</li>
+<ul>
+<li><p>对于图像，可以进行图像的<strong>平移/旋转/缩放/翻转/改变光照</strong>等变化。但是不能改变标记。（6不能旋转成9，b不能镜像到d）</p></li>
+<li><p>语音识别任务也可以进行数据集增强。</p></li>
+<li><p>数据增强的另一种方式是在<strong>输入层注入噪声</strong>(比如去噪自编码器)。也可以在隐藏单元注入噪声（抽象层的数据集增强）</p></li>
 </ul>
-<h1>噪声鲁棒性</h1>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>在输入层（隐层）注入噪声 = 数据增强</p>
-</li>
-<li class="lvl-2">
-<p>在隐层注入噪声 → dropout</p>
-</li>
-<li class="lvl-2">
-<p>在权重（参数）中注入噪声，应用在循环神经网络，表示权重的不确定性 = 关于权重的贝叶斯推断的随机实现</p>
-</li>
-<li class="lvl-2">
-<p>在输出中注入噪声，对标签中的错误（噪声）显式建模，<strong>标签平滑</strong>。</p>
-</li>
+<h1 id="噪声鲁棒性">噪声鲁棒性</h1>
+<ul>
+<li>在输入层（隐层）注入噪声 = 数据增强</li>
+<li>在隐层注入噪声 → dropout</li>
+<li>在权重（参数）中注入噪声，应用在循环神经网络，表示权重的不确定性 =
+关于权重的贝叶斯推断的随机实现</li>
+<li>在输出中注入噪声，对标签中的错误（噪声）显式建模，<strong>标签平滑</strong>。</li>
 </ul>
-<h1>半监督学习</h1>
-<p>在半监督学习的框架下，P(x) 产生的未标记样本和 P(x, y) 中的标记样本都用于估计 P(y | x) 或者根据 x 预测 y</p>
-<p>在深度学习的背景下，半监督学习通常指的是学习一个表示 h = f(x)。学习表示的目的是使相同类中的样本有类似的表示。</p>
-<p>我们可以构建这样一个模型，其中生成模型 P(x) 或 P(x, y) 与判别模型 P(y | x) 共享参数，而不用分离无监督和监督部分。</p>
-<h1>多任务学习</h1>
+<h1 id="半监督学习">半监督学习</h1>
+<p>在半监督学习的框架下，P(x) 产生的未标记样本和 P(x, y)
+中的标记样本都用于估计 P(y | x) 或者根据 x 预测 y</p>
+<p>在深度学习的背景下，半监督学习通常指的是学习一个表示 h =
+f(x)。学习表示的目的是使相同类中的样本有类似的表示。</p>
+<p>我们可以构建这样一个模型，其中生成模型 P(x) 或 P(x, y) 与判别模型 P(y
+| x) 共享参数，而不用分离无监督和监督部分。</p>
+<h1 id="多任务学习">多任务学习</h1>
 <p>将多个<strong>相关</strong>的任务放到一起学习，合并多个任务中的样例。可以视为对参数施加了软约束（因为共享给其他任务），同时合并多任务的样例从而增加了数据量（样本数量与样本间的相关信息）。</p>
 <p>该模型通常可以分为两类相关的参数：</p>
-<ol>
-<li class="lvl-3">
-<p>具体任务的参数（只能从各自任务的样本中实现良好的泛化）。如图上层</p>
-</li>
-<li class="lvl-3">
-<p>所有任务共享的通用参数（从所有任务的汇集数据中获益）。如图下层</p>
-</li>
+<ol type="1">
+<li>具体任务的参数（只能从各自任务的样本中实现良好的泛化）。如图上层</li>
+<li>所有任务共享的通用参数（从所有任务的汇集数据中获益）。如图下层</li>
 </ol>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171620309.png" alt="image-20240517162029233" style="zoom:67%;" />
-<h1>提前终止</h1>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171620309.png" alt="image-20240517162029233" style="zoom:67%;" /></p>
+<h1 id="提前终止">提前终止</h1>
 <p>由于过拟合会在某一参数节点后，损失不断上升，所以我们为了避免这种情况，当每次<strong>验证集误差有所改善时</strong>我们存储模型参数的副本，当训练算法终止时，返回这些参数而不是最新的参数。</p>
 <p>当验证集上的误差在事先指定的循环次数内没有进一步改善时，算法就会终止。</p>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171624943.png" alt="image-20240517162435854"></p>
+<figure>
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171624943.png"
+alt="image-20240517162435854" />
+<figcaption aria-hidden="true">image-20240517162435854</figcaption>
+</figure>
 <p>提前终止是一种非常不显眼的正则化形式，它几乎不需要改变基本训练过程、目标函数或一组允许的参数值。这意味着，无需破坏学习动态就能很容易地使用提前终止。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>提前终止可单独使用或与其他的正则化策略结合使用。</p>
-</li>
-<li class="lvl-2">
-<p>提前终止需要验证集。为了更好地利用这一额外的数据，我们可以在完成提前终止的首次训练之后，进行额外的训练。有两个基本的策略都可以用于第二轮训练过程。</p>
-<ul class="lvl-2">
-<li class="lvl-6">再次初始化模型，然后使用所有数据再次训练：我们使用第一轮提前终止训练确定的最佳步数。</li>
-<li class="lvl-6">保持从第一轮训练获得的参数，然后使用全部的数据<strong>继续</strong>训练。这里因为验证集被拿来训练，所以观察平均损失函数，继续训练到低于提前终止时的目标值</li>
+<ul>
+<li>提前终止可单独使用或与其他的正则化策略结合使用。</li>
+<li>提前终止需要验证集。为了更好地利用这一额外的数据，我们可以在完成提前终止的首次训练之后，进行额外的训练。有两个基本的策略都可以用于第二轮训练过程。
+<ul>
+<li>再次初始化模型，然后使用所有数据再次训练：我们使用第一轮提前终止训练确定的最佳步数。</li>
+<li>保持从第一轮训练获得的参数，然后使用全部的数据<strong>继续</strong>训练。这里因为验证集被拿来训练，所以观察平均损失函数，继续训练到低于提前终止时的目标值</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171628055.png" alt="image-20240517162817980" style="zoom:80%;" />
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171628143.png" alt="image-20240517162829065" style="zoom:80%;" />
-<h1>参数绑定和参数共享</h1>
-<p>我们经常想要表达的一种常见依赖是某些参数应当彼此接近。考虑以下情形：我们有两个模型执行相同的分类任务（具有相同类别），但输入分布稍有不同。形式地，我们有参数为 $w^{(A)}$ 的 A 模型和参数为 $w^{(B)}$ 的 B 模型，将这两种模型输入映射到两个不同但相关的输出：$\hat y<sup>{(A)}=f(w</sup>{(A)},x)$ 和 $\hat y<sup>{(B)}=f(w</sup>{(B)},x)$</p>
-<p>这些任务会足够相似（或许具有相似的输入和输出分布），因此我们认为模型参数应彼此靠近。我们可以通过正则化利用此信息。使用如下形式的参数范数惩罚 $\Omega(w<sup>{(A)},w</sup>{(B)})=||w<sup>{(A)}-w</sup>{(A)}||_2^2$​ (也可以使用其他范数或者惩罚项)</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171628055.png" alt="image-20240517162817980" style="zoom:80%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405171628143.png" alt="image-20240517162829065" style="zoom:80%;" /></p>
+<h1 id="参数绑定和参数共享">参数绑定和参数共享</h1>
+<p>我们经常想要表达的一种常见依赖是某些参数应当彼此接近。考虑以下情形：我们有两个模型执行相同的分类任务（具有相同类别），但输入分布稍有不同。形式地，我们有参数为
+<span class="math inline">\(w^{(A)}\)</span> 的 A 模型和参数为 <span
+class="math inline">\(w^{(B)}\)</span> 的 B
+模型，将这两种模型输入映射到两个不同但相关的输出：<span
+class="math inline">\(\hat y^{(A)}=f(w^{(A)},x)\)</span> 和 <span
+class="math inline">\(\hat y^{(B)}=f(w^{(B)},x)\)</span></p>
+<p>这些任务会足够相似（或许具有相似的输入和输出分布），因此我们认为模型参数应彼此靠近。我们可以通过正则化利用此信息。使用如下形式的参数范数惩罚
+<span
+class="math inline">\(\Omega(w^{(A)},w^{(B)})=||w^{(A)}-w^{(A)}||_2^2\)</span>​
+(也可以使用其他范数或者惩罚项)</p>
 <p>参数范数惩罚是正则化参数使其彼此接近的一种方式，而更流行的方法是使用约束：强迫某些参数相等。</p>
-<p>由于我们将各种模型或模型组件解释为共享唯一的一组参数，这种正则化方法通常被称为 <strong>参数共享（parameter sharing）</strong>。好处是可以减少内存，减少训练开支。主要用于卷积神经网络。</p>
-<h1>稀疏表示</h1>
+<p>由于我们将各种模型或模型组件解释为共享唯一的一组参数，这种正则化方法通常被称为
+<strong>参数共享（parameter
+sharing）</strong>。好处是可以减少内存，减少训练开支。主要用于卷积神经网络。</p>
+<h1 id="稀疏表示">稀疏表示</h1>
 <p>之前说的加上惩罚项是直接惩罚模型的参数，另一种办法是惩罚神经网络中的激活函数单元，稀疏化激活单元。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181104497.png" alt="image-20240518110409352" style="zoom: 67%;" />
-<p>第一个表达式是参数稀疏的线性回归模型的例子。第二个表达式是数据 x 具有稀疏表示 h 的线性回归。也就是说，h 是 x 的一个函数，在某种意义上表示存在于 x 中的信息，但只是用一个稀疏向量表示。</p>
-<p>表示的正则化可以使用参数正则化中同种类型的机制实现。<br>
-$$<br>
-\tilde J(\theta;X,y)=J(\theta;X,y) + \alpha\Omega(h)<br>
-$$<br>
-此外，还有一些其他方法通过激活值的硬性约束来获得表示稀疏。例如，<strong>正交匹配追踪（orthogonal matching pursuit）</strong> 通过解决以下约束化问题将输入值 x 编码成表示 h<br>
-$$<br>
-\arg \min_{h,||h_0|| &lt; k} ||x - Wh||^2<br>
-$$<br>
-其中 $||h_0||$ 表示 h 中非零项的个数。当 W 被约束为正交时，我们可以高效地解决这个问题。</p>
-<h1>Bagging 和其他集成方法</h1>
-<p>**Bagging（bootstrap aggregating）**是通过结合几个模型降低泛化误差的技术。主要想法是分别训练几个不同的模型，然后让所有模型表决测试样例的输出。这是机器学习中常规策略的一个例子，被称为 <strong>模型平均（model averaging）</strong>。采用这种策略的技术被称为集成方法。</p>
-<p>**模型平均（model averaging）**奏效的原因是不同的模型通常不会在测试集上产生完全相同的误差。</p>
-<p>假设我们有 k 个回归模型。假设每个模型在每个例子上的误差是 ϵi，这个误差服从零均值方差为 $\mathbb E[\epsilon_i^2]=v$ 且协方差为 $\mathbb E[\epsilon_i \epsilon_j]=c$ 的多维正态分布，通过所有集成模型的平均预测所得误差是 $\frac 1k \sum_i \epsilon_i$ ，所以集成预测器平方误差的期望是<br>
-$$<br>
-\mathbb E[(\frac 1k \sum_i \epsilon_i)^2] = \frac 1{k^2}\mathbb E[\sum_i(\epsilon_i^2 + \sum_{j\neq i}\epsilon_i \epsilon_j)]=\frac 1k v + \frac {k-1}k c<br>
-$$<br>
-在误差完全相关即 c = v 的情况下，均方误差减少到 v，所以模型平均没有任何帮助。在错误完全不相关即 c = 0 的情况下，该集成平方误差的期望仅为 $\frac 1k v$。这意味着集成平方误差的期望会随着集成规模增大而线性减小。换言之，平均上，集成至少与它的任何成员表现得一样好，并且如果成员的误差是独立的，集成将显著地比其成员表现得更好。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181104497.png" alt="image-20240518110409352" style="zoom: 67%;" /></p>
+<p>第一个表达式是参数稀疏的线性回归模型的例子。第二个表达式是数据 x
+具有稀疏表示 h 的线性回归。也就是说，h 是 x
+的一个函数，在某种意义上表示存在于 x
+中的信息，但只是用一个稀疏向量表示。</p>
+<p>表示的正则化可以使用参数正则化中同种类型的机制实现。 <span
+class="math display">\[
+\tilde J(\theta;X,y)=J(\theta;X,y) + \alpha\Omega(h)
+\]</span>
+此外，还有一些其他方法通过激活值的硬性约束来获得表示稀疏。例如，<strong>正交匹配追踪（orthogonal
+matching pursuit）</strong> 通过解决以下约束化问题将输入值 x 编码成表示
+h <span class="math display">\[
+\arg \min_{h,||h_0|| &lt; k} ||x - Wh||^2
+\]</span> 其中 <span class="math inline">\(||h_0||\)</span> 表示 h
+中非零项的个数。当 W 被约束为正交时，我们可以高效地解决这个问题。</p>
+<h1 id="bagging-和其他集成方法">Bagging 和其他集成方法</h1>
+<p><strong>Bagging（bootstrap
+aggregating）</strong>是通过结合几个模型降低泛化误差的技术。主要想法是分别训练几个不同的模型，然后让所有模型表决测试样例的输出。这是机器学习中常规策略的一个例子，被称为
+<strong>模型平均（model
+averaging）</strong>。采用这种策略的技术被称为集成方法。</p>
+<p><strong>模型平均（model
+averaging）</strong>奏效的原因是不同的模型通常不会在测试集上产生完全相同的误差。</p>
+<p>假设我们有 k 个回归模型。假设每个模型在每个例子上的误差是
+ϵi，这个误差服从零均值方差为 <span class="math inline">\(\mathbb
+E[\epsilon_i^2]=v\)</span> 且协方差为 <span
+class="math inline">\(\mathbb E[\epsilon_i \epsilon_j]=c\)</span>
+的多维正态分布，通过所有集成模型的平均预测所得误差是 <span
+class="math inline">\(\frac 1k \sum_i \epsilon_i\)</span>
+，所以集成预测器平方误差的期望是 <span class="math display">\[
+\mathbb E[(\frac 1k \sum_i \epsilon_i)^2] = \frac 1{k^2}\mathbb
+E[\sum_i(\epsilon_i^2 + \sum_{j\neq i}\epsilon_i \epsilon_j)]=\frac 1k v
++ \frac {k-1}k c
+\]</span> 在误差完全相关即 c = v 的情况下，均方误差减少到
+v，所以模型平均没有任何帮助。在错误完全不相关即 c = 0
+的情况下，该集成平方误差的期望仅为 <span class="math inline">\(\frac 1k
+v\)</span>。这意味着集成平方误差的期望会随着集成规模增大而线性减小。换言之，平均上，集成至少与它的任何成员表现得一样好，并且如果成员的误差是独立的，集成将显著地比其成员表现得更好。</p>
 <p>ensemble方法可以是将完全不同的模型结合起来，而Bagging方法则是同一种模型和目标函数，但是产生k种不同的训练集，每个训练集与原训练集所含数据量相同，但会以某一概率去掉某些样本并以其他的重复样本代替，第i个模型就在第i个训练集上进行训练。例如下图中所示，我们想鉴别某个数字是否是8，原数据包含9，6和8，第一个重新取样的数据集中仅包含6和8，9倍替换掉，则模型1会学习到需要数字有上半圈才能为8，而第二个重新取样的数据集中去掉6，仅包含9和8，则模型2会学习到数字需有下半圈才能为8，将他们集合起来就可以比较准确的推测需要同时有上下半圈才鉴定数字为8。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181200927.png" alt="image-20240518120040837" style="zoom:67%;" />
-<h1>Dropout</h1>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181200927.png" alt="image-20240518120040837" style="zoom:67%;" /></p>
+<h1 id="dropout">Dropout</h1>
 <p>可以看作是一个深度神经网络<strong>内部</strong>的<strong>Bagging集成近似</strong>。</p>
-<p>Dropout可以看作在深度神经网络内部利用<strong>子网</strong>模拟集成。子网络是通过<strong>删除</strong>非输出单元实现的，删除可以通过乘0 <strong>系数</strong>简单实现。然后再将自网络集成起来，子网络都是来源于父网络的，权重共享。</p>
+<p>Dropout可以看作在深度神经网络内部利用<strong>子网</strong>模拟集成。子网络是通过<strong>删除</strong>非输出单元实现的，删除可以通过乘0
+<strong>系数</strong>简单实现。然后再将自网络集成起来，子网络都是来源于父网络的，权重共享。</p>
 <p>Dropout可以理解做是将ensemble应用到大型神经网络的一种更为实际有效的方法。由于ensemble需要训练多个模型，对于大型神经网络，其训练和评估所需时间和存储资源较大，这种方法常常不太实际，Dropout就提供了一个更便宜的解决方案：即通过随机去掉一些节点的方法训练多个子网络，并最终将这些子网络ensemble起来，如下图所示：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181308909.png" alt="image-20240518130859819" style="zoom:67%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181308909.png" alt="image-20240518130859819" style="zoom:67%;" /></p>
 <blockquote>
-<p>Dropout训练由所有子网络组成的集成，<strong>其中子网络通过从基本网络中删除非输出单元构建</strong>。我们从具有两个可见单元和两个隐藏单元的基本网络开始。这四个单元有十六个可能的子集。 右图展示了从原始网络中丢弃不同的单元子集而形成的所有十六个子网络。在这个小例子中，所得到的大部分网络没有输入单元或没有从输入连接到输出的路径。当层较宽时，丢弃所有从输入 到输出的可能路径的概率变小，所以这个问题不太可能在出现层较宽的网络中。</p>
+<p>Dropout训练由所有子网络组成的集成，<strong>其中子网络通过从基本网络中删除非输出单元构建</strong>。我们从具有两个可见单元和两个隐藏单元的基本网络开始。这四个单元有十六个可能的子集。
+右图展示了从原始网络中丢弃不同的单元子集而形成的所有十六个子网络。在这个小例子中，所得到的大部分网络没有输入单元或没有从输入连接到输出的路径。当层较宽时，丢弃所有从输入
+到输出的可能路径的概率变小，所以这个问题不太可能在出现层较宽的网络中。</p>
 </blockquote>
-<p>其具体方法是当我们利用minibatch的算法如随机梯度下降算法来学习时，我们可以随机的选取一个binary mask(0表示节点输出为零，1表示正常输出该节点）决定哪些输入和隐藏层节点保留，每次的mask的选择是独立的。而mask为1的概率是我们可以调控的超参数。</p>
+<p>其具体方法是当我们利用minibatch的算法如随机梯度下降算法来学习时，我们可以随机的选取一个binary
+mask(0表示节点输出为零，1表示正常输出该节点）决定哪些输入和隐藏层节点保留，每次的mask的选择是独立的。而mask为1的概率是我们可以调控的超参数。</p>
 <p><font color=#00ffff>和bagging方法相比，bagging中每个模型是完全独立的，而dropout中，模型间由于继承了父网络中的参数的子集会共享一些参数，这使得在有限的存储空间中我们可以表示多个模型。</font></p>
-<p>以上是训练过程，而在做inference预测时，我们需要取所有模型的预测的均值，但是这往往计算量过多，Hinton提出inference时我们实际可以只用一个模型但其中每个节点的权重需要乘以包含这个节点的概率，这种方法称作 <strong>权重比例推断规则（weight scaling inference rule）</strong>。实际中，我们常常把weight scaling过程放在训练过程中，即训练中每个节点输出就乘以包含该节点的概率的倒数，则inference时只需要正常的通过一遍前馈过程即可，不需要在进行weight scaling。</p>
-<h1>对抗训练</h1>
-<p>Adversarial Training对抗训练很有意思，它让人们深入思考机器学习究竟学到了什么有效信息。这方面的工作主要是由谷歌的Szegedy和本书作者Ian Goodfellow进行的。他们可以制造一些对抗样本迷惑神经网络，如下图中所示，他们对于熊猫图片加了一些人眼不可见的干扰，形成新样本，而新的人眼仍可鉴定为熊猫的图片却会被机器以较大置信率鉴定为长臂猿。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181320130.png" alt="image-20240518132006038" style="zoom:67%;" />
+<p>以上是训练过程，而在做inference预测时，我们需要取所有模型的预测的均值，但是这往往计算量过多，Hinton提出inference时我们实际可以只用一个模型但其中每个节点的权重需要乘以包含这个节点的概率，这种方法称作
+<strong>权重比例推断规则（weight scaling inference
+rule）</strong>。实际中，我们常常把weight
+scaling过程放在训练过程中，即训练中每个节点输出就乘以包含该节点的概率的倒数，则inference时只需要正常的通过一遍前馈过程即可，不需要在进行weight
+scaling。</p>
+<h1 id="对抗训练">对抗训练</h1>
+<p>Adversarial
+Training对抗训练很有意思，它让人们深入思考机器学习究竟学到了什么有效信息。这方面的工作主要是由谷歌的Szegedy和本书作者Ian
+Goodfellow进行的。他们可以制造一些对抗样本迷惑神经网络，如下图中所示，他们对于熊猫图片加了一些人眼不可见的干扰，形成新样本，而新的人眼仍可鉴定为熊猫的图片却会被机器以较大置信率鉴定为长臂猿。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405181320130.png" alt="image-20240518132006038" style="zoom:67%;" /></p>
 <blockquote>
 <p>在 ImageNet 上应用 GoogLeNet的对抗样本生成的演示。</p>
-<p>通过添加一个不可察觉的小向量（其中元素等于代价函数相对于输入的梯度元素的符号），我们可以改变GoogLeNet 对此图像的分类结果。</p>
+<p>通过添加一个不可察觉的小向量（其中元素等于代价函数相对于输入的梯度元素的符号），我们可以改变GoogLeNet
+对此图像的分类结果。</p>
 </blockquote>
 
     </div>
@@ -642,13 +697,13 @@ $$<br>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">95k</span>
+    <span title="站点总字数">99k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:53</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 

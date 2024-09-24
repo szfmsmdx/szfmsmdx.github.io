@@ -19,15 +19,13 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"szf.cool","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":12,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null,"count":true,"text":true},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="记录一下本地搭建 hexo 个人博客并部署到云服务器的过程。。。 本地环境是 win11 ，云服务器是 Ubuntu 22.04LTS 大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家 所以当然也可以用 GitHub.io 去进行部署，这是取决于各位的。。。">
+    <meta name="description" content="记录一下本地搭建 hexo 个人博客并部署到云服务器的过程。。。 本地环境是 win11 ，云服务器是 Ubuntu 22.04LTS 大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家 所以当然也可以用 GitHub.io 去进行部署，这是取决于各位的。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo本地博客+云服务器个人博客搭建">
 <meta property="og:url" content="http://szf.cool/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
 <meta property="og:site_name" content="Szf&#39;s blog ^ ^">
-<meta property="og:description" content="记录一下本地搭建 hexo 个人博客并部署到云服务器的过程。。。 本地环境是 win11 ，云服务器是 Ubuntu 22.04LTS 大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家 所以当然也可以用 GitHub.io 去进行部署，这是取决于各位的。。。">
+<meta property="og:description" content="记录一下本地搭建 hexo 个人博客并部署到云服务器的过程。。。 本地环境是 win11 ，云服务器是 Ubuntu 22.04LTS 大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家 所以当然也可以用 GitHub.io 去进行部署，这是取决于各位的。。。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251802510.png">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251800449.png">
 <meta property="article:published_time" content="2024-04-06T04:00:03.000Z">
 <meta property="article:modified_time" content="2024-04-27T16:43:26.435Z">
 <meta property="article:author" content="Szfmsmdx">
@@ -36,7 +34,6 @@
 <meta property="article:tag" content="nodejs">
 <meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251802510.png">
 
 
 <link rel="canonical" href="http://szf.cool/2024/04/06/hexo%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2+%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
@@ -146,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Node.js &amp;&amp; git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">1.1.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js"><span class="nav-number">1.2.</span> <span class="nav-text">Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm%E6%9B%B4%E6%8D%A2%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">npm更换淘宝镜像源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm%E6%9B%B4%E6%96%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">npm更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">配置 hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">将本地博客部署到云服务器中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">git 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 创建用户并设置密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%86%E9%85%8D%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 分配用户权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%9C%AC%E5%9C%B0%E5%88%9B%E5%BB%BA%E5%AF%86%E9%92%A5"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 本地创建密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. 配置公钥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">git 仓库配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-nginx"><span class="nav-number">3.3.</span> <span class="nav-text">配置 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E6%9C%AC%E5%9C%B0-hexo-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">更改本地 hexo 配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">域名配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%F0%9F%A4%A1%E7%9A%84Error%E8%AE%B0%E5%BD%95%E3%80%82%E3%80%82%E3%80%82"><span class="nav-number">4.1.</span> <span class="nav-text">一次🤡的Error记录。。。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">图床搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSS%E5%AD%98%E5%82%A8"><span class="nav-number">5.1.</span> <span class="nav-text">OSS存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PicGo%E9%85%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">PicGo配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typora%E9%85%8D%E7%BD%AE"><span class="nav-number">5.3.</span> <span class="nav-text">typora配置</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#node.js-git"><span class="nav-number">1.</span> <span class="nav-text">Node.js &amp;&amp; git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">1.1.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node.js"><span class="nav-number">1.2.</span> <span class="nav-text">Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm%E6%9B%B4%E6%8D%A2%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">npm更换淘宝镜像源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm%E6%9B%B4%E6%96%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">npm更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-hexo"><span class="nav-number">2.</span> <span class="nav-text">配置 hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%86%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD"><span class="nav-number">3.</span> <span class="nav-text">将本地博客部署到云服务器中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">git 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 创建用户并设置密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%85%8D%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 分配用户权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%88%9B%E5%BB%BA%E5%AF%86%E9%92%A5"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 本地创建密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. 配置公钥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">git 仓库配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-nginx"><span class="nav-number">3.3.</span> <span class="nav-text">配置 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E6%9C%AC%E5%9C%B0-hexo-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">更改本地 hexo 配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">域名配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%E7%9A%84error%E8%AE%B0%E5%BD%95"><span class="nav-number">4.1.</span> <span class="nav-text">一次🤡的Error记录。。。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA"><span class="nav-number">5.</span> <span class="nav-text">图床搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#oss%E5%AD%98%E5%82%A8"><span class="nav-number">5.1.</span> <span class="nav-text">OSS存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#picgo%E9%85%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">PicGo配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typora%E9%85%8D%E7%BD%AE"><span class="nav-number">5.3.</span> <span class="nav-text">typora配置</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -300,251 +297,227 @@
     
 
 
-    <div class="post-body" itemprop="articleBody"><p>记录一下本地搭建 <code>hexo</code> 个人博客并部署到云服务器的过程。。。<br>
-本地环境是 <code>win11</code> ，云服务器是 <code>Ubuntu 22.04LTS</code></p>
-<p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br>
-所以当然也可以用 <code>GitHub.io</code> 去进行部署，这是取决于各位的。。。</p>
+    <div class="post-body" itemprop="articleBody"><p>记录一下本地搭建 <code>hexo</code>
+个人博客并部署到云服务器的过程。。。<br />
+本地环境是 <code>win11</code> ，云服务器是
+<code>Ubuntu 22.04LTS</code></p>
+<p>大概的流程是本地写笔记，推送到云服务器然后部署，展示给大家<br />
+所以当然也可以用 <code>GitHub.io</code>
+去进行部署，这是取决于各位的。。。</p>
 <span id="more"></span>
-<h1>Node.js &amp;&amp; git</h1>
-<p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code> 安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直 next 安装即可。。。</p>
+<h1 id="node.js-git">Node.js &amp;&amp; git</h1>
+<p><code>Node.js</code> 和 <code>git</code> 是 <code>hexo</code>
+安装前的必备插件，所以要提前安装一下这两个，基本上，进官网直接下载一直
+next 安装即可。。。</p>
 <h2 id="git">git</h2>
-<p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git下载地址</a><br>
-可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code> 版本判断是否成功安装<br>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git下载地址</a><br />
+可以通过 cmd 命令 <code>git -v</code> 查看 <code>git</code>
+版本判断是否成功安装<br />
 按需下载即可</p>
-<h2 id="Node-js">Node.js</h2>
-<p><a target="_blank" rel="noopener" href="https://nodejs.cn/download/">Nodejs下载地址</a><br>
-同样按需下载，没有特殊要求无脑继续就可以了。。<br>
-可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code> 命令查看版本（查看是否成功安装了 node）<br>
-注意 <code>node</code> 自带 <code>npm</code> ,但是版本和下载路径可能不满足大家的需求</p>
+<h2 id="node.js">Node.js</h2>
+<p><a target="_blank" rel="noopener" href="https://nodejs.cn/download/">Nodejs下载地址</a><br />
+同样按需下载，没有特殊要求无脑继续就可以了。。<br />
+可以在 cmd 窗口中通过 <code>node -v</code> 和 <code>npm -v</code>
+命令查看版本（查看是否成功安装了 node）<br />
+注意 <code>node</code> 自带 <code>npm</code>
+,但是版本和下载路径可能不满足大家的需求</p>
 <h3 id="npm更换淘宝镜像源">npm更换淘宝镜像源</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#最新地址 淘宝 NPM 镜像站喊你切换新域名啦!</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前源</span></span><br><span class="line">npm config get registry </span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复官方源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
 <h3 id="npm更新">npm更新</h3>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br>
-这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure>
+<p><a
+target="_blank" rel="noopener" href="https://juejin.cn/post/7065534944101007391">搜索词条的第一个</a><br />
+这里通过 <code>n</code> 包对 <code>Nodejs</code> 进行管理
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">n lts <span class="comment"># 长期支持版本</span></span><br><span class="line">n latest <span class="comment"># 最新版本</span></span><br></pre></td></tr></table></figure></p>
 <p>其他命令就不展示了，善用搜索引擎 hh</p>
-<h1>配置 hexo</h1>
-<p>在命令行中输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h1 id="配置-hexo">配置 hexo</h1>
+<p>在命令行中输入<br />
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
 <p>找到你要写博客的父目录，比如你想将文件夹放在桌面就取到桌面的路径下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt; // folder为你的博客目录名字</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt; // 进入该目录</span><br><span class="line">npm install // 安装依赖</span><br></pre></td></tr></table></figure>
 <p>到此，本地博客就已经搭建完成了</p>
-<h1>将本地博客部署到云服务器中</h1>
-<p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd 下的ssh连接<br>
-貌似 win 下已经自带了 openssh 吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^</p>
+<h1 id="将本地博客部署到云服务器中">将本地博客部署到云服务器中</h1>
+<p>既然是部署到云服务器，当然需要 <code>ssh</code> 连接，我用的 cmd
+下的ssh连接<br />
+貌似 win 下已经自带了 openssh
+吧，我不太清楚hh，还请有心人自行检索搜索引擎 ^ ^</p>
 <h2 id="git-安装">git 安装</h2>
-<p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code> 所以就没有安装了。。<br>
-既然需要同步，那么自然不能每次都要登录 <code>git</code> ，所以要配置一下免密登录</p>
-<h3 id="1-创建用户并设置密码">1. 创建用户并设置密码</h3>
-<p>下面的 <code>username</code> 设置为你喜欢的用户名，并设置一个属于这个账户的密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
-<p>可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可 hh</p>
-<h3 id="2-分配用户权限">2. 分配用户权限</h3>
-<p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure>
-<h3 id="3-本地创建密钥">3. 本地创建密钥</h3>
-<p>！！！ 注意是在本地 <code>win11</code> 创建密钥，相当于身份证了，就可以实现免密登录了<br>
-在本机终端中输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>然后无脑回车，得到一个新的密钥一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:\Users\Administrator.ssh（不确定可以百度一下 hh）</p>
+<p>这里我用的阿里云的服务器，他们给的镜像里已经装有了 <code>git</code>
+所以就没有安装了。。<br />
+既然需要同步，那么自然不能每次都要登录 <code>git</code>
+，所以要配置一下免密登录</p>
+<h3 id="创建用户并设置密码">1. 创建用户并设置密码</h3>
+<p>下面的 <code>username</code>
+设置为你喜欢的用户名，并设置一个属于这个账户的密码 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser [username]</span><br><span class="line">passwd [username]</span><br></pre></td></tr></table></figure>
+可能不是这个顺序，但是注意看命令行给的提示，看心情补充额外信息吧，只要有用户名密码即可
+hh</p>
+<h3 id="分配用户权限">2. 分配用户权限</h3>
+<p>如果没有 wheel 组就先建立 wheel 组（没有的话直接添加会报错的）
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立 wheel 组</span></span><br><span class="line">addgroup wheel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加刚刚建立的用户到用户组</span></span><br><span class="line">usermod [username] -G wheel</span><br></pre></td></tr></table></figure></p>
+<h3 id="本地创建密钥">3. 本地创建密钥</h3>
+<p>！！！ 注意是在本地 <code>win11</code>
+创建密钥，相当于身份证了，就可以实现免密登录了<br />
+在本机终端中输入 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure> 然后无脑回车，得到一个新的密钥
+一般来说在你创建的时候命令行会提示你密钥文件的路径，windows电脑一般是C:.ssh（不确定可以百度一下
+hh）</p>
 <p>复制id_rsa.pub文件中的内容备用。</p>
-<h3 id="4-配置公钥">4. 配置公钥</h3>
-<p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure>
-<p>创建 <code>.ssh</code> 文件夹</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure>
-<p>利用 <code>vi</code> 或 <code>vim</code> 新建 <code>authorized_keys</code> 文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>将刚刚 <code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
+<h3 id="配置公钥">4. 配置公钥</h3>
+<p>回到服务器端，用 <code>su</code> 命令切到你创建的那个用户中
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - [username]</span><br></pre></td></tr></table></figure></p>
+<p>创建 <code>.ssh</code> 文件夹 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure></p>
+<p>利用 <code>vi</code> 或 <code>vim</code> 新建
+<code>authorized_keys</code> 文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim .ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">vi .ssh/authorized_keys</span><br></pre></td></tr></table></figure> 将刚刚
+<code>id_rsa.pub</code> 公钥中的内容，复制粘贴到文件里，保存退出。</p>
 <h2 id="git-仓库配置">git 仓库配置</h2>
-<p>退出用户登录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure>
-<p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code> 目录，并修改目录的所有权和用户权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /home/git/</span><br><span class="line"><span class="built_in">chown</span> -R [username]:[username] /home/git/   <span class="comment"># 是你刚刚创建的用户名</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/git/</span><br></pre></td></tr></table></figure>
-<p>进入目录，建立git仓库，修改权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/git/</span><br><span class="line">git init --bare blog.git</span><br><span class="line">chown [username]:[username] -R blog.git</span><br></pre></td></tr></table></figure>
-<p>新建钩子文件，但是要看你具体的 git 版本我的是 <code>post-update.xxx</code>（文件类型忘了，配置时忘了记录）<br>
-需要进入修改添加两行内容</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /home/git/blog.git/hooks/post (然后这里直接按 tab 补全补出来)</span><br></pre></td></tr></table></figure>
-<p>进入文件后添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
-<p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为 <code>post-update</code> 才能生效，具体问题具体分析吧，用 rm 命令重命名好了，然后<code>wq</code>保存退出</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm ./post- (tab 补全)  ./post-update</span><br></pre></td></tr></table></figure>
-<p>然后修改文件权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure>
+<p>退出用户登录 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">按照提示输入你的密码...</span></span><br></pre></td></tr></table></figure></p>
+<p>这时应该可以看到是 <code>root</code> 用户，创建 <code>git</code>
+目录，并修改目录的所有权和用户权限 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /home/git/</span><br><span class="line"><span class="built_in">chown</span> -R [username]:[username] /home/git/   <span class="comment"># 是你刚刚创建的用户名</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/git/</span><br></pre></td></tr></table></figure></p>
+<p>进入目录，建立git仓库，修改权限 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/git/</span><br><span class="line">git init --bare blog.git</span><br><span class="line">chown [username]:[username] -R blog.git</span><br></pre></td></tr></table></figure></p>
+<p>新建钩子文件，但是要看你具体的 git 版本 我的是
+<code>post-update.xxx</code>（文件类型忘了，配置时忘了记录）<br />
+需要进入修改添加两行内容 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /home/git/blog.git/hooks/post (然后这里直接按 tab 补全补出来)</span><br></pre></td></tr></table></figure></p>
+<p>进入文件后添加 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">git --work-tree=/home/blog --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure></p>
+<p>不着急退出，看一下上面的注释，我的文件里写着要修改文件名为
+<code>post-update</code> 才能生效，具体问题具体分析吧，用 rm
+命令重命名好了，然后<code>wq</code>保存退出<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm ./post- (tab 补全)  ./post-update</span><br></pre></td></tr></table></figure></p>
+<p>然后修改文件权限 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-update</span><br></pre></td></tr></table></figure></p>
 <h2 id="配置-nginx">配置 nginx</h2>
 <p>安装 <code>nginx</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apt-install nginx </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样可以查看版本判断是否安装成功</span></span><br><span class="line">nginx -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置开机启动</span></span><br><span class="line">systemctl enable nginx.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 nginx 状态</span></span><br><span class="line">systemctl status nginx.service</span><br></pre></td></tr></table></figure>
-<p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样 <code>/usr/local/nginx/conf/nginx.conf</code><br>
-我的安装位置是<code>/etc/nginx/nginx.conf</code><br>
-在网上我看到两种说法，一种修改 default一种修改 conf，但我个人觉得还是修改conf吧。。。<br>
-<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158678677">配置 conf 文件</a><br>
-<a target="_blank" rel="noopener" href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置 default 文件</a></p>
-<p>配置完重启下 <code>nginx</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure>
+<p>修改nginx的默认配置，其中cd后边就是刚刚查到的安装位置，每个人可能都不一样
+<code>/usr/local/nginx/conf/nginx.conf</code><br />
+我的安装位置是<code>/etc/nginx/nginx.conf</code><br />
+在网上我看到两种说法，一种修改 default一种修改
+conf，但我个人觉得还是修改conf吧。。。<br />
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158678677">配置 conf
+文件</a><br />
+<a
+target="_blank" rel="noopener" href="https://blog.captainz.cc/posts/hexo_nginx.html#%E9%85%8D%E7%BD%AE-Nginx-%E6%89%98%E7%AE%A1%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95">配置
+default 文件</a></p>
+<p>配置完重启下 <code>nginx</code> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx restart</span><br></pre></td></tr></table></figure></p>
 <h2 id="更改本地-hexo-配置文件">更改本地 hexo 配置文件</h2>
-<p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br>
-应该在最后的位置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@[公网ip]:[/home/git/blog.git]   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>在本地hexo博客根目录下，打开终端，部署</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>然后访问服务器的 IP 地址应该就可以看到 hexo 已经部署完成了。。。<br>
+<p>打开你<strong>本地</strong>的hexo博客所在文件里面的配置文件_config.yml<br />
+应该在最后的位置 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: [username]@[公网ip]:[/home/git/blog.git]   #用户名@服务器Ip:git仓库位置</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>在本地hexo博客根目录下，打开终端，部署<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<p>然后访问服务器的 IP 地址应该就可以看到 hexo
+已经部署完成了。。。<br />
 后续就是善用搜索引擎的过程了。。。</p>
-<h1>域名配置</h1>
-<p>但是目前访问博客的时候有个问题，就是网址栏一直有个不安全，这是由于通过http访问<br>
-我们需要将其改为 https 访问(https = http + ssl)<br>
-所以首先要申请 ssl 证书，然后再去nginx里配置一下</p>
-<ol>
-<li class="lvl-3">
-<p>去服务商拿ssl免费证书<br>
-我是阿里的服务器，<a target="_blank" rel="noopener" href="https://yundun.console.aliyun.com/?spm=5176.7968328.J_8413632810.1.62ae685bLZTqIi&amp;p=cas&amp;showBuy=1#/certExtend/free/cn-hangzhou">地址</a>在这里</p>
-</li>
-<li class="lvl-3">
-<p>选择免费证书，然后一路系统配置申领就好了</p>
-</li>
-<li class="lvl-3">
-<p>申领结束点击下载 nginx 版本</p>
-</li>
-<li class="lvl-3">
-<p>将证书传到服务器的指定位置(!需要记住)<br>
-我放在了 <code>/etc/nginx/conf.d</code>文件夹下</p>
-</li>
-<li class="lvl-3">
-<p>修改 <code>nginx.conf</code> 配置文件内容<br>
-注意如果在 conf 文件下修改，要在 http 的域内修改，所以要排查一下&quot;{}&quot;是否闭合，防止漏了hh<br>
-添加或者修改<code>server</code>域<br>
-这是https的433端口配置</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">HTTPS的默认访问端口443。</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">如果未在此处配置HTTPS的默认访问端口，可能会造成Nginx无法启动。</span></span><br><span class="line">  listen 443 ssl;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书绑定的域名</span></span><br><span class="line">  server_name domain_name;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书文件名称</span></span><br><span class="line">  ssl_certificate cert/domain_name.pem;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书私钥文件名称</span></span><br><span class="line">  ssl_certificate_key cert/domain_name.key;</span><br><span class="line">  ssl_session_cache shared:SSL:1m;</span><br><span class="line">  ssl_session_timeout 5m;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">自定义设置使用的TLS协议的类型以及加密套件（以下为配置示例，请您自行评估是否需要配置）</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">TLS协议版本越高，HTTPS通信的安全性越高，但是相较于低版本TLS协议，高版本TLS协议对浏览器的兼容性较差。</span></span><br><span class="line">  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">  ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">表示优先使用服务端加密套件。默认开启</span></span><br><span class="line">  ssl_prefer_server_ciphers on;</span><br><span class="line">  location / &#123;</span><br><span class="line">        #配置域名最终向后端发送请求的url地址</span><br><span class="line">        proxy_pass http://127.0.0.1:8008;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这是http的80端口配置</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">      # 配置阿里云域名和监听的80端口</span><br><span class="line">      listen       80;</span><br><span class="line">      server_name  domain_name;</span><br><span class="line">      #charset koi8-r;</span><br><span class="line">      #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">      #将所有HTTP请求通过rewrite指令重定向到HTTPS。</span><br><span class="line">      rewrite ^(.*)$ https://$host$1;</span><br><span class="line">      location / &#123;</span><br><span class="line">          #配置域名最终向后端发送请求的url地址</span><br><span class="line">          proxy_pass http://127.0.0.1:8008;</span><br><span class="line">      &#125;</span><br><span class="line">      #error_page  404              /404.html;</span><br><span class="line">      # redirect server error pages to the static page /50x.html</span><br><span class="line">      #</span><br><span class="line">      error_page   500 502 503 504  /50x.html;</span><br><span class="line">      location = /50x.html &#123;</span><br><span class="line">          root   html;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li class="lvl-3">
-<p>配置完依次执行命令 <code>service nginx restart</code> 命令和 <code>nginx -t</code>(或<code>systemctl status nginx.service</code>)命令，查看nginx的运行状态，如果是successful，那么就可以访问一下你的域名，网址栏的<code>不安全</code>字段是否消失并变为小锁了，如果是说明配置完成</p>
-</li>
+<h1 id="域名配置">域名配置</h1>
+<p>但是目前访问博客的时候有个问题，就是网址栏一直有个不安全，这是由于通过http访问<br />
+我们需要将其改为 https 访问(https = http + ssl)<br />
+所以首先要申请 ssl 证书，然后再去nginx里配置一下<br />
+1. 去服务商拿ssl免费证书<br />
+我是阿里的服务器，<a
+target="_blank" rel="noopener" href="https://yundun.console.aliyun.com/?spm=5176.7968328.J_8413632810.1.62ae685bLZTqIi&amp;p=cas&amp;showBuy=1#/certExtend/free/cn-hangzhou">地址</a>在这里<br />
+2. 选择免费证书，然后一路系统配置申领就好了<br />
+3. 申领结束点击下载 nginx 版本<br />
+4. 将证书传到服务器的指定位置(!需要记住)<br />
+我放在了 <code>/etc/nginx/conf.d</code>文件夹下 5. 修改
+<code>nginx.conf</code> 配置文件内容<br />
+注意如果在 conf 文件下修改，要在 http
+的域内修改，所以要排查一下"{}"是否闭合，防止漏了hh<br />
+添加或者修改<code>server</code>域<br />
+这是https的433端口配置<br />
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">HTTPS的默认访问端口443。</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">如果未在此处配置HTTPS的默认访问端口，可能会造成Nginx无法启动。</span></span><br><span class="line">  listen 443 ssl;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书绑定的域名</span></span><br><span class="line">  server_name domain_name;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书文件名称</span></span><br><span class="line">  ssl_certificate cert/domain_name.pem;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">填写证书私钥文件名称</span></span><br><span class="line">  ssl_certificate_key cert/domain_name.key;</span><br><span class="line">  ssl_session_cache shared:SSL:1m;</span><br><span class="line">  ssl_session_timeout 5m;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">自定义设置使用的TLS协议的类型以及加密套件（以下为配置示例，请您自行评估是否需要配置）</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">TLS协议版本越高，HTTPS通信的安全性越高，但是相较于低版本TLS协议，高版本TLS协议对浏览器的兼容性较差。</span></span><br><span class="line">  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">  ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">表示优先使用服务端加密套件。默认开启</span></span><br><span class="line">  ssl_prefer_server_ciphers on;</span><br><span class="line">  location / &#123;</span><br><span class="line">        #配置域名最终向后端发送请求的url地址</span><br><span class="line">        proxy_pass http://127.0.0.1:8008;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code>这是http的80端口配置
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">      # 配置阿里云域名和监听的80端口</span><br><span class="line">      listen       80;</span><br><span class="line">      server_name  domain_name;</span><br><span class="line">      #charset koi8-r;</span><br><span class="line">      #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">      #将所有HTTP请求通过rewrite指令重定向到HTTPS。</span><br><span class="line">      rewrite ^(.*)$ https://$host$1;</span><br><span class="line">      location / &#123;</span><br><span class="line">          #配置域名最终向后端发送请求的url地址</span><br><span class="line">          proxy_pass http://127.0.0.1:8008;</span><br><span class="line">      &#125;</span><br><span class="line">      #error_page  404              /404.html;</span><br><span class="line">      # redirect server error pages to the static page /50x.html</span><br><span class="line">      #</span><br><span class="line">      error_page   500 502 503 504  /50x.html;</span><br><span class="line">      location = /50x.html &#123;</span><br><span class="line">          root   html;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></code></pre>
+<ol start="6" type="1">
+<li>配置完依次执行命令 <code>service nginx restart</code> 命令和
+<code>nginx -t</code>(或<code>systemctl status nginx.service</code>)命令，查看nginx的运行状态，如果是successful，那么就可以访问一下你的域名，网址栏的<code>不安全</code>字段是否消失并变为小锁了，如果是说明配置完成</li>
 </ol>
-<h2 id="一次🤡的Error记录。。。">一次🤡的Error记录。。。</h2>
-<p>但是很抱歉，笔者按照上述流程没有配置成功，在配置转发端口的时候，访问遇到了502 error。。。<br>
-然后取消转发配置，能发现ssl证书成功配置<br>
+<h2 id="一次的error记录">一次🤡的Error记录。。。</h2>
+<p>但是很抱歉，笔者按照上述流程没有配置成功，在配置转发端口的时候，访问遇到了502
+error。。。<br />
+然后取消转发配置，能发现ssl证书成功配置<br />
 接下来排查一下为啥转发失败了 ^ ^</p>
-<hr>
-<p>先看一下 <code>proxy_pass</code> 设置，遇到两个问题</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>设置为 <code>127.0.0.1</code> 报502错误</p>
-</li>
-<li class="lvl-2">
-<p>设置为 <code>公网IP</code> 报 504 错误</p>
-</li>
-</ul>
-<p>理一下，首先，ssl证书配置成功，说明 443 端口是可以正常访问的<br>
-我们的配置思路是，如果通过 http 的 80 端口访问，那么强制改写为 443 走 https 端口访问，然后443端口转发到4000的hexo博客端口</p>
-<p>好，那么先排查 80 端口是否能正常访问</p>
-<blockquote>
-<p>要先安装 telnet<br>
-在控制面板-程序-程序和功能-（侧边的）启动或关闭Windows功能-telnet勾选<br>
-等他安装完即可</p>
-</blockquote>
-<p>在shell中 <code>telnet ip port</code> 如果出现空白页面即可</p>
-<blockquote>
-<p>靠，注意是空格不是冒号！！！</p>
-</blockquote>
-<p>ok，80端口能ping通（试了下 443 端口同样能ping通，但是4000端口ping不通<br>
+<hr />
+<p>先看一下 <code>proxy_pass</code> 设置，遇到两个问题 - 设置为
+<code>127.0.0.1</code> 报502错误 - 设置为 <code>公网IP</code> 报 504
+错误</p>
+<p>理一下，首先，ssl证书配置成功，说明 443 端口是可以正常访问的<br />
+我们的配置思路是，如果通过 http 的 80 端口访问，那么强制改写为 443 走
+https 端口访问，然后443端口转发到4000的hexo博客端口</p>
+<p>好，那么先排查 80 端口是否能正常访问<br />
+&gt; 要先安装 telnet<br />
+&gt;
+在控制面板-程序-程序和功能-（侧边的）启动或关闭Windows功能-telnet勾选<br />
+&gt; 等他安装完即可</p>
+<p>在shell中 <code>telnet ip port</code> 如果出现空白页面即可<br />
+&gt; 靠，注意是空格不是冒号！！！</p>
+<p>ok，80端口能ping通（试了下 443
+端口同样能ping通，但是4000端口ping不通<br />
 好，那么问题就在4000端口了</p>
-<hr>
-<p>查看 4000 端口的进程<br>
-<code>netstat -nplt</code><br>
-发现根本就没有4000端口？！<br>
-看到这里突然恍然大悟了，这下🤡了呀<br>
-原来咱们部署的原理是，在本地deploy的时候，通过git hook将文件自动push到服务器的仓库中<br>
-然后访问80端口，配置nginx将root修改到博客的静态资源处实现访问。。。<br>
-这下是彻底理解咱们的整体部署是在干什么了。。。<br>
-哎，蒙头按照教程配置还是一知半解<br>
+<hr />
+<p>查看 4000 端口的进程<br />
+<code>netstat -nplt</code><br />
+发现根本就没有4000端口？！<br />
+看到这里突然恍然大悟了，这下🤡了呀<br />
+原来咱们部署的原理是，在本地deploy的时候，通过git
+hook将文件自动push到服务器的仓库中<br />
+然后访问80端口，配置nginx将root修改到博客的静态资源处实现访问。。。<br />
+这下是彻底理解咱们的整体部署是在干什么了。。。<br />
+哎，蒙头按照教程配置还是一知半解<br />
 我也将这次🤡记录在博客上，供大家参考</p>
-<hr>
-<p>接下来修改 nginx 的配置文件就很清晰了。。。<br>
-因为我的博客地址是 <code>/home/blog/</code><br>
-直接去conf文件下，首先修改 root 字段的地址<br>
+<hr />
+<p>接下来修改 nginx 的配置文件就很清晰了。。。<br />
+因为我的博客地址是 <code>/home/blog/</code><br />
+直接去conf文件下，首先修改 root 字段的地址<br />
 然后 index 字段看一眼没问题，ok 重启，登网站，完美。。。</p>
-<p>现在的逻辑是：通过域名访问 80 端口-&gt;转发到 433，433去 root 下面搜 index 给出的文件名</p>
-<blockquote>
-<p>终于解决了hhhh</p>
-</blockquote>
-<h1>图床搭建</h1>
-<p>写博客自然不能少了图片，但是放在 hexo 的文件下，每次推送打包的过程实在是受不了，所以还是选择将图片放在服务器上，搭一个图床好了。。。<br>
-参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_51321469/article/details/127340237">文章</a></p>
-<blockquote>
-<p>主要的原理是利用 PicGo推送到阿里云的服务器，然后 typora 修改图片索引为 url 地址，这样加载的时候就可以直接在服务器的存储地址上进行搜索，不会占用本地资源了。。。</p>
-</blockquote>
-<h2 id="OSS存储">OSS存储</h2>
-<p>本文用的是阿里云的OSS存储作为图片的放置，要花点小钱 T.T买个资源包<br>
-首先在<a target="_blank" rel="noopener" href="https://ecs.console.aliyun.com/server/region/cn-shanghai#/">阿里云的控制台</a>搜索oss，进入oss控制台，然后点击左侧概览下面的<code>Bucket列表</code>创建一个bucket</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>名称自定</p>
-</li>
-<li class="lvl-2">
-<p>地域选择离自己近的就好</p>
-</li>
-<li class="lvl-2">
-<p>注意读写权限要是公共读！不然博客无法去读取图片资源</p>
-</li>
-</ul>
-<p>创建完成后，点击下面的资源包搞一个便宜点的资源包（有券的话应该免费 ^ ^）<br>
-资源购买完成后开始创建类似于私钥的东西<br>
-在一开始给出的<a target="_blank" rel="noopener" href="https://ecs.console.aliyun.com/server/region/cn-shanghai#/">控制台</a>中，鼠标移动到右上角的头像下，有个 <code>AccessKey管理</code>，点击进入有弹窗提示，这里选择稍微安全点的子用户（因为拿到你的<code>AccessKey</code>可以控制阿里云账户），然后创建用户</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>登录名称自定</p>
-</li>
-<li class="lvl-2">
-<p>显示名称自定</p>
-</li>
-<li class="lvl-2">
-<p>访问方式要勾选<code>OpenAPI调用访问</code>！！！</p>
-</li>
-</ul>
-<p>创建完成后给他添加上OSS的权限让这个子用户能够访问OSS（直接点击添加权限，在列表里找一下带OSS的词条即可）<br>
+<p>现在的逻辑是：通过域名访问 80 端口-&gt;转发到 433，433去 root 下面搜
+index 给出的文件名<br />
+&gt; 终于解决了hhhh</p>
+<h1 id="图床搭建">图床搭建</h1>
+<p>写博客自然不能少了图片，但是放在 hexo
+的文件下，每次推送打包的过程实在是受不了，所以还是选择将图片放在服务器上，搭一个图床好了。。。<br />
+参考这篇<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/m0_51321469/article/details/127340237">文章</a><br />
+&gt; 主要的原理是利用 PicGo推送到阿里云的服务器，然后 typora
+修改图片索引为 url
+地址，这样加载的时候就可以直接在服务器的存储地址上进行搜索，不会占用本地资源了。。。</p>
+<h2 id="oss存储">OSS存储</h2>
+<p>本文用的是阿里云的OSS存储作为图片的放置，要花点小钱
+T.T买个资源包<br />
+首先在<a
+target="_blank" rel="noopener" href="https://ecs.console.aliyun.com/server/region/cn-shanghai#/">阿里云的控制台</a>搜索oss，进入oss控制台，然后点击左侧概览下面的<code>Bucket列表</code>创建一个bucket
+- 名称自定 - 地域选择离自己近的就好 -
+注意读写权限要是公共读！不然博客无法去读取图片资源</p>
+<p>创建完成后，点击下面的资源包搞一个便宜点的资源包（有券的话应该免费 ^
+^）<br />
+资源购买完成后开始创建类似于私钥的东西<br />
+在一开始给出的<a
+target="_blank" rel="noopener" href="https://ecs.console.aliyun.com/server/region/cn-shanghai#/">控制台</a>中，鼠标移动到右上角的头像下，有个
+<code>AccessKey管理</code>，点击进入有弹窗提示，这里选择稍微安全点的子用户（因为拿到你的<code>AccessKey</code>可以控制阿里云账户），然后创建用户
+- 登录名称自定 - 显示名称自定 -
+访问方式要勾选<code>OpenAPI调用访问</code>！！！</p>
+<p>创建完成后给他添加上OSS的权限让这个子用户能够访问OSS（直接点击添加权限，在列表里找一下带OSS的词条即可）<br />
 页面先不急关，待会要复制<code>ID</code>和<code>Key</code></p>
-<h2 id="PicGo配置">PicGo配置</h2>
-<p>下载地址：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">github</a></p>
-</li>
-<li class="lvl-2">
-<p><a target="_blank" rel="noopener" href="https://mirrors.sdu.edu.cn/github-release/Molunerfinn_PicGo/v2.3.1/">山大镜像</a></p>
-</li>
-</ul>
-<p>额额如果是windows直接找到 x64.exe后缀的文件下载安装即可<br>
-启动picgo，找到图床设置，选择阿里云OSS：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>keyid就是刚刚子用户的id</p>
-</li>
-<li class="lvl-2">
-<p>keysecret就是他的key</p>
-</li>
-<li class="lvl-2">
-<p>bucket是bucket名字</p>
-</li>
-<li class="lvl-2">
-<p>存储区域在</p>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251802510.png" alt=""></p>
-</li>
-<li class="lvl-2">
-<p>存储路径就是你这个bucket下的文件夹，如果没有的话直接就存在bucket里面了</p>
-</li>
+<h2 id="picgo配置">PicGo配置</h2>
+<p>下载地址： - <a
+target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">github</a> - <a
+target="_blank" rel="noopener" href="https://mirrors.sdu.edu.cn/github-release/Molunerfinn_PicGo/v2.3.1/">山大镜像</a></p>
+<p>额额如果是windows直接找到 x64.exe后缀的文件下载安装即可<br />
+启动picgo，找到图床设置，选择阿里云OSS： - keyid就是刚刚子用户的id</p>
+<ul>
+<li><p>keysecret就是他的key</p></li>
+<li><p>bucket是bucket名字</p></li>
+<li><p>存储区域在</p>
+<p><img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251802510.png" /></p></li>
+<li><p>存储路径就是你这个bucket下的文件夹，如果没有的话直接就存在bucket里面了</p></li>
 </ul>
 <p>设置完成可以传一个图片给picgo，然后去阿里的oss刷新一下看看是否成功上传上去了</p>
 <h2 id="typora配置">typora配置</h2>
-<p>typora下载的资源应该网上一大堆，这个各位善用搜索引擎哈 ^ ^<br>
+<p>typora下载的资源应该网上一大堆，这个各位善用搜索引擎哈 ^ ^<br />
 进入typora点击<code>文件</code>-<code>偏好设置</code>-<code>图像</code></p>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251800449.png" alt=""></p>
+<p><img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202404251800449.png" /></p>
 <p>注意要选择上传图片啊！！！</p>
 <p>不然好像不行</p>
 <p>修改成你自己的picgo的配置即可，然后验证一下看是否能够成功上传即可</p>
-<hr>
-<p>好了，接下来就是 hexo 三连，测试一下hexo是否能够访问即可<br>
+<hr />
+<p>好了，接下来就是 hexo 三连，测试一下hexo是否能够访问即可<br />
 到这里，一个博客总算是大部分都搭好咯（应该吧 hhh</p>
 
     </div>
@@ -630,13 +603,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">95k</span>
+    <span title="站点总字数">99k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:53</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 

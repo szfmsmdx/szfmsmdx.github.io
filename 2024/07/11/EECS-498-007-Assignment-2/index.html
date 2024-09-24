@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"szf.cool","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":12,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null,"count":true,"text":true},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="UMich EECS 498-007 &#x2F; 598-005: Deep Learning for Computer Vision lab 作业笔记。。。">
+    <meta name="description" content="UMich EECS 498-007 &#x2F; 598-005: Deep Learning for Computer Vision lab 作业笔记。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EECS-498-007-Assignment(2)">
 <meta property="og:url" content="http://szf.cool/2024/07/11/EECS-498-007-Assignment-2/">
 <meta property="og:site_name" content="Szf&#39;s blog ^ ^">
-<meta property="og:description" content="UMich EECS 498-007 &#x2F; 598-005: Deep Learning for Computer Vision lab 作业笔记。。。">
+<meta property="og:description" content="UMich EECS 498-007 &#x2F; 598-005: Deep Learning for Computer Vision lab 作业笔记。。。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111237198.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111219227.png">
@@ -47,16 +47,12 @@
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271053379.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271114008.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271124351.png">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031431858.png">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031432152.png">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031434696.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031427221.png">
-<meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408041759678.jpeg">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061747878.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061749434.png">
 <meta property="og:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061821890.png">
 <meta property="article:published_time" content="2024-07-11T03:41:59.000Z">
-<meta property="article:modified_time" content="2024-08-06T13:07:38.625Z">
+<meta property="article:modified_time" content="2024-09-01T03:35:57.129Z">
 <meta property="article:author" content="Szfmsmdx">
 <meta property="article:tag" content="CV">
 <meta property="article:tag" content="Pytorch">
@@ -171,7 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">A4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VGG"><span class="nav-number">1.1.</span> <span class="nav-text">VGG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R-CNN"><span class="nav-number">1.2.</span> <span class="nav-text">R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-selective-search"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. selective search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8F%90%E5%8F%96%E7%89%B9%E5%BE%81%E3%80%81%E8%8E%B7%E5%8F%96%E5%8C%BA%E5%9F%9F%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 提取特征、获取区域类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-NMS"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. NMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA"><span class="nav-number">1.2.4.</span> <span class="nav-text">优缺</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fast-R-CNN"><span class="nav-number">1.3.</span> <span class="nav-text">Fast R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E8%AE%B2%E8%A7%A3"><span class="nav-number">1.3.1.</span> <span class="nav-text">部分讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%A3"><span class="nav-number">1.3.2.</span> <span class="nav-text">优劣</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Faster-R-CNN"><span class="nav-number">1.4.</span> <span class="nav-text">Faster R-CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assignment"><span class="nav-number">1.5.</span> <span class="nav-text">Assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FCOS"><span class="nav-number">1.5.1.</span> <span class="nav-text">FCOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fast-R-CNN-2"><span class="nav-number">1.5.2.</span> <span class="nav-text">Fast R-CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B-pytorch-%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.3.</span> <span class="nav-text">用到的一些 pytorch 函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">A5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RNN"><span class="nav-number">2.1.</span> <span class="nav-text">RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Encoder-Decoder-Seq2Seq"><span class="nav-number">2.1.1.</span> <span class="nav-text">Encoder-Decoder &#x2F; Seq2Seq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attention-mechanism"><span class="nav-number">2.1.2.</span> <span class="nav-text">Attention mechanism</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#word-embedding"><span class="nav-number">2.2.</span> <span class="nav-text">word embedding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#one-hot"><span class="nav-number">2.2.1.</span> <span class="nav-text">one-hot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#word2vec"><span class="nav-number">2.2.2.</span> <span class="nav-text">word2vec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Glove"><span class="nav-number">2.2.3.</span> <span class="nav-text">Glove</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lstm"><span class="nav-number">2.3.</span> <span class="nav-text">Lstm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E5%90%91%E8%AE%A1%E7%AE%97"><span class="nav-number">2.3.1.</span> <span class="nav-text">前向计算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">A6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VAE-Variational-Auto-Encoder"><span class="nav-number">3.1.</span> <span class="nav-text">VAE(Variational Auto Encoder)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VAE-%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.1.</span> <span class="nav-text">VAE 模型原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Visualization"><span class="nav-number">3.2.</span> <span class="nav-text">Network Visualization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style-Transfer"><span class="nav-number">3.3.</span> <span class="nav-text">Style Transfer</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#a4"><span class="nav-number">1.</span> <span class="nav-text">A4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vgg"><span class="nav-number">1.1.</span> <span class="nav-text">VGG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#r-cnn"><span class="nav-number">1.2.</span> <span class="nav-text">R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#selective-search"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. selective search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%89%B9%E5%BE%81%E8%8E%B7%E5%8F%96%E5%8C%BA%E5%9F%9F%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 提取特征、获取区域类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nms"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. NMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA"><span class="nav-number">1.2.4.</span> <span class="nav-text">优缺</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fast-r-cnn"><span class="nav-number">1.3.</span> <span class="nav-text">Fast R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E8%AE%B2%E8%A7%A3"><span class="nav-number">1.3.1.</span> <span class="nav-text">部分讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%A3"><span class="nav-number">1.3.2.</span> <span class="nav-text">优劣</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#faster-r-cnn"><span class="nav-number">1.4.</span> <span class="nav-text">Faster R-CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assignment"><span class="nav-number">1.5.</span> <span class="nav-text">Assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fcos"><span class="nav-number">1.5.1.</span> <span class="nav-text">FCOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fast-r-cnn-1"><span class="nav-number">1.5.2.</span> <span class="nav-text">Fast R-CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B-pytorch-%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.3.</span> <span class="nav-text">用到的一些 pytorch 函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#a5"><span class="nav-number">2.</span> <span class="nav-text">A5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rnn"><span class="nav-number">2.1.</span> <span class="nav-text">RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#encoder-decoder-seq2seq"><span class="nav-number">2.1.1.</span> <span class="nav-text">Encoder-Decoder &#x2F; Seq2Seq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attention-mechanism"><span class="nav-number">2.1.2.</span> <span class="nav-text">Attention mechanism</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#word-embedding"><span class="nav-number">2.2.</span> <span class="nav-text">word embedding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#one-hot"><span class="nav-number">2.2.1.</span> <span class="nav-text">one-hot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#word2vec"><span class="nav-number">2.2.2.</span> <span class="nav-text">word2vec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#glove"><span class="nav-number">2.2.3.</span> <span class="nav-text">Glove</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lstm"><span class="nav-number">2.3.</span> <span class="nav-text">Lstm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E5%90%91%E8%AE%A1%E7%AE%97"><span class="nav-number">2.3.1.</span> <span class="nav-text">前向计算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#a6"><span class="nav-number">3.</span> <span class="nav-text">A6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vaevariational-auto-encoder"><span class="nav-number">3.1.</span> <span class="nav-text">VAE(Variational Auto Encoder)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vae-%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.1.</span> <span class="nav-text">VAE 模型原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network-visualization"><span class="nav-number">3.2.</span> <span class="nav-text">Network Visualization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#style-transfer"><span class="nav-number">3.3.</span> <span class="nav-text">Style Transfer</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -273,7 +269,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-06 21:07:38" itemprop="dateModified" datetime="2024-08-06T21:07:38+08:00">2024-08-06</time>
+      <time title="修改时间：2024-09-01 11:35:57" itemprop="dateModified" datetime="2024-09-01T11:35:57+08:00">2024-09-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -306,7 +302,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>9.8k</span>
+      <span>9.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -325,222 +321,189 @@
     
 
 
-    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">UMich EECS 498-007 / 598-005: Deep Learning for Computer Vision</a> lab 作业笔记。。。</p>
+    <div class="post-body" itemprop="articleBody"><p><a
+target="_blank" rel="noopener" href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">UMich
+EECS 498-007 / 598-005: Deep Learning for Computer Vision</a> lab
+作业笔记。。。</p>
 <span id="more"></span>
 <p>[TOC]</p>
-<h1>A4</h1>
-<h2 id="VGG">VGG</h2>
+<h1 id="a4">A4</h1>
+<h2 id="vgg">VGG</h2>
 <p>！利用多个小的卷积核堆积达到一个大核的效果：在感受野相同的情况下，减少所需要的参数数目</p>
-<p>例如，文章指出 三个 3x3 的卷积核效果等价于一个 7x7 的卷积核<br>
-$$<br>
-7 \times 7 \times C \times C = 49 C^2 \<br>
-3 \times (3 \times 3 \times C \times C) = 27C^2<br>
-$$<br>
-所需要的参数是多个小核更小。。。</p>
-<h2 id="R-CNN">R-CNN</h2>
-<p>参考了这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_55433305/article/details/131177839#">文章</a></p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111237198.png" alt="image-20240711123753152" style="zoom:50%;" />
-<p>R-CNN的R代表的是 region，利用了 region proposal 算法，生成候选区域，主要的流程为：</p>
-<ol>
-<li class="lvl-3">
-<p>region proposal，获取候选区域</p>
-</li>
-<li class="lvl-3">
-<p>获取图像特征，将图像输入到卷积神经网络中获取图像特征</p>
-</li>
-<li class="lvl-3">
-<p>获取区域类别，在初步获得目标的位置之后，需要获取目标的类别</p>
-</li>
-<li class="lvl-3">
-<p>微调区域位置，尽管候选区域已经初步目标的位置，但是这个区域比较粗糙，因此使用回归器对区域位置进行微调</p>
-</li>
+<p>例如，文章指出 三个 3x3 的卷积核效果等价于一个 7x7 的卷积核 <span
+class="math display">\[
+7 \times 7 \times C \times C = 49 C^2 \\
+3 \times (3 \times 3 \times C \times C) = 27C^2
+\]</span> 所需要的参数是多个小核更小。。。</p>
+<h2 id="r-cnn">R-CNN</h2>
+<p>参考了这篇<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_55433305/article/details/131177839#">文章</a></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111237198.png" alt="image-20240711123753152" style="zoom:50%;" /></p>
+<p>R-CNN的R代表的是 region，利用了 region proposal
+算法，生成候选区域，主要的流程为：</p>
+<ol type="1">
+<li>region proposal，获取候选区域</li>
+<li>获取图像特征，将图像输入到卷积神经网络中获取图像特征</li>
+<li>获取区域类别，在初步获得目标的位置之后，需要获取目标的类别</li>
+<li>微调区域位置，尽管候选区域已经初步目标的位置，但是这个区域比较粗糙，因此使用回归器对区域位置进行微调</li>
 </ol>
-<h3 id="1-selective-search">1. selective search</h3>
-<p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/yuanlulu/article/details/82157071">博客</a></p>
-<ol>
-<li class="lvl-3">
-<p>计算所有邻近区域之间的相似性；</p>
-</li>
-<li class="lvl-3">
-<p>两个最相似的区域被组合在一起；</p>
-</li>
-<li class="lvl-3">
-<p>计算合并区域和相邻区域的相似度；</p>
-</li>
+<h3 id="selective-search">1. selective search</h3>
+<p>参考<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/yuanlulu/article/details/82157071">博客</a></p>
+<ol type="1">
+<li>计算所有邻近区域之间的相似性；</li>
+<li>两个最相似的区域被组合在一起；</li>
+<li>计算合并区域和相邻区域的相似度；</li>
 </ol>
 <p>重复2、3过程，直到整个图像变为一个地区。</p>
-<h3 id="2-提取特征、获取区域类型">2. 提取特征、获取区域类型</h3>
-<p>将分割得到的区域缩放到同一大小，然后送入预先训练好的 CNN 网络，拓展维度，注意 CNN 最后的全连接层给去掉，得到一个维度矩阵，将该维度矩阵送入 SVM 分类器判断各个类别</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111219227.png" alt="image-20240711121956146" style="zoom:50%;" />
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111220418.png" alt="image-20240711122013364" style="zoom:50%;" />
+<h3 id="提取特征获取区域类型">2. 提取特征、获取区域类型</h3>
+<p>将分割得到的区域缩放到同一大小，然后送入预先训练好的 CNN
+网络，拓展维度，注意 CNN
+最后的全连接层给去掉，得到一个维度矩阵，将该维度矩阵送入 SVM
+分类器判断各个类别</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111219227.png" alt="image-20240711121956146" style="zoom:50%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111220418.png" alt="image-20240711122013364" style="zoom:50%;" /></p>
 <p>size 变化如下：</p>
-<p>候选区个数 2000， reshape -&gt; 227 x 227，此时的 tensor shape 为 (2000, 227, 227)</p>
+<p>候选区个数 2000， reshape -&gt; 227 x 227，此时的 tensor shape 为
+(2000, 227, 227)</p>
 <p>送入 CNN，提取维度为 4096，此时 tensor shape 为 (2000, 4096)</p>
-<p>送入 SVM ，20个SVM分类器，每个权重阵大小为 2096，就得到 2000 个候选区的类别得分，此时shape 为 (2000, 20)</p>
-<h3 id="3-NMS">3. NMS</h3>
-<p>Non-Maximum Suppression，NMS，非极大值抑制，利用贪心策略对可能重复定位的候选区进行合并</p>
-<ol>
-<li class="lvl-3">
-<p>我们对所有检测到的边界框进行排序，排序依据是每个边界框的置信度得分（即物体存在的概率）。</p>
-<ol>
-<li class="lvl-7">选择置信度最高的边界框，并从候选列表中<strong>移除</strong>它。</li>
-<li class="lvl-7">计算其与剩余候选框的 IoU，高于预设定阈值认为是重复检测了，将他们删掉</li>
-<li class="lvl-7">重复循环内的步骤1，直到无候选框</li>
-</ol>
-</li>
-<li class="lvl-3">
-<p>输出</p>
-</li>
+<p>送入 SVM ，20个SVM分类器，每个权重阵大小为 2096，就得到 2000
+个候选区的类别得分，此时shape 为 (2000, 20)</p>
+<h3 id="nms">3. NMS</h3>
+<p>Non-Maximum
+Suppression，NMS，非极大值抑制，利用贪心策略对可能重复定位的候选区进行合并</p>
+<ol type="1">
+<li>我们对所有检测到的边界框进行排序，排序依据是每个边界框的置信度得分（即物体存在的概率）。
+<ol type="1">
+<li>选择置信度最高的边界框，并从候选列表中<strong>移除</strong>它。</li>
+<li>计算其与剩余候选框的
+IoU，高于预设定阈值认为是重复检测了，将他们删掉</li>
+<li>重复循环内的步骤1，直到无候选框</li>
+</ol></li>
+<li>输出</li>
 </ol>
 <h3 id="优缺">优缺</h3>
-<ol>
-<li class="lvl-3">
-<p>优点</p>
-<ol>
-<li class="lvl-7">
-<p>准确性：RCNN在目标检测任务中表现出很高的准确性。通过使用深度学习模型（卷积神经网络）提取图像特征，RCNN能够学习到更具判别性的特征表示，从而提高了目标检测的准确性。</p>
-</li>
-<li class="lvl-7">
-<p>候选区域生成：RCNN采用选择性搜索（Selective Search）算法来生成候选区域。相比传统方法的密集滑动窗口搜索，选择性搜索能够快速生成大量可能包含目标的候选区域，减少了计算开销。</p>
-</li>
-<li class="lvl-7">
-<p>端到端训练：RCNN采用端到端的训练方式，能够同时学习特征提取和目标分类器的参数。这使得RCNN能够端到端地优化整个目标检测系统，提高了检测性能。</p>
-</li>
-<li class="lvl-7">
-<p>可扩展性：RCNN框架具有良好的可扩展性，可以方便地应用于不同的目标检测任务和数据集。通过改变网络结构和训练数据，RCNN可以适应不同的目标类别和场景。</p>
-</li>
-</ol>
-</li>
-<li class="lvl-3">
-<p>缺点：</p>
-<ol>
-<li class="lvl-7">
-<p>低速：RCNN算法的一个主要缺点是计算速度较慢。在目标检测过程中，需要为每个候选区域进行特征提取和分类，这导致了大量的计算量和时间消耗。</p>
-</li>
-<li class="lvl-7">
-<p>复杂性：RCNN算法的实现相对复杂。它包含了多个组件，包括候选区域生成、特征提取、分类器训练等。这使得算法的实现和调优相对困难。</p>
-</li>
-<li class="lvl-7">
-<p>内存消耗大：RCNN算法需要在内存中存储大量的候选区域和特征表示，导致内存消耗较大。</p>
-</li>
-<li class="lvl-7">
-<p>训练时间长：由于RCNN的复杂性和计算需求，训练RCNN模型需要大量的时间和计算资源。</p>
-</li>
-</ol>
-</li>
+<ol type="1">
+<li><p>优点</p>
+<ol type="1">
+<li><p>准确性：RCNN在目标检测任务中表现出很高的准确性。通过使用深度学习模型（卷积神经网络）提取图像特征，RCNN能够学习到更具判别性的特征表示，从而提高了目标检测的准确性。</p></li>
+<li><p>候选区域生成：RCNN采用选择性搜索（Selective
+Search）算法来生成候选区域。相比传统方法的密集滑动窗口搜索，选择性搜索能够快速生成大量可能包含目标的候选区域，减少了计算开销。</p></li>
+<li><p>端到端训练：RCNN采用端到端的训练方式，能够同时学习特征提取和目标分类器的参数。这使得RCNN能够端到端地优化整个目标检测系统，提高了检测性能。</p></li>
+<li><p>可扩展性：RCNN框架具有良好的可扩展性，可以方便地应用于不同的目标检测任务和数据集。通过改变网络结构和训练数据，RCNN可以适应不同的目标类别和场景。</p></li>
+</ol></li>
+<li><p>缺点：</p>
+<ol type="1">
+<li><p>低速：RCNN算法的一个主要缺点是计算速度较慢。在目标检测过程中，需要为每个候选区域进行特征提取和分类，这导致了大量的计算量和时间消耗。</p></li>
+<li><p>复杂性：RCNN算法的实现相对复杂。它包含了多个组件，包括候选区域生成、特征提取、分类器训练等。这使得算法的实现和调优相对困难。</p></li>
+<li><p>内存消耗大：RCNN算法需要在内存中存储大量的候选区域和特征表示，导致内存消耗较大。</p></li>
+<li><p>训练时间长：由于RCNN的复杂性和计算需求，训练RCNN模型需要大量的时间和计算资源。</p></li>
+</ol></li>
 </ol>
 <blockquote>
-<p>在一开始 region proposal 的时候就已经生成很多冗余、重复的区域了。。。不知道有没有算法可以从一开始进行剔除，这样效率应该会高很多</p>
+<p>在一开始 region proposal
+的时候就已经生成很多冗余、重复的区域了。。。不知道有没有算法可以从一开始进行剔除，这样效率应该会高很多</p>
 </blockquote>
-<h2 id="Fast-R-CNN">Fast R-CNN</h2>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111239746.png" alt="image-20240711123915679" style="zoom:67%;" />
+<h2 id="fast-r-cnn">Fast R-CNN</h2>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111239746.png" alt="image-20240711123915679" style="zoom:67%;" /></p>
 <p>将 RCNN 的三大步骤分为两个小部分</p>
-<ol>
-<li class="lvl-3">
-<p>候选区域生成方法不变，即selective search算法随机采样获得候选框。</p>
-</li>
-<li class="lvl-3">
-<p>将尺寸不一的整幅图输入cnn，获得特征图；将候选区域映射到特征图feature map中得到特征矩阵</p>
-</li>
-<li class="lvl-3">
-<p>特征矩阵通过<strong>ROI Pooling</strong>层（最大池化下采样，不限制输入尺寸大小）缩放到固定尺寸的特征图，展平+两个全连接得到RoI feature  vector；然后并行分别操作全连接层，一个使用<strong>softmax loss分类器</strong>得到类比概率，一个<strong>bbox边界框回归器</strong>训练。</p>
-</li>
+<ol type="1">
+<li>候选区域生成方法不变，即selective
+search算法随机采样获得候选框。</li>
+<li>将尺寸不一的整幅图输入cnn，获得特征图；将候选区域映射到特征图feature
+map中得到特征矩阵</li>
+<li>特征矩阵通过<strong>ROI
+Pooling</strong>层（最大池化下采样，不限制输入尺寸大小）缩放到固定尺寸的特征图，展平+两个全连接得到RoI
+feature vector；然后并行分别操作全连接层，一个使用<strong>softmax
+loss分类器</strong>得到类比概率，一个<strong>bbox边界框回归器</strong>训练。</li>
 </ol>
 <h3 id="部分讲解">部分讲解</h3>
-<ol>
-<li class="lvl-3">
-<p>ROI Pooling</p>
-</li>
+<ol type="1">
+<li>ROI Pooling</li>
 </ol>
 <p>给定输出大小，将候选区进行划分，针对每个块执行最大池化下采样操作，使得特征映射上不同大小的候选区域变为尺寸大小的特征向量，然后传入下一层。这样就不限制输入图像的特征了。。。</p>
-<p>可以看这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/fenglepeng/article/details/117885129">博客</a></p>
-<ol start="2">
-<li class="lvl-3">
-<p>SPP Net</p>
-</li>
+<p>可以看这篇<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/fenglepeng/article/details/117885129">博客</a></p>
+<ol start="2" type="1">
+<li>SPP Net</li>
 </ol>
-<p>由于可能给出非常多的候选框，因此可以取一部分，比如前 64 个，那么现在就是一张图片生成了 64 个大小不一的候选框，现在的问题是，如何将这些选框的大小调整统一</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111737045.png" alt="image-20240711173726002" style="zoom: 67%;" />
-<p>上述图片的意思是生成了256个feature map，然后对这些 feature map 做 pooling，得到 21 = 4x4 + 2x2 + 1x1 的向量，一共就是 (256, 21)，这里输出就被固定住了</p>
+<p>由于可能给出非常多的候选框，因此可以取一部分，比如前 64
+个，那么现在就是一张图片生成了 64
+个大小不一的候选框，现在的问题是，如何将这些选框的大小调整统一</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111737045.png" alt="image-20240711173726002" style="zoom: 67%;" /></p>
+<p>上述图片的意思是生成了256个feature map，然后对这些 feature map 做
+pooling，得到 21 = 4x4 + 2x2 + 1x1 的向量，一共就是 (256,
+21)，这里输出就被固定住了</p>
 <h3 id="优劣">优劣</h3>
-<ol>
-<li class="lvl-3">
-<p>优点：</p>
-<ol>
-<li class="lvl-7">fast RCNN 是先卷积，然后将各个候选框映射到卷积后的结果中得到 feature map，避免了 RCNN 中直接选框然后一个一个卷积提取特征</li>
-<li class="lvl-7">fast RCNN使用的 ROI pooling技术避免了将图像进行拉扯，损失信息</li>
+<ol type="1">
+<li>优点：
+<ol type="1">
+<li>fast RCNN 是先卷积，然后将各个候选框映射到卷积后的结果中得到 feature
+map，避免了 RCNN 中直接选框然后一个一个卷积提取特征</li>
+<li>fast RCNN使用的 ROI pooling技术避免了将图像进行拉扯，损失信息</li>
+</ol></li>
+<li>缺点：
+<ol type="1">
+<li>瓶颈局限在 selective search上，如何快速的提出 region proposal
+？</li>
+</ol></li>
 </ol>
-</li>
-<li class="lvl-3">
-<p>缺点：</p>
-<ol>
-<li class="lvl-7">瓶颈局限在 selective search上，如何快速的提出 region proposal ？</li>
-</ol>
-</li>
-</ol>
-<h2 id="Faster-R-CNN">Faster R-CNN</h2>
-<p>针对 fast RCNN的缺点， faster版本引入了一个边缘提取网络去代替这份工作，这下更加端到端了</p>
+<h2 id="faster-r-cnn">Faster R-CNN</h2>
+<p>针对 fast RCNN的缺点，
+faster版本引入了一个边缘提取网络去代替这份工作，这下更加端到端了</p>
 <p>具体做法：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>将RPN放在最后一个卷积层的后面</p>
-</li>
-<li class="lvl-2">
-<p>RPN直接训练得到候选区域</p>
-</li>
+<ul>
+<li>将RPN放在最后一个卷积层的后面</li>
+<li>RPN直接训练得到候选区域</li>
 </ul>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111755426.png" alt="image-20240711175529385" style="zoom: 67%;" />
-<hr>
-<h2 id="Assignment">Assignment</h2>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407111755426.png" alt="image-20240711175529385" style="zoom: 67%;" /></p>
+<hr />
+<h2 id="assignment">Assignment</h2>
 <p>大致原理懂了，接下来是 A4 assignment 的实现部分了。。</p>
-<h3 id="FCOS">FCOS</h3>
-<p>文章第一个要复现的是 one stage的模型——FCOS， <strong>Fully Convolutional One-Stage Object Detection</strong></p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407131400795.png" alt="image-20240713140051674" style="zoom:67%;" />
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>输入端：image，大小为 H x W</p>
-</li>
-<li class="lvl-2">
-<p>特征提取：FPN，，对每个像素点进行多尺度预测</p>
-</li>
-<li class="lvl-2">
-<p>Head：五个head共享权重（文章说对精度几乎无影响），并有三个分支</p>
-<ul class="lvl-2">
-<li class="lvl-6">classification：目标分类，(H,W,C)</li>
-<li class="lvl-6">centerness：中心度，(H,W,1)</li>
-<li class="lvl-6">regression：目标尺寸，(H,W,4)</li>
+<h3 id="fcos">FCOS</h3>
+<p>文章第一个要复现的是 one stage的模型——FCOS， <strong>Fully
+Convolutional One-Stage Object Detection</strong></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407131400795.png" alt="image-20240713140051674" style="zoom:67%;" /></p>
+<ul>
+<li>输入端：image，大小为 H x W</li>
+<li>特征提取：FPN，，对每个像素点进行多尺度预测</li>
+<li>Head：五个head共享权重（文章说对精度几乎无影响），并有三个分支
+<ul>
+<li>classification：目标分类，(H,W,C)</li>
+<li>centerness：中心度，(H,W,1)</li>
+<li>regression：目标尺寸，(H,W,4)</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407151231389.png" alt="image-20240715123117272" style="zoom:50%;" />
-<p>对于目标区域 <code>bbox</code> ，<strong>每个像素点</strong>都具有回归目标，即每个像素坐标$(x,y)$ 的目标是$(l,r,t,b)$ ，其中 $l、r、t、b$ 分别是该点到图像框 left、right、top、bottom 的距离</p>
-<p>中心度 centerness 的计算公式为 $\mathrm{certerness} = \sqrt{\frac{\min(l,r)}{\max{(l,r)}}\times\frac{\min{(t,b)}}{\max(t,b)}}$ ，引入中心度的作用为：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>在训练阶段：使用<code>BCE loss</code>，加入到代价函数中一起训练网络；</p>
-</li>
-<li class="lvl-2">
-<p>在测试阶段：对预测的<code>bbox</code>进行打分：$\mathrm{score}<em>{\mathrm{final}}=\mathrm{score}</em>{\mathrm{classification}}\times\mathrm{centerness}$ ，所低质量的<code>bbox</code>最后会通过NMS过滤掉。</p>
-</li>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407151231389.png" alt="image-20240715123117272" style="zoom:50%;" /></p>
+<p>对于目标区域 <code>bbox</code>
+，<strong>每个像素点</strong>都具有回归目标，即每个像素坐标<span
+class="math inline">\((x,y)\)</span> 的目标是<span
+class="math inline">\((l,r,t,b)\)</span> ，其中 <span
+class="math inline">\(l、r、t、b\)</span> 分别是该点到图像框
+left、right、top、bottom 的距离</p>
+<p>中心度 centerness 的计算公式为 <span
+class="math inline">\(\mathrm{certerness} =
+\sqrt{\frac{\min(l,r)}{\max{(l,r)}}\times\frac{\min{(t,b)}}{\max(t,b)}}\)</span>
+，引入中心度的作用为：</p>
+<ul>
+<li>在训练阶段：使用<code>BCE loss</code>，加入到代价函数中一起训练网络；</li>
+<li>在测试阶段：对预测的<code>bbox</code>进行打分：<span
+class="math inline">\(\mathrm{score}_{\mathrm{final}}=\mathrm{score}_{\mathrm{classification}}\times\mathrm{centerness}\)</span>
+，所低质量的<code>bbox</code>最后会通过NMS过滤掉。</li>
 </ul>
 <p><strong>如何训练？</strong></p>
-<ol>
-<li class="lvl-3">
-<p>将 image 送入网络提取特征获得 feature map</p>
-</li>
-<li class="lvl-3">
-<p>在 feature map中选取一些 像素点</p>
-</li>
-<li class="lvl-3">
-<p>将这些 像素点 映射回相应bbox，并且表明标签类别，如果处在多个bbox中，选择最小的那个</p>
-</li>
-<li class="lvl-3">
-<p>（在推理中，多anchor通过 nms 算法进行剔除，最后剩一些预测概率大的框输出</p>
-</li>
+<ol type="1">
+<li>将 image 送入网络提取特征获得 feature map</li>
+<li>在 feature map中选取一些 像素点</li>
+<li>将这些 像素点
+映射回相应bbox，并且表明标签类别，如果处在多个bbox中，选择最小的那个</li>
+<li>（在推理中，多anchor通过 nms
+算法进行剔除，最后剩一些预测概率大的框输出</li>
 </ol>
-<p>由此可以发现，本质上还是滑窗生成窗口然后一个一个窗口训练（但是训练只有一步所以叫 one stage。。。</p>
+<p>由此可以发现，本质上还是滑窗生成窗口然后一个一个窗口训练（但是训练只有一步所以叫
+one stage。。。</p>
 <p>所以速度上还是慢的，精度上有一点点提升</p>
-<h3 id="Fast-R-CNN-2">Fast R-CNN</h3>
+<h3 id="fast-r-cnn-1">Fast R-CNN</h3>
 <p>同上。。。</p>
 <h3 id="用到的一些-pytorch-函数">用到的一些 pytorch 函数</h3>
 <h4 id="meshgrid">meshgrid</h4>
@@ -551,280 +514,314 @@ $$<br>
 <h4 id="clip">clip</h4>
 <p>同 clamp 函数的作用一样，都是作为数据裁剪使用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用方法为 tensor.clip(min, max)</span></span><br><span class="line"><span class="comment"># 将数据限制导 [min,max] 的范围内</span></span><br></pre></td></tr></table></figure>
-<h4 id="ROI-align">ROI align</h4>
-<p>RoI Align 其实就是更精确版本的 RoIPooling，用<strong>双线性插值</strong>取代了RoIPooling中的直接取整的操作。</p>
-<p>RoI Align 用于将<strong>任意尺寸</strong>感兴趣区域的特征图，都转换为具有<strong>固定尺寸</strong> H×W 的小特征图。</p>
-<p>具体参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/Bit_Coders/article/details/121203584">文章</a></p>
-<h1>A5</h1>
-<h2 id="RNN">RNN</h2>
+<h4 id="roi-align">ROI align</h4>
+<p>RoI Align 其实就是更精确版本的
+RoIPooling，用<strong>双线性插值</strong>取代了RoIPooling中的直接取整的操作。</p>
+<p>RoI Align
+用于将<strong>任意尺寸</strong>感兴趣区域的特征图，都转换为具有<strong>固定尺寸</strong>
+H×W 的小特征图。</p>
+<p>具体参考这篇<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Bit_Coders/article/details/121203584">文章</a></p>
+<h1 id="a5">A5</h1>
+<h2 id="rnn">RNN</h2>
 <blockquote>
-<p><strong>循环神经网络</strong>（recurrent neural network，简称<strong>RNN</strong>），RNN 的引入首先是考虑了<strong>上下文</strong>的信息</p>
+<p><strong>循环神经网络</strong>（recurrent neural
+network，简称<strong>RNN</strong>），RNN
+的引入首先是考虑了<strong>上下文</strong>的信息</p>
 </blockquote>
 <p>RNN的多种结构示意图：</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407171107509.png" alt="image-20240717110744438" style="zoom:67%;" />
-<p>主要内容参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/bestrivern/article/details/90723524">文章</a></p>
-<h3 id="Encoder-Decoder-Seq2Seq">Encoder-Decoder / Seq2Seq</h3>
-<p>特别的，还有一种是 <strong>n-to-m</strong>，输入、输出为不等长的序列。这种结构是<strong>Encoder-Decoder</strong>，也叫Seq2Seq，是RNN的一个重要变种。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407171115629.png" alt="image-20240717111513544" style="zoom: 50%;" />
-<p><strong>Encoder</strong>： <strong>语义向量c</strong>可以有多种表达方式，最简单的方法就是把Encoder的最后一个隐状态赋值给c，还可以对最后的隐状态做一个变换得到c，也可以对所有的隐状态做变换。</p>
-<p><strong>Decoder</strong>： <strong>拿到c之后，就用另一个RNN网络对其进行解码</strong>，这部分RNN网络被称为Decoder。Decoder的RNN可以与Encoder的一样，也可以不一样。具体做法就是将c当做之前的初始状态h0输入到Decoder中：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407171122556.png" alt="image-20240717112223486" style="zoom:33%;" />
-</li>
-<li class="lvl-2">
-<p>另一种做法是将c当作每一步的输入       <img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407171122550.png" alt="image-20240717112236471" style="zoom: 33%;" /></p>
-</li>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407171107509.png" alt="image-20240717110744438" style="zoom:67%;" /></p>
+<p>主要内容参考这篇<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/bestrivern/article/details/90723524">文章</a></p>
+<h3 id="encoder-decoder-seq2seq">Encoder-Decoder / Seq2Seq</h3>
+<p>特别的，还有一种是
+<strong>n-to-m</strong>，输入、输出为不等长的序列。这种结构是<strong>Encoder-Decoder</strong>，也叫Seq2Seq，是RNN的一个重要变种。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407171115629.png" alt="image-20240717111513544" style="zoom: 50%;" /></p>
+<p><strong>Encoder</strong>：
+<strong>语义向量c</strong>可以有多种表达方式，最简单的方法就是把Encoder的最后一个隐状态赋值给c，还可以对最后的隐状态做一个变换得到c，也可以对所有的隐状态做变换。</p>
+<p><strong>Decoder</strong>：
+<strong>拿到c之后，就用另一个RNN网络对其进行解码</strong>，这部分RNN网络被称为Decoder。Decoder的RNN可以与Encoder的一样，也可以不一样。具体做法就是将c当做之前的初始状态h0输入到Decoder中：</p>
+<ul>
+<li><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407171122556.png" alt="image-20240717112223486" style="zoom:33%;" /></li>
+<li>另一种做法是将c当作每一步的输入
+<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407171122550.png" alt="image-20240717112236471" style="zoom: 33%;" /></li>
 </ul>
 <p>当然，这些都是比较抽象的情况。。。</p>
 <p>直白点说是两组单词序列之间的转化：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>$\rm{source} = &lt;x1, x2, x3, … , xn&gt;$</p>
-</li>
-<li class="lvl-2">
-<p>$ \rm{target} = &lt;y1, y2, y3, … , ym&gt;$</p>
-</li>
+<ul>
+<li><span class="math inline">\(\rm{source} = &lt;x1, x2, x3, .... ,
+xn&gt;\)</span></li>
+<li>$ \rm{target} = &lt;y1, y2, y3, ... , ym&gt;$</li>
 </ul>
-<p>所以Encoder得到了 $C = \mathscr F(x_1, x_2, \cdots, x_n)$ ，对于 Decoder来说，就是根据历史信息和中间语义生成不同时刻的内容</p>
-<p>$y_i=\mathscr G (y_1,y_2,\cdots,y_{i-1},C)$</p>
+<p>所以Encoder得到了 <span class="math inline">\(C = \mathscr F(x_1,
+x_2, \cdots, x_n)\)</span> ，对于
+Decoder来说，就是根据历史信息和中间语义生成不同时刻的内容</p>
+<p><span class="math inline">\(y_i=\mathscr G
+(y_1,y_2,\cdots,y_{i-1},C)\)</span></p>
 <p>总而言之，Seq2Seq不是某个具体模型，而是一种框架</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>Encoder：将 input序列 →转成→ 固定长度的向量</p>
-</li>
-<li class="lvl-2">
-<p>Decoder：将 固定长度的向量 →转成→ output序列</p>
-</li>
-<li class="lvl-2">
-<p>Encoder 与 Decoder 可以彼此独立使用，实际上经常一起使用</p>
-</li>
+<ul>
+<li>Encoder：将 input序列 →转成→ 固定长度的向量</li>
+<li>Decoder：将 固定长度的向量 →转成→ output序列</li>
+<li>Encoder 与 Decoder 可以彼此独立使用，实际上经常一起使用</li>
 </ul>
 <p>Encoder-Decoder 缺点</p>
 <p>最大的局限性：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>编码和解码之间的唯一联系是固定长度的语义向量c</p>
-</li>
-<li class="lvl-2">
-<p>编码要把整个序列的信息压缩进一个固定长度的语义向量c</p>
-</li>
-<li class="lvl-2">
-<p>语义向量c无法完全表达整个序列的信息</p>
-</li>
-<li class="lvl-2">
-<p>先输入的内容携带的信息，会被后输入的信息稀释掉，或者被覆盖掉</p>
-</li>
-<li class="lvl-2">
-<p>输入序列越长，这样的现象越严重，这样使得在Decoder解码时一开始就没有获得足够的输入序列信息，解码效果会打折扣</p>
-</li>
+<ul>
+<li><p>编码和解码之间的唯一联系是固定长度的语义向量c</p></li>
+<li><p>编码要把整个序列的信息压缩进一个固定长度的语义向量c</p></li>
+<li><p>语义向量c无法完全表达整个序列的信息</p></li>
+<li><p>先输入的内容携带的信息，会被后输入的信息稀释掉，或者被覆盖掉</p></li>
+<li><p>输入序列越长，这样的现象越严重，这样使得在Decoder解码时一开始就没有获得足够的输入序列信息，解码效果会打折扣</p></li>
 </ul>
-<p>因此，为了弥补基础的 Encoder-Decoder 的局限性，提出了attention机制。</p>
-<h3 id="Attention-mechanism">Attention mechanism</h3>
-<p>参考了这篇<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jins-note/p/13056604.html">文章</a></p>
-<p>注意力机制（attention mechanism）是对基础Encoder-Decoder的改良。Attention机制通过在每个时间输入不同的c来解决问题</p>
+<p>因此，为了弥补基础的 Encoder-Decoder
+的局限性，提出了attention机制。</p>
+<h3 id="attention-mechanism">Attention mechanism</h3>
+<p>参考了这篇<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/jins-note/p/13056604.html">文章</a></p>
+<p>注意力机制（attention
+mechanism）是对基础Encoder-Decoder的改良。Attention机制通过在每个时间输入不同的c来解决问题</p>
 <p>从上面的图来看，其实上面的 Encoder-Decoder模型是注意力不集中的：</p>
-<p>$y_1 = f©$ 、 $y_2=f(y_1,C)$ 、$y_3=f(y_1,y_2,C)$ 其中 f 是Decoder的非线性变换函数。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>不论那个单词输出，source的语义编码 C 都是一样的</p>
-</li>
-<li class="lvl-2">
-<p>而语义编码C是由句子Source的每个单词经过Encoder</p>
-</li>
+<p><span class="math inline">\(y_1 = f(C)\)</span> 、 <span
+class="math inline">\(y_2=f(y_1,C)\)</span> 、<span
+class="math inline">\(y_3=f(y_1,y_2,C)\)</span> 其中 f
+是Decoder的非线性变换函数。</p>
+<ul>
+<li>不论那个单词输出，source的语义编码 C 都是一样的</li>
+<li>而语义编码C是由句子Source的每个单词经过Encoder</li>
 </ul>
-<p>=》 编码产生的，这意味着不论是生成哪个单词，y1,y2还是y3，其实句子Source中任意单词对生成某个目标单词yi来说影响力都是相同的，这是为何说这个模型没有体现出注意力的缘由。这类似于人类看到眼前的画面，但是眼中却没有注意焦点一样。</p>
+<p>=》
+编码产生的，这意味着不论是生成哪个单词，y1,y2还是y3，其实句子Source中任意单词对生成某个目标单词yi来说影响力都是相同的，这是为何说这个模型没有体现出注意力的缘由。这类似于人类看到眼前的画面，但是眼中却没有注意焦点一样。</p>
 <blockquote>
 <p>举个例子：</p>
 <p>I love you =》我 爱 你</p>
-<p>在翻译“我”时，显然要更加考虑 I 这个单词，所以如果各个英文单词都是等权重的，就显得有些不合理了。。。</p>
+<p>在翻译“我”时，显然要更加考虑 I
+这个单词，所以如果各个英文单词都是等权重的，就显得有些不合理了。。。</p>
 </blockquote>
 <p>改进的方法也很简单，就是加上一些权重参数</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407181152879.png" alt="image-20240718115202795" style="zoom: 50%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407181152879.png" alt="image-20240718115202795" style="zoom: 50%;" /></p>
 <p>那么这种概率该设置为多少呢？</p>
-<p>由于 Decoder 采用 RNN 架构，因此在生成输出 $y_i$ 时是知道前时刻 $y_{i-1}$ 的输出的，而我们的目的就是希望得到输入 source 句子对 $y_i$ 的权重影响的，那么可以用上一时刻的输出对各个单词做个比较，通过一个函数来获得他们之间对其的可能性，然后把 F 做一个 softmax 得到不同的概率即可</p>
+<p>由于 Decoder 采用 RNN 架构，因此在生成输出 <span
+class="math inline">\(y_i\)</span> 时是知道前时刻 <span
+class="math inline">\(y_{i-1}\)</span>
+的输出的，而我们的目的就是希望得到输入 source 句子对 <span
+class="math inline">\(y_i\)</span>
+的权重影响的，那么可以用上一时刻的输出对各个单词做个比较，通过一个函数来获得他们之间对其的可能性，然后把
+F 做一个 softmax 得到不同的概率即可</p>
 <p>绝大多数Attention模型都是采取上述的计算框架来计算注意力分配概率分布信息，区别只是在F的定义上可能有所不同。下图可视化地展示了在英语-德语翻译系统中加入Attention机制后，Source和Target两个句子每个单词对应的注意力分配概率分布。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407181225580.png" alt="image-20240718122543467" style="zoom:50%;" />
-<p>上述内容就是经典的Soft Attention模型的基本思想，那么怎么理解Attention模型的物理含义呢？一般在自然语言处理应用里会把Attention模型看作是输出Target句子中某个单词和输入Source句子每个单词的对齐模型，这是非常有道理的。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407181225580.png" alt="image-20240718122543467" style="zoom:50%;" /></p>
+<p>上述内容就是经典的Soft
+Attention模型的基本思想，那么怎么理解Attention模型的物理含义呢？一般在自然语言处理应用里会把Attention模型看作是输出Target句子中某个单词和输入Source句子每个单词的对齐模型，这是非常有道理的。</p>
 <p>目标句子生成的每个单词对应输入句子单词的概率分布可以理解为：输入句子单词和这个目标生成单词的对齐概率，这在机器翻译语境下是非常直观的：传统的统计机器翻译一般在做的过程中会专门有一个短语对齐的步骤，而注意力模型其实起的是相同的作用。</p>
-<h4 id="Attention-机制的本质思想">Attention 机制的本质思想</h4>
+<h4 id="attention-机制的本质思想">Attention 机制的本质思想</h4>
 <p>如果把Attention机制从上文讲述例子中的Encoder-Decoder框架中剥离，并进一步做抽象，可以更容易看懂Attention机制的本质思想。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407181233153.png" alt="image-20240718123332057" style="zoom:50%;" />
-<p>将 Source 中的构成元素想象成是由一系列的&lt;Key,Value&gt;数据对构成，此时给定Target中的某个元素Query，通过计算Query和各个Key的相似性或者相关性，得到每个Key对应Value的权重系数，然后对Value进行加权求和，即得到了最终的Attention数值。所以本质上Attention机制是对Source中元素的Value值进行加权求和，而Query和Key用来计算对应Value的权重系数。即可以将其本质思想改写为如下公式：<br>
-$$<br>
-\rm {Attention(Query,Source)}=\sum_{i=1}^{L_x} Similarity(Query, Key_i) * Value_i<br>
-$$<br>
-其中，Lx= ||Source|| 代表Source的长度，公式含义即如上所述。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407181233153.png" alt="image-20240718123332057" style="zoom:50%;" /></p>
+<p>将 Source
+中的构成元素想象成是由一系列的&lt;Key,Value&gt;数据对构成，此时给定Target中的某个元素Query，通过计算Query和各个Key的相似性或者相关性，得到每个Key对应Value的权重系数，然后对Value进行加权求和，即得到了最终的Attention数值。所以本质上Attention机制是对Source中元素的Value值进行加权求和，而Query和Key用来计算对应Value的权重系数。即可以将其本质思想改写为如下公式：
+<span class="math display">\[
+\rm {Attention(Query,Source)}=\sum_{i=1}^{L_x} Similarity(Query, Key_i)
+* Value_i
+\]</span> 其中，Lx= ||Source||
+代表Source的长度，公式含义即如上所述。</p>
 <p>另外有观点将这种方式看作一种软寻址（soft addressing）</p>
 <blockquote>
 <p>Source可以看作存储器内存储的内容，元素由地址Key和值Value组成，当前有个Key=Query的查询，目的是取出存储器中对应的Value值，即Attention数值。通过Query和存储器内元素Key的地址进行相似性比较来寻址，之所以说是软寻址，指的不像一般寻址只从存储内容里面找出一条内容，而是可能从每个Key地址都会取出内容，取出内容的重要性根据Query和Key的相似性来决定，之后对Value进行加权求和，这样就可以取出最终的Value值，也即Attention值。</p>
 </blockquote>
 <p>对 attention 机制的具体计算过程，可以抽象为两个步骤：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>计算 Query 和 Key 的权重系数</p>
-<ul class="lvl-2">
-<li class="lvl-6">计算 Query 和 Key 的相似性</li>
-<li class="lvl-6">对上一阶段的原始分值进行归一化处理</li>
-</ul>
-</li>
-<li class="lvl-2">
-<p>根据权重系数对 value 进行加权求和</p>
-</li>
+<ul>
+<li>计算 Query 和 Key 的权重系数
+<ul>
+<li>计算 Query 和 Key 的相似性</li>
+<li>对上一阶段的原始分值进行归一化处理</li>
+</ul></li>
+<li>根据权重系数对 value 进行加权求和</li>
 </ul>
 <p>在第一个阶段，可以引入不同的函数和计算机制，根据Query和某个Key_i，计算两者的相似性或者相关性，最常见的方法包括：求两者的向量点积、求两者的向量Cosine相似性或者通过再引入额外的神经网络来求值，即如下方式：</p>
-<ol>
-<li class="lvl-3">
-<p>点积：$\rm Similarity(Query,Key_i)=Query*Key_i$</p>
-</li>
-<li class="lvl-3">
-<p>Cosine 相似度： $\rm Similarity(Query,Key_i)=\frac{Query·Key_i}{||Query||·||Key_i||}$</p>
-</li>
-<li class="lvl-3">
-<p>MLP 网络：$\rm Similarity(Query,Key_i)=MLP(Query, Key_i)$</p>
-</li>
+<ol type="1">
+<li>点积：<span class="math inline">\(\rm
+Similarity(Query,Key_i)=Query*Key_i\)</span></li>
+<li>Cosine 相似度： <span class="math inline">\(\rm
+Similarity(Query,Key_i)=\frac{Query·Key_i}{||Query||·||Key_i||}\)</span></li>
+<li>MLP 网络：<span class="math inline">\(\rm
+Similarity(Query,Key_i)=MLP(Query, Key_i)\)</span></li>
 </ol>
-<p>第二阶段一般采用 softmax，一方面能够进行数值转换，另一方面能够突出更加重要的元素</p>
+<p>第二阶段一般采用
+softmax，一方面能够进行数值转换，另一方面能够突出更加重要的元素</p>
 <h2 id="word-embedding">word embedding</h2>
-<p>参考了这篇<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/word-embedding/#representation">文章</a></p>
+<p>参考了这篇<a
+target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/word-embedding/#representation">文章</a></p>
 <h3 id="one-hot">one-hot</h3>
-<p>假如我们要计算的文本中一共出现了4个词：猫、狗、牛、羊。向量里每一个位置都代表一个词。所以用 one-hot 来表示就是：</p>
+<p>假如我们要计算的文本中一共出现了4个词：猫、狗、牛、羊。向量里每一个位置都代表一个词。所以用
+one-hot 来表示就是：</p>
 <p>猫：［1，0，0，0］</p>
 <p>狗：［0，1，0，0］</p>
 <p>牛：［0，0，1，0］</p>
 <p>羊：［0，0，0，1］</p>
 <p>但是 one-hot 有很多缺点，比如。。。：</p>
-<ol>
-<li class="lvl-3">
-<p>无法表达词语之间的关系</p>
-</li>
-<li class="lvl-3">
-<p>对于字典很多的任务占用太多存储</p>
-</li>
-<li class="lvl-3">
-<p>…</p>
-</li>
+<ol type="1">
+<li>无法表达词语之间的关系</li>
+<li>对于字典很多的任务占用太多存储</li>
+<li>...</li>
 </ol>
-<hr>
+<hr />
 <p>两种主流的 word embedding 方法</p>
 <h3 id="word2vec">word2vec</h3>
 <p>word2vec 的两种训练模式：</p>
-<ol>
-<li class="lvl-3">
-<p><strong>CBOW</strong> （Continuous Bag-of-Words Model） 通过上下文来预测当前值。相当于一句话中扣掉一个词，让你猜这个词是什么。</p>
-</li>
+<ol type="1">
+<li><strong>CBOW</strong> （Continuous Bag-of-Words Model）
+通过上下文来预测当前值。相当于一句话中扣掉一个词，让你猜这个词是什么。</li>
 </ol>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407261150123.png" alt="CBOW通过上下文来预测当前值" style="zoom: 33%;" />
-<ol start="2">
-<li class="lvl-3">
-<p><strong>Skip-gram</strong> （Continuous Skip-gram Model） 用当前词来预测上下文。相当于给你一个词，让你猜前面和后面可能出现什么词。</p>
-</li>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407261150123.png" alt="CBOW通过上下文来预测当前值" style="zoom: 33%;" /></p>
+<ol start="2" type="1">
+<li><strong>Skip-gram</strong> （Continuous Skip-gram Model）
+用当前词来预测上下文。相当于给你一个词，让你猜前面和后面可能出现什么词。</li>
 </ol>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407261151628.png" alt="Skip-gram用当前词来预测上下文" style="zoom:33%;" />
-<h3 id="Glove">Glove</h3>
-<p>参考了这篇<a target="_blank" rel="noopener" href="https://www.fanyeong.com/2018/02/19/glove-in-detail/">文章</a></p>
-<h2 id="Lstm">Lstm</h2>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271101028.png" alt="img" style="zoom: 67%;" />
-<p>最简易的 RNN 网络实际上只有一个短期记忆状态，就是隐藏层的 h，那么不妨可以试试增加一个长记忆状态 c ，称为单元状态（cell state）。LSTM的关键，就是怎样控制长期状态c。在这里，LSTM的思路是使用三个控制开关：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>第一个开关，负责控制继续保存长期状态c</p>
-</li>
-<li class="lvl-2">
-<p>第二个开关，负责控制把即时状态输入到长期状态c</p>
-</li>
-<li class="lvl-2">
-<p>第三个开关，负责控制是否把长期状态c作为当前的LSTM的输出</p>
-</li>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407261151628.png" alt="Skip-gram用当前词来预测上下文" style="zoom:33%;" /></p>
+<h3 id="glove">Glove</h3>
+<p>参考了这篇<a
+target="_blank" rel="noopener" href="https://www.fanyeong.com/2018/02/19/glove-in-detail/">文章</a></p>
+<h2 id="lstm">Lstm</h2>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271101028.png" alt="img" style="zoom: 67%;" /></p>
+<p>最简易的 RNN 网络实际上只有一个短期记忆状态，就是隐藏层的
+h，那么不妨可以试试增加一个长记忆状态 c ，称为单元状态（cell
+state）。LSTM的关键，就是怎样控制长期状态c。在这里，LSTM的思路是使用三个控制开关：</p>
+<ul>
+<li>第一个开关，负责控制继续保存长期状态c</li>
+<li>第二个开关，负责控制把即时状态输入到长期状态c</li>
+<li>第三个开关，负责控制是否把长期状态c作为当前的LSTM的输出</li>
 </ul>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271053379.png" alt="img" style="zoom: 80%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271053379.png" alt="img" style="zoom: 80%;" /></p>
 <h3 id="前向计算">前向计算</h3>
-<p>门（gate）就是前面的开关，实际上是一个全连接层，他的输入是一个向量，输出是一个0到1之间的实数，门可以表示为 $g(x)=\sigma(Wx+b)$ ，其中，$\sigma$ 是 sigmoid函数，值域为(0,1)，所以门的状态都是半开半闭的</p>
+<p>门（gate）就是前面的开关，实际上是一个全连接层，他的输入是一个向量，输出是一个0到1之间的实数，门可以表示为
+<span class="math inline">\(g(x)=\sigma(Wx+b)\)</span> ，其中，<span
+class="math inline">\(\sigma\)</span> 是
+sigmoid函数，值域为(0,1)，所以门的状态都是半开半闭的</p>
 <p>LSTM用两个门来控制单元状态c的内容</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>一个是<strong>遗忘门（forget gate）</strong>，它决定了上一时刻的单元状态有多少保留到当前时刻 ct</p>
-</li>
-<li class="lvl-2">
-<p>另一个是<strong>输入门（input gate）</strong>，它决定了当前时刻网络的输入 xt 有多少保存到单元状态 ct。</p>
-</li>
+<ul>
+<li>一个是<strong>遗忘门（forget
+gate）</strong>，它决定了上一时刻的单元状态有多少保留到当前时刻 ct</li>
+<li>另一个是<strong>输入门（input
+gate）</strong>，它决定了当前时刻网络的输入 xt 有多少保存到单元状态
+ct。</li>
 </ul>
-<p>LSTM用**输出门（output gate）**来控制单元状态 ct 有多少输出到 LSTM 的当前输出值 ht</p>
+<p>LSTM用<strong>输出门（output gate）</strong>来控制单元状态 ct
+有多少输出到 LSTM 的当前输出值 ht</p>
 <h4 id="遗忘门">遗忘门</h4>
-<p>$f_t = \sigma(W_f·[h_{t-1},x_t]+b_f)$ ，其中 $W_f$ 表示遗忘门的权重，$b_f$ 表示遗忘门的偏置，$[h_{t-1},x_t]$​ 表示将两个向量拼接</p>
+<p><span class="math inline">\(f_t =
+\sigma(W_f·[h_{t-1},x_t]+b_f)\)</span> ，其中 <span
+class="math inline">\(W_f\)</span> 表示遗忘门的权重，<span
+class="math inline">\(b_f\)</span> 表示遗忘门的偏置，<span
+class="math inline">\([h_{t-1},x_t]\)</span>​ 表示将两个向量拼接</p>
 <h4 id="输入门">输入门</h4>
-<p>$i_t = \sigma(W_i·[h_{t-1},x_t]+b_i)$ 各项的意义类似上面的遗忘门</p>
-<p>同时，计算<strong>描述输入的单元状态</strong> $\hat c_t = \tanh (W_c·[h_{t-1},x_t]+b_c)$</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271114008.png" alt="img" style="zoom: 80%;" />
-<p>接下来计算当前状态 ct，$c_t = f_t \circ c_{t-1} + i_t \circ \hat c_t$ ，其中 $\circ$ 表示按元素乘</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271124351.png" alt="img" style="zoom:80%;" />
+<p><span class="math inline">\(i_t =
+\sigma(W_i·[h_{t-1},x_t]+b_i)\)</span> 各项的意义类似上面的遗忘门</p>
+<p>同时，计算<strong>描述输入的单元状态</strong> <span
+class="math inline">\(\hat c_t = \tanh
+(W_c·[h_{t-1},x_t]+b_c)\)</span></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271114008.png" alt="img" style="zoom: 80%;" /></p>
+<p>接下来计算当前状态 ct，<span class="math inline">\(c_t = f_t \circ
+c_{t-1} + i_t \circ \hat c_t\)</span> ，其中 <span
+class="math inline">\(\circ\)</span> 表示按元素乘</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202407271124351.png" alt="img" style="zoom:80%;" /></p>
 <h4 id="输出门">输出门</h4>
-<p>这样，我们就把LSTM关于当前的记忆~ct和长期的记忆ct-1组合在一起，形成了新的单元状态ct。由于遗忘门的控制，它可以保存很久很久之前的信息，由于输入门的控制，它又可以避免当前无关紧要的内容进入记忆。下面，我们要看看输出门，它控制了长期记忆对当前输出的影响：<br>
-$$<br>
-o_t = \sigma(W_o·[h_{t-1}, x_t]+b_o)<br>
-$$<br>
-lstm 的最终输出是由输出门和单元状态共同决定的：<br>
-$$<br>
-h_t = o_t \circ \tanh (c_t)<br>
-$$</p>
-<h1>A6</h1>
-<h2 id="VAE-Variational-Auto-Encoder">VAE(Variational Auto Encoder)</h2>
-<p>主要参考了<a target="_blank" rel="noopener" href="https://blog.csdn.net/a312863063/article/details/87953517">这篇文章</a> 和 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhb2000/p/variational-autoencoder.html">这篇博客</a></p>
+<p>这样，我们就把LSTM关于当前的记忆~ct和长期的记忆ct-1组合在一起，形成了新的单元状态ct。由于遗忘门的控制，它可以保存很久很久之前的信息，由于输入门的控制，它又可以避免当前无关紧要的内容进入记忆。下面，我们要看看输出门，它控制了长期记忆对当前输出的影响：
+<span class="math display">\[
+o_t = \sigma(W_o·[h_{t-1}, x_t]+b_o)
+\]</span> lstm 的最终输出是由输出门和单元状态共同决定的： <span
+class="math display">\[
+h_t = o_t \circ \tanh (c_t)
+\]</span></p>
+<h1 id="a6">A6</h1>
+<h2 id="vaevariational-auto-encoder">VAE(Variational Auto Encoder)</h2>
+<p>主要参考了<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/a312863063/article/details/87953517">这篇文章</a>
+和 <a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/zhb2000/p/variational-autoencoder.html">这篇博客</a></p>
 <p>VAE作为一个生成模型，其基本思路是很容易理解的：把一堆真实样本通过编码器网络变换成一个理想的数据分布，然后这个数据分布再传递给一个解码器网络，得到一堆生成样本，生成样本与真实样本足够接近的话，就训练出了一个自编码器模型。</p>
-<p>类似于 PCA，PCA是用矩阵作降维和还原的，对于一个输入矩阵 x，找到一个变换矩阵W，得到降维后的数据 c，再通过 $W^T$ 将 c 进行还原为 $\hat x$ ，使得 $\hat x$ 与 $x$ 的距离尽可能的小，利用数学方法可以找到这样的 W 矩阵</p>
-<p>而将这里的两次变换分别用神经网络来代替，就是 Deep Auto-Encoder模型。</p>
-<p>这一替换的明显好处是，引入了神经网络强大的拟合能力，使得编码（Code）的维度能够比原始图像（X）的维度低非常多。在一个手写数字图像的生成模型中，Deep Auto-Encoder能够把一个784维的向量（28*28图像）压缩到只有30维，并且解码回的图像具备清楚的辨认度</p>
+<p>类似于 PCA，PCA是用矩阵作降维和还原的，对于一个输入矩阵
+x，找到一个变换矩阵W，得到降维后的数据 c，再通过 <span
+class="math inline">\(W^T\)</span> 将 c 进行还原为 <span
+class="math inline">\(\hat x\)</span> ，使得 <span
+class="math inline">\(\hat x\)</span> 与 <span
+class="math inline">\(x\)</span>
+的距离尽可能的小，利用数学方法可以找到这样的 W 矩阵</p>
+<p>而将这里的两次变换分别用神经网络来代替，就是 Deep
+Auto-Encoder模型。</p>
+<p>这一替换的明显好处是，引入了神经网络强大的拟合能力，使得编码（Code）的维度能够比原始图像（X）的维度低非常多。在一个手写数字图像的生成模型中，Deep
+Auto-Encoder能够把一个784维的向量（28*28图像）压缩到只有30维，并且解码回的图像具备清楚的辨认度</p>
 <p>但是由于编码后是离散状态，因此存在一些问题，比如</p>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031431858.png" alt="在这里插入图片描述"></p>
+<figure>
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031431858.png"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
 <p>如上图所示，假设有两张训练图片，一张是全月图，一张是半月图，经过训练我们的自编码器模型已经能无损地还原这两张图片。</p>
 <p>接下来，我们在code空间上，两张图片的编码点中间处取一点，然后将这一点交给解码器，我们希望新的生成图片是一张清晰的图片（类似3/4全月的样子）。</p>
 <p>但是，实际的结果是，生成图片是模糊且无法辨认的乱码图。一个比较合理的解释是，因为编码和解码的过程使用了深度神经网络，这是一个非线性的变换过程，所以在code空间上点与点之间的迁移是非常没有规律的。</p>
 <p>这个问题的解决是通过引入噪声来解决：</p>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031432152.png" alt="在这里插入图片描述"></p>
+<figure>
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031432152.png"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
 <p>如上图所示，现在在给两张图片编码的时候加上一点噪音，使得每张图片的编码点出现在绿色箭头所示范围内，于是在训练模型的时候，绿色箭头范围内的点都有可能被采样到，这样解码器在训练时会把绿色范围内的点都尽可能还原成和原图相似的图片。然后我们可以关注之前那个失真点，现在它处于全月图和半月图编码的交界上，于是解码器希望它既要尽量相似于全月图，又要尽量相似于半月图，于是它的还原结果就是两种图的折中（3/4全月图）。</p>
 <p>但是这样的噪声引入仍无法覆盖整个区域，比如上图的黄色取样点，因而为了解决这个问题，需要将噪声无线拉长，对于每个样本，他的编码加入噪声后将覆盖整个空间，不过需要遵循位置越远概率越低的原则</p>
 <blockquote>
 <p>在这种情况下，图像的编码就由原先离散的编码点变成了一条连续的编码分布曲线，如下图所示。</p>
 </blockquote>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031434696.png" alt="在这里插入图片描述"></p>
-<p>那么上述的这种将图像编码由离散变为连续的方法，就是变分自编码的核心思想。VAE 模型的具体架构如下图所示</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031427221.png" alt="img"  />
-<p>在 VAE 中，编码器产生两个编码 $m$ 和 $\sigma$ ，另外产生随机编码 $e$ ，其中 $\sigma$ 是控制随机噪声权重的，所以加上 exp 保证权重为正值，最后将原编码与噪音编码相加，就得到了VAE在code层的输出结果(c1,c2,c3)</p>
+<figure>
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031434696.png"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>那么上述的这种将图像编码由离散变为连续的方法，就是变分自编码的核心思想。VAE
+模型的具体架构如下图所示</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408031427221.png" alt="img"  /></p>
+<p>在 VAE 中，编码器产生两个编码 <span class="math inline">\(m\)</span>
+和 <span class="math inline">\(\sigma\)</span> ，另外产生随机编码 <span
+class="math inline">\(e\)</span> ，其中 <span
+class="math inline">\(\sigma\)</span> 是控制随机噪声权重的，所以加上 exp
+保证权重为正值，最后将原编码与噪音编码相加，就得到了VAE在code层的输出结果(c1,c2,c3)</p>
 <p>再看损失函数方面：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>最小化重构损失</p>
-</li>
-<li class="lvl-2">
-<p>最小化概率配比：为了保证图片的生成质量，编码器是希望噪声对图片的干扰更小的，也就意味着 $\sigma$ 是更倾向于为负无穷的，</p>
-</li>
+<ul>
+<li>最小化重构损失</li>
+<li>最小化概率配比：为了保证图片的生成质量，编码器是希望噪声对图片的干扰更小的，也就意味着
+<span class="math inline">\(\sigma\)</span> 是更倾向于为负无穷的，</li>
 </ul>
-<h3 id="VAE-模型原理">VAE 模型原理</h3>
-<p>详细推导过程依然可以参见<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhb2000/p/variational-autoencoder.html">这篇文章</a> ，写的真的很好而且能过一步一步理论推导</p>
-<p>（<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhb2000/p/variational-autoencoder.html">这篇文章</a>在知乎也发表过</p>
-<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408041759678.jpeg" alt="VAE 示意图"></p>
-<h2 id="Network-Visualization">Network Visualization</h2>
+<h3 id="vae-模型原理">VAE 模型原理</h3>
+<p>详细推导过程依然可以参见<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/zhb2000/p/variational-autoencoder.html">这篇文章</a>
+，写的真的很好而且能过一步一步理论推导</p>
+<p>（<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/zhb2000/p/variational-autoencoder.html">这篇文章</a>在知乎也发表过</p>
+<figure>
+<img
+src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408041759678.jpeg"
+alt="VAE 示意图" />
+<figcaption aria-hidden="true">VAE 示意图</figcaption>
+</figure>
+<h2 id="network-visualization">Network Visualization</h2>
 <p>assignment中主要出现了三种方式：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>Saliency Maps，显著图：简单来说，显著图就是图像中梯度数值比较大的像素点，这些位置通常是图像中比较重要的部分</p>
-</li>
+<ul>
+<li>Saliency
+Maps，显著图：简单来说，显著图就是图像中梯度数值比较大的像素点，这些位置通常是图像中比较重要的部分</li>
 </ul>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061747878.png" alt="image-20240806174716742" style="zoom:80%;" />
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>Adversarial Attack，对抗攻击：对图像作轻微扰动，使其骗过判别器从而达到预想的分类结果</p>
-</li>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061747878.png" alt="image-20240806174716742" style="zoom:80%;" /></p>
+<ul>
+<li>Adversarial
+Attack，对抗攻击：对图像作轻微扰动，使其骗过判别器从而达到预想的分类结果</li>
 </ul>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061749434.png" alt="image-20240806174938314" style="zoom:80%;" />
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>Class Visualization，类别可视化：对特定类别的增强，使得原始图像能够最大程度的被识别为该特定类别</p>
-</li>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061749434.png" alt="image-20240806174938314" style="zoom:80%;" /></p>
+<ul>
+<li>Class
+Visualization，类别可视化：对特定类别的增强，使得原始图像能够最大程度的被识别为该特定类别</li>
 </ul>
-<h2 id="Style-Transfer">Style Transfer</h2>
-<p>Style Transfer（风格迁移）通过将一种图像的风格应用到另一种图像上，从而生成既保留原始图像内容又具有新风格的图像。它利用深度学习模型，特别是卷积神经网络（CNN），来分离和重组合图像的内容和风格特征。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061821890.png" alt="image-20240806182131514" style="zoom:80%;" />
+<h2 id="style-transfer">Style Transfer</h2>
+<p>Style
+Transfer（风格迁移）通过将一种图像的风格应用到另一种图像上，从而生成既保留原始图像内容又具有新风格的图像。它利用深度学习模型，特别是卷积神经网络（CNN），来分离和重组合图像的内容和风格特征。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202408061821890.png" alt="image-20240806182131514" style="zoom:80%;" /></p>
 
     </div>
 
@@ -910,13 +907,13 @@ $$</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">95k</span>
+    <span title="站点总字数">99k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:53</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 

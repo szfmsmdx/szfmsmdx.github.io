@@ -37,9 +37,9 @@
 <meta property="article:published_time" content="2024-05-22T08:15:50.000Z">
 <meta property="article:modified_time" content="2024-05-28T07:11:38.546Z">
 <meta property="article:author" content="Szfmsmdx">
+<meta property="article:tag" content="Deep Learning">
 <meta property="article:tag" content="CNN">
 <meta property="article:tag" content="深度学习">
-<meta property="article:tag" content="Deep Learning">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405231116378.png">
 
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">池化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">基本卷积函数的变体</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%A0%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">池化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%8D%B7%E7%A7%AF%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%98%E4%BD%93"><span class="nav-number">2.</span> <span class="nav-text">基本卷积函数的变体</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -310,104 +310,104 @@
 
 </blockquote>
 <span id="more"></span>
-<p>假设我们正在用激光传感器追踪一艘宇宙飞船的位置。我们的激光传感器给出一个单独的输出 x(t)，表示宇宙飞船在时刻 t 的位置。x 和 t 都是实值的，这意味着我们可以在任意时刻从传感器中读出飞船的位置。</p>
-<p>现在假设我们的传感器受到一定程度的噪声干扰。为了得到飞船位置的低噪声估计，我们对得到的测量结果进行平均。显然，时间上越近的测量结果越相关，所以我们采用一种加权平均的方法，对于最近的测量结果赋予更高的权重。我们可以采用一个加权函数 w(a) 来实现，其中 a 表示测量结果距当前时刻的时间间隔。如果我们对任意时刻都采用这种加权平均的操作，就得到了一个新的对于飞船位置的平滑估计函数 s：<br>
-$$<br>
-s(t) = \int x(a)w(t-a) \mathrm d a<br>
-$$<br>
-这种运算就叫做 <strong>卷积（convolution）</strong>。卷积运算通常用星号表示：<br>
-$$<br>
-s(t) = (x * w) (t)<br>
-$$<br>
-在我们的例子中，w 必须是一个有效的概率密度函数，否则输出就不再是一个 加权平均。</p>
-<p>在卷积网络的术语中，卷积的第一个参数（在这个例子中，函数 x）通常叫做 <strong>输入（input）</strong>，第二个参数（函数 w）叫做 <strong>核函数（kernel function）</strong>。输出有时被称作 <strong>特征映射（feature map）</strong>。</p>
-<p>如果我们假设 x 和 w 都定义在整数时刻 t 上，就可以定义离散形式的卷积：<br>
-$$<br>
-s(t) = (x*w)(t) = \sum_{a=-\infty}^\infty x(a)w(t-a)<br>
-$$<br>
-最后，我们经常一次在多个维度上进行卷积运算。例如，如果把一张二维的图 像 I 作为输入，我们也许也想要使用一个二维的核 K：<br>
-$$<br>
-S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(m,n)K(i-m,j-n)<br>
-$$<br>
-卷积是<strong>可交换的 (commutative)</strong>，我们可以等价地写作：<br>
-$$<br>
-S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i-m,j-n)K(m, n)<br>
-$$<br>
-通常，下面的公式在机器学习库中实现更为简单，因为 m 和 n 的有效取值范围较小，且当然是取输入更为方便</p>
-<p>卷积运算可交换性的出现是因为我们将核相对输入进行了 翻转（flip），从 m 增大的角度来看，输入的索引在增大，但是核的索引在减小。</p>
-<p>许多神经网络库会实现一个相关的函数，称为 <strong>互相关函数（cross-correlation）</strong>，和卷积运算几乎一样但是并没有对核进行翻转：<br>
-$$<br>
-S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i + m, j + n) K(m, n)<br>
-$$<br>
-许多机器学习的库实现的是互相关函数但是称之为卷积。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405231116378.png" alt="image-20240523111641326" style="zoom:67%;" />
+<p>假设我们正在用激光传感器追踪一艘宇宙飞船的位置。我们的激光传感器给出一个单独的输出
+x(t)，表示宇宙飞船在时刻 t 的位置。x 和 t
+都是实值的，这意味着我们可以在任意时刻从传感器中读出飞船的位置。</p>
+<p>现在假设我们的传感器受到一定程度的噪声干扰。为了得到飞船位置的低噪声估计，我们对得到的测量结果进行平均。显然，时间上越近的测量结果越相关，所以我们采用一种加权平均的方法，对于最近的测量结果赋予更高的权重。我们可以采用一个加权函数
+w(a) 来实现，其中 a
+表示测量结果距当前时刻的时间间隔。如果我们对任意时刻都采用这种加权平均的操作，就得到了一个新的对于飞船位置的平滑估计函数
+s： <span class="math display">\[
+s(t) = \int x(a)w(t-a) \mathrm d a
+\]</span> 这种运算就叫做
+<strong>卷积（convolution）</strong>。卷积运算通常用星号表示： <span
+class="math display">\[
+s(t) = (x * w) (t)
+\]</span> 在我们的例子中，w
+必须是一个有效的概率密度函数，否则输出就不再是一个 加权平均。</p>
+<p>在卷积网络的术语中，卷积的第一个参数（在这个例子中，函数 x）通常叫做
+<strong>输入（input）</strong>，第二个参数（函数 w）叫做
+<strong>核函数（kernel function）</strong>。输出有时被称作
+<strong>特征映射（feature map）</strong>。</p>
+<p>如果我们假设 x 和 w 都定义在整数时刻 t 上，就可以定义离散形式的卷积：
+<span class="math display">\[
+s(t) = (x*w)(t) = \sum_{a=-\infty}^\infty x(a)w(t-a)
+\]</span>
+最后，我们经常一次在多个维度上进行卷积运算。例如，如果把一张二维的图 像
+I 作为输入，我们也许也想要使用一个二维的核 K： <span
+class="math display">\[
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(m,n)K(i-m,j-n)
+\]</span> 卷积是<strong>可交换的
+(commutative)</strong>，我们可以等价地写作： <span
+class="math display">\[
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i-m,j-n)K(m, n)
+\]</span> 通常，下面的公式在机器学习库中实现更为简单，因为 m 和 n
+的有效取值范围较小，且当然是取输入更为方便</p>
+<p>卷积运算可交换性的出现是因为我们将核相对输入进行了 翻转（flip），从 m
+增大的角度来看，输入的索引在增大，但是核的索引在减小。</p>
+<p>许多神经网络库会实现一个相关的函数，称为
+<strong>互相关函数（cross-correlation）</strong>，和卷积运算几乎一样但是并没有对核进行翻转：
+<span class="math display">\[
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i + m, j + n) K(m, n)
+\]</span> 许多机器学习的库实现的是互相关函数但是称之为卷积。</p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405231116378.png" alt="image-20240523111641326" style="zoom:67%;" /></p>
 <p>为什么CNN可以有这么高效的应用于具有网格结构的数据呢？主要原因是</p>
-<ol>
-<li class="lvl-3">
-<p>稀疏连接(sparse connectivity)</p>
-</li>
-<li class="lvl-3">
-<p>参数共享(parameter sharing)</p>
-</li>
-<li class="lvl-3">
-<p>等变表示(equivariant representations)</p>
-</li>
+<ol type="1">
+<li>稀疏连接(sparse connectivity)</li>
+<li>参数共享(parameter sharing)</li>
+<li>等变表示(equivariant representations)</li>
 </ol>
 <p>传统的神经网络使用矩阵乘法来建立输入与输出的连接关系。其中，参数矩阵中每一个单独的参数都描述了一个输入单元与一个输出单元间的交互。这意味着每一个输出单元与每一个输入单元都产生交互。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405251159927.png" alt="image-20240525115933830" style="zoom:67%;" />
-<p>**参数共享（parameter sharing）**是指在一个模型的多个函数中使用相同的参数。在传统的神经网络中，当计算一层的输出时，权重矩阵的每一个元素只使用一次，当它乘以输入的一个元素后就再也不会用到了。作为参数共享的同义词，我们可以说一个网络含有 <strong>绑定的权重（tied weights）</strong>，因为用于一个输入的权重也会被绑定在 其他的权重上。在卷积神经网络中，核的每一个元素都作用在输入的每一位置上（是 否考虑边界像素取决于对边界决策的设计）。</p>
-<h1>池化</h1>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405251159927.png" alt="image-20240525115933830" style="zoom:67%;" /></p>
+<p><strong>参数共享（parameter
+sharing）</strong>是指在一个模型的多个函数中使用相同的参数。在传统的神经网络中，当计算一层的输出时，权重矩阵的每一个元素只使用一次，当它乘以输入的一个元素后就再也不会用到了。作为参数共享的同义词，我们可以说一个网络含有
+<strong>绑定的权重（tied
+weights）</strong>，因为用于一个输入的权重也会被绑定在
+其他的权重上。在卷积神经网络中，核的每一个元素都作用在输入的每一位置上（是
+否考虑边界像素取决于对边界决策的设计）。</p>
+<h1 id="池化">池化</h1>
 <p>卷积网络中一个典型层包含三级</p>
-<ol>
-<li class="lvl-3">
-<p>卷积层：并行地计算多个卷积产生一组线性激活响应</p>
-</li>
-<li class="lvl-3">
-<p>探测级（detector stage）：每一个线性激活响应通过一个非线性的激活函数</p>
-</li>
-<li class="lvl-3">
-<p>池化函数（pooling function）：调整此层的输出</p>
-</li>
+<ol type="1">
+<li>卷积层：并行地计算多个卷积产生一组线性激活响应</li>
+<li>探测级（detector
+stage）：每一个线性激活响应通过一个非线性的激活函数</li>
+<li>池化函数（pooling function）：调整此层的输出</li>
 </ol>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281032741.png" alt="image-20240528103238695" style="zoom:67%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281032741.png" alt="image-20240528103238695" style="zoom:67%;" /></p>
 <p>池化函数使用某一位置的相邻输出的总体统计特征来代替网络在该位置的输出。</p>
-<p>**最大池化（max pooling）**函数给出相邻矩形区域内的最大值。其他常用的池化函数包括相邻矩形区域内的平均值、L 2 范数以及基于据中心像素距离的加权平均函数。</p>
+<p><strong>最大池化（max
+pooling）</strong>函数给出相邻矩形区域内的最大值。其他常用的池化函数包括相邻矩形区域内的平均值、L
+2 范数以及基于据中心像素距离的加权平均函数。</p>
 <p>池化的主要作用就是帮助输入的表示近似不变（invariant）</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281037163.png" alt="image-20240528103723118" style="zoom:67%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281037163.png" alt="image-20240528103723118" style="zoom:67%;" /></p>
 <blockquote>
-<p>(上) 卷积层中间输出的视图。下面一行显示非线性的输出。上面一行显示最大池化的输出，每个池的宽度为三个像素并且池化区域的步幅为一个像素。(下) 相同网络的视图，不过对输入右移了一个像素。下面一行的所有值都发生了改变，但上面一行只有一半的值发生了改变，这是因为最大池化单元只对周围的最大值比较敏感，而不是对精确的位置。</p>
+<p>(上)
+卷积层中间输出的视图。下面一行显示非线性的输出。上面一行显示最大池化的输出，每个池的宽度为三个像素并且池化区域的步幅为一个像素。(下)
+相同网络的视图，不过对输入右移了一个像素。下面一行的所有值都发生了改变，但上面一行只有一半的值发生了改变，这是因为最大池化单元只对周围的最大值比较敏感，而不是对精确的位置。</p>
 </blockquote>
 <p>使用池化可以看作是增加了一个无限强的先验：这一层学得的函数必须具有对少量平移的不变性。当这个假设成立时，池化可以极大地提高网络的统计效率。</p>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281044696.png" alt="image-20240528104409653" style="zoom:67%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281044696.png" alt="image-20240528104409653" style="zoom:67%;" /></p>
 <blockquote>
 <p>使用分离的参数学得多个特征，再使用池化单元进行池化，可以学得对输入的某些变换的不变性。</p>
-<p>这里我们展示了用三个学得的过滤器和一个最大池化单元可以学得对旋转变换的不变性。这三个过滤器都旨在检测手写的数字 5。每个过滤器尝试匹配稍微不同方向的 5。当输入中出现 5 时，相应的过滤器会匹配它并且在探测单元中引起大的激活。然后，无论哪个探测单元被激活，最大池化单元都具有大的激活。我们在这里演示了网络如何处理两个不同的输入，这导致两个不同的探测单元被激活，然而对池化单元的影响大致相同。</p>
+<p>这里我们展示了用三个学得的过滤器和一个最大池化单元可以学得对旋转变换的不变性。这三个过滤器都旨在检测手写的数字
+5。每个过滤器尝试匹配稍微不同方向的 5。当输入中出现 5
+时，相应的过滤器会匹配它并且在探测单元中引起大的激活。然后，无论哪个探测单元被激活，最大池化单元都具有大的激活。我们在这里演示了网络如何处理两个不同的输入，这导致两个不同的探测单元被激活，然而对池化单元的影响大致相同。</p>
 </blockquote>
 <p>同时池化也有一些其他好处：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>首先池化单元利用了邻居的反馈，使得池化单元少于探测单元，能够提升参数存储效率</p>
-</li>
-<li class="lvl-2">
-<p>其次通过调整池化区域的偏置，能够对不同大小的图像进行分类</p>
-</li>
+<ul>
+<li>首先池化单元利用了邻居的反馈，使得池化单元少于探测单元，能够提升参数存储效率</li>
+<li>其次通过调整池化区域的偏置，能够对不同大小的图像进行分类</li>
 </ul>
-<h1>基本卷积函数的变体</h1>
+<h1 id="基本卷积函数的变体">基本卷积函数的变体</h1>
 <p>另外对于卷积，有三种零填充的方式</p>
-<ol>
-<li class="lvl-3">
-<p>有效卷积（valid）：只允许卷积核访问到能够完全包含核的部分</p>
-</li>
-<li class="lvl-3">
-<p>相同卷积（same）：只进行足够的填充去保证输入和输出具有相同的大小</p>
-</li>
-<li class="lvl-3">
-<p>全卷积（full）：进行足够多的零填充使得每个像素在每个方向上都恰好被访问了k次，最终输出的图像宽度为 $m + k - 1$</p>
-</li>
+<ol type="1">
+<li>有效卷积（valid）：只允许卷积核访问到能够完全包含核的部分</li>
+<li>相同卷积（same）：只进行足够的填充去保证输入和输出具有相同的大小</li>
+<li>全卷积（full）：进行足够多的零填充使得每个像素在每个方向上都恰好被访问了k次，最终输出的图像宽度为
+<span class="math inline">\(m + k - 1\)</span></li>
 </ol>
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281151199.png" alt="image-20240528115134137" style="zoom:67%;" />
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281152921.png" alt="image-20240528115203877" style="zoom:67%;" />
-<img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281152504.png" alt="image-20240528115219441" style="zoom:67%;" />
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281151199.png" alt="image-20240528115134137" style="zoom:67%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281152921.png" alt="image-20240528115203877" style="zoom:67%;" /></p>
+<p><img src="https://szfmsmdx.oss-cn-hangzhou.aliyuncs.com/blog_pic/202405281152504.png" alt="image-20240528115219441" style="zoom:67%;" /></p>
 
     </div>
 
@@ -444,9 +444,9 @@ $$<br>
 </div>
 
           <div class="post-tags">
+              <a href="/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
               <a href="/tags/CNN/" rel="tag"><i class="fa fa-tag"></i> CNN</a>
               <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 深度学习</a>
-              <a href="/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
           </div>
 
         
@@ -494,13 +494,13 @@ $$<br>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">95k</span>
+    <span title="站点总字数">99k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:53</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 
